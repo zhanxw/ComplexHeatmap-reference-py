@@ -8,6 +8,7 @@ import re
 import shutil
 import subprocess
 from dataclasses import dataclass, field
+from html.parser import HTMLParser
 from pathlib import Path
 from typing import Any
 
@@ -63,6 +64,18 @@ class CompiledChapter:
     body_html: str
     sections: list[SectionItem] = field(default_factory=list)
     search_entries: list[dict[str, str]] = field(default_factory=list)
+
+
+@dataclass
+class GalleryItem:
+    src: str
+    filename: str
+    caption: str
+    chapter_key: str
+    chapter_label: str
+    chapter_html: str
+    section_label: str
+    target_url: str
 
 
 def _find_pandoc() -> str:
@@ -237,6 +250,225 @@ def _process_headings_and_sections(
     return processed_html, chapter_title, sections, search_entries
 
 
+class _GalleryExtractor(HTMLParser):
+    """Extract ordered local figures with chapter and section context from compiled chapter HTML."""
+
+    def __init__(self, chap_num: str, chap_title: str, html_name: str) -> None:
+        super().__init__()
+        self.chap_key = chap_num if chap_num else "0"
+        self.chap_label = f"{chap_num}. {chap_title}" if chap_num else chap_title
+        self.html_name = html_name
+        self.items: list[GalleryItem] = []
+
+        self._in_heading: str | None = None
+        self._cur_heading_id: str = ""
+        self._heading_buf: list[str] = []
+        self._in_anchor_hash = False
+        self._current_level = 1
+        self._current_anchor: str = ""
+        self._current_heading_text: str = self.chap_label
+
+    def handle_starttag(self, tag: str, attrs: list[tuple[str, str | None]]) -> None:
+        attr_map = dict(attrs)
+        if tag in ("h1", "h2", "h3"):
+            self._in_heading = tag
+            self._cur_heading_id = attr_map.get("id") or ""
+            self._heading_buf = []
+            self._in_anchor_hash = False
+        elif self._in_heading and tag == "a":
+            cls = attr_map.get("class") or ""
+            if "anchor-section" in cls.split():
+                self._in_anchor_hash = True
+        elif tag == "img":
+            src = (attr_map.get("src") or "").strip()
+            if not src or src.startswith(("http://", "https://", "data:")):
+                return
+            filename = Path(src).name
+            raw_alt = attr_map.get("alt") or ""
+            caption = re.sub(r"\s+", " ", raw_alt).strip()
+            if not caption:
+                caption = Path(src).stem.replace("_", " ").replace("-", " ")
+            if self._current_level in (2, 3) and self._current_anchor:
+                target_url = f"{self.html_name}#{self._current_anchor}"
+            else:
+                target_url = self.html_name
+            self.items.append(
+                GalleryItem(
+                    src=src,
+                    filename=filename,
+                    caption=caption,
+                    chapter_key=self.chap_key,
+                    chapter_label=self.chap_label,
+                    chapter_html=self.html_name,
+                    section_label=self._current_heading_text or self.chap_label,
+                    target_url=target_url,
+                )
+            )
+
+    def handle_endtag(self, tag: str) -> None:
+        if self._in_heading and tag == "a":
+            self._in_anchor_hash = False
+        elif self._in_heading == tag:
+            txt = re.sub(r"\s+", " ", "".join(self._heading_buf)).strip()
+            self._current_level = int(tag[1])
+            self._current_anchor = self._cur_heading_id
+            if txt:
+                self._current_heading_text = txt
+            self._in_heading = None
+
+    def handle_data(self, data: str) -> None:
+        if self._in_heading and not self._in_anchor_hash:
+            self._heading_buf.append(data)
+
+
+def _extract_gallery_items(
+    processed_html: str, chap_num: str, chap_title: str, html_name: str
+) -> list[GalleryItem]:
+    parser = _GalleryExtractor(chap_num, chap_title, html_name)
+    parser.feed(processed_html)
+    parser.close()
+    return parser.items
+
+
+def _build_gallery_chapter(all_items: list[GalleryItem]) -> CompiledChapter:
+    """Build the Figure Gallery CompiledChapter aggregating all book figures."""
+    groups: list[tuple[str, str, str, list[GalleryItem]]] = []
+    by_key: dict[str, tuple[str, str, list[GalleryItem]]] = {}
+    for it in all_items:
+        if it.chapter_key not in by_key:
+            grp_list: list[GalleryItem] = []
+            by_key[it.chapter_key] = (it.chapter_label, it.chapter_html, grp_list)
+            groups.append((it.chapter_key, it.chapter_label, it.chapter_html, grp_list))
+        by_key[it.chapter_key][2].append(it)
+
+    total = len(all_items)
+    pills_html = [
+        f'<button type="button" class="gallery-pill active" data-ch-filter="all">All ({total})</button>'
+    ]
+    for ch_key, ch_label, _ch_html, items in groups:
+        short_lbl = f"Ch. {ch_key}" if ch_key != "0" else "About"
+        pills_html.append(
+            f'<button type="button" class="gallery-pill" data-ch-filter="{html.escape(ch_key)}" '
+            f'title="{html.escape(ch_label)}">{html.escape(short_lbl)} ({len(items)})</button>'
+        )
+
+    parts: list[str] = [
+        '<div id="gallery-root">',
+        '<h1 id="figure-gallery">Figure Gallery'
+        '<a class="anchor-section" aria-label="Anchor link to section" href="#figure-gallery">#</a></h1>',
+        f"<p>Browse all <strong>{total}</strong> executable example figures generated with "
+        f'<a href="{html.escape(PKG_REPO_URL)}" target="_blank" rel="noopener"><strong>ComplexHeatmap-py</strong></a>. '
+        "Filter by keyword, function name, or chapter; click any thumbnail to zoom cleanly and jump directly "
+        "to its full Python recipe and documentation.</p>",
+        '<div class="gallery-controls">',
+        '  <div class="gallery-search-row">',
+        '    <input id="gallery-filter-input" type="search" placeholder="Filter figures by keyword, function, topic, or filename (e.g. oncoprint, upset, anno_textbox, 3d)..." aria-label="Filter figures">',
+        f'    <span id="gallery-count-badge">{total} / {total} figures</span>',
+        '    <div class="gallery-size-btns" role="group" aria-label="Thumbnail grid density">',
+        '      <button type="button" class="gallery-size-btn" data-grid-size="compact">Compact</button>',
+        '      <button type="button" class="gallery-size-btn active" data-grid-size="medium">Medium</button>',
+        '      <button type="button" class="gallery-size-btn" data-grid-size="large">Large</button>',
+        "    </div>",
+        "  </div>",
+        '  <div class="gallery-chapter-pills">',
+        "\n".join(pills_html),
+        "  </div>",
+        "</div>",
+    ]
+
+    sections: list[SectionItem] = []
+    search_entries: list[dict[str, str]] = [
+        {
+            "url": "gallery.html",
+            "title": "Figure Gallery",
+            "text": f"Interactive gallery of all {total} example figures from ComplexHeatmap-py Complete Reference.",
+        }
+    ]
+
+    for ch_key, ch_label, ch_html, items in groups:
+        anchor_id = f"gallery-ch-{ch_key}"
+        sections.append(SectionItem(level=2, number="", title=f"{ch_label} ({len(items)})", anchor=anchor_id))
+        search_entries.append(
+            {
+                "url": f"gallery.html#{anchor_id}",
+                "title": f"Gallery: {ch_label}",
+                "text": " ".join(f"{it.caption} {it.section_label} {it.filename}" for it in items)[:4000],
+            }
+        )
+        parts.append(f'<section class="gallery-group" data-ch-group="{html.escape(ch_key)}">')
+        parts.append(
+            f'<h2 id="{html.escape(anchor_id)}">'
+            f'<span class="gallery-group-title">{html.escape(ch_label)} '
+            f'<span class="gallery-group-count">({len(items)})</span></span>'
+            f'<a class="gallery-chapter-open" href="{html.escape(ch_html)}">Read chapter &rarr;</a>'
+            f'<a class="anchor-section" aria-label="Anchor link to section" href="#{html.escape(anchor_id)}">#</a>'
+            f"</h2>"
+        )
+        parts.append('<div class="gallery-grid">')
+        for it in items:
+            haystack = f"{it.caption} {it.section_label} {it.chapter_label} {it.filename}".lower()
+            parts.append(
+                f'<figure class="gallery-card" data-ch="{html.escape(ch_key)}" data-search="{html.escape(haystack)}">'
+                f'<button type="button" class="gallery-thumb-btn" '
+                f'data-full-src="{html.escape(it.src)}" '
+                f'data-caption="{html.escape(it.caption)}" '
+                f'data-chapter="{html.escape(it.chapter_label)}" '
+                f'data-section="{html.escape(it.section_label)}" '
+                f'data-url="{html.escape(it.target_url)}" '
+                f'data-file="{html.escape(it.filename)}" '
+                f'aria-label="Inspect {html.escape(it.caption)}">'
+                f'<img src="{html.escape(it.src)}" alt="{html.escape(it.caption)}" loading="lazy" decoding="async">'
+                f"</button>"
+                f'<figcaption class="gallery-card-body">'
+                f'<div class="gallery-card-caption">{html.escape(it.caption)}</div>'
+                f'<div class="gallery-card-meta">'
+                f'<a class="gallery-card-link" href="{html.escape(it.target_url)}">{html.escape(it.section_label)} &rarr;</a>'
+                f'<code class="gallery-card-file">{html.escape(it.filename)}</code>'
+                f"</div>"
+                f"</figcaption>"
+                f"</figure>"
+            )
+        parts.append("</div>")
+        parts.append("</section>")
+
+    parts.extend(
+        [
+            '<p id="gallery-empty-msg" class="gallery-empty" hidden>No figures match your current filter.</p>',
+            '<div id="gallery-lightbox" class="gallery-lightbox" role="dialog" aria-modal="true" aria-label="Figure preview" hidden>',
+            '  <div class="lightbox-backdrop"></div>',
+            '  <div class="lightbox-dialog">',
+            '    <button id="lightbox-close" class="lightbox-close" type="button" aria-label="Close preview">&times;</button>',
+            '    <button id="lightbox-prev" class="lightbox-nav lightbox-prev" type="button" aria-label="Previous figure">&#8249;</button>',
+            '    <div class="lightbox-img-stage"><img id="lightbox-img" src="" alt=""></div>',
+            '    <button id="lightbox-next" class="lightbox-nav lightbox-next" type="button" aria-label="Next figure">&#8250;</button>',
+            '    <div class="lightbox-footer">',
+            '      <div class="lightbox-text">',
+            '        <div id="lightbox-counter" class="lightbox-counter"></div>',
+            '        <div id="lightbox-caption" class="lightbox-caption"></div>',
+            '        <div id="lightbox-meta" class="lightbox-meta"></div>',
+            "      </div>",
+            '      <div class="lightbox-actions">',
+            '        <a id="lightbox-jump" class="lightbox-btn-primary" href="#">View Section &amp; Python Code &rarr;</a>',
+            '        <a id="lightbox-raw" class="lightbox-btn-secondary" href="#" target="_blank" rel="noopener">Open PNG &#8599;</a>',
+            "      </div>",
+            "    </div>",
+            "  </div>",
+            "</div>",
+            "</div>",
+        ]
+    )
+
+    return CompiledChapter(
+        num="",
+        md_name="",
+        html_name="gallery.html",
+        title="Figure Gallery",
+        body_html="\n".join(parts),
+        sections=sections,
+        search_entries=search_entries,
+    )
+
+
 def _build_sidebar_html(chapters: list[CompiledChapter], current_html: str) -> str:
     items: list[str] = []
     for ch in chapters:
@@ -350,13 +582,14 @@ def _render_page(
               </div>
             </div>
           </div>
+          <a class="toolbar-btn" href="gallery.html" title="Browse all example figures">Gallery</a>
           <a class="toolbar-btn" href="{html.escape(PKG_REPO_URL)}" target="_blank" rel="noopener" title="ComplexHeatmap-py Library on GitHub">ComplexHeatmap-py</a>
           <a class="toolbar-btn" href="{html.escape(REPO_URL)}" target="_blank" rel="noopener" title="Book Source on GitHub">Book Repo</a>
         </div>
       </header>
 
       <div class="page-wrapper">
-        <main class="page-inner">
+        <main class="page-inner{' page-inner-wide' if ch.html_name == 'gallery.html' else ''}">
           <div id="search-results" aria-live="polite"></div>
           <section class="normal markdown-section">
             {ch.body_html}
@@ -384,6 +617,7 @@ def main() -> None:
 
     compiled: list[CompiledChapter] = []
     all_search: list[dict[str, str]] = []
+    all_gallery_items: list[GalleryItem] = []
 
     for num, md_name, html_name, default_title in CHAPTERS:
         md_path = CHAPTERS_DIR / md_name
@@ -395,6 +629,7 @@ def main() -> None:
         body_html, title, sections, search_entries = _process_headings_and_sections(
             hl_html, num, html_name, default_title
         )
+        all_gallery_items.extend(_extract_gallery_items(body_html, num, title, html_name))
         compiled.append(
             CompiledChapter(
                 num=num,
@@ -408,6 +643,10 @@ def main() -> None:
         )
         all_search.extend(search_entries)
 
+    gallery_ch = _build_gallery_chapter(all_gallery_items)
+    compiled.append(gallery_ch)
+    all_search.extend(gallery_ch.search_entries)
+
     for idx, ch in enumerate(compiled):
         prev_ch = compiled[idx - 1] if idx > 0 else None
         next_ch = compiled[idx + 1] if idx + 1 < len(compiled) else None
@@ -417,7 +656,10 @@ def main() -> None:
 
     search_path = ASSETS_DIR / "search_index.json"
     search_path.write_text(json.dumps(all_search, indent=2), encoding="utf-8")
-    print(f"Built {len(compiled)} book HTML pages and {len(all_search)} search entries in {BOOK_DIR}")
+    print(
+        f"Built {len(compiled)} book HTML pages ({len(all_gallery_items)} gallery figures) "
+        f"and {len(all_search)} search entries in {BOOK_DIR}"
+    )
 
 
 if __name__ == "__main__":

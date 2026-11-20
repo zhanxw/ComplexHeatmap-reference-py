@@ -3,6 +3,7 @@
 Complete Python port of Zuguang Gu's [*ComplexHeatmap Complete Reference*](https://jokergoo.github.io/ComplexHeatmap-reference/book/) book, built with [**ComplexHeatmap-py**](https://github.com/zhanxw/ComplexHeatmap-py).
 
 - **Read the Live Book (GitHub Pages)**: [https://zhanxw.github.io/ComplexHeatmap-reference-py/book/](https://zhanxw.github.io/ComplexHeatmap-reference-py/book/)
+- **Browse All 416 Figures (Gallery)**: [https://zhanxw.github.io/ComplexHeatmap-reference-py/book/gallery.html](https://zhanxw.github.io/ComplexHeatmap-reference-py/book/gallery.html)
 - **Python Library**: [zhanxw/ComplexHeatmap-py](https://github.com/zhanxw/ComplexHeatmap-py)
 - **Original R Book**: [jokergoo.github.io/ComplexHeatmap-reference/book/](https://jokergoo.github.io/ComplexHeatmap-reference/book/)
 
@@ -29,6 +30,7 @@ Complete Python port of Zuguang Gu's [*ComplexHeatmap Complete Reference*](https
 | **14. More Examples** | [chapters/14-more-examples.md](chapters/14-more-examples.md) | [scripts/ch14_more_examples.py](scripts/ch14_more_examples.py) | [more-examples.html](https://zhanxw.github.io/ComplexHeatmap-reference-py/book/more-examples.html) |
 | **15. Other Tricks** | [chapters/15-other-tricks.md](chapters/15-other-tricks.md) | [scripts/ch15_other_tricks.py](scripts/ch15_other_tricks.py) | [other-tricks.html](https://zhanxw.github.io/ComplexHeatmap-reference-py/book/other-tricks.html) |
 | **16. Publication Examples** | [chapters/16-publication-examples.md](chapters/16-publication-examples.md) | [scripts/ch16_publication_examples.py](scripts/ch16_publication_examples.py) | [publication-examples.html](https://zhanxw.github.io/ComplexHeatmap-reference-py/book/publication-examples.html) |
+| **Figure Gallery** | *(auto-generated)* | [scripts/build_book.py](scripts/build_book.py) | [gallery.html](https://zhanxw.github.io/ComplexHeatmap-reference-py/book/gallery.html) |
 
 ---
 
@@ -49,10 +51,10 @@ pip install ComplexHeatmap-py pygments
 # 1. Regenerate all 416 PNG figures into docs/book/images/
 python scripts/build_all_figures.py
 
-# 2. Compile chapters/*.md into the GitBook static HTML site under docs/book/
+# 2. Compile chapters/*.md (and docs/book/gallery.html) into the GitBook static HTML site
 python scripts/build_book.py
 
-# 3. Verify all 17 HTML pages, PNG figures, anchors, links, and search index
+# 3. Verify all 18 HTML pages (including gallery.html), PNG figures, anchors, links, and search index
 python scripts/verify_book.py
 ```
 

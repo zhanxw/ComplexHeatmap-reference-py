@@ -95,3 +95,7 @@ Under the hood, **ComplexHeatmap-py** implements an R-compatible `grid` graphics
 - [**Publication Examples**](publication-examples.html)
 
   Reproduces the example figures from both foundational **ComplexHeatmap** publications — Gu, Eils & Schlesner (*Bioinformatics*, 2016) and Gu (*iMeta*, 2022) — end-to-end using **ComplexHeatmap-py**.
+
+- [**Figure Gallery**](gallery.html)
+
+  Interactive visual browser across all example figures in the book, with keyword filtering, chapter pills, lightbox zoom, and direct links to every section's Python code.

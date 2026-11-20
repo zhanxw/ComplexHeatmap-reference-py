@@ -3,6 +3,7 @@
 This is the complete reference documentation for [**ComplexHeatmap-py**](https://github.com/zhanxw/ComplexHeatmap-py), a faithful Python port of the R/Bioconductor [**ComplexHeatmap**](https://github.com/jokergoo/ComplexHeatmap) package (upstream R version `2.25.3`). Examples throughout this book are generated under **complexheatmap** `0.2.0` backed by NumPy, SciPy, pandas, and Matplotlib.
 
 - **ComplexHeatmap-py Library (GitHub)**: [https://github.com/zhanxw/ComplexHeatmap-py](https://github.com/zhanxw/ComplexHeatmap-py)
+- **Figure Gallery (All 416 Plots)**: [Browse Figure Gallery](gallery.html)
 - **Book Source & Scripts (GitHub)**: [https://github.com/zhanxw/ComplexHeatmap-reference-py](https://github.com/zhanxw/ComplexHeatmap-reference-py)
 
 ## Installation

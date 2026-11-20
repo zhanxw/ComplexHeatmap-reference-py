@@ -33,6 +33,7 @@ EXPECTED_HTML_FILES = [
     "more-examples.html",
     "other-tricks.html",
     "publication-examples.html",
+    "gallery.html",
 ]
 
 
@@ -67,9 +68,11 @@ def main() -> None:
         if not req.exists():
             errors.append(f"Missing required file: {req}")
 
-    # 2. Parse all 17 HTML pages
+    # 2. Parse all 18 HTML pages
     page_ids: dict[str, set[str]] = {}
     page_links: dict[str, list[str]] = {}
+    chapter_images: set[Path] = set()
+    gallery_images: set[Path] = set()
     referenced_images: set[Path] = set()
 
     for fname in EXPECTED_HTML_FILES:
@@ -91,6 +94,18 @@ def main() -> None:
                 errors.append(f"{fname}: broken image src {src!r} -> {img_path}")
             else:
                 referenced_images.add(img_path)
+                if fname == "gallery.html":
+                    gallery_images.add(img_path)
+                else:
+                    chapter_images.add(img_path)
+
+    if chapter_images != gallery_images:
+        missing_in_gal = sorted(p.name for p in chapter_images - gallery_images)
+        extra_in_gal = sorted(p.name for p in gallery_images - chapter_images)
+        if missing_in_gal:
+            errors.append(f"gallery.html missing {len(missing_in_gal)} chapter figures: {missing_in_gal[:10]}")
+        if extra_in_gal:
+            errors.append(f"gallery.html has {len(extra_in_gal)} unexpected figures: {extra_in_gal[:10]}")
 
     # 3. Validate every referenced PNG image
     for img_path in sorted(referenced_images):
@@ -130,7 +145,7 @@ def main() -> None:
                 errors.append(f"{fname}: broken anchor #{frag} in {target_file} (href={href!r})")
                 broken_links += 1
 
-    # 5. Validate search_index.json covers all 17 chapters
+    # 5. Validate search_index.json covers all 18 chapters
     search_path = ASSETS_DIR / "search_index.json"
     if search_path.exists():
         data = json.loads(search_path.read_text(encoding="utf-8"))
@@ -146,7 +161,7 @@ def main() -> None:
 
     print(
         f"BOOK VERIFICATION PASSED: {len(EXPECTED_HTML_FILES)}/{len(EXPECTED_HTML_FILES)} chapters, "
-        f"{len(referenced_images)} verified PNG figures ({len(all_pngs)} total PNGs on disk), "
+        f"{len(referenced_images)} verified PNG figures ({len(gallery_images)} in gallery, {len(all_pngs)} total PNGs on disk), "
         f"{broken_links} broken links."
     )
 
