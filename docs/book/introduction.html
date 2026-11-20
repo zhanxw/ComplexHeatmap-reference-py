@@ -1,0 +1,443 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Chapter 1 Introduction | ComplexHeatmap-py Complete Reference</title>
+  <meta name="description" content="Python port of ComplexHeatmap Complete Reference using ComplexHeatmap-py.">
+  <link rel="stylesheet" href="assets/gitbook.css">
+</head>
+<body>
+  <div class="book">
+    <nav class="book-summary" aria-label="Table of Contents">
+      <div class="book-summary-header">
+        <a class="book-summary-title" href="index.html">ComplexHeatmap-py Complete Reference</a>
+        <span class="book-summary-subtitle">Python Port via ComplexHeatmap-py</span>
+      </div>
+      <div class="book-search-box">
+        <input id="book-search-input" type="search" placeholder="Search book..." aria-label="Search book">
+      </div>
+      <ul class="summary">
+        <li class="chapter"><a href="index.html"><span>About</span></a><ul><li class="level-2"><a href="index.html#installation">Installation</a></li>
+<li class="level-2"><a href="index.html#r-to-python-migration-highlights">R-to-Python Migration
+Highlights</a></li>
+<li class="level-2"><a href="index.html#citation">Citation</a></li>
+<li class="level-2"><a href="index.html#python-environment">Python Environment</a></li></ul></li>
+<li class="chapter active"><a href="introduction.html"><span class="header-section-number">1</span><span>Introduction</span></a><ul><li class="level-2"><a href="introduction.html#general-design"><span class="header-section-number">1.1</span> General design</a></li>
+<li class="level-2"><a href="introduction.html#a-brief-description-of-following-chapters"><span class="header-section-number">1.2</span> A brief description
+of following chapters</a></li></ul></li>
+<li class="chapter"><a href="a-single-heatmap.html"><span class="header-section-number">2</span><span>A Single Heatmap</span></a><ul><li class="level-2"><a href="a-single-heatmap.html#colors"><span class="header-section-number">2.1</span> Colors</a></li>
+<li class="level-2"><a href="a-single-heatmap.html#heatmap-titles"><span class="header-section-number">2.2</span> Titles</a></li>
+<li class="level-2"><a href="a-single-heatmap.html#clustering"><span class="header-section-number">2.3</span> Clustering</a></li>
+<li class="level-3"><a href="a-single-heatmap.html#distance-methods"><span class="header-section-number">2.3.1</span> Distance methods</a></li>
+<li class="level-3"><a href="a-single-heatmap.html#clustering-methods"><span class="header-section-number">2.3.2</span> Clustering methods</a></li>
+<li class="level-3"><a href="a-single-heatmap.html#render-dendrograms"><span class="header-section-number">2.3.3</span> Render dendrograms</a></li>
+<li class="level-3"><a href="a-single-heatmap.html#reorder-dendrograms"><span class="header-section-number">2.3.4</span> Reorder dendrograms</a></li>
+<li class="level-2"><a href="a-single-heatmap.html#row-and-column-orders"><span class="header-section-number">2.4</span> Set row and column orders</a></li>
+<li class="level-2"><a href="a-single-heatmap.html#heatmap-seriation"><span class="header-section-number">2.5</span> Seriation</a></li>
+<li class="level-2"><a href="a-single-heatmap.html#dimension-names"><span class="header-section-number">2.6</span> Dimension labels</a></li>
+<li class="level-2"><a href="a-single-heatmap.html#heatmap-split"><span class="header-section-number">2.7</span> Heatmap split</a></li>
+<li class="level-3"><a href="a-single-heatmap.html#split-by-kmeans-clustering"><span class="header-section-number">2.7.1</span> Split by k-means clustering</a></li>
+<li class="level-3"><a href="a-single-heatmap.html#split-by-categorical-variables"><span class="header-section-number">2.7.2</span> Split by categorical
+variables</a></li>
+<li class="level-3"><a href="a-single-heatmap.html#split-by-dendrogram"><span class="header-section-number">2.7.3</span> Split by dendrogram</a></li>
+<li class="level-3"><a href="a-single-heatmap.html#order-of-slices"><span class="header-section-number">2.7.4</span> Order of slices</a></li>
+<li class="level-3"><a href="a-single-heatmap.html#titles-for-splitting"><span class="header-section-number">2.7.5</span> Titles for splitting</a></li>
+<li class="level-3"><a href="a-single-heatmap.html#graphic-parameters-for-splitting"><span class="header-section-number">2.7.6</span> Graphic parameters for
+splitting</a></li>
+<li class="level-3"><a href="a-single-heatmap.html#gaps-between-slices"><span class="header-section-number">2.7.7</span> Gaps between slices</a></li>
+<li class="level-3"><a href="a-single-heatmap.html#split-heatmap-annotations"><span class="header-section-number">2.7.8</span> Split heatmap annotations</a></li>
+<li class="level-2"><a href="a-single-heatmap.html#heatmap-as-raster-image"><span class="header-section-number">2.8</span> Heatmap as raster image</a></li>
+<li class="level-2"><a href="a-single-heatmap.html#customize-the-heatmap-body"><span class="header-section-number">2.9</span> Customize the heatmap body</a></li>
+<li class="level-3"><a href="a-single-heatmap.html#cell-fun"><span class="header-section-number">2.9.1</span> cell_fun</a></li>
+<li class="level-3"><a href="a-single-heatmap.html#layer-fun"><span class="header-section-number">2.9.2</span> layer_fun</a></li>
+<li class="level-2"><a href="a-single-heatmap.html#size-of-the-heatmap"><span class="header-section-number">2.10</span> Size of the heatmap</a></li>
+<li class="level-2"><a href="a-single-heatmap.html#plot-the-heatmap"><span class="header-section-number">2.11</span> Plot the heatmap</a></li>
+<li class="level-2"><a href="a-single-heatmap.html#get-orders-and-dendrograms-from-heatmap"><span class="header-section-number">2.12</span> Extract orders and
+dendrograms</a></li>
+<li class="level-2"><a href="a-single-heatmap.html#subset-a-heatmap"><span class="header-section-number">2.13</span> Subset a heatmap</a></li></ul></li>
+<li class="chapter"><a href="heatmap-annotations.html"><span class="header-section-number">3</span><span>Heatmap Annotations</span></a><ul><li class="level-2"><a href="heatmap-annotations.html#simple-annotation"><span class="header-section-number">3.1</span> Simple annotation</a></li>
+<li class="level-2"><a href="heatmap-annotations.html#simple-annotation-as-an-annotation-function"><span class="header-section-number">3.2</span> Simple annotation
+as an annotation function</a></li>
+<li class="level-2"><a href="heatmap-annotations.html#empty-annotation"><span class="header-section-number">3.3</span> Empty annotation</a></li>
+<li class="level-2"><a href="heatmap-annotations.html#block-annotation"><span class="header-section-number">3.4</span> Block annotation</a></li>
+<li class="level-3"><a href="heatmap-annotations.html#block-for-putting-labels"><span class="header-section-number">3.4.1</span> Block for putting labels</a></li>
+<li class="level-3"><a href="heatmap-annotations.html#blocks-as-plotting-regions"><span class="header-section-number">3.4.2</span> Blocks as plotting regions</a></li>
+<li class="level-2"><a href="heatmap-annotations.html#image-annotation"><span class="header-section-number">3.5</span> Image annotation</a></li>
+<li class="level-2"><a href="heatmap-annotations.html#points-annotation"><span class="header-section-number">3.6</span> Points annotation</a></li>
+<li class="level-2"><a href="heatmap-annotations.html#lines-annotation"><span class="header-section-number">3.7</span> Line annotation</a></li>
+<li class="level-2"><a href="heatmap-annotations.html#barplot_annotation"><span class="header-section-number">3.8</span> Barplot annotation</a></li>
+<li class="level-2"><a href="heatmap-annotations.html#box-annotation"><span class="header-section-number">3.9</span> Boxplot annotation</a></li>
+<li class="level-2"><a href="heatmap-annotations.html#histogram-annotation"><span class="header-section-number">3.10</span> Histogram annotation</a></li>
+<li class="level-2"><a href="heatmap-annotations.html#density-annotation"><span class="header-section-number">3.11</span> Density annotation</a></li>
+<li class="level-2"><a href="heatmap-annotations.html#joyplot-annotation"><span class="header-section-number">3.12</span> Joyplot annotation</a></li>
+<li class="level-2"><a href="heatmap-annotations.html#horizon-chart-annotation"><span class="header-section-number">3.13</span> Horizon chart annotation</a></li>
+<li class="level-2"><a href="heatmap-annotations.html#text-annotation"><span class="header-section-number">3.14</span> Text annotation</a></li>
+<li class="level-2"><a href="heatmap-annotations.html#anno-numeric"><span class="header-section-number">3.15</span> Numeric labels annotation</a></li>
+<li class="level-2"><a href="heatmap-annotations.html#completely-customized-annotation"><span class="header-section-number">3.16</span> Completely customized
+annotation</a></li>
+<li class="level-2"><a href="heatmap-annotations.html#mark-annotation"><span class="header-section-number">3.17</span> Mark annotation</a></li>
+<li class="level-2"><a href="heatmap-annotations.html#zoom-annotation"><span class="header-section-number">3.18</span> Zoom/link annotation</a></li>
+<li class="level-2"><a href="heatmap-annotations.html#anno-text-box"><span class="header-section-number">3.19</span> Text box annotation</a></li>
+<li class="level-3"><a href="heatmap-annotations.html#construct-the-text-box"><span class="header-section-number">3.19.1</span> Construct the text box</a></li>
+<li class="level-3"><a href="heatmap-annotations.html#draw-textbox-annotation"><span class="header-section-number">3.19.2</span> Draw textbox annotation</a></li>
+<li class="level-2"><a href="heatmap-annotations.html#summary-annotation"><span class="header-section-number">3.20</span> Summary annotation</a></li>
+<li class="level-2"><a href="heatmap-annotations.html#multiple-annotations"><span class="header-section-number">3.21</span> Multiple annotations</a></li>
+<li class="level-3"><a href="heatmap-annotations.html#heatmap-annotation-general-settings"><span class="header-section-number">3.21.1</span> General settings</a></li>
+<li class="level-3"><a href="heatmap-annotations.html#size-of-annotations"><span class="header-section-number">3.21.2</span> Size of annotations</a></li>
+<li class="level-3"><a href="heatmap-annotations.html#annotation-labels"><span class="header-section-number">3.21.3</span> Annotation labels</a></li>
+<li class="level-2"><a href="heatmap-annotations.html#heatmap-annotation-utility-function"><span class="header-section-number">3.22</span> Utility functions</a></li>
+<li class="level-2"><a href="heatmap-annotations.html#implement-new-annotation-functions"><span class="header-section-number">3.23</span> Implement new annotation
+functions</a></li>
+<li class="level-3"><a href="heatmap-annotations.html#construct-annotation-function-by-cell-fun"><span class="header-section-number">3.23.1</span> Construct annotation
+function by cell_fun</a></li></ul></li>
+<li class="chapter"><a href="a-list-of-heatmaps.html"><span class="header-section-number">4</span><span>A List of Heatmaps</span></a><ul><li class="level-2"><a href="a-list-of-heatmaps.html#heatmap-list-titles"><span class="header-section-number">4.1</span> Titles</a></li>
+<li class="level-2"><a href="a-list-of-heatmaps.html#size-of-heatmaps"><span class="header-section-number">4.2</span> Size of heatmaps</a></li>
+<li class="level-2"><a href="a-list-of-heatmaps.html#gap-between-heatmaps"><span class="header-section-number">4.3</span> Gap between heatmaps</a></li>
+<li class="level-2"><a href="a-list-of-heatmaps.html#automatic-adjustment-to-the-main-heatmap"><span class="header-section-number">4.4</span> Automatic adjustment
+to the main heatmap</a></li>
+<li class="level-2"><a href="a-list-of-heatmaps.html#control-main-heatmap-in-draw-function"><span class="header-section-number">4.5</span> Control main heatmap in
+draw() function</a></li>
+<li class="level-2"><a href="a-list-of-heatmaps.html#annotations-as-components-are-adjusted"><span class="header-section-number">4.6</span> Annotations as
+components are adjusted</a></li>
+<li class="level-2"><a href="a-list-of-heatmaps.html#concatenate-with-annotations"><span class="header-section-number">4.7</span> Concatenate with annotations</a></li>
+<li class="level-2"><a href="a-list-of-heatmaps.html#concatenate-only-the-annotations"><span class="header-section-number">4.8</span> Concatenate only the
+annotations</a></li>
+<li class="level-2"><a href="a-list-of-heatmaps.html#vertical-concatenation"><span class="header-section-number">4.9</span> Vertical concatenation</a></li>
+<li class="level-2"><a href="a-list-of-heatmaps.html#subset-heatmap-list"><span class="header-section-number">4.10</span> Subset the heatmap list</a></li>
+<li class="level-2"><a href="a-list-of-heatmaps.html#plot-the-heatmap-list"><span class="header-section-number">4.11</span> Plot the heatmap list</a></li>
+<li class="level-2"><a href="a-list-of-heatmaps.html#get-orders-and-dendrograms-from-a-list-of-heatmaps"><span class="header-section-number">4.12</span> Get orders
+and dendrograms</a></li>
+<li class="level-2"><a href="a-list-of-heatmaps.html#change-parameters-globally"><span class="header-section-number">4.13</span> Change parameters globally</a></li>
+<li class="level-2"><a href="a-list-of-heatmaps.html#adjust-blank-space-caused-by-annotations"><span class="header-section-number">4.14</span> Adjust blank space
+caused by annotations</a></li>
+<li class="level-2"><a href="a-list-of-heatmaps.html#manually-increase-space-around-the-plot"><span class="header-section-number">4.15</span> Manually increase space
+around the plot</a></li></ul></li>
+<li class="chapter"><a href="legends.html"><span class="header-section-number">5</span><span>Legends</span></a><ul><li class="level-2"><a href="legends.html#continuous-legends"><span class="header-section-number">5.1</span> Continuous legends</a></li>
+<li class="level-2"><a href="legends.html#discrete-legends"><span class="header-section-number">5.2</span> Discrete legends</a></li>
+<li class="level-2"><a href="legends.html#a-list-of-legends"><span class="header-section-number">5.3</span> A list of legends</a></li>
+<li class="level-2"><a href="legends.html#heatmap-and-annotation-legends"><span class="header-section-number">5.4</span> Heatmap and annotation
+legends</a></li>
+<li class="level-2"><a href="legends.html#add-customized-legends"><span class="header-section-number">5.5</span> Add customized legends</a></li>
+<li class="level-2"><a href="legends.html#the-side-of-legends"><span class="header-section-number">5.6</span> The side of legends</a></li></ul></li>
+<li class="chapter"><a href="heatmap-decoration.html"><span class="header-section-number">6</span><span>Heatmap Decoration</span></a><ul><li class="level-2"><a href="heatmap-decoration.html#decoration-functions"><span class="header-section-number">6.1</span> Decoration functions</a></li>
+<li class="level-2"><a href="heatmap-decoration.html#decoration-examples"><span class="header-section-number">6.2</span> Examples</a></li>
+<li class="level-3"><a href="heatmap-decoration.html#barplot-for-single-column-heatmap"><span class="header-section-number">6.2.1</span> Barplot for single-column
+heatmap</a></li>
+<li class="level-3"><a href="heatmap-decoration.html#add-titles-for-row-annotations"><span class="header-section-number">6.2.2</span> Add titles for row
+annotations</a></li>
+<li class="level-3"><a href="heatmap-decoration.html#other-possible-use-of-decorations"><span class="header-section-number">6.2.3</span> Other possible use of
+decorations</a></li></ul></li>
+<li class="chapter"><a href="oncoprint.html"><span class="header-section-number">7</span><span>OncoPrint</span></a><ul><li class="level-2"><a href="oncoprint.html#oncoprint-general-settings"><span class="header-section-number">7.1</span> General settings</a></li>
+<li class="level-3"><a href="oncoprint.html#input-data-format"><span class="header-section-number">7.1.1</span> Input data format</a></li>
+<li class="level-3"><a href="oncoprint.html#define-the-alter-fun"><span class="header-section-number">7.1.2</span> Define the alter_fun()</a></li>
+<li class="level-3"><a href="oncoprint.html#oncoprint-background"><span class="header-section-number">7.1.3</span> Background</a></li>
+<li class="level-3"><a href="oncoprint.html#complex-alteration-types"><span class="header-section-number">7.1.4</span> Complex alteration types</a></li>
+<li class="level-3"><a href="oncoprint.html#simplify-alter-fun"><span class="header-section-number">7.1.5</span> Simplify alter_fun</a></li>
+<li class="level-3"><a href="oncoprint.html#other-heatmap-related-settings"><span class="header-section-number">7.1.6</span> Other heatmap-related
+settings</a></li>
+<li class="level-2"><a href="oncoprint.html#apply-to-cbioportal-dataset"><span class="header-section-number">7.2</span> Apply to cBioPortal dataset</a></li>
+<li class="level-3"><a href="oncoprint.html#remove-empty-rows-and-columns"><span class="header-section-number">7.2.1</span> Remove empty rows and
+columns</a></li>
+<li class="level-3"><a href="oncoprint.html#reorder-the-oncoprint"><span class="header-section-number">7.2.2</span> Reorder the oncoPrint</a></li>
+<li class="level-3"><a href="oncoprint.html#oncoprint-annotations"><span class="header-section-number">7.2.3</span> OncoPrint annotations</a></li>
+<li class="level-3"><a href="oncoprint.html#oncoprint-as-a-heatmap"><span class="header-section-number">7.2.4</span> oncoPrint as a Heatmap</a></li></ul></li>
+<li class="chapter"><a href="upset-plot.html"><span class="header-section-number">8</span><span>UpSet plot</span></a><ul><li class="level-2"><a href="upset-plot.html#input-data"><span class="header-section-number">8.1</span> Input data</a></li>
+<li class="level-2"><a href="upset-plot.html#upset-mode"><span class="header-section-number">8.2</span> Mode</a></li>
+<li class="level-2"><a href="upset-plot.html#make-the-combination-matrix"><span class="header-section-number">8.3</span> Make the combination matrix</a></li>
+<li class="level-2"><a href="upset-plot.html#upset-utility-functions"><span class="header-section-number">8.4</span> Utility functions</a></li>
+<li class="level-3"><a href="upset-plot.html#upset-subsetting"><span class="header-section-number">8.4.1</span> Subsetting a CombMat</a></li>
+<li class="level-2"><a href="upset-plot.html#upset-making-the-plot"><span class="header-section-number">8.5</span> Make the plot</a></li>
+<li class="level-2"><a href="upset-plot.html#upset-plots-as-heatmaps"><span class="header-section-number">8.6</span> UpSet plots as heatmaps</a></li>
+<li class="level-2"><a href="upset-plot.html#upset-movies"><span class="header-section-number">8.7</span> Example with the movies dataset</a></li>
+<li class="level-2"><a href="upset-plot.html#upset-genomic"><span class="header-section-number">8.8</span> Example with the genomic regions</a></li></ul></li>
+<li class="chapter"><a href="interactive-complexheatmap.html"><span class="header-section-number">9</span><span>Interactive ComplexHeatmap</span></a><ul><li class="level-2"><a href="interactive-complexheatmap.html#inline-jupyter"><span class="header-section-number">9.1</span> Inline rendering in Jupyter and IPython</a></li>
+<li class="level-2"><a href="interactive-complexheatmap.html#brush-and-zoom"><span class="header-section-number">9.2</span> Programmatic brush selection and sub-heatmap
+zoom</a></li>
+<li class="level-2"><a href="interactive-complexheatmap.html#split-slice-zoom"><span class="header-section-number">9.3</span> Extracting and zooming into split slices</a></li>
+<li class="level-2"><a href="interactive-complexheatmap.html#shiny-and-python"><span class="header-section-number">9.4</span> Interactive R Shiny ecosystem and Python
+notebooks</a></li></ul></li>
+<li class="chapter"><a href="integrate-with-other-packages.html"><span class="header-section-number">10</span><span>Integrate with other
+packages</span></a><ul><li class="level-2"><a href="integrate-with-other-packages.html#pheatmap"><span class="header-section-number">10.1</span> pheatmap, heatmap, and heatmap.2</a></li>
+<li class="level-3"><a href="integrate-with-other-packages.html#pheatmap-examples"><span class="header-section-number">10.1.1</span> Examples</a></li>
+<li class="level-3"><a href="integrate-with-other-packages.html#pheatmap-translation"><span class="header-section-number">10.1.2</span> Translation</a></li>
+<li class="level-3"><a href="integrate-with-other-packages.html#pheatmap-comparisons"><span class="header-section-number">10.1.3</span> Comparisons and legacy wrappers</a></li>
+<li class="level-2"><a href="integrate-with-other-packages.html#multipanel-composition"><span class="header-section-number">10.2</span> Multi-panel layout composition</a></li>
+<li class="level-3"><a href="integrate-with-other-packages.html#grid-grabexpr"><span class="header-section-number">10.2.1</span> Capturing heatmaps with
+grid_grabExpr</a></li>
+<li class="level-3"><a href="integrate-with-other-packages.html#matplotlib-integration"><span class="header-section-number">10.2.2</span> Combining ComplexHeatmap-py with
+Matplotlib Axes</a></li>
+<li class="level-2"><a href="integrate-with-other-packages.html#gt-render"><span class="header-section-number">10.3</span> Rich text with gt_render</a></li>
+<li class="level-3"><a href="integrate-with-other-packages.html#gt-render-title"><span class="header-section-number">10.3.1</span> Titles</a></li>
+<li class="level-3"><a href="integrate-with-other-packages.html#gt-render-dimnames"><span class="header-section-number">10.3.2</span> Row and column names</a></li>
+<li class="level-3"><a href="integrate-with-other-packages.html#gt-render-annotations"><span class="header-section-number">10.3.3</span> Styled titles with annotations</a></li>
+<li class="level-3"><a href="integrate-with-other-packages.html#gt-render-anno-text"><span class="header-section-number">10.3.4</span> Text and textbox annotations</a></li>
+<li class="level-3"><a href="integrate-with-other-packages.html#gt-render-legends"><span class="header-section-number">10.3.5</span> Legends</a></li></ul></li>
+<li class="chapter"><a href="other-high-level-plots.html"><span class="header-section-number">11</span><span>Other High-level Plots</span></a><ul><li class="level-2"><a href="other-high-level-plots.html#density-heatmap"><span class="header-section-number">11.1</span> Density heatmap</a></li>
+<li class="level-2"><a href="other-high-level-plots.html#stacked-summary-plot"><span class="header-section-number">11.2</span> Stacked summary plot</a></li></ul></li>
+<li class="chapter"><a href="three-dimensional-complexheatmap.html"><span class="header-section-number">12</span><span>Three-dimensional ComplexHeatmap</span></a><ul><li class="level-2"><a href="three-dimensional-complexheatmap.html#motivation"><span class="header-section-number">12.1</span> Motivation</a></li>
+<li class="level-2"><a href="three-dimensional-complexheatmap.html#implementation-of-3d-heatmap"><span class="header-section-number">12.2</span> Implementation of 3D heatmap</a></li></ul></li>
+<li class="chapter"><a href="genome-level-heatmap.html"><span class="header-section-number">13</span><span>Genome-level heatmap</span></a><ul><li class="level-2"><a href="genome-level-heatmap.html#genomic-bins"><span class="header-section-number">13.1</span> Genomic bins and signal normalization</a></li>
+<li class="level-2"><a href="genome-level-heatmap.html#horizontal-genome-heatmap"><span class="header-section-number">13.2</span> Horizontal genome-level heatmap</a></li>
+<li class="level-2"><a href="genome-level-heatmap.html#vertical-genome-heatmap"><span class="header-section-number">13.3</span> Vertical genome-level heatmap</a></li>
+<li class="level-2"><a href="genome-level-heatmap.html#genome-anno-block"><span class="header-section-number">13.4</span> Chromosome block headers and multi-track
+genomic features</a></li></ul></li>
+<li class="chapter"><a href="more-examples.html"><span class="header-section-number">14</span><span>More Examples</span></a><ul><li class="level-2"><a href="more-examples.html#gene-expression-matrix"><span class="header-section-number">14.1</span> Add more information for gene expression
+matrix</a></li>
+<li class="level-2"><a href="more-examples.html#the-measles-vaccine-heatmap"><span class="header-section-number">14.2</span> The measles vaccine heatmap</a></li>
+<li class="level-2"><a href="more-examples.html#scrna-seq-heterogeneity"><span class="header-section-number">14.3</span> Visualize cell heterogeneity from
+single-cell RNA-seq</a></li>
+<li class="level-2"><a href="more-examples.html#methylation-expression-correlations"><span class="header-section-number">14.4</span> Correlations between
+methylation, expression and other genomic features</a></li>
+<li class="level-2"><a href="more-examples.html#methylation-complex-annotations"><span class="header-section-number">14.5</span> Visualize methylation profile
+with complex annotations</a></li>
+<li class="level-2"><a href="more-examples.html#add-multiple-boxplots-for-single-row"><span class="header-section-number">14.6</span> Add multiple boxplots for
+single row</a></li></ul></li>
+<li class="chapter"><a href="other-tricks.html"><span class="header-section-number">15</span><span>Other Tricks</span></a><ul><li class="level-2"><a href="other-tricks.html#same-cell-size"><span class="header-section-number">15.1</span> Set the same cell size for different heatmaps
+with different dimensions</a></li>
+<li class="level-2"><a href="other-tricks.html#global-options-ht-opt"><span class="header-section-number">15.2</span> Global options with ht_opt</a></li>
+<li class="level-2"><a href="other-tricks.html#grid-grabexpr-composition"><span class="header-section-number">15.3</span> Capturing and composing heatmaps with
+grid_grabExpr</a></li></ul></li>
+        <li class="divider"></li>
+      </ul>
+      <div class="summary-footer">
+        <div>Published with <strong>ComplexHeatmap-py</strong></div>
+        <div><a href="https://github.com/zhanxw/ComplexHeatmap-reference-py" target="_blank" rel="noopener">GitHub Repository</a> &middot; <a href="https://jokergoo.github.io/ComplexHeatmap-reference/book/" target="_blank" rel="noopener">Original R Book</a></div>
+      </div>
+    </nav>
+
+    <div class="book-body">
+      <header class="book-header">
+        <div class="header-left">
+          <button id="sidebar-toggle" class="toolbar-btn" type="button" title="Toggle Table of Contents" aria-label="Toggle Table of Contents">&#9776;</button>
+          <button id="search-toggle-btn" class="toolbar-btn" type="button" title="Search" aria-label="Search">&#128269;</button>
+          <h1 class="header-title"><a href="index.html">ComplexHeatmap-py Complete Reference</a></h1>
+        </div>
+        <div class="header-right">
+          <div class="dropdown">
+            <button id="font-settings-btn" class="toolbar-btn" type="button" title="Font and Theme Settings" aria-label="Font Settings">A</button>
+            <div id="font-settings-menu" class="dropdown-menu">
+              <div class="dropdown-row">
+                <button id="font-size-dec" type="button">A-</button>
+                <button id="font-size-inc" type="button">A+</button>
+              </div>
+              <div class="dropdown-row">
+                <button type="button" data-font="sans">Sans</button>
+                <button type="button" data-font="serif">Serif</button>
+              </div>
+              <div class="dropdown-row">
+                <button type="button" data-theme="white">White</button>
+                <button type="button" data-theme="sepia">Sepia</button>
+                <button type="button" data-theme="night">Night</button>
+              </div>
+            </div>
+          </div>
+          <a class="toolbar-btn" href="https://github.com/zhanxw/ComplexHeatmap-reference-py" target="_blank" rel="noopener" title="View on GitHub">GitHub</a>
+        </div>
+      </header>
+
+      <div class="page-wrapper">
+        <main class="page-inner">
+          <div id="search-results" aria-live="polite"></div>
+          <section class="normal markdown-section">
+            <h1 id="introduction"><span class="header-section-number">1</span> Introduction<a class="anchor-section" aria-label="Anchor link to section" href="#introduction">#</a></h1>
+<p>Complex heatmaps are efficient for visualizing associations across
+multiple sources of data sets and revealing potential patterns.
+<strong>ComplexHeatmap-py</strong> provides a highly flexible,
+object-oriented framework in Python to arrange multiple heatmaps and
+support rich built-in as well as self-defined annotation graphics.</p>
+<h2 id="general-design"><span class="header-section-number">1.1</span> General design<a class="anchor-section" aria-label="Anchor link to section" href="#general-design">#</a></h2>
+<p>A single heatmap is composed of the <strong>heatmap body</strong> and
+surrounding <strong>heatmap components</strong>. The heatmap body can be
+split by rows and columns into multiple slices. The heatmap components
+are titles, dendrograms, row/column names or labels, and heatmap
+annotations, which can be placed on any of the four sides of the heatmap
+body. All heatmap components are automatically reordered or split
+according to the heatmap body.</p>
+<figure>
+<img src="images/ch01_single_layout.png"
+alt="Conceptual layout of a single heatmap" />
+<figcaption aria-hidden="true">Conceptual layout of a single
+heatmap</figcaption>
+</figure>
+<p>A <strong>heatmap list</strong> (<code>HeatmapList</code>) is the
+concatenation of a list of heatmaps and standalone heatmap annotations.
+Surrounding the heatmap list, there are global-level titles and packed
+heatmap/annotation legends.</p>
+<p>One central design principle of a horizontal heatmap list is that
+rows across all heatmaps and row annotations are adjusted simultaneously
+so that the same row in every heatmap and annotation corresponds to the
+exact same feature.</p>
+<figure>
+<img src="images/ch01_list_horizontal.png"
+alt="Conceptual layout of a horizontal HeatmapList" />
+<figcaption aria-hidden="true">Conceptual layout of a horizontal
+HeatmapList</figcaption>
+</figure>
+<p>Heatmaps and column annotations can also be concatenated vertically
+(using <code>%v%</code> or <code>/</code>), in which case columns across
+all heatmaps and column annotations are aligned to the same samples or
+observations.</p>
+<figure>
+<img src="images/ch01_list_vertical.png"
+alt="Conceptual layout of a vertical HeatmapList" />
+<figcaption aria-hidden="true">Conceptual layout of a vertical
+HeatmapList</figcaption>
+</figure>
+<p>A heatmap list can likewise be split by rows (in horizontal mode) or
+by columns (in vertical mode) according to the main heatmap.</p>
+<p><strong>ComplexHeatmap-py</strong> mirrors the object-oriented class
+hierarchy of the R package:</p>
+<ul>
+<li><code>Heatmap</code>: represents a single heatmap containing the
+matrix body, row/column names, titles, dendrograms, and attached
+top/bottom/left/right annotations.</li>
+<li><code>HeatmapList</code>: represents a horizontal (<code>+</code>)
+or vertical (<code>%v%</code> / <code>/</code>) list of heatmaps and
+standalone <code>HeatmapAnnotation</code> objects, together with global
+titles and legends.</li>
+<li><code>HeatmapAnnotation</code>: defines a stack of row annotations
+(<code>rowAnnotation(...)</code> or <code>which="row"</code>) or column
+annotations (<code>HeatmapAnnotation(...)</code> or
+<code>which="column"</code>). Annotations can serve as components of a
+<code>Heatmap</code> or stand independently inside a
+<code>HeatmapList</code>.</li>
+</ul>
+<p>Several lower-level classes power color mapping and custom
+graphics:</p>
+<ul>
+<li><code>SingleAnnotation</code>: defines a single row or column
+annotation track; a <code>HeatmapAnnotation</code> holds a collection of
+<code>SingleAnnotation</code> objects.</li>
+<li><code>ColorMapping</code>: manages continuous
+(<code>colorRamp2</code>) and discrete (<code>dict</code>) mappings from
+data values to colors and constructs the corresponding legend
+grobs.</li>
+<li><code>AnnotationFunction</code>: wraps user-defined Python drawing
+callbacks so custom vector/raster graphics automatically scale, align,
+and subset alongside heatmap slices.</li>
+</ul>
+<p>Under the hood, <strong>ComplexHeatmap-py</strong> implements an
+R-compatible <code>grid</code> graphics subsystem backed by Matplotlib
+(<code>Viewport</code>, <code>pushViewport</code>,
+<code>popViewport</code>, <code>seekViewport</code>, <code>unit</code>,
+<code>gpar</code>, <code>grid.rect</code> / <code>grid_rect</code>,
+<code>grid.text</code> / <code>grid_text</code>,
+<code>grid.segments</code> / <code>grid_segments</code>,
+<code>grid.points</code> / <code>grid_points</code>,
+<code>grid.polygon</code> / <code>grid_polygon</code>,
+<code>grid.circle</code> / <code>grid_circle</code>, and
+<code>grid.raster</code> / <code>grid_raster</code>). Notice in Python
+that <code>ComplexHeatmap-py</code> positions viewports explicitly via
+nested
+<code>Viewport(x=..., y=..., width=..., height=..., just=...)</code>
+coordinates rather than <code>grid.layout</code>. Understanding basic
+<code>Viewport</code>, <code>unit()</code>, and <code>gpar()</code>
+calls unlocks the full power of <code>cell_fun</code>,
+<code>layer_fun</code>, custom annotations, and post-draw
+decorations.</p>
+<h2 id="a-brief-description-of-following-chapters"><span class="header-section-number">1.2</span> A brief description
+of following chapters<a class="anchor-section" aria-label="Anchor link to section" href="#a-brief-description-of-following-chapters">#</a></h2>
+<ul>
+<li><p><a href="a-single-heatmap.html"><strong>A Single
+Heatmap</strong></a></p>
+<p>Describes all configurations of a single <code>Heatmap</code>,
+including color mapping, titles, hierarchical clustering, dendrogram
+rendering/reordering, seriation, dimension labels, row/column splitting,
+rasterization, <code>cell_fun</code>/<code>layer_fun</code>
+customization, sizing, extracting orders/dendrograms, and
+subsetting.</p></li>
+<li><p><a href="heatmap-annotations.html"><strong>Heatmap
+Annotations</strong></a></p>
+<p>Introduces row and column annotations and demonstrates simple
+color-bar annotations alongside rich complex annotations
+(<code>anno_points</code>, <code>anno_lines</code>,
+<code>anno_barplot</code>, <code>anno_boxplot</code>,
+<code>anno_density</code>, <code>anno_horizon</code>,
+<code>anno_histogram</code>, <code>anno_text</code>,
+<code>anno_mark</code>, <code>anno_zoom</code>,
+<code>anno_textbox</code>, <code>anno_block</code>, and custom
+<code>AnnotationFunction</code>).</p></li>
+<li><p><a href="a-list-of-heatmaps.html"><strong>A List of
+Heatmaps</strong></a></p>
+<p>Describes horizontal (<code>+</code>) and vertical (<code>%v%</code>
+/ <code>/</code>) concatenation of heatmaps and standalone annotations,
+main-heatmap alignment, shared splitting, and automatic layout
+adjustment.</p></li>
+<li><p><a href="legends.html"><strong>Legends</strong></a></p>
+<p>Covers configuring heatmap and annotation legends
+(<code>heatmap_legend_param</code>,
+<code>annotation_legend_param</code>), packing multiple legends
+(<code>packLegend</code>), and building standalone custom
+<code>Legend</code> objects.</p></li>
+<li><p><a href="heatmap-decoration.html"><strong>Heatmap
+Decoration</strong></a></p>
+<p>Explains how to query component viewports
+(<code>list_components()</code>) and overlay custom graphics onto drawn
+heatmaps, annotations, dendrograms, and titles using
+<code>with decorate_*:</code> blocks.</p></li>
+<li><p><a href="oncoprint.html"><strong>OncoPrint</strong></a></p>
+<p>Demonstrates <code>oncoPrint()</code> for visualizing genomic
+alterations across cohorts, customizing alteration graphics with
+<code>alter_graphic()</code>, and integrating summary barplot
+annotations.</p></li>
+<li><p><a href="upset-plot.html"><strong>UpSet plot</strong></a></p>
+<p>Covers <code>make_comb_mat()</code> and <code>UpSet()</code> for
+enhanced multi-set intersection visualization, combination modes,
+sorting, and multi-set annotations.</p></li>
+<li><p><a href="interactive-complexheatmap.html"><strong>Interactive
+ComplexHeatmap</strong></a></p>
+<p>Shows how to build interactive and inspectable heatmaps in Python
+workflows, including sub-heatmap zooming and slice/region
+inspection.</p></li>
+<li><p><a href="integrate-with-other-packages.html"><strong>Integrate
+with other packages</strong></a></p>
+<p>Demonstrates integration with <code>pheatmap()</code> /
+<code>heatmap()</code> / <code>heatmap_2()</code> translation helpers,
+rich text rendering via <code>gt_render()</code>, and embedding
+<code>ComplexHeatmap-py</code> panels alongside native Matplotlib
+<code>Axes</code> and multi-panel <code>grid_grabExpr</code>
+layouts.</p></li>
+<li><p><a href="other-high-level-plots.html"><strong>Other High-level
+Plots</strong></a></p>
+<p>Introduces specialized high-level plots implemented in
+<strong>ComplexHeatmap-py</strong>, including
+<code>densityHeatmap()</code> and
+<code>frequencyHeatmap()</code>.</p></li>
+<li><p><a
+href="three-dimensional-complexheatmap.html"><strong>Three-dimensional
+ComplexHeatmap</strong></a></p>
+<p>Covers <code>Heatmap3D()</code> and <code>bar3D()</code> for
+rendering three-dimensional bar-height heatmaps with shaded
+faces.</p></li>
+<li><p><a href="genome-level-heatmap.html"><strong>Genome-level
+heatmap</strong></a></p>
+<p>Demonstrates genomic binning (<code>bin_genome()</code>), overlap
+computation (<code>findOverlaps()</code>), and aligning continuous and
+categorical genomic tracks across chromosomes.</p></li>
+<li><p><a href="more-examples.html"><strong>More
+Examples</strong></a></p>
+<p>Presents complete end-to-end biological and real-world case studies
+including measles incidence, DNA methylation and gene expression
+integration, single-cell RNA-seq clusters, and multi-panel
+figures.</p></li>
+<li><p><a href="other-tricks.html"><strong>Other Tricks</strong></a></p>
+<p>Provides practical layout recipes such as matching cell dimensions
+across heatmaps of differing sizes and calibrating exact figure
+dimensions.</p></li>
+</ul>
+
+          </section>
+          <nav class="chapter-footer-nav" aria-label="Chapter Navigation">
+            <a href="index.html">&larr; About</a>
+            <a href="a-single-heatmap.html">2 A Single Heatmap &rarr;</a>
+          </nav>
+        </main>
+        <a href="index.html" class="navigation navigation-prev" aria-label="Previous chapter: About" title="Previous: About">&#8249;</a>
+        <a href="a-single-heatmap.html" class="navigation navigation-next" aria-label="Next chapter: A Single Heatmap" title="Next: A Single Heatmap">&#8250;</a>
+      </div>
+    </div>
+  </div>
+  <script src="assets/gitbook.js"></script>
+</body>
+</html>

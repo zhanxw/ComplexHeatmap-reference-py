@@ -1,0 +1,1316 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Chapter 5 Legends | ComplexHeatmap-py Complete Reference</title>
+  <meta name="description" content="Python port of ComplexHeatmap Complete Reference using ComplexHeatmap-py.">
+  <link rel="stylesheet" href="assets/gitbook.css">
+</head>
+<body>
+  <div class="book">
+    <nav class="book-summary" aria-label="Table of Contents">
+      <div class="book-summary-header">
+        <a class="book-summary-title" href="index.html">ComplexHeatmap-py Complete Reference</a>
+        <span class="book-summary-subtitle">Python Port via ComplexHeatmap-py</span>
+      </div>
+      <div class="book-search-box">
+        <input id="book-search-input" type="search" placeholder="Search book..." aria-label="Search book">
+      </div>
+      <ul class="summary">
+        <li class="chapter"><a href="index.html"><span>About</span></a><ul><li class="level-2"><a href="index.html#installation">Installation</a></li>
+<li class="level-2"><a href="index.html#r-to-python-migration-highlights">R-to-Python Migration
+Highlights</a></li>
+<li class="level-2"><a href="index.html#citation">Citation</a></li>
+<li class="level-2"><a href="index.html#python-environment">Python Environment</a></li></ul></li>
+<li class="chapter"><a href="introduction.html"><span class="header-section-number">1</span><span>Introduction</span></a><ul><li class="level-2"><a href="introduction.html#general-design"><span class="header-section-number">1.1</span> General design</a></li>
+<li class="level-2"><a href="introduction.html#a-brief-description-of-following-chapters"><span class="header-section-number">1.2</span> A brief description
+of following chapters</a></li></ul></li>
+<li class="chapter"><a href="a-single-heatmap.html"><span class="header-section-number">2</span><span>A Single Heatmap</span></a><ul><li class="level-2"><a href="a-single-heatmap.html#colors"><span class="header-section-number">2.1</span> Colors</a></li>
+<li class="level-2"><a href="a-single-heatmap.html#heatmap-titles"><span class="header-section-number">2.2</span> Titles</a></li>
+<li class="level-2"><a href="a-single-heatmap.html#clustering"><span class="header-section-number">2.3</span> Clustering</a></li>
+<li class="level-3"><a href="a-single-heatmap.html#distance-methods"><span class="header-section-number">2.3.1</span> Distance methods</a></li>
+<li class="level-3"><a href="a-single-heatmap.html#clustering-methods"><span class="header-section-number">2.3.2</span> Clustering methods</a></li>
+<li class="level-3"><a href="a-single-heatmap.html#render-dendrograms"><span class="header-section-number">2.3.3</span> Render dendrograms</a></li>
+<li class="level-3"><a href="a-single-heatmap.html#reorder-dendrograms"><span class="header-section-number">2.3.4</span> Reorder dendrograms</a></li>
+<li class="level-2"><a href="a-single-heatmap.html#row-and-column-orders"><span class="header-section-number">2.4</span> Set row and column orders</a></li>
+<li class="level-2"><a href="a-single-heatmap.html#heatmap-seriation"><span class="header-section-number">2.5</span> Seriation</a></li>
+<li class="level-2"><a href="a-single-heatmap.html#dimension-names"><span class="header-section-number">2.6</span> Dimension labels</a></li>
+<li class="level-2"><a href="a-single-heatmap.html#heatmap-split"><span class="header-section-number">2.7</span> Heatmap split</a></li>
+<li class="level-3"><a href="a-single-heatmap.html#split-by-kmeans-clustering"><span class="header-section-number">2.7.1</span> Split by k-means clustering</a></li>
+<li class="level-3"><a href="a-single-heatmap.html#split-by-categorical-variables"><span class="header-section-number">2.7.2</span> Split by categorical
+variables</a></li>
+<li class="level-3"><a href="a-single-heatmap.html#split-by-dendrogram"><span class="header-section-number">2.7.3</span> Split by dendrogram</a></li>
+<li class="level-3"><a href="a-single-heatmap.html#order-of-slices"><span class="header-section-number">2.7.4</span> Order of slices</a></li>
+<li class="level-3"><a href="a-single-heatmap.html#titles-for-splitting"><span class="header-section-number">2.7.5</span> Titles for splitting</a></li>
+<li class="level-3"><a href="a-single-heatmap.html#graphic-parameters-for-splitting"><span class="header-section-number">2.7.6</span> Graphic parameters for
+splitting</a></li>
+<li class="level-3"><a href="a-single-heatmap.html#gaps-between-slices"><span class="header-section-number">2.7.7</span> Gaps between slices</a></li>
+<li class="level-3"><a href="a-single-heatmap.html#split-heatmap-annotations"><span class="header-section-number">2.7.8</span> Split heatmap annotations</a></li>
+<li class="level-2"><a href="a-single-heatmap.html#heatmap-as-raster-image"><span class="header-section-number">2.8</span> Heatmap as raster image</a></li>
+<li class="level-2"><a href="a-single-heatmap.html#customize-the-heatmap-body"><span class="header-section-number">2.9</span> Customize the heatmap body</a></li>
+<li class="level-3"><a href="a-single-heatmap.html#cell-fun"><span class="header-section-number">2.9.1</span> cell_fun</a></li>
+<li class="level-3"><a href="a-single-heatmap.html#layer-fun"><span class="header-section-number">2.9.2</span> layer_fun</a></li>
+<li class="level-2"><a href="a-single-heatmap.html#size-of-the-heatmap"><span class="header-section-number">2.10</span> Size of the heatmap</a></li>
+<li class="level-2"><a href="a-single-heatmap.html#plot-the-heatmap"><span class="header-section-number">2.11</span> Plot the heatmap</a></li>
+<li class="level-2"><a href="a-single-heatmap.html#get-orders-and-dendrograms-from-heatmap"><span class="header-section-number">2.12</span> Extract orders and
+dendrograms</a></li>
+<li class="level-2"><a href="a-single-heatmap.html#subset-a-heatmap"><span class="header-section-number">2.13</span> Subset a heatmap</a></li></ul></li>
+<li class="chapter"><a href="heatmap-annotations.html"><span class="header-section-number">3</span><span>Heatmap Annotations</span></a><ul><li class="level-2"><a href="heatmap-annotations.html#simple-annotation"><span class="header-section-number">3.1</span> Simple annotation</a></li>
+<li class="level-2"><a href="heatmap-annotations.html#simple-annotation-as-an-annotation-function"><span class="header-section-number">3.2</span> Simple annotation
+as an annotation function</a></li>
+<li class="level-2"><a href="heatmap-annotations.html#empty-annotation"><span class="header-section-number">3.3</span> Empty annotation</a></li>
+<li class="level-2"><a href="heatmap-annotations.html#block-annotation"><span class="header-section-number">3.4</span> Block annotation</a></li>
+<li class="level-3"><a href="heatmap-annotations.html#block-for-putting-labels"><span class="header-section-number">3.4.1</span> Block for putting labels</a></li>
+<li class="level-3"><a href="heatmap-annotations.html#blocks-as-plotting-regions"><span class="header-section-number">3.4.2</span> Blocks as plotting regions</a></li>
+<li class="level-2"><a href="heatmap-annotations.html#image-annotation"><span class="header-section-number">3.5</span> Image annotation</a></li>
+<li class="level-2"><a href="heatmap-annotations.html#points-annotation"><span class="header-section-number">3.6</span> Points annotation</a></li>
+<li class="level-2"><a href="heatmap-annotations.html#lines-annotation"><span class="header-section-number">3.7</span> Line annotation</a></li>
+<li class="level-2"><a href="heatmap-annotations.html#barplot_annotation"><span class="header-section-number">3.8</span> Barplot annotation</a></li>
+<li class="level-2"><a href="heatmap-annotations.html#box-annotation"><span class="header-section-number">3.9</span> Boxplot annotation</a></li>
+<li class="level-2"><a href="heatmap-annotations.html#histogram-annotation"><span class="header-section-number">3.10</span> Histogram annotation</a></li>
+<li class="level-2"><a href="heatmap-annotations.html#density-annotation"><span class="header-section-number">3.11</span> Density annotation</a></li>
+<li class="level-2"><a href="heatmap-annotations.html#joyplot-annotation"><span class="header-section-number">3.12</span> Joyplot annotation</a></li>
+<li class="level-2"><a href="heatmap-annotations.html#horizon-chart-annotation"><span class="header-section-number">3.13</span> Horizon chart annotation</a></li>
+<li class="level-2"><a href="heatmap-annotations.html#text-annotation"><span class="header-section-number">3.14</span> Text annotation</a></li>
+<li class="level-2"><a href="heatmap-annotations.html#anno-numeric"><span class="header-section-number">3.15</span> Numeric labels annotation</a></li>
+<li class="level-2"><a href="heatmap-annotations.html#completely-customized-annotation"><span class="header-section-number">3.16</span> Completely customized
+annotation</a></li>
+<li class="level-2"><a href="heatmap-annotations.html#mark-annotation"><span class="header-section-number">3.17</span> Mark annotation</a></li>
+<li class="level-2"><a href="heatmap-annotations.html#zoom-annotation"><span class="header-section-number">3.18</span> Zoom/link annotation</a></li>
+<li class="level-2"><a href="heatmap-annotations.html#anno-text-box"><span class="header-section-number">3.19</span> Text box annotation</a></li>
+<li class="level-3"><a href="heatmap-annotations.html#construct-the-text-box"><span class="header-section-number">3.19.1</span> Construct the text box</a></li>
+<li class="level-3"><a href="heatmap-annotations.html#draw-textbox-annotation"><span class="header-section-number">3.19.2</span> Draw textbox annotation</a></li>
+<li class="level-2"><a href="heatmap-annotations.html#summary-annotation"><span class="header-section-number">3.20</span> Summary annotation</a></li>
+<li class="level-2"><a href="heatmap-annotations.html#multiple-annotations"><span class="header-section-number">3.21</span> Multiple annotations</a></li>
+<li class="level-3"><a href="heatmap-annotations.html#heatmap-annotation-general-settings"><span class="header-section-number">3.21.1</span> General settings</a></li>
+<li class="level-3"><a href="heatmap-annotations.html#size-of-annotations"><span class="header-section-number">3.21.2</span> Size of annotations</a></li>
+<li class="level-3"><a href="heatmap-annotations.html#annotation-labels"><span class="header-section-number">3.21.3</span> Annotation labels</a></li>
+<li class="level-2"><a href="heatmap-annotations.html#heatmap-annotation-utility-function"><span class="header-section-number">3.22</span> Utility functions</a></li>
+<li class="level-2"><a href="heatmap-annotations.html#implement-new-annotation-functions"><span class="header-section-number">3.23</span> Implement new annotation
+functions</a></li>
+<li class="level-3"><a href="heatmap-annotations.html#construct-annotation-function-by-cell-fun"><span class="header-section-number">3.23.1</span> Construct annotation
+function by cell_fun</a></li></ul></li>
+<li class="chapter"><a href="a-list-of-heatmaps.html"><span class="header-section-number">4</span><span>A List of Heatmaps</span></a><ul><li class="level-2"><a href="a-list-of-heatmaps.html#heatmap-list-titles"><span class="header-section-number">4.1</span> Titles</a></li>
+<li class="level-2"><a href="a-list-of-heatmaps.html#size-of-heatmaps"><span class="header-section-number">4.2</span> Size of heatmaps</a></li>
+<li class="level-2"><a href="a-list-of-heatmaps.html#gap-between-heatmaps"><span class="header-section-number">4.3</span> Gap between heatmaps</a></li>
+<li class="level-2"><a href="a-list-of-heatmaps.html#automatic-adjustment-to-the-main-heatmap"><span class="header-section-number">4.4</span> Automatic adjustment
+to the main heatmap</a></li>
+<li class="level-2"><a href="a-list-of-heatmaps.html#control-main-heatmap-in-draw-function"><span class="header-section-number">4.5</span> Control main heatmap in
+draw() function</a></li>
+<li class="level-2"><a href="a-list-of-heatmaps.html#annotations-as-components-are-adjusted"><span class="header-section-number">4.6</span> Annotations as
+components are adjusted</a></li>
+<li class="level-2"><a href="a-list-of-heatmaps.html#concatenate-with-annotations"><span class="header-section-number">4.7</span> Concatenate with annotations</a></li>
+<li class="level-2"><a href="a-list-of-heatmaps.html#concatenate-only-the-annotations"><span class="header-section-number">4.8</span> Concatenate only the
+annotations</a></li>
+<li class="level-2"><a href="a-list-of-heatmaps.html#vertical-concatenation"><span class="header-section-number">4.9</span> Vertical concatenation</a></li>
+<li class="level-2"><a href="a-list-of-heatmaps.html#subset-heatmap-list"><span class="header-section-number">4.10</span> Subset the heatmap list</a></li>
+<li class="level-2"><a href="a-list-of-heatmaps.html#plot-the-heatmap-list"><span class="header-section-number">4.11</span> Plot the heatmap list</a></li>
+<li class="level-2"><a href="a-list-of-heatmaps.html#get-orders-and-dendrograms-from-a-list-of-heatmaps"><span class="header-section-number">4.12</span> Get orders
+and dendrograms</a></li>
+<li class="level-2"><a href="a-list-of-heatmaps.html#change-parameters-globally"><span class="header-section-number">4.13</span> Change parameters globally</a></li>
+<li class="level-2"><a href="a-list-of-heatmaps.html#adjust-blank-space-caused-by-annotations"><span class="header-section-number">4.14</span> Adjust blank space
+caused by annotations</a></li>
+<li class="level-2"><a href="a-list-of-heatmaps.html#manually-increase-space-around-the-plot"><span class="header-section-number">4.15</span> Manually increase space
+around the plot</a></li></ul></li>
+<li class="chapter active"><a href="legends.html"><span class="header-section-number">5</span><span>Legends</span></a><ul><li class="level-2"><a href="legends.html#continuous-legends"><span class="header-section-number">5.1</span> Continuous legends</a></li>
+<li class="level-2"><a href="legends.html#discrete-legends"><span class="header-section-number">5.2</span> Discrete legends</a></li>
+<li class="level-2"><a href="legends.html#a-list-of-legends"><span class="header-section-number">5.3</span> A list of legends</a></li>
+<li class="level-2"><a href="legends.html#heatmap-and-annotation-legends"><span class="header-section-number">5.4</span> Heatmap and annotation
+legends</a></li>
+<li class="level-2"><a href="legends.html#add-customized-legends"><span class="header-section-number">5.5</span> Add customized legends</a></li>
+<li class="level-2"><a href="legends.html#the-side-of-legends"><span class="header-section-number">5.6</span> The side of legends</a></li></ul></li>
+<li class="chapter"><a href="heatmap-decoration.html"><span class="header-section-number">6</span><span>Heatmap Decoration</span></a><ul><li class="level-2"><a href="heatmap-decoration.html#decoration-functions"><span class="header-section-number">6.1</span> Decoration functions</a></li>
+<li class="level-2"><a href="heatmap-decoration.html#decoration-examples"><span class="header-section-number">6.2</span> Examples</a></li>
+<li class="level-3"><a href="heatmap-decoration.html#barplot-for-single-column-heatmap"><span class="header-section-number">6.2.1</span> Barplot for single-column
+heatmap</a></li>
+<li class="level-3"><a href="heatmap-decoration.html#add-titles-for-row-annotations"><span class="header-section-number">6.2.2</span> Add titles for row
+annotations</a></li>
+<li class="level-3"><a href="heatmap-decoration.html#other-possible-use-of-decorations"><span class="header-section-number">6.2.3</span> Other possible use of
+decorations</a></li></ul></li>
+<li class="chapter"><a href="oncoprint.html"><span class="header-section-number">7</span><span>OncoPrint</span></a><ul><li class="level-2"><a href="oncoprint.html#oncoprint-general-settings"><span class="header-section-number">7.1</span> General settings</a></li>
+<li class="level-3"><a href="oncoprint.html#input-data-format"><span class="header-section-number">7.1.1</span> Input data format</a></li>
+<li class="level-3"><a href="oncoprint.html#define-the-alter-fun"><span class="header-section-number">7.1.2</span> Define the alter_fun()</a></li>
+<li class="level-3"><a href="oncoprint.html#oncoprint-background"><span class="header-section-number">7.1.3</span> Background</a></li>
+<li class="level-3"><a href="oncoprint.html#complex-alteration-types"><span class="header-section-number">7.1.4</span> Complex alteration types</a></li>
+<li class="level-3"><a href="oncoprint.html#simplify-alter-fun"><span class="header-section-number">7.1.5</span> Simplify alter_fun</a></li>
+<li class="level-3"><a href="oncoprint.html#other-heatmap-related-settings"><span class="header-section-number">7.1.6</span> Other heatmap-related
+settings</a></li>
+<li class="level-2"><a href="oncoprint.html#apply-to-cbioportal-dataset"><span class="header-section-number">7.2</span> Apply to cBioPortal dataset</a></li>
+<li class="level-3"><a href="oncoprint.html#remove-empty-rows-and-columns"><span class="header-section-number">7.2.1</span> Remove empty rows and
+columns</a></li>
+<li class="level-3"><a href="oncoprint.html#reorder-the-oncoprint"><span class="header-section-number">7.2.2</span> Reorder the oncoPrint</a></li>
+<li class="level-3"><a href="oncoprint.html#oncoprint-annotations"><span class="header-section-number">7.2.3</span> OncoPrint annotations</a></li>
+<li class="level-3"><a href="oncoprint.html#oncoprint-as-a-heatmap"><span class="header-section-number">7.2.4</span> oncoPrint as a Heatmap</a></li></ul></li>
+<li class="chapter"><a href="upset-plot.html"><span class="header-section-number">8</span><span>UpSet plot</span></a><ul><li class="level-2"><a href="upset-plot.html#input-data"><span class="header-section-number">8.1</span> Input data</a></li>
+<li class="level-2"><a href="upset-plot.html#upset-mode"><span class="header-section-number">8.2</span> Mode</a></li>
+<li class="level-2"><a href="upset-plot.html#make-the-combination-matrix"><span class="header-section-number">8.3</span> Make the combination matrix</a></li>
+<li class="level-2"><a href="upset-plot.html#upset-utility-functions"><span class="header-section-number">8.4</span> Utility functions</a></li>
+<li class="level-3"><a href="upset-plot.html#upset-subsetting"><span class="header-section-number">8.4.1</span> Subsetting a CombMat</a></li>
+<li class="level-2"><a href="upset-plot.html#upset-making-the-plot"><span class="header-section-number">8.5</span> Make the plot</a></li>
+<li class="level-2"><a href="upset-plot.html#upset-plots-as-heatmaps"><span class="header-section-number">8.6</span> UpSet plots as heatmaps</a></li>
+<li class="level-2"><a href="upset-plot.html#upset-movies"><span class="header-section-number">8.7</span> Example with the movies dataset</a></li>
+<li class="level-2"><a href="upset-plot.html#upset-genomic"><span class="header-section-number">8.8</span> Example with the genomic regions</a></li></ul></li>
+<li class="chapter"><a href="interactive-complexheatmap.html"><span class="header-section-number">9</span><span>Interactive ComplexHeatmap</span></a><ul><li class="level-2"><a href="interactive-complexheatmap.html#inline-jupyter"><span class="header-section-number">9.1</span> Inline rendering in Jupyter and IPython</a></li>
+<li class="level-2"><a href="interactive-complexheatmap.html#brush-and-zoom"><span class="header-section-number">9.2</span> Programmatic brush selection and sub-heatmap
+zoom</a></li>
+<li class="level-2"><a href="interactive-complexheatmap.html#split-slice-zoom"><span class="header-section-number">9.3</span> Extracting and zooming into split slices</a></li>
+<li class="level-2"><a href="interactive-complexheatmap.html#shiny-and-python"><span class="header-section-number">9.4</span> Interactive R Shiny ecosystem and Python
+notebooks</a></li></ul></li>
+<li class="chapter"><a href="integrate-with-other-packages.html"><span class="header-section-number">10</span><span>Integrate with other
+packages</span></a><ul><li class="level-2"><a href="integrate-with-other-packages.html#pheatmap"><span class="header-section-number">10.1</span> pheatmap, heatmap, and heatmap.2</a></li>
+<li class="level-3"><a href="integrate-with-other-packages.html#pheatmap-examples"><span class="header-section-number">10.1.1</span> Examples</a></li>
+<li class="level-3"><a href="integrate-with-other-packages.html#pheatmap-translation"><span class="header-section-number">10.1.2</span> Translation</a></li>
+<li class="level-3"><a href="integrate-with-other-packages.html#pheatmap-comparisons"><span class="header-section-number">10.1.3</span> Comparisons and legacy wrappers</a></li>
+<li class="level-2"><a href="integrate-with-other-packages.html#multipanel-composition"><span class="header-section-number">10.2</span> Multi-panel layout composition</a></li>
+<li class="level-3"><a href="integrate-with-other-packages.html#grid-grabexpr"><span class="header-section-number">10.2.1</span> Capturing heatmaps with
+grid_grabExpr</a></li>
+<li class="level-3"><a href="integrate-with-other-packages.html#matplotlib-integration"><span class="header-section-number">10.2.2</span> Combining ComplexHeatmap-py with
+Matplotlib Axes</a></li>
+<li class="level-2"><a href="integrate-with-other-packages.html#gt-render"><span class="header-section-number">10.3</span> Rich text with gt_render</a></li>
+<li class="level-3"><a href="integrate-with-other-packages.html#gt-render-title"><span class="header-section-number">10.3.1</span> Titles</a></li>
+<li class="level-3"><a href="integrate-with-other-packages.html#gt-render-dimnames"><span class="header-section-number">10.3.2</span> Row and column names</a></li>
+<li class="level-3"><a href="integrate-with-other-packages.html#gt-render-annotations"><span class="header-section-number">10.3.3</span> Styled titles with annotations</a></li>
+<li class="level-3"><a href="integrate-with-other-packages.html#gt-render-anno-text"><span class="header-section-number">10.3.4</span> Text and textbox annotations</a></li>
+<li class="level-3"><a href="integrate-with-other-packages.html#gt-render-legends"><span class="header-section-number">10.3.5</span> Legends</a></li></ul></li>
+<li class="chapter"><a href="other-high-level-plots.html"><span class="header-section-number">11</span><span>Other High-level Plots</span></a><ul><li class="level-2"><a href="other-high-level-plots.html#density-heatmap"><span class="header-section-number">11.1</span> Density heatmap</a></li>
+<li class="level-2"><a href="other-high-level-plots.html#stacked-summary-plot"><span class="header-section-number">11.2</span> Stacked summary plot</a></li></ul></li>
+<li class="chapter"><a href="three-dimensional-complexheatmap.html"><span class="header-section-number">12</span><span>Three-dimensional ComplexHeatmap</span></a><ul><li class="level-2"><a href="three-dimensional-complexheatmap.html#motivation"><span class="header-section-number">12.1</span> Motivation</a></li>
+<li class="level-2"><a href="three-dimensional-complexheatmap.html#implementation-of-3d-heatmap"><span class="header-section-number">12.2</span> Implementation of 3D heatmap</a></li></ul></li>
+<li class="chapter"><a href="genome-level-heatmap.html"><span class="header-section-number">13</span><span>Genome-level heatmap</span></a><ul><li class="level-2"><a href="genome-level-heatmap.html#genomic-bins"><span class="header-section-number">13.1</span> Genomic bins and signal normalization</a></li>
+<li class="level-2"><a href="genome-level-heatmap.html#horizontal-genome-heatmap"><span class="header-section-number">13.2</span> Horizontal genome-level heatmap</a></li>
+<li class="level-2"><a href="genome-level-heatmap.html#vertical-genome-heatmap"><span class="header-section-number">13.3</span> Vertical genome-level heatmap</a></li>
+<li class="level-2"><a href="genome-level-heatmap.html#genome-anno-block"><span class="header-section-number">13.4</span> Chromosome block headers and multi-track
+genomic features</a></li></ul></li>
+<li class="chapter"><a href="more-examples.html"><span class="header-section-number">14</span><span>More Examples</span></a><ul><li class="level-2"><a href="more-examples.html#gene-expression-matrix"><span class="header-section-number">14.1</span> Add more information for gene expression
+matrix</a></li>
+<li class="level-2"><a href="more-examples.html#the-measles-vaccine-heatmap"><span class="header-section-number">14.2</span> The measles vaccine heatmap</a></li>
+<li class="level-2"><a href="more-examples.html#scrna-seq-heterogeneity"><span class="header-section-number">14.3</span> Visualize cell heterogeneity from
+single-cell RNA-seq</a></li>
+<li class="level-2"><a href="more-examples.html#methylation-expression-correlations"><span class="header-section-number">14.4</span> Correlations between
+methylation, expression and other genomic features</a></li>
+<li class="level-2"><a href="more-examples.html#methylation-complex-annotations"><span class="header-section-number">14.5</span> Visualize methylation profile
+with complex annotations</a></li>
+<li class="level-2"><a href="more-examples.html#add-multiple-boxplots-for-single-row"><span class="header-section-number">14.6</span> Add multiple boxplots for
+single row</a></li></ul></li>
+<li class="chapter"><a href="other-tricks.html"><span class="header-section-number">15</span><span>Other Tricks</span></a><ul><li class="level-2"><a href="other-tricks.html#same-cell-size"><span class="header-section-number">15.1</span> Set the same cell size for different heatmaps
+with different dimensions</a></li>
+<li class="level-2"><a href="other-tricks.html#global-options-ht-opt"><span class="header-section-number">15.2</span> Global options with ht_opt</a></li>
+<li class="level-2"><a href="other-tricks.html#grid-grabexpr-composition"><span class="header-section-number">15.3</span> Capturing and composing heatmaps with
+grid_grabExpr</a></li></ul></li>
+        <li class="divider"></li>
+      </ul>
+      <div class="summary-footer">
+        <div>Published with <strong>ComplexHeatmap-py</strong></div>
+        <div><a href="https://github.com/zhanxw/ComplexHeatmap-reference-py" target="_blank" rel="noopener">GitHub Repository</a> &middot; <a href="https://jokergoo.github.io/ComplexHeatmap-reference/book/" target="_blank" rel="noopener">Original R Book</a></div>
+      </div>
+    </nav>
+
+    <div class="book-body">
+      <header class="book-header">
+        <div class="header-left">
+          <button id="sidebar-toggle" class="toolbar-btn" type="button" title="Toggle Table of Contents" aria-label="Toggle Table of Contents">&#9776;</button>
+          <button id="search-toggle-btn" class="toolbar-btn" type="button" title="Search" aria-label="Search">&#128269;</button>
+          <h1 class="header-title"><a href="index.html">ComplexHeatmap-py Complete Reference</a></h1>
+        </div>
+        <div class="header-right">
+          <div class="dropdown">
+            <button id="font-settings-btn" class="toolbar-btn" type="button" title="Font and Theme Settings" aria-label="Font Settings">A</button>
+            <div id="font-settings-menu" class="dropdown-menu">
+              <div class="dropdown-row">
+                <button id="font-size-dec" type="button">A-</button>
+                <button id="font-size-inc" type="button">A+</button>
+              </div>
+              <div class="dropdown-row">
+                <button type="button" data-font="sans">Sans</button>
+                <button type="button" data-font="serif">Serif</button>
+              </div>
+              <div class="dropdown-row">
+                <button type="button" data-theme="white">White</button>
+                <button type="button" data-theme="sepia">Sepia</button>
+                <button type="button" data-theme="night">Night</button>
+              </div>
+            </div>
+          </div>
+          <a class="toolbar-btn" href="https://github.com/zhanxw/ComplexHeatmap-reference-py" target="_blank" rel="noopener" title="View on GitHub">GitHub</a>
+        </div>
+      </header>
+
+      <div class="page-wrapper">
+        <main class="page-inner">
+          <div id="search-results" aria-live="polite"></div>
+          <section class="normal markdown-section">
+            <h1 id="legends"><span class="header-section-number">5</span> Legends<a class="anchor-section" aria-label="Anchor link to section" href="#legends">#</a></h1>
+<p>Heatmaps and simple annotations automatically generate legends, which
+by default are placed on the right side of the plot. Complex annotations
+(such as <code>anno_points()</code>, <code>anno_lines()</code>, or
+<code>anno_barplot()</code>) do not generate legends automatically,
+though custom legends can be constructed and attached manually (see <a
+href="#add-customized-legends">Add customized legends</a>). Internally,
+all legends are built with the <code>Legend()</code> constructor. In the
+sections below, we cover continuous legends, discrete legends, custom
+graphic legends, packing multiple legends, and customizing or
+positioning legends on heatmaps and annotations.</p>
+<p>Every single legend or packed group of legends is an instance of the
+<code>Legends</code> class. It exposes a <code>.grob</code> attribute
+(<code>GTree</code>) containing the underlying grid primitives, along
+with <code>.width</code> and <code>.height</code> properties (also
+accessible via <code>ch.width(lgd)</code> and
+<code>ch.height(lgd)</code>). Because a <code>Legends</code> object
+encapsulates its layout and size, it can be drawn anywhere inside a grid
+viewport by specifying <code>x</code>, <code>y</code>, and
+<code>just</code>.</p>
+<p>Legends created automatically for heatmaps and annotations are
+configured via <code>heatmap_legend_param</code> in
+<code>Heatmap()</code> and <code>annotation_legend_param</code> in
+<code>HeatmapAnnotation()</code>. <strong>Most parameters accepted by
+<code>Legend()</code> can be passed directly in these two
+dictionaries</strong>, as detailed in <a
+href="#heatmap-and-annotation-legends">Heatmap and annotation
+legends</a>.</p>
+<h2 id="continuous-legends"><span class="header-section-number">5.1</span> Continuous legends<a class="anchor-section" aria-label="Anchor link to section" href="#continuous-legends">#</a></h2>
+<p>Because most heatmaps display continuous numeric matrices, we begin
+with continuous color-bar legends.</p>
+<p>A continuous legend requires a color mapping function created with
+<code>colorRamp2()</code>. In heatmaps and simple annotations, this
+function is passed to <code>col</code> and forwarded to the legend
+builder automatically; when building a standalone legend, you pass
+<code>col_fun</code> directly to <code>Legend()</code>.</p>
+<p>Notice that the breakpoints supplied to <code>colorRamp2()</code>
+(e.g., <code>[0, 0.5, 1]</code>) define the color interpolation scale,
+not necessarily the exact tick positions displayed in the legend. By
+default, <code>Legend()</code> chooses pretty break values aiming for
+roughly 5–6 labels.</p>
+<p>First, here is the default vertical continuous legend:</p>
+<div class="code-wrapper"><pre class="codehilite"><code><span class="kn">import</span><span class="w"> </span><span class="nn">complexheatmap</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">ch</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">complexheatmap</span><span class="w"> </span><span class="kn">import</span> <span class="n">Legend</span><span class="p">,</span> <span class="n">colorRamp2</span><span class="p">,</span> <span class="n">gpar</span><span class="p">,</span> <span class="n">grid</span><span class="p">,</span> <span class="n">gt_render</span><span class="p">,</span> <span class="n">unit</span>
+
+<span class="n">col_fun</span> <span class="o">=</span> <span class="n">colorRamp2</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span> <span class="p">[</span><span class="s2">"blue"</span><span class="p">,</span> <span class="s2">"white"</span><span class="p">,</span> <span class="s2">"red"</span><span class="p">])</span>
+<span class="n">lgd</span> <span class="o">=</span> <span class="n">Legend</span><span class="p">(</span><span class="n">col_fun</span><span class="o">=</span><span class="n">col_fun</span><span class="p">,</span> <span class="n">title</span><span class="o">=</span><span class="s2">"foo"</span><span class="p">)</span>
+<span class="n">ch</span><span class="o">.</span><span class="n">draw</span><span class="p">(</span><span class="n">lgd</span><span class="p">)</span></code></pre></div>
+<figure>
+<img src="images/ch05_01_cont_default.png"
+alt="Default vertical continuous legend" />
+<figcaption aria-hidden="true">Default vertical continuous
+legend</figcaption>
+</figure>
+<p><code>lgd</code> is a <code>Legends</code> object. Its physical
+dimensions can be queried with <code>ch.width()</code> and
+<code>ch.height()</code> (or <code>.width</code> and
+<code>.height</code>):</p>
+<div class="code-wrapper"><pre class="codehilite"><code><span class="n">ch</span><span class="o">.</span><span class="n">width</span><span class="p">(</span><span class="n">lgd</span><span class="p">)</span>
+<span class="c1"># 10.1798mm</span>
+<span class="n">ch</span><span class="o">.</span><span class="n">height</span><span class="p">(</span><span class="n">lgd</span><span class="p">)</span>
+<span class="c1"># 31.1887mm</span></code></pre></div>
+<p>Because a <code>Legends</code> object wraps a packed
+<code>GTree</code> of rectangles, tick segments, and text grobs, you can
+place it at arbitrary coordinates inside any active viewport using
+<code>draw(lgd, x=..., y=..., just=...)</code> (or
+<code>lgd.draw(...)</code>):</p>
+<div class="code-wrapper"><pre class="codehilite"><code><span class="n">ch</span><span class="o">.</span><span class="n">pushViewport</span><span class="p">(</span><span class="n">ch</span><span class="o">.</span><span class="n">viewport</span><span class="p">(</span><span class="n">width</span><span class="o">=</span><span class="mf">0.9</span><span class="p">,</span> <span class="n">height</span><span class="o">=</span><span class="mf">0.9</span><span class="p">))</span>
+<span class="n">grid</span><span class="o">.</span><span class="n">rect</span><span class="p">()</span>  <span class="c1"># viewport border</span>
+<span class="n">ch</span><span class="o">.</span><span class="n">draw</span><span class="p">(</span><span class="n">lgd</span><span class="p">,</span> <span class="n">x</span><span class="o">=</span><span class="n">unit</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="s2">"cm"</span><span class="p">),</span> <span class="n">y</span><span class="o">=</span><span class="n">unit</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="s2">"cm"</span><span class="p">),</span> <span class="n">just</span><span class="o">=</span><span class="p">[</span><span class="s2">"left"</span><span class="p">,</span> <span class="s2">"bottom"</span><span class="p">])</span>
+<span class="n">ch</span><span class="o">.</span><span class="n">draw</span><span class="p">(</span><span class="n">lgd</span><span class="p">,</span> <span class="n">x</span><span class="o">=</span><span class="n">unit</span><span class="p">(</span><span class="mf">0.5</span><span class="p">,</span> <span class="s2">"npc"</span><span class="p">),</span> <span class="n">y</span><span class="o">=</span><span class="n">unit</span><span class="p">(</span><span class="mf">0.5</span><span class="p">,</span> <span class="s2">"npc"</span><span class="p">))</span>
+<span class="n">ch</span><span class="o">.</span><span class="n">draw</span><span class="p">(</span><span class="n">lgd</span><span class="p">,</span> <span class="n">x</span><span class="o">=</span><span class="n">unit</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="s2">"npc"</span><span class="p">),</span> <span class="n">y</span><span class="o">=</span><span class="n">unit</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="s2">"npc"</span><span class="p">),</span> <span class="n">just</span><span class="o">=</span><span class="p">[</span><span class="s2">"right"</span><span class="p">,</span> <span class="s2">"top"</span><span class="p">])</span>
+<span class="n">ch</span><span class="o">.</span><span class="n">popViewport</span><span class="p">()</span></code></pre></div>
+<figure>
+<img src="images/ch05_02_draw_positions.png"
+alt="Drawing a standalone legend at multiple viewport positions" />
+<figcaption aria-hidden="true">Drawing a standalone legend at multiple
+viewport positions</figcaption>
+</figure>
+<p>If you only want to style legends produced by heatmaps or
+annotations, you do not need to call <code>Legend()</code> manually—pass
+the same parameters inside <code>heatmap_legend_param</code> or
+<code>annotation_legend_param</code>:</p>
+<div class="code-wrapper"><pre class="codehilite"><code><span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+
+<span class="n">rng</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">default_rng</span><span class="p">(</span><span class="mi">123</span><span class="p">)</span>
+<span class="n">mat</span> <span class="o">=</span> <span class="n">rng</span><span class="o">.</span><span class="n">standard_normal</span><span class="p">((</span><span class="mi">10</span><span class="p">,</span> <span class="mi">10</span><span class="p">))</span>
+<span class="n">ht</span> <span class="o">=</span> <span class="n">ch</span><span class="o">.</span><span class="n">Heatmap</span><span class="p">(</span>
+    <span class="n">mat</span><span class="p">,</span>
+    <span class="n">heatmap_legend_param</span><span class="o">=</span><span class="p">{</span>
+        <span class="s2">"title"</span><span class="p">:</span> <span class="s2">"rnorm"</span><span class="p">,</span>
+        <span class="s2">"at"</span><span class="p">:</span> <span class="p">[</span><span class="o">-</span><span class="mi">2</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">2</span><span class="p">],</span>
+        <span class="s2">"labels"</span><span class="p">:</span> <span class="p">[</span><span class="s2">"neg_two"</span><span class="p">,</span> <span class="s2">"zero"</span><span class="p">,</span> <span class="s2">"pos_two"</span><span class="p">],</span>
+    <span class="p">},</span>
+    <span class="n">top_annotation</span><span class="o">=</span><span class="n">ch</span><span class="o">.</span><span class="n">HeatmapAnnotation</span><span class="p">(</span>
+        <span class="n">foo</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">11</span><span class="p">),</span>
+        <span class="n">annotation_legend_param</span><span class="o">=</span><span class="p">{</span><span class="s2">"foo"</span><span class="p">:</span> <span class="p">{</span><span class="s2">"title"</span><span class="p">:</span> <span class="s2">"foo_top_anno"</span><span class="p">}},</span>
+    <span class="p">),</span>
+<span class="p">)</span>
+<span class="n">ch</span><span class="o">.</span><span class="n">draw</span><span class="p">(</span><span class="n">ht</span><span class="p">)</span></code></pre></div>
+<figure>
+<img src="images/ch05_03_heatmap_anno_param.png"
+alt="Customizing heatmap and annotation legends via legend_param" />
+<figcaption aria-hidden="true">Customizing heatmap and annotation
+legends via legend_param</figcaption>
+</figure>
+<p>In the remainder of this section, we focus on constructing
+<code>Legend()</code> objects; remember that calling
+<code>ch.draw(lgd)</code> (or <code>lgd.draw()</code>) renders any
+standalone <code>Legends</code> object.</p>
+<p>Manually specify tick breakpoints via <code>at</code>:</p>
+<div class="code-wrapper"><pre class="codehilite"><code><span class="n">lgd</span> <span class="o">=</span> <span class="n">Legend</span><span class="p">(</span><span class="n">col_fun</span><span class="o">=</span><span class="n">col_fun</span><span class="p">,</span> <span class="n">title</span><span class="o">=</span><span class="s2">"foo"</span><span class="p">,</span> <span class="n">at</span><span class="o">=</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mf">0.25</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">,</span> <span class="mf">0.75</span><span class="p">,</span> <span class="mi">1</span><span class="p">])</span></code></pre></div>
+<figure>
+<img src="images/ch05_04_cont_at.png"
+alt="Continuous legend with custom break positions" />
+<figcaption aria-hidden="true">Continuous legend with custom break
+positions</figcaption>
+</figure>
+<p>Set custom tick labels via <code>labels</code>:</p>
+<div class="code-wrapper"><pre class="codehilite"><code><span class="n">lgd</span> <span class="o">=</span> <span class="n">Legend</span><span class="p">(</span><span class="n">col_fun</span><span class="o">=</span><span class="n">col_fun</span><span class="p">,</span> <span class="n">title</span><span class="o">=</span><span class="s2">"foo"</span><span class="p">,</span> <span class="n">at</span><span class="o">=</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span> <span class="n">labels</span><span class="o">=</span><span class="p">[</span><span class="s2">"low"</span><span class="p">,</span> <span class="s2">"median"</span><span class="p">,</span> <span class="s2">"high"</span><span class="p">])</span></code></pre></div>
+<figure>
+<img src="images/ch05_05_cont_labels.png"
+alt="Continuous legend with custom break labels" />
+<figcaption aria-hidden="true">Continuous legend with custom break
+labels</figcaption>
+</figure>
+<p>Control the height of a vertical continuous legend body (excluding
+the title) with <code>legend_height</code>:</p>
+<div class="code-wrapper"><pre class="codehilite"><code><span class="n">lgd</span> <span class="o">=</span> <span class="n">Legend</span><span class="p">(</span><span class="n">col_fun</span><span class="o">=</span><span class="n">col_fun</span><span class="p">,</span> <span class="n">title</span><span class="o">=</span><span class="s2">"foo"</span><span class="p">,</span> <span class="n">legend_height</span><span class="o">=</span><span class="n">unit</span><span class="p">(</span><span class="mi">6</span><span class="p">,</span> <span class="s2">"cm"</span><span class="p">))</span></code></pre></div>
+<figure>
+<img src="images/ch05_06_cont_height.png"
+alt="Vertical continuous legend with legend_height=6cm" />
+<figcaption aria-hidden="true">Vertical continuous legend with
+legend_height=6cm</figcaption>
+</figure>
+<p>Control the color-bar width with <code>grid_width</code>:</p>
+<div class="code-wrapper"><pre class="codehilite"><code><span class="n">lgd</span> <span class="o">=</span> <span class="n">Legend</span><span class="p">(</span><span class="n">col_fun</span><span class="o">=</span><span class="n">col_fun</span><span class="p">,</span> <span class="n">title</span><span class="o">=</span><span class="s2">"foo"</span><span class="p">,</span> <span class="n">grid_width</span><span class="o">=</span><span class="n">unit</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="s2">"cm"</span><span class="p">))</span></code></pre></div>
+<figure>
+<img src="images/ch05_07_cont_width.png"
+alt="Vertical continuous legend with grid_width=1cm" />
+<figcaption aria-hidden="true">Vertical continuous legend with
+grid_width=1cm</figcaption>
+</figure>
+<p>Customize label graphics with <code>labels_gp</code> (here
+<code>font=3</code> or <code>fontface="italic"</code> selects
+italics):</p>
+<div class="code-wrapper"><pre class="codehilite"><code><span class="n">lgd</span> <span class="o">=</span> <span class="n">Legend</span><span class="p">(</span><span class="n">col_fun</span><span class="o">=</span><span class="n">col_fun</span><span class="p">,</span> <span class="n">title</span><span class="o">=</span><span class="s2">"foo"</span><span class="p">,</span> <span class="n">labels_gp</span><span class="o">=</span><span class="n">gpar</span><span class="p">(</span><span class="n">col</span><span class="o">=</span><span class="s2">"red"</span><span class="p">,</span> <span class="n">font</span><span class="o">=</span><span class="mi">3</span><span class="p">))</span></code></pre></div>
+<figure>
+<img src="images/ch05_08_cont_labels_gp.png"
+alt="Continuous legend with custom labels_gp" />
+<figcaption aria-hidden="true">Continuous legend with custom
+labels_gp</figcaption>
+</figure>
+<p>Set the border and tick color with <code>border</code>:</p>
+<div class="code-wrapper"><pre class="codehilite"><code><span class="n">lgd</span> <span class="o">=</span> <span class="n">Legend</span><span class="p">(</span><span class="n">col_fun</span><span class="o">=</span><span class="n">col_fun</span><span class="p">,</span> <span class="n">title</span><span class="o">=</span><span class="s2">"foo"</span><span class="p">,</span> <span class="n">border</span><span class="o">=</span><span class="s2">"red"</span><span class="p">)</span></code></pre></div>
+<figure>
+<img src="images/ch05_09_cont_border.png"
+alt="Continuous legend with red border and ticks" />
+<figcaption aria-hidden="true">Continuous legend with red border and
+ticks</figcaption>
+</figure>
+<p><code>title_position</code> controls title placement. For vertical
+legends, valid values are <code>"topleft"</code>,
+<code>"topcenter"</code>, <code>"lefttop-rot"</code>, and
+<code>"leftcenter-rot"</code>:</p>
+<div class="code-wrapper"><pre class="codehilite"><code><span class="n">lgd</span> <span class="o">=</span> <span class="n">Legend</span><span class="p">(</span><span class="n">col_fun</span><span class="o">=</span><span class="n">col_fun</span><span class="p">,</span> <span class="n">title</span><span class="o">=</span><span class="s2">"foooooooo"</span><span class="p">,</span> <span class="n">title_position</span><span class="o">=</span><span class="s2">"lefttop-rot"</span><span class="p">,</span> <span class="n">legend_height</span><span class="o">=</span><span class="n">unit</span><span class="p">(</span><span class="mi">4</span><span class="p">,</span> <span class="s2">"cm"</span><span class="p">))</span></code></pre></div>
+<figure>
+<img src="images/ch05_10_cont_title_lefttop_rot.png"
+alt="Vertical continuous legend with title_position=‘lefttop-rot’" />
+<figcaption aria-hidden="true">Vertical continuous legend with
+title_position=‘lefttop-rot’</figcaption>
+</figure>
+<div class="code-wrapper"><pre class="codehilite"><code><span class="n">lgd</span> <span class="o">=</span> <span class="n">Legend</span><span class="p">(</span><span class="n">col_fun</span><span class="o">=</span><span class="n">col_fun</span><span class="p">,</span> <span class="n">title</span><span class="o">=</span><span class="s2">"foooooooo"</span><span class="p">,</span> <span class="n">title_position</span><span class="o">=</span><span class="s2">"leftcenter-rot"</span><span class="p">,</span> <span class="n">legend_height</span><span class="o">=</span><span class="n">unit</span><span class="p">(</span><span class="mi">4</span><span class="p">,</span> <span class="s2">"cm"</span><span class="p">))</span></code></pre></div>
+<figure>
+<img src="images/ch05_11_cont_title_leftcenter_rot.png"
+alt="Vertical continuous legend with title_position=‘leftcenter-rot’" />
+<figcaption aria-hidden="true">Vertical continuous legend with
+title_position=‘leftcenter-rot’</figcaption>
+</figure>
+<p>Mathematical symbols and equations can be rendered using Matplotlib’s
+<code>$...$</code> mathtext syntax:</p>
+<div class="code-wrapper"><pre class="codehilite"><code><span class="n">lgd</span> <span class="o">=</span> <span class="n">Legend</span><span class="p">(</span>
+    <span class="n">col_fun</span><span class="o">=</span><span class="n">col_fun</span><span class="p">,</span>
+    <span class="n">title</span><span class="o">=</span><span class="sa">r</span><span class="s2">"$\hat{\beta} = (X^T X)^{-1} X^T y$"</span><span class="p">,</span>
+    <span class="n">at</span><span class="o">=</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mf">0.25</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">,</span> <span class="mf">0.75</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span>
+    <span class="n">labels</span><span class="o">=</span><span class="p">[</span><span class="sa">r</span><span class="s2">"$\alpha$"</span><span class="p">,</span> <span class="sa">r</span><span class="s2">"$\beta$"</span><span class="p">,</span> <span class="sa">r</span><span class="s2">"$\gamma$"</span><span class="p">,</span> <span class="sa">r</span><span class="s2">"$\delta$"</span><span class="p">,</span> <span class="sa">r</span><span class="s2">"$\epsilon$"</span><span class="p">],</span>
+<span class="p">)</span></code></pre></div>
+<figure>
+<img src="images/ch05_12_cont_math.png"
+alt="Continuous legend with mathematical formulas" />
+<figcaption aria-hidden="true">Continuous legend with mathematical
+formulas</figcaption>
+</figure>
+<p>Rich HTML/Markdown styling can be applied to the legend title using
+<code>gt_render()</code> together with
+<code>title_gp=gpar(box_fill=...)</code>:</p>
+<div class="code-wrapper"><pre class="codehilite"><code><span class="n">col_fun_gt</span> <span class="o">=</span> <span class="n">colorRamp2</span><span class="p">([</span><span class="o">-</span><span class="mi">3</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">3</span><span class="p">],</span> <span class="p">[</span><span class="s2">"blue"</span><span class="p">,</span> <span class="s2">"white"</span><span class="p">,</span> <span class="s2">"red"</span><span class="p">])</span>
+<span class="n">lgd</span> <span class="o">=</span> <span class="n">Legend</span><span class="p">(</span>
+    <span class="n">col_fun</span><span class="o">=</span><span class="n">col_fun_gt</span><span class="p">,</span>
+    <span class="n">title</span><span class="o">=</span><span class="n">gt_render</span><span class="p">(</span><span class="s2">"&lt;span style='color:orange'&gt;**Legend title**&lt;/span&gt;"</span><span class="p">),</span>
+    <span class="n">title_gp</span><span class="o">=</span><span class="n">gpar</span><span class="p">(</span><span class="n">box_fill</span><span class="o">=</span><span class="s2">"grey"</span><span class="p">),</span>
+    <span class="n">at</span><span class="o">=</span><span class="p">[</span><span class="o">-</span><span class="mi">3</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">3</span><span class="p">],</span>
+    <span class="n">labels</span><span class="o">=</span><span class="p">[</span><span class="s2">"negative three"</span><span class="p">,</span> <span class="s2">"zero"</span><span class="p">,</span> <span class="s2">"positive three"</span><span class="p">],</span>
+<span class="p">)</span></code></pre></div>
+<figure>
+<img src="images/ch05_13_cont_gridtext.png"
+alt="Continuous legend with gt_render title" />
+<figcaption aria-hidden="true">Continuous legend with gt_render
+title</figcaption>
+</figure>
+<blockquote>
+<p><strong>Note:</strong> In the current <code>ComplexHeatmap-py</code>
+implementation, <code>gt_render()</code> renders rich HTML/Markdown
+formatting on <code>Legend()</code> titles, while <code>labels</code>
+inside <code>Legend()</code> are converted to plain strings. For full
+<code>gt_render()</code> label styling on heatmap titles, row/column
+names, and <code>anno_text()</code>, see <a
+href="integrate-with-other-packages.html">Integrate with other
+packages</a>.</p>
+</blockquote>
+<p>Horizontal continuous legends share nearly the same parameters,
+except <code>legend_width</code> sets the bar width and
+<code>title_position</code> must be one of <code>"topleft"</code>,
+<code>"topcenter"</code>, <code>"lefttop"</code>, or
+<code>"leftcenter"</code>:</p>
+<div class="code-wrapper"><pre class="codehilite"><code><span class="n">lgd</span> <span class="o">=</span> <span class="n">Legend</span><span class="p">(</span><span class="n">col_fun</span><span class="o">=</span><span class="n">col_fun</span><span class="p">,</span> <span class="n">title</span><span class="o">=</span><span class="s2">"foo"</span><span class="p">,</span> <span class="n">direction</span><span class="o">=</span><span class="s2">"horizontal"</span><span class="p">)</span></code></pre></div>
+<figure>
+<img src="images/ch05_14_horiz_default.png"
+alt="Default horizontal continuous legend" />
+<figcaption aria-hidden="true">Default horizontal continuous
+legend</figcaption>
+</figure>
+<div class="code-wrapper"><pre class="codehilite"><code><span class="n">lgd</span> <span class="o">=</span> <span class="n">Legend</span><span class="p">(</span><span class="n">col_fun</span><span class="o">=</span><span class="n">col_fun</span><span class="p">,</span> <span class="n">title</span><span class="o">=</span><span class="s2">"foo"</span><span class="p">,</span> <span class="n">at</span><span class="o">=</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mf">0.25</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">,</span> <span class="mf">0.75</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span> <span class="n">direction</span><span class="o">=</span><span class="s2">"horizontal"</span><span class="p">)</span></code></pre></div>
+<figure>
+<img src="images/ch05_15_horiz_at.png"
+alt="Horizontal continuous legend with custom breaks" />
+<figcaption aria-hidden="true">Horizontal continuous legend with custom
+breaks</figcaption>
+</figure>
+<div class="code-wrapper"><pre class="codehilite"><code><span class="n">lgd</span> <span class="o">=</span> <span class="n">Legend</span><span class="p">(</span><span class="n">col_fun</span><span class="o">=</span><span class="n">col_fun</span><span class="p">,</span> <span class="n">title</span><span class="o">=</span><span class="s2">"foo"</span><span class="p">,</span> <span class="n">at</span><span class="o">=</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span> <span class="n">labels</span><span class="o">=</span><span class="p">[</span><span class="s2">"low"</span><span class="p">,</span> <span class="s2">"median"</span><span class="p">,</span> <span class="s2">"high"</span><span class="p">],</span> <span class="n">direction</span><span class="o">=</span><span class="s2">"horizontal"</span><span class="p">)</span></code></pre></div>
+<figure>
+<img src="images/ch05_16_horiz_labels.png"
+alt="Horizontal continuous legend with custom labels" />
+<figcaption aria-hidden="true">Horizontal continuous legend with custom
+labels</figcaption>
+</figure>
+<div class="code-wrapper"><pre class="codehilite"><code><span class="n">lgd</span> <span class="o">=</span> <span class="n">Legend</span><span class="p">(</span><span class="n">col_fun</span><span class="o">=</span><span class="n">col_fun</span><span class="p">,</span> <span class="n">title</span><span class="o">=</span><span class="s2">"foo"</span><span class="p">,</span> <span class="n">legend_width</span><span class="o">=</span><span class="n">unit</span><span class="p">(</span><span class="mi">6</span><span class="p">,</span> <span class="s2">"cm"</span><span class="p">),</span> <span class="n">direction</span><span class="o">=</span><span class="s2">"horizontal"</span><span class="p">)</span></code></pre></div>
+<figure>
+<img src="images/ch05_17_horiz_width.png"
+alt="Horizontal continuous legend with legend_width=6cm" />
+<figcaption aria-hidden="true">Horizontal continuous legend with
+legend_width=6cm</figcaption>
+</figure>
+<div class="code-wrapper"><pre class="codehilite"><code><span class="n">lgd</span> <span class="o">=</span> <span class="n">Legend</span><span class="p">(</span><span class="n">col_fun</span><span class="o">=</span><span class="n">col_fun</span><span class="p">,</span> <span class="n">title</span><span class="o">=</span><span class="s2">"foo"</span><span class="p">,</span> <span class="n">labels_gp</span><span class="o">=</span><span class="n">gpar</span><span class="p">(</span><span class="n">col</span><span class="o">=</span><span class="s2">"red"</span><span class="p">,</span> <span class="n">font</span><span class="o">=</span><span class="mi">3</span><span class="p">),</span> <span class="n">direction</span><span class="o">=</span><span class="s2">"horizontal"</span><span class="p">)</span></code></pre></div>
+<figure>
+<img src="images/ch05_18_horiz_labels_gp.png"
+alt="Horizontal continuous legend with custom labels_gp" />
+<figcaption aria-hidden="true">Horizontal continuous legend with custom
+labels_gp</figcaption>
+</figure>
+<p>Rotate horizontal legend labels using <code>labels_rot</code>:</p>
+<div class="code-wrapper"><pre class="codehilite"><code><span class="n">lgd</span> <span class="o">=</span> <span class="n">Legend</span><span class="p">(</span><span class="n">col_fun</span><span class="o">=</span><span class="n">col_fun</span><span class="p">,</span> <span class="n">title</span><span class="o">=</span><span class="s2">"foo"</span><span class="p">,</span> <span class="n">labels_rot</span><span class="o">=</span><span class="mi">45</span><span class="p">,</span> <span class="n">direction</span><span class="o">=</span><span class="s2">"horizontal"</span><span class="p">)</span></code></pre></div>
+<figure>
+<img src="images/ch05_19_horiz_rot45.png"
+alt="Horizontal continuous legend with labels_rot=45" />
+<figcaption aria-hidden="true">Horizontal continuous legend with
+labels_rot=45</figcaption>
+</figure>
+<p>Horizontal title positions <code>"topcenter"</code> and
+<code>"lefttop"</code>:</p>
+<div class="code-wrapper"><pre class="codehilite"><code><span class="n">lgd</span> <span class="o">=</span> <span class="n">Legend</span><span class="p">(</span><span class="n">col_fun</span><span class="o">=</span><span class="n">col_fun</span><span class="p">,</span> <span class="n">title</span><span class="o">=</span><span class="s2">"foooooooo"</span><span class="p">,</span> <span class="n">direction</span><span class="o">=</span><span class="s2">"horizontal"</span><span class="p">,</span> <span class="n">title_position</span><span class="o">=</span><span class="s2">"topcenter"</span><span class="p">)</span></code></pre></div>
+<figure>
+<img src="images/ch05_20_horiz_topcenter.png"
+alt="Horizontal continuous legend with title_position=‘topcenter’" />
+<figcaption aria-hidden="true">Horizontal continuous legend with
+title_position=‘topcenter’</figcaption>
+</figure>
+<div class="code-wrapper"><pre class="codehilite"><code><span class="n">lgd</span> <span class="o">=</span> <span class="n">Legend</span><span class="p">(</span><span class="n">col_fun</span><span class="o">=</span><span class="n">col_fun</span><span class="p">,</span> <span class="n">title</span><span class="o">=</span><span class="s2">"foooooooo"</span><span class="p">,</span> <span class="n">direction</span><span class="o">=</span><span class="s2">"horizontal"</span><span class="p">,</span> <span class="n">title_position</span><span class="o">=</span><span class="s2">"lefttop"</span><span class="p">)</span></code></pre></div>
+<figure>
+<img src="images/ch05_21_horiz_lefttop.png"
+alt="Horizontal continuous legend with title_position=‘lefttop’" />
+<figcaption aria-hidden="true">Horizontal continuous legend with
+title_position=‘lefttop’</figcaption>
+</figure>
+<p><code>at</code> can contain breakpoints with unequal spacing. When
+labels would otherwise overlap, <code>Legend()</code> keeps the tick
+marks at their true positions along the color bar, shifts the text
+labels cleanly via <code>smartAlign</code>, and draws connector segments
+from the ticks to the labels:</p>
+<div class="code-wrapper"><pre class="codehilite"><code><span class="n">lgd</span> <span class="o">=</span> <span class="n">Legend</span><span class="p">(</span><span class="n">col_fun</span><span class="o">=</span><span class="n">col_fun</span><span class="p">,</span> <span class="n">title</span><span class="o">=</span><span class="s2">"foo"</span><span class="p">,</span> <span class="n">at</span><span class="o">=</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mf">0.1</span><span class="p">,</span> <span class="mf">0.15</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">,</span> <span class="mf">0.9</span><span class="p">,</span> <span class="mf">0.95</span><span class="p">,</span> <span class="mi">1</span><span class="p">])</span></code></pre></div>
+<figure>
+<img src="images/ch05_22_unequal_vert.png"
+alt="Vertical continuous legend with unequal break intervals" />
+<figcaption aria-hidden="true">Vertical continuous legend with unequal
+break intervals</figcaption>
+</figure>
+<p>If the legend is tall enough that labels do not collide, no
+displacement is performed:</p>
+<div class="code-wrapper"><pre class="codehilite"><code><span class="n">lgd</span> <span class="o">=</span> <span class="n">Legend</span><span class="p">(</span><span class="n">col_fun</span><span class="o">=</span><span class="n">col_fun</span><span class="p">,</span> <span class="n">title</span><span class="o">=</span><span class="s2">"foo"</span><span class="p">,</span> <span class="n">at</span><span class="o">=</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mf">0.3</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span> <span class="n">legend_height</span><span class="o">=</span><span class="n">unit</span><span class="p">(</span><span class="mi">4</span><span class="p">,</span> <span class="s2">"cm"</span><span class="p">))</span></code></pre></div>
+<figure>
+<img src="images/ch05_23_unequal_no_shift.png"
+alt="Tall vertical legend where unequal labels do not collide" />
+<figcaption aria-hidden="true">Tall vertical legend where unequal labels
+do not collide</figcaption>
+</figure>
+<p>The same automatic label dodging works for horizontal legends and
+rotated labels:</p>
+<div class="code-wrapper"><pre class="codehilite"><code><span class="n">lgd</span> <span class="o">=</span> <span class="n">Legend</span><span class="p">(</span><span class="n">col_fun</span><span class="o">=</span><span class="n">col_fun</span><span class="p">,</span> <span class="n">title</span><span class="o">=</span><span class="s2">"foo"</span><span class="p">,</span> <span class="n">at</span><span class="o">=</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mf">0.1</span><span class="p">,</span> <span class="mf">0.15</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">,</span> <span class="mf">0.9</span><span class="p">,</span> <span class="mf">0.95</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span> <span class="n">direction</span><span class="o">=</span><span class="s2">"horizontal"</span><span class="p">)</span></code></pre></div>
+<figure>
+<img src="images/ch05_24_unequal_horiz.png"
+alt="Horizontal continuous legend with unequal intervals" />
+<figcaption aria-hidden="true">Horizontal continuous legend with unequal
+intervals</figcaption>
+</figure>
+<div class="code-wrapper"><pre class="codehilite"><code><span class="n">lgd</span> <span class="o">=</span> <span class="n">Legend</span><span class="p">(</span>
+    <span class="n">col_fun</span><span class="o">=</span><span class="n">col_fun</span><span class="p">,</span>
+    <span class="n">title</span><span class="o">=</span><span class="s2">"foo"</span><span class="p">,</span>
+    <span class="n">at</span><span class="o">=</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mf">0.1</span><span class="p">,</span> <span class="mf">0.15</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">,</span> <span class="mf">0.9</span><span class="p">,</span> <span class="mf">0.95</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span>
+    <span class="n">direction</span><span class="o">=</span><span class="s2">"horizontal"</span><span class="p">,</span>
+    <span class="n">title_position</span><span class="o">=</span><span class="s2">"lefttop"</span><span class="p">,</span>
+    <span class="n">labels_rot</span><span class="o">=</span><span class="mi">90</span><span class="p">,</span>
+<span class="p">)</span></code></pre></div>
+<figure>
+<img src="images/ch05_25_unequal_horiz_rot90.png"
+alt="Horizontal legend with rotated labels and unequal intervals" />
+<figcaption aria-hidden="true">Horizontal legend with rotated labels and
+unequal intervals</figcaption>
+</figure>
+<p>When <code>title_position="lefttop"</code>, the space beneath the
+title is also available for shifted labels:</p>
+<div class="code-wrapper"><pre class="codehilite"><code><span class="n">lgd</span> <span class="o">=</span> <span class="n">Legend</span><span class="p">(</span>
+    <span class="n">col_fun</span><span class="o">=</span><span class="n">col_fun</span><span class="p">,</span>
+    <span class="n">title</span><span class="o">=</span><span class="s2">"foo"</span><span class="p">,</span>
+    <span class="n">at</span><span class="o">=</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mf">0.1</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">,</span> <span class="mf">0.75</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span>
+    <span class="n">labels</span><span class="o">=</span><span class="p">[</span><span class="s2">"minimal"</span><span class="p">,</span> <span class="s2">"q10"</span><span class="p">,</span> <span class="s2">"median"</span><span class="p">,</span> <span class="s2">"q75"</span><span class="p">,</span> <span class="s2">"maximal"</span><span class="p">],</span>
+    <span class="n">direction</span><span class="o">=</span><span class="s2">"horizontal"</span><span class="p">,</span>
+    <span class="n">title_position</span><span class="o">=</span><span class="s2">"lefttop"</span><span class="p">,</span>
+<span class="p">)</span></code></pre></div>
+<figure>
+<img src="images/ch05_26_unequal_horiz_lefttop.png"
+alt="Horizontal legend extending first label under lefttop title" />
+<figcaption aria-hidden="true">Horizontal legend extending first label
+under lefttop title</figcaption>
+</figure>
+<p>Providing <code>at</code> in decreasing order reverses the continuous
+legend so the smallest value appears at the top:</p>
+<div class="code-wrapper"><pre class="codehilite"><code><span class="n">lgd</span> <span class="o">=</span> <span class="n">Legend</span><span class="p">(</span><span class="n">col_fun</span><span class="o">=</span><span class="n">col_fun</span><span class="p">,</span> <span class="n">title</span><span class="o">=</span><span class="s2">"foo"</span><span class="p">,</span> <span class="n">at</span><span class="o">=</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mf">0.8</span><span class="p">,</span> <span class="mf">0.6</span><span class="p">,</span> <span class="mf">0.4</span><span class="p">,</span> <span class="mf">0.2</span><span class="p">,</span> <span class="mi">0</span><span class="p">])</span></code></pre></div>
+<figure>
+<img src="images/ch05_27_reversed_at.png"
+alt="Reversed vertical continuous legend" />
+<figcaption aria-hidden="true">Reversed vertical continuous
+legend</figcaption>
+</figure>
+<p>Normally, visual distances along the color bar are proportional to
+numeric differences between breaks. Consider a proportion color scale
+with breakpoints <code>[0, 0.05, 0.1, 0.5, 1]</code>, where we want
+extra visual detail in <code>[0, 0.1]</code>. By default,
+<code>Legend()</code> chooses uniform breaks across
+<code>[0, 1]</code>:</p>
+<div class="code-wrapper"><pre class="codehilite"><code><span class="n">col_fun_prop</span> <span class="o">=</span> <span class="n">colorRamp2</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span> <span class="mf">0.05</span><span class="p">,</span> <span class="mf">0.1</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span> <span class="p">[</span><span class="s2">"green"</span><span class="p">,</span> <span class="s2">"white"</span><span class="p">,</span> <span class="s2">"red"</span><span class="p">,</span> <span class="s2">"black"</span><span class="p">,</span> <span class="s2">"blue"</span><span class="p">])</span>
+<span class="n">lgd</span> <span class="o">=</span> <span class="n">Legend</span><span class="p">(</span><span class="n">col_fun</span><span class="o">=</span><span class="n">col_fun_prop</span><span class="p">,</span> <span class="n">title</span><span class="o">=</span><span class="s2">"Prop"</span><span class="p">)</span></code></pre></div>
+<figure>
+<img src="images/ch05_28_break_dist_default.png"
+alt="Proportion color scale with default uniform breaks" />
+<figcaption aria-hidden="true">Proportion color scale with default
+uniform breaks</figcaption>
+</figure>
+<p>Even if we specify <code>at=[0, 0.05, 0.1, 0.5, 1]</code>, the
+<code>[0.5, 1]</code> interval still occupies five times as much bar
+height as <code>[0, 0.1]</code>:</p>
+<div class="code-wrapper"><pre class="codehilite"><code><span class="n">lgd</span> <span class="o">=</span> <span class="n">Legend</span><span class="p">(</span><span class="n">col_fun</span><span class="o">=</span><span class="n">col_fun_prop</span><span class="p">,</span> <span class="n">title</span><span class="o">=</span><span class="s2">"Prop"</span><span class="p">,</span> <span class="n">at</span><span class="o">=</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mf">0.05</span><span class="p">,</span> <span class="mf">0.1</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">,</span> <span class="mi">1</span><span class="p">])</span></code></pre></div>
+<figure>
+<img src="images/ch05_29_break_dist_manual_at.png"
+alt="Proportion color scale with manual at breaks" />
+<figcaption aria-hidden="true">Proportion color scale with manual at
+breaks</figcaption>
+</figure>
+<p>The <code>break_dist</code> parameter controls the <strong>visual
+distance between neighboring breaks in the legend</strong>. Pass a
+scalar (<code>break_dist=1</code>) to give every break interval equal
+visual span, or pass a sequence of length <code>len(at) - 1</code>:</p>
+<div class="code-wrapper"><pre class="codehilite"><code><span class="n">lgd</span> <span class="o">=</span> <span class="n">Legend</span><span class="p">(</span><span class="n">col_fun</span><span class="o">=</span><span class="n">col_fun_prop</span><span class="p">,</span> <span class="n">title</span><span class="o">=</span><span class="s2">"Prop"</span><span class="p">,</span> <span class="n">break_dist</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span></code></pre></div>
+<figure>
+<img src="images/ch05_30_break_dist_equal.png"
+alt="Equal visual break spacing via break_dist=1" />
+<figcaption aria-hidden="true">Equal visual break spacing via
+break_dist=1</figcaption>
+</figure>
+<p>Here the upper two intervals are given three times the visual
+distance of the lower two intervals
+(<code>break_dist=[1, 1, 3, 3]</code>):</p>
+<div class="code-wrapper"><pre class="codehilite"><code><span class="n">lgd</span> <span class="o">=</span> <span class="n">Legend</span><span class="p">(</span><span class="n">col_fun</span><span class="o">=</span><span class="n">col_fun_prop</span><span class="p">,</span> <span class="n">title</span><span class="o">=</span><span class="s2">"Prop"</span><span class="p">,</span> <span class="n">break_dist</span><span class="o">=</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">3</span><span class="p">])</span></code></pre></div>
+<figure>
+<img src="images/ch05_31_break_dist_1133.png"
+alt="Non-uniform visual spacing via break_dist=[1, 1, 3, 3]" />
+<figcaption aria-hidden="true">Non-uniform visual spacing via
+break_dist=[1, 1, 3, 3]</figcaption>
+</figure>
+<p>Increasing <code>legend_height</code> eliminates the need for label
+displacement:</p>
+<div class="code-wrapper"><pre class="codehilite"><code><span class="n">lgd</span> <span class="o">=</span> <span class="n">Legend</span><span class="p">(</span><span class="n">col_fun</span><span class="o">=</span><span class="n">col_fun_prop</span><span class="p">,</span> <span class="n">title</span><span class="o">=</span><span class="s2">"Prop"</span><span class="p">,</span> <span class="n">break_dist</span><span class="o">=</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">3</span><span class="p">],</span> <span class="n">legend_height</span><span class="o">=</span><span class="n">unit</span><span class="p">(</span><span class="mi">4</span><span class="p">,</span> <span class="s2">"cm"</span><span class="p">))</span></code></pre></div>
+<figure>
+<img src="images/ch05_32_break_dist_1133_h4.png"
+alt="Taller legend with break_dist=[1, 1, 3, 3]" />
+<figcaption aria-hidden="true">Taller legend with break_dist=[1, 1, 3,
+3]</figcaption>
+</figure>
+<p>Combined with a tiny epsilon step (<code>0.1 + 1e-6</code>),
+<code>break_dist</code> also lets you visualize piecewise color schemes
+cleanly across <code>[0, 0.1]</code> and <code>(0.1, 1]</code>:</p>
+<div class="code-wrapper"><pre class="codehilite"><code><span class="n">col_fun2</span> <span class="o">=</span> <span class="n">colorRamp2</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span> <span class="mf">0.1</span><span class="p">,</span> <span class="mf">0.1</span> <span class="o">+</span> <span class="mf">1e-6</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span> <span class="p">[</span><span class="s2">"white"</span><span class="p">,</span> <span class="s2">"red"</span><span class="p">,</span> <span class="s2">"yellow"</span><span class="p">,</span> <span class="s2">"blue"</span><span class="p">])</span>
+<span class="n">lgd</span> <span class="o">=</span> <span class="n">Legend</span><span class="p">(</span>
+    <span class="n">col_fun</span><span class="o">=</span><span class="n">col_fun2</span><span class="p">,</span>
+    <span class="n">title</span><span class="o">=</span><span class="s2">"Prop"</span><span class="p">,</span>
+    <span class="n">at</span><span class="o">=</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mf">0.05</span><span class="p">,</span> <span class="mf">0.1</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span>
+    <span class="n">break_dist</span><span class="o">=</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">3</span><span class="p">],</span>
+    <span class="n">legend_height</span><span class="o">=</span><span class="n">unit</span><span class="p">(</span><span class="mi">4</span><span class="p">,</span> <span class="s2">"cm"</span><span class="p">),</span>
+<span class="p">)</span></code></pre></div>
+<figure>
+<img src="images/ch05_33_break_dist_twocolor.png"
+alt="Piecewise dual color scheme with break_dist" />
+<figcaption aria-hidden="true">Piecewise dual color scheme with
+break_dist</figcaption>
+</figure>
+<h2 id="discrete-legends"><span class="header-section-number">5.2</span> Discrete legends<a class="anchor-section" aria-label="Anchor link to section" href="#discrete-legends">#</a></h2>
+<p>Discrete legends represent categorical levels—or discretized slices
+of a continuous scale. Supply <code>at</code> and/or
+<code>labels</code>, along with
+<code>legend_gp=gpar(fill=...)</code>:</p>
+<div class="code-wrapper"><pre class="codehilite"><code><span class="n">lgd</span> <span class="o">=</span> <span class="n">Legend</span><span class="p">(</span><span class="n">at</span><span class="o">=</span><span class="nb">list</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">7</span><span class="p">)),</span> <span class="n">title</span><span class="o">=</span><span class="s2">"foo"</span><span class="p">,</span> <span class="n">legend_gp</span><span class="o">=</span><span class="n">gpar</span><span class="p">(</span><span class="n">fill</span><span class="o">=</span><span class="nb">list</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">7</span><span class="p">))))</span></code></pre></div>
+<figure>
+<img src="images/ch05_34_disc_at.png"
+alt="Basic discrete legend with numeric breaks" />
+<figcaption aria-hidden="true">Basic discrete legend with numeric
+breaks</figcaption>
+</figure>
+<div class="code-wrapper"><pre class="codehilite"><code><span class="n">MONTH_NAMES</span> <span class="o">=</span> <span class="p">[</span><span class="s2">"January"</span><span class="p">,</span> <span class="s2">"February"</span><span class="p">,</span> <span class="s2">"March"</span><span class="p">,</span> <span class="s2">"April"</span><span class="p">,</span> <span class="s2">"May"</span><span class="p">,</span> <span class="s2">"June"</span><span class="p">,</span>
+               <span class="s2">"July"</span><span class="p">,</span> <span class="s2">"August"</span><span class="p">,</span> <span class="s2">"September"</span><span class="p">,</span> <span class="s2">"October"</span><span class="p">,</span> <span class="s2">"November"</span><span class="p">,</span> <span class="s2">"December"</span><span class="p">]</span>
+<span class="n">lgd</span> <span class="o">=</span> <span class="n">Legend</span><span class="p">(</span><span class="n">labels</span><span class="o">=</span><span class="n">MONTH_NAMES</span><span class="p">[:</span><span class="mi">6</span><span class="p">],</span> <span class="n">title</span><span class="o">=</span><span class="s2">"foo"</span><span class="p">,</span> <span class="n">legend_gp</span><span class="o">=</span><span class="n">gpar</span><span class="p">(</span><span class="n">fill</span><span class="o">=</span><span class="nb">list</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">7</span><span class="p">))))</span></code></pre></div>
+<figure>
+<img src="images/ch05_35_disc_months.png"
+alt="Discrete legend with month name labels" />
+<figcaption aria-hidden="true">Discrete legend with month name
+labels</figcaption>
+</figure>
+<p>Discretizing a continuous color mapping:</p>
+<div class="code-wrapper"><pre class="codehilite"><code><span class="n">at</span> <span class="o">=</span> <span class="p">[</span><span class="mf">0.0</span><span class="p">,</span> <span class="mf">0.2</span><span class="p">,</span> <span class="mf">0.4</span><span class="p">,</span> <span class="mf">0.6</span><span class="p">,</span> <span class="mf">0.8</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">]</span>
+<span class="n">lgd</span> <span class="o">=</span> <span class="n">Legend</span><span class="p">(</span><span class="n">at</span><span class="o">=</span><span class="n">at</span><span class="p">,</span> <span class="n">title</span><span class="o">=</span><span class="s2">"foo"</span><span class="p">,</span> <span class="n">legend_gp</span><span class="o">=</span><span class="n">gpar</span><span class="p">(</span><span class="n">fill</span><span class="o">=</span><span class="n">col_fun</span><span class="p">(</span><span class="n">at</span><span class="p">)</span><span class="o">.</span><span class="n">tolist</span><span class="p">()))</span></code></pre></div>
+<figure>
+<img src="images/ch05_36_disc_from_cont.png"
+alt="Discrete legend sampling a continuous colorRamp2" />
+<figcaption aria-hidden="true">Discrete legend sampling a continuous
+colorRamp2</figcaption>
+</figure>
+<p>Title placement options on discrete legends (<code>"lefttop"</code>
+and <code>"leftcenter-rot"</code>):</p>
+<div class="code-wrapper"><pre class="codehilite"><code><span class="n">lgd</span> <span class="o">=</span> <span class="n">Legend</span><span class="p">(</span><span class="n">labels</span><span class="o">=</span><span class="n">MONTH_NAMES</span><span class="p">[:</span><span class="mi">6</span><span class="p">],</span> <span class="n">title</span><span class="o">=</span><span class="s2">"foo"</span><span class="p">,</span> <span class="n">legend_gp</span><span class="o">=</span><span class="n">gpar</span><span class="p">(</span><span class="n">fill</span><span class="o">=</span><span class="nb">list</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">7</span><span class="p">))),</span> <span class="n">title_position</span><span class="o">=</span><span class="s2">"lefttop"</span><span class="p">)</span></code></pre></div>
+<figure>
+<img src="images/ch05_37_disc_lefttop.png"
+alt="Discrete legend with title_position=‘lefttop’" />
+<figcaption aria-hidden="true">Discrete legend with
+title_position=‘lefttop’</figcaption>
+</figure>
+<div class="code-wrapper"><pre class="codehilite"><code><span class="n">lgd</span> <span class="o">=</span> <span class="n">Legend</span><span class="p">(</span><span class="n">labels</span><span class="o">=</span><span class="n">MONTH_NAMES</span><span class="p">[:</span><span class="mi">6</span><span class="p">],</span> <span class="n">title</span><span class="o">=</span><span class="s2">"foo"</span><span class="p">,</span> <span class="n">legend_gp</span><span class="o">=</span><span class="n">gpar</span><span class="p">(</span><span class="n">fill</span><span class="o">=</span><span class="nb">list</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">7</span><span class="p">))),</span> <span class="n">title_position</span><span class="o">=</span><span class="s2">"leftcenter-rot"</span><span class="p">)</span></code></pre></div>
+<figure>
+<img src="images/ch05_38_disc_leftcenter_rot.png"
+alt="Discrete legend with title_position=‘leftcenter-rot’" />
+<figcaption aria-hidden="true">Discrete legend with
+title_position=‘leftcenter-rot’</figcaption>
+</figure>
+<p>Control swatch sizes with <code>grid_height</code> and
+<code>grid_width</code>:</p>
+<div class="code-wrapper"><pre class="codehilite"><code><span class="n">lgd</span> <span class="o">=</span> <span class="n">Legend</span><span class="p">(</span>
+    <span class="n">at</span><span class="o">=</span><span class="nb">list</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">7</span><span class="p">)),</span>
+    <span class="n">legend_gp</span><span class="o">=</span><span class="n">gpar</span><span class="p">(</span><span class="n">fill</span><span class="o">=</span><span class="nb">list</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">7</span><span class="p">))),</span>
+    <span class="n">title</span><span class="o">=</span><span class="s2">"foo"</span><span class="p">,</span>
+    <span class="n">grid_height</span><span class="o">=</span><span class="n">unit</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="s2">"cm"</span><span class="p">),</span>
+    <span class="n">grid_width</span><span class="o">=</span><span class="n">unit</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span> <span class="s2">"mm"</span><span class="p">),</span>
+<span class="p">)</span></code></pre></div>
+<figure>
+<img src="images/ch05_39_disc_grid_size.png"
+alt="Discrete legend with custom swatch dimensions" />
+<figcaption aria-hidden="true">Discrete legend with custom swatch
+dimensions</figcaption>
+</figure>
+<p>Style label and title typography via <code>labels_gp</code> and
+<code>title_gp</code>:</p>
+<div class="code-wrapper"><pre class="codehilite"><code><span class="n">lgd</span> <span class="o">=</span> <span class="n">Legend</span><span class="p">(</span>
+    <span class="n">labels</span><span class="o">=</span><span class="n">MONTH_NAMES</span><span class="p">[:</span><span class="mi">6</span><span class="p">],</span>
+    <span class="n">legend_gp</span><span class="o">=</span><span class="n">gpar</span><span class="p">(</span><span class="n">fill</span><span class="o">=</span><span class="nb">list</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">7</span><span class="p">))),</span>
+    <span class="n">title</span><span class="o">=</span><span class="s2">"foo"</span><span class="p">,</span>
+    <span class="n">labels_gp</span><span class="o">=</span><span class="n">gpar</span><span class="p">(</span><span class="n">col</span><span class="o">=</span><span class="s2">"red"</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">14</span><span class="p">),</span>
+<span class="p">)</span></code></pre></div>
+<figure>
+<img src="images/ch05_40_disc_labels_gp.png"
+alt="Discrete legend with customized labels_gp" />
+<figcaption aria-hidden="true">Discrete legend with customized
+labels_gp</figcaption>
+</figure>
+<div class="code-wrapper"><pre class="codehilite"><code><span class="n">lgd</span> <span class="o">=</span> <span class="n">Legend</span><span class="p">(</span>
+    <span class="n">labels</span><span class="o">=</span><span class="n">MONTH_NAMES</span><span class="p">[:</span><span class="mi">6</span><span class="p">],</span>
+    <span class="n">legend_gp</span><span class="o">=</span><span class="n">gpar</span><span class="p">(</span><span class="n">fill</span><span class="o">=</span><span class="nb">list</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">7</span><span class="p">))),</span>
+    <span class="n">title</span><span class="o">=</span><span class="s2">"foo"</span><span class="p">,</span>
+    <span class="n">title_gp</span><span class="o">=</span><span class="n">gpar</span><span class="p">(</span><span class="n">col</span><span class="o">=</span><span class="s2">"red"</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">14</span><span class="p">),</span>
+<span class="p">)</span></code></pre></div>
+<figure>
+<img src="images/ch05_41_disc_title_gp.png"
+alt="Discrete legend with customized title_gp" />
+<figcaption aria-hidden="true">Discrete legend with customized
+title_gp</figcaption>
+</figure>
+<p>Rich HTML/Markdown titles with <code>gt_render()</code>:</p>
+<div class="code-wrapper"><pre class="codehilite"><code><span class="n">lgd</span> <span class="o">=</span> <span class="n">Legend</span><span class="p">(</span>
+    <span class="n">title</span><span class="o">=</span><span class="n">gt_render</span><span class="p">(</span><span class="s2">"&lt;span style='color:orange'&gt;**Legend title**&lt;/span&gt;"</span><span class="p">),</span>
+    <span class="n">title_gp</span><span class="o">=</span><span class="n">gpar</span><span class="p">(</span><span class="n">box_fill</span><span class="o">=</span><span class="s2">"grey"</span><span class="p">),</span>
+    <span class="n">at</span><span class="o">=</span><span class="p">[</span><span class="o">-</span><span class="mi">3</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">3</span><span class="p">],</span>
+    <span class="n">labels</span><span class="o">=</span><span class="p">[</span><span class="s2">"negative three"</span><span class="p">,</span> <span class="s2">"zero"</span><span class="p">,</span> <span class="s2">"positive three"</span><span class="p">],</span>
+    <span class="n">legend_gp</span><span class="o">=</span><span class="n">gpar</span><span class="p">(</span><span class="n">fill</span><span class="o">=</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">]),</span>
+<span class="p">)</span></code></pre></div>
+<figure>
+<img src="images/ch05_42_disc_gridtext.png"
+alt="Discrete legend with gt_render title" />
+<figcaption aria-hidden="true">Discrete legend with gt_render
+title</figcaption>
+</figure>
+<p>Control swatch borders with <code>border</code>:</p>
+<div class="code-wrapper"><pre class="codehilite"><code><span class="n">lgd</span> <span class="o">=</span> <span class="n">Legend</span><span class="p">(</span><span class="n">labels</span><span class="o">=</span><span class="n">MONTH_NAMES</span><span class="p">[:</span><span class="mi">6</span><span class="p">],</span> <span class="n">legend_gp</span><span class="o">=</span><span class="n">gpar</span><span class="p">(</span><span class="n">fill</span><span class="o">=</span><span class="nb">list</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">7</span><span class="p">))),</span> <span class="n">title</span><span class="o">=</span><span class="s2">"foo"</span><span class="p">,</span> <span class="n">border</span><span class="o">=</span><span class="s2">"red"</span><span class="p">)</span></code></pre></div>
+<figure>
+<img src="images/ch05_43_disc_border.png"
+alt="Discrete legend with red swatch borders" />
+<figcaption aria-hidden="true">Discrete legend with red swatch
+borders</figcaption>
+</figure>
+<p>Discrete legends can be arranged across multiple columns
+(<code>ncol</code>) or rows (<code>nrow</code>). Notice you cannot set
+<code>ncol</code> and <code>nrow</code> simultaneously:</p>
+<div class="code-wrapper"><pre class="codehilite"><code><span class="n">lgd</span> <span class="o">=</span> <span class="n">Legend</span><span class="p">(</span><span class="n">labels</span><span class="o">=</span><span class="n">MONTH_NAMES</span><span class="p">[:</span><span class="mi">10</span><span class="p">],</span> <span class="n">legend_gp</span><span class="o">=</span><span class="n">gpar</span><span class="p">(</span><span class="n">fill</span><span class="o">=</span><span class="nb">list</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">11</span><span class="p">))),</span> <span class="n">title</span><span class="o">=</span><span class="s2">"foo"</span><span class="p">,</span> <span class="n">ncol</span><span class="o">=</span><span class="mi">3</span><span class="p">)</span></code></pre></div>
+<figure>
+<img src="images/ch05_44_disc_ncol3.png"
+alt="Multi-column discrete legend with ncol=3" />
+<figcaption aria-hidden="true">Multi-column discrete legend with
+ncol=3</figcaption>
+</figure>
+<p>Title centering adapts automatically to multi-column widths:</p>
+<div class="code-wrapper"><pre class="codehilite"><code><span class="n">lgd</span> <span class="o">=</span> <span class="n">Legend</span><span class="p">(</span><span class="n">labels</span><span class="o">=</span><span class="n">MONTH_NAMES</span><span class="p">[:</span><span class="mi">10</span><span class="p">],</span> <span class="n">legend_gp</span><span class="o">=</span><span class="n">gpar</span><span class="p">(</span><span class="n">fill</span><span class="o">=</span><span class="nb">list</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">11</span><span class="p">))),</span> <span class="n">title</span><span class="o">=</span><span class="s2">"foo"</span><span class="p">,</span> <span class="n">ncol</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="n">title_position</span><span class="o">=</span><span class="s2">"topcenter"</span><span class="p">)</span></code></pre></div>
+<figure>
+<img src="images/ch05_45_disc_ncol3_topcenter.png"
+alt="Multi-column legend with centered title" />
+<figcaption aria-hidden="true">Multi-column legend with centered
+title</figcaption>
+</figure>
+<p>Fill entries row-by-row with <code>by_row=True</code>:</p>
+<div class="code-wrapper"><pre class="codehilite"><code><span class="n">lgd</span> <span class="o">=</span> <span class="n">Legend</span><span class="p">(</span><span class="n">labels</span><span class="o">=</span><span class="n">MONTH_NAMES</span><span class="p">[:</span><span class="mi">10</span><span class="p">],</span> <span class="n">legend_gp</span><span class="o">=</span><span class="n">gpar</span><span class="p">(</span><span class="n">fill</span><span class="o">=</span><span class="nb">list</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">11</span><span class="p">))),</span> <span class="n">title</span><span class="o">=</span><span class="s2">"foo"</span><span class="p">,</span> <span class="n">ncol</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="n">by_row</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span></code></pre></div>
+<figure>
+<img src="images/ch05_46_disc_ncol3_byrow.png"
+alt="Multi-column legend filled by row" />
+<figcaption aria-hidden="true">Multi-column legend filled by
+row</figcaption>
+</figure>
+<p>Adjust horizontal spacing between columns with <code>gap</code> (or
+<code>column_gap</code>), and vertical spacing between rows with
+<code>row_gap</code>:</p>
+<div class="code-wrapper"><pre class="codehilite"><code><span class="n">lgd</span> <span class="o">=</span> <span class="n">Legend</span><span class="p">(</span><span class="n">labels</span><span class="o">=</span><span class="n">MONTH_NAMES</span><span class="p">[:</span><span class="mi">10</span><span class="p">],</span> <span class="n">legend_gp</span><span class="o">=</span><span class="n">gpar</span><span class="p">(</span><span class="n">fill</span><span class="o">=</span><span class="nb">list</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">11</span><span class="p">))),</span> <span class="n">title</span><span class="o">=</span><span class="s2">"foo"</span><span class="p">,</span> <span class="n">ncol</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="n">gap</span><span class="o">=</span><span class="n">unit</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="s2">"cm"</span><span class="p">))</span></code></pre></div>
+<figure>
+<img src="images/ch05_47_disc_ncol3_gap.png"
+alt="Multi-column legend with gap=1cm" />
+<figcaption aria-hidden="true">Multi-column legend with
+gap=1cm</figcaption>
+</figure>
+<div class="code-wrapper"><pre class="codehilite"><code><span class="n">lgd</span> <span class="o">=</span> <span class="n">Legend</span><span class="p">(</span><span class="n">labels</span><span class="o">=</span><span class="n">MONTH_NAMES</span><span class="p">[:</span><span class="mi">10</span><span class="p">],</span> <span class="n">legend_gp</span><span class="o">=</span><span class="n">gpar</span><span class="p">(</span><span class="n">fill</span><span class="o">=</span><span class="nb">list</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">11</span><span class="p">))),</span> <span class="n">title</span><span class="o">=</span><span class="s2">"foo"</span><span class="p">,</span> <span class="n">ncol</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="n">row_gap</span><span class="o">=</span><span class="n">unit</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span> <span class="s2">"mm"</span><span class="p">))</span></code></pre></div>
+<figure>
+<img src="images/ch05_48_disc_ncol3_rowgap.png"
+alt="Multi-column legend with row_gap=5mm" />
+<figcaption aria-hidden="true">Multi-column legend with
+row_gap=5mm</figcaption>
+</figure>
+<p>Specify row count with <code>nrow</code>:</p>
+<div class="code-wrapper"><pre class="codehilite"><code><span class="n">lgd</span> <span class="o">=</span> <span class="n">Legend</span><span class="p">(</span><span class="n">labels</span><span class="o">=</span><span class="n">MONTH_NAMES</span><span class="p">[:</span><span class="mi">10</span><span class="p">],</span> <span class="n">legend_gp</span><span class="o">=</span><span class="n">gpar</span><span class="p">(</span><span class="n">fill</span><span class="o">=</span><span class="nb">list</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">11</span><span class="p">))),</span> <span class="n">title</span><span class="o">=</span><span class="s2">"foo"</span><span class="p">,</span> <span class="n">nrow</span><span class="o">=</span><span class="mi">3</span><span class="p">)</span></code></pre></div>
+<figure>
+<img src="images/ch05_49_disc_nrow3.png"
+alt="Multi-row discrete legend with nrow=3" />
+<figcaption aria-hidden="true">Multi-row discrete legend with
+nrow=3</figcaption>
+</figure>
+<p>Single-row horizontal discrete legends paired with
+<code>"lefttop-rot"</code> or <code>"leftcenter"</code> titles:</p>
+<div class="code-wrapper"><pre class="codehilite"><code><span class="n">lgd</span> <span class="o">=</span> <span class="n">Legend</span><span class="p">(</span><span class="n">labels</span><span class="o">=</span><span class="n">MONTH_NAMES</span><span class="p">[:</span><span class="mi">6</span><span class="p">],</span> <span class="n">legend_gp</span><span class="o">=</span><span class="n">gpar</span><span class="p">(</span><span class="n">fill</span><span class="o">=</span><span class="nb">list</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">7</span><span class="p">))),</span> <span class="n">title</span><span class="o">=</span><span class="s2">"foooooo"</span><span class="p">,</span> <span class="n">nrow</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">title_position</span><span class="o">=</span><span class="s2">"lefttop-rot"</span><span class="p">)</span></code></pre></div>
+<figure>
+<img src="images/ch05_50_disc_nrow1_lefttoprot.png"
+alt="Single-row legend with lefttop-rot title" />
+<figcaption aria-hidden="true">Single-row legend with lefttop-rot
+title</figcaption>
+</figure>
+<div class="code-wrapper"><pre class="codehilite"><code><span class="n">lgd</span> <span class="o">=</span> <span class="n">Legend</span><span class="p">(</span><span class="n">labels</span><span class="o">=</span><span class="n">MONTH_NAMES</span><span class="p">[:</span><span class="mi">6</span><span class="p">],</span> <span class="n">legend_gp</span><span class="o">=</span><span class="n">gpar</span><span class="p">(</span><span class="n">fill</span><span class="o">=</span><span class="nb">list</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">7</span><span class="p">))),</span> <span class="n">title</span><span class="o">=</span><span class="s2">"foooooo"</span><span class="p">,</span> <span class="n">nrow</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">title_position</span><span class="o">=</span><span class="s2">"leftcenter"</span><span class="p">)</span></code></pre></div>
+<figure>
+<img src="images/ch05_51_disc_nrow1_leftcenter.png"
+alt="Single-row legend with leftcenter title" />
+<figcaption aria-hidden="true">Single-row legend with leftcenter
+title</figcaption>
+</figure>
+<p><code>Legend()</code> also supports simple geometric primitives via
+<code>type</code>:</p>
+<ul>
+<li><code>type="points"</code> (or <code>"p"</code>) with numeric or
+character <code>pch</code></li>
+<li><code>type="lines"</code> (or <code>"l"</code>)</li>
+<li><code>type="boxplot"</code> (or <code>"box"</code>)</li>
+</ul>
+<div class="code-wrapper"><pre class="codehilite"><code><span class="n">lgd</span> <span class="o">=</span> <span class="n">Legend</span><span class="p">(</span>
+    <span class="n">labels</span><span class="o">=</span><span class="n">MONTH_NAMES</span><span class="p">[:</span><span class="mi">6</span><span class="p">],</span>
+    <span class="n">title</span><span class="o">=</span><span class="s2">"foo"</span><span class="p">,</span>
+    <span class="nb">type</span><span class="o">=</span><span class="s2">"points"</span><span class="p">,</span>
+    <span class="n">pch</span><span class="o">=</span><span class="nb">list</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">7</span><span class="p">)),</span>
+    <span class="n">legend_gp</span><span class="o">=</span><span class="n">gpar</span><span class="p">(</span><span class="n">col</span><span class="o">=</span><span class="nb">list</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">7</span><span class="p">))),</span>
+    <span class="n">background</span><span class="o">=</span><span class="s2">"#FF8080"</span><span class="p">,</span>
+<span class="p">)</span></code></pre></div>
+<figure>
+<img src="images/ch05_52_disc_points_num.png"
+alt="Points legend with numeric pch" />
+<figcaption aria-hidden="true">Points legend with numeric
+pch</figcaption>
+</figure>
+<div class="code-wrapper"><pre class="codehilite"><code><span class="n">lgd</span> <span class="o">=</span> <span class="n">Legend</span><span class="p">(</span>
+    <span class="n">labels</span><span class="o">=</span><span class="n">MONTH_NAMES</span><span class="p">[:</span><span class="mi">6</span><span class="p">],</span>
+    <span class="n">title</span><span class="o">=</span><span class="s2">"foo"</span><span class="p">,</span>
+    <span class="nb">type</span><span class="o">=</span><span class="s2">"points"</span><span class="p">,</span>
+    <span class="n">pch</span><span class="o">=</span><span class="nb">list</span><span class="p">(</span><span class="s2">"abcdef"</span><span class="p">),</span>
+    <span class="n">legend_gp</span><span class="o">=</span><span class="n">gpar</span><span class="p">(</span><span class="n">col</span><span class="o">=</span><span class="nb">list</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">7</span><span class="p">))),</span>
+    <span class="n">background</span><span class="o">=</span><span class="s2">"white"</span><span class="p">,</span>
+<span class="p">)</span></code></pre></div>
+<figure>
+<img src="images/ch05_53_disc_points_char.png"
+alt="Points legend with character pch" />
+<figcaption aria-hidden="true">Points legend with character
+pch</figcaption>
+</figure>
+<div class="code-wrapper"><pre class="codehilite"><code><span class="n">lgd</span> <span class="o">=</span> <span class="n">Legend</span><span class="p">(</span>
+    <span class="n">labels</span><span class="o">=</span><span class="n">MONTH_NAMES</span><span class="p">[:</span><span class="mi">6</span><span class="p">],</span>
+    <span class="n">title</span><span class="o">=</span><span class="s2">"foo"</span><span class="p">,</span>
+    <span class="nb">type</span><span class="o">=</span><span class="s2">"lines"</span><span class="p">,</span>
+    <span class="n">legend_gp</span><span class="o">=</span><span class="n">gpar</span><span class="p">(</span><span class="n">col</span><span class="o">=</span><span class="nb">list</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">7</span><span class="p">)),</span> <span class="n">lty</span><span class="o">=</span><span class="nb">list</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">7</span><span class="p">))),</span>
+    <span class="n">grid_width</span><span class="o">=</span><span class="n">unit</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="s2">"cm"</span><span class="p">),</span>
+<span class="p">)</span></code></pre></div>
+<figure>
+<img src="images/ch05_54_disc_lines.png" alt="Lines legend" />
+<figcaption aria-hidden="true">Lines legend</figcaption>
+</figure>
+<div class="code-wrapper"><pre class="codehilite"><code><span class="n">lgd</span> <span class="o">=</span> <span class="n">Legend</span><span class="p">(</span>
+    <span class="n">labels</span><span class="o">=</span><span class="n">MONTH_NAMES</span><span class="p">[:</span><span class="mi">6</span><span class="p">],</span>
+    <span class="n">title</span><span class="o">=</span><span class="s2">"foo"</span><span class="p">,</span>
+    <span class="nb">type</span><span class="o">=</span><span class="s2">"boxplot"</span><span class="p">,</span>
+    <span class="n">legend_gp</span><span class="o">=</span><span class="n">gpar</span><span class="p">(</span><span class="n">fill</span><span class="o">=</span><span class="nb">list</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">7</span><span class="p">))),</span>
+<span class="p">)</span></code></pre></div>
+<figure>
+<img src="images/ch05_55_disc_boxplot.png" alt="Boxplot legend" />
+<figcaption aria-hidden="true">Boxplot legend</figcaption>
+</figure>
+<p>Special integer <code>pch</code> codes <code>26</code>,
+<code>27</code>, and <code>28</code> draw diagonal <code>/</code>
+(<code>26</code>), <code>\</code> (<code>27</code>), and crossed
+<code>X</code> (<code>28</code>) segments:</p>
+<div class="code-wrapper"><pre class="codehilite"><code><span class="n">lgd</span> <span class="o">=</span> <span class="n">Legend</span><span class="p">(</span><span class="n">labels</span><span class="o">=</span><span class="p">[</span><span class="sa">f</span><span class="s2">"pch = </span><span class="si">{</span><span class="n">p</span><span class="si">}</span><span class="s2">"</span> <span class="k">for</span> <span class="n">p</span> <span class="ow">in</span> <span class="p">(</span><span class="mi">26</span><span class="p">,</span> <span class="mi">27</span><span class="p">,</span> <span class="mi">28</span><span class="p">)],</span> <span class="nb">type</span><span class="o">=</span><span class="s2">"points"</span><span class="p">,</span> <span class="n">pch</span><span class="o">=</span><span class="p">[</span><span class="mi">26</span><span class="p">,</span> <span class="mi">27</span><span class="p">,</span> <span class="mi">28</span><span class="p">])</span></code></pre></div>
+<figure>
+<img src="images/ch05_56_disc_pch26_28.png"
+alt="Points legend with special diagonal pch codes 26-28" />
+<figcaption aria-hidden="true">Points legend with special diagonal pch
+codes 26-28</figcaption>
+</figure>
+<p>Multi-line labels automatically enlarge the corresponding legend grid
+height (and equalize row heights across multi-column rows):</p>
+<div class="code-wrapper"><pre class="codehilite"><code><span class="n">lgd</span> <span class="o">=</span> <span class="n">Legend</span><span class="p">(</span><span class="n">labels</span><span class="o">=</span><span class="p">[</span><span class="s2">"aaaaa</span><span class="se">\n</span><span class="s2">aaaaa"</span><span class="p">,</span> <span class="s2">"bbbbb</span><span class="se">\n</span><span class="s2">bbbbb"</span><span class="p">,</span> <span class="s2">"c"</span><span class="p">,</span> <span class="s2">"d"</span><span class="p">],</span> <span class="n">legend_gp</span><span class="o">=</span><span class="n">gpar</span><span class="p">(</span><span class="n">fill</span><span class="o">=</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">]))</span></code></pre></div>
+<figure>
+<img src="images/ch05_57_disc_multiline.png"
+alt="Discrete legend with multi-line labels" />
+<figcaption aria-hidden="true">Discrete legend with multi-line
+labels</figcaption>
+</figure>
+<div class="code-wrapper"><pre class="codehilite"><code><span class="n">lgd</span> <span class="o">=</span> <span class="n">Legend</span><span class="p">(</span><span class="n">labels</span><span class="o">=</span><span class="p">[</span><span class="s2">"aaaaa</span><span class="se">\n</span><span class="s2">aaaaa"</span><span class="p">,</span> <span class="s2">"c"</span><span class="p">,</span> <span class="s2">"d"</span><span class="p">,</span> <span class="s2">"bbbbb</span><span class="se">\n</span><span class="s2">bbbbb"</span><span class="p">],</span> <span class="n">legend_gp</span><span class="o">=</span><span class="n">gpar</span><span class="p">(</span><span class="n">fill</span><span class="o">=</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">]),</span> <span class="n">nrow</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span></code></pre></div>
+<figure>
+<img src="images/ch05_58_disc_multiline_nrow2.png"
+alt="Multi-column legend with multi-line labels" />
+<figcaption aria-hidden="true">Multi-column legend with multi-line
+labels</figcaption>
+</figure>
+<p>Finally, <code>graphics</code> accepts a list (or a dict keyed by
+<code>at</code>) of custom drawing callbacks with signature
+<code>(x, y, w, h)</code>, giving you full control over each swatch
+cell:</p>
+<div class="code-wrapper"><pre class="codehilite"><code><span class="n">lgd</span> <span class="o">=</span> <span class="n">Legend</span><span class="p">(</span>
+    <span class="n">labels</span><span class="o">=</span><span class="nb">list</span><span class="p">(</span><span class="s2">"abcd"</span><span class="p">),</span>
+    <span class="n">graphics</span><span class="o">=</span><span class="p">[</span>
+        <span class="k">lambda</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">w</span><span class="p">,</span> <span class="n">h</span><span class="p">:</span> <span class="n">grid</span><span class="o">.</span><span class="n">rect</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">w</span> <span class="o">*</span> <span class="mf">0.33</span><span class="p">,</span> <span class="n">h</span><span class="p">,</span> <span class="n">gp</span><span class="o">=</span><span class="n">gpar</span><span class="p">(</span><span class="n">fill</span><span class="o">=</span><span class="s2">"red"</span><span class="p">)),</span>
+        <span class="k">lambda</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">w</span><span class="p">,</span> <span class="n">h</span><span class="p">:</span> <span class="n">grid</span><span class="o">.</span><span class="n">rect</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">w</span><span class="p">,</span> <span class="n">h</span> <span class="o">*</span> <span class="mf">0.33</span><span class="p">,</span> <span class="n">gp</span><span class="o">=</span><span class="n">gpar</span><span class="p">(</span><span class="n">fill</span><span class="o">=</span><span class="s2">"blue"</span><span class="p">)),</span>
+        <span class="k">lambda</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">w</span><span class="p">,</span> <span class="n">h</span><span class="p">:</span> <span class="n">grid</span><span class="o">.</span><span class="n">text</span><span class="p">(</span><span class="s2">"A"</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">gp</span><span class="o">=</span><span class="n">gpar</span><span class="p">(</span><span class="n">col</span><span class="o">=</span><span class="s2">"darkgreen"</span><span class="p">)),</span>
+        <span class="k">lambda</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">w</span><span class="p">,</span> <span class="n">h</span><span class="p">:</span> <span class="n">grid</span><span class="o">.</span><span class="n">points</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">gp</span><span class="o">=</span><span class="n">gpar</span><span class="p">(</span><span class="n">col</span><span class="o">=</span><span class="s2">"orange"</span><span class="p">),</span> <span class="n">pch</span><span class="o">=</span><span class="mi">16</span><span class="p">),</span>
+    <span class="p">],</span>
+<span class="p">)</span></code></pre></div>
+<figure>
+<img src="images/ch05_59_disc_custom_graphics.png"
+alt="Discrete legend with custom graphics callbacks" />
+<figcaption aria-hidden="true">Discrete legend with custom graphics
+callbacks</figcaption>
+</figure>
+<h2 id="a-list-of-legends"><span class="header-section-number">5.3</span> A list of legends<a class="anchor-section" aria-label="Anchor link to section" href="#a-list-of-legends">#</a></h2>
+<p>Multiple <code>Legends</code> objects can be arranged together using
+<code>packLegend()</code>, either as positional arguments or via
+<code>list=[...]</code>. Internally, <code>ComplexHeatmap-py</code> uses
+<code>packLegend()</code> to lay out all heatmap and annotation
+legends.</p>
+<div class="code-wrapper"><pre class="codehilite"><code><span class="kn">from</span><span class="w"> </span><span class="nn">complexheatmap</span><span class="w"> </span><span class="kn">import</span> <span class="n">packLegend</span>
+
+<span class="n">lgd1</span> <span class="o">=</span> <span class="n">Legend</span><span class="p">(</span><span class="n">at</span><span class="o">=</span><span class="nb">list</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">7</span><span class="p">)),</span> <span class="n">legend_gp</span><span class="o">=</span><span class="n">gpar</span><span class="p">(</span><span class="n">fill</span><span class="o">=</span><span class="nb">list</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">7</span><span class="p">))),</span> <span class="n">title</span><span class="o">=</span><span class="s2">"legend1"</span><span class="p">)</span>
+<span class="n">lgd2</span> <span class="o">=</span> <span class="n">Legend</span><span class="p">(</span><span class="n">col_fun</span><span class="o">=</span><span class="n">col_fun</span><span class="p">,</span> <span class="n">title</span><span class="o">=</span><span class="s2">"legend2"</span><span class="p">,</span> <span class="n">at</span><span class="o">=</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mf">0.25</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">,</span> <span class="mf">0.75</span><span class="p">,</span> <span class="mi">1</span><span class="p">])</span>
+<span class="n">lgd3</span> <span class="o">=</span> <span class="n">Legend</span><span class="p">(</span><span class="n">labels</span><span class="o">=</span><span class="n">MONTH_NAMES</span><span class="p">[:</span><span class="mi">3</span><span class="p">],</span> <span class="n">legend_gp</span><span class="o">=</span><span class="n">gpar</span><span class="p">(</span><span class="n">fill</span><span class="o">=</span><span class="p">[</span><span class="mi">7</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span> <span class="mi">9</span><span class="p">]),</span> <span class="n">title</span><span class="o">=</span><span class="s2">"legend3"</span><span class="p">)</span>
+
+<span class="n">pd_vert</span> <span class="o">=</span> <span class="n">packLegend</span><span class="p">(</span><span class="n">lgd1</span><span class="p">,</span> <span class="n">lgd2</span><span class="p">,</span> <span class="n">lgd3</span><span class="p">)</span>
+<span class="c1"># Equivalent to:</span>
+<span class="c1"># pd_vert = packLegend(list=[lgd1, lgd2, lgd3])</span></code></pre></div>
+<figure>
+<img src="images/ch05_60_pack_vertical.png"
+alt="Vertically packed legends" />
+<figcaption aria-hidden="true">Vertically packed legends</figcaption>
+</figure>
+<p>Check packed dimensions just like a single legend:</p>
+<div class="code-wrapper"><pre class="codehilite"><code><span class="n">ch</span><span class="o">.</span><span class="n">width</span><span class="p">(</span><span class="n">pd_vert</span><span class="p">)</span>
+<span class="c1"># 20.181mm</span>
+<span class="n">ch</span><span class="o">.</span><span class="n">height</span><span class="p">(</span><span class="n">pd_vert</span><span class="p">)</span>
+<span class="c1"># 83.8748mm</span></code></pre></div>
+<p>Pack legends horizontally with
+<code>direction="horizontal"</code>:</p>
+<div class="code-wrapper"><pre class="codehilite"><code><span class="n">pd_horiz</span> <span class="o">=</span> <span class="n">packLegend</span><span class="p">(</span><span class="n">lgd1</span><span class="p">,</span> <span class="n">lgd2</span><span class="p">,</span> <span class="n">lgd3</span><span class="p">,</span> <span class="n">direction</span><span class="o">=</span><span class="s2">"horizontal"</span><span class="p">)</span></code></pre></div>
+<figure>
+<img src="images/ch05_61_pack_horizontal.png"
+alt="Horizontally packed legends" />
+<figcaption aria-hidden="true">Horizontally packed legends</figcaption>
+</figure>
+<p>When vertical legends exceed <code>max_height</code>,
+<code>packLegend()</code> wraps them into multiple columns separated by
+<code>column_gap</code>:</p>
+<div class="code-wrapper"><pre class="codehilite"><code><span class="n">pd_mh</span> <span class="o">=</span> <span class="n">packLegend</span><span class="p">(</span>
+    <span class="n">lgd1</span><span class="p">,</span> <span class="n">lgd3</span><span class="p">,</span> <span class="n">lgd2</span><span class="p">,</span> <span class="n">lgd3</span><span class="p">,</span> <span class="n">lgd2</span><span class="p">,</span> <span class="n">lgd1</span><span class="p">,</span>
+    <span class="n">max_height</span><span class="o">=</span><span class="n">unit</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="s2">"cm"</span><span class="p">),</span>
+    <span class="n">column_gap</span><span class="o">=</span><span class="n">unit</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="s2">"cm"</span><span class="p">),</span>
+<span class="p">)</span></code></pre></div>
+<figure>
+<img src="images/ch05_62_pack_max_height.png"
+alt="Vertically packed legends wrapping into multiple columns" />
+<figcaption aria-hidden="true">Vertically packed legends wrapping into
+multiple columns</figcaption>
+</figure>
+<p>Similarly, horizontal packing wraps into multiple rows when exceeding
+<code>max_width</code>, spaced by <code>column_gap</code> and
+<code>row_gap</code>:</p>
+<div class="code-wrapper"><pre class="codehilite"><code><span class="n">lgd1_row</span> <span class="o">=</span> <span class="n">Legend</span><span class="p">(</span><span class="n">at</span><span class="o">=</span><span class="nb">list</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">7</span><span class="p">)),</span> <span class="n">legend_gp</span><span class="o">=</span><span class="n">gpar</span><span class="p">(</span><span class="n">fill</span><span class="o">=</span><span class="nb">list</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">7</span><span class="p">))),</span> <span class="n">title</span><span class="o">=</span><span class="s2">"legend1"</span><span class="p">,</span> <span class="n">nrow</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">lgd2_row</span> <span class="o">=</span> <span class="n">Legend</span><span class="p">(</span><span class="n">col_fun</span><span class="o">=</span><span class="n">col_fun</span><span class="p">,</span> <span class="n">title</span><span class="o">=</span><span class="s2">"legend2"</span><span class="p">,</span> <span class="n">at</span><span class="o">=</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mf">0.25</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">,</span> <span class="mf">0.75</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span> <span class="n">direction</span><span class="o">=</span><span class="s2">"horizontal"</span><span class="p">)</span>
+
+<span class="n">pd_mw</span> <span class="o">=</span> <span class="n">packLegend</span><span class="p">(</span>
+    <span class="n">lgd1_row</span><span class="p">,</span> <span class="n">lgd2_row</span><span class="p">,</span> <span class="n">lgd3</span><span class="p">,</span> <span class="n">lgd1_row</span><span class="p">,</span> <span class="n">lgd2_row</span><span class="p">,</span> <span class="n">lgd3</span><span class="p">,</span>
+    <span class="n">max_width</span><span class="o">=</span><span class="n">unit</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="s2">"cm"</span><span class="p">),</span>
+    <span class="n">direction</span><span class="o">=</span><span class="s2">"horizontal"</span><span class="p">,</span>
+    <span class="n">column_gap</span><span class="o">=</span><span class="n">unit</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span> <span class="s2">"mm"</span><span class="p">),</span>
+    <span class="n">row_gap</span><span class="o">=</span><span class="n">unit</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="s2">"cm"</span><span class="p">),</span>
+<span class="p">)</span></code></pre></div>
+<figure>
+<img src="images/ch05_63_pack_max_width.png"
+alt="Horizontally packed legends wrapping into multiple rows" />
+<figcaption aria-hidden="true">Horizontally packed legends wrapping into
+multiple rows</figcaption>
+</figure>
+<p>Because <code>packLegend()</code> returns a <code>Legends</code>
+object, it can also be drawn at any viewport position:</p>
+<div class="code-wrapper"><pre class="codehilite"><code><span class="n">pd_pos</span> <span class="o">=</span> <span class="n">packLegend</span><span class="p">(</span><span class="n">lgd1_row</span><span class="p">,</span> <span class="n">lgd2_row</span><span class="p">,</span> <span class="n">lgd3</span><span class="p">,</span> <span class="n">direction</span><span class="o">=</span><span class="s2">"horizontal"</span><span class="p">)</span>
+<span class="n">ch</span><span class="o">.</span><span class="n">pushViewport</span><span class="p">(</span><span class="n">ch</span><span class="o">.</span><span class="n">viewport</span><span class="p">(</span><span class="n">width</span><span class="o">=</span><span class="mf">0.8</span><span class="p">,</span> <span class="n">height</span><span class="o">=</span><span class="mf">0.8</span><span class="p">))</span>
+<span class="n">grid</span><span class="o">.</span><span class="n">rect</span><span class="p">()</span>
+<span class="n">ch</span><span class="o">.</span><span class="n">draw</span><span class="p">(</span><span class="n">pd_pos</span><span class="p">,</span> <span class="n">x</span><span class="o">=</span><span class="n">unit</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="s2">"cm"</span><span class="p">),</span> <span class="n">y</span><span class="o">=</span><span class="n">unit</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="s2">"cm"</span><span class="p">),</span> <span class="n">just</span><span class="o">=</span><span class="p">[</span><span class="s2">"left"</span><span class="p">,</span> <span class="s2">"bottom"</span><span class="p">])</span>
+<span class="n">ch</span><span class="o">.</span><span class="n">draw</span><span class="p">(</span><span class="n">pd_pos</span><span class="p">,</span> <span class="n">x</span><span class="o">=</span><span class="n">unit</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="s2">"npc"</span><span class="p">),</span> <span class="n">y</span><span class="o">=</span><span class="n">unit</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="s2">"npc"</span><span class="p">),</span> <span class="n">just</span><span class="o">=</span><span class="p">[</span><span class="s2">"right"</span><span class="p">,</span> <span class="s2">"top"</span><span class="p">])</span>
+<span class="n">ch</span><span class="o">.</span><span class="n">popViewport</span><span class="p">()</span></code></pre></div>
+<figure>
+<img src="images/ch05_64_pack_draw_positions.png"
+alt="Drawing packed legends inside a viewport" />
+<figcaption aria-hidden="true">Drawing packed legends inside a
+viewport</figcaption>
+</figure>
+<h2 id="heatmap-and-annotation-legends"><span class="header-section-number">5.4</span> Heatmap and annotation
+legends<a class="anchor-section" aria-label="Anchor link to section" href="#heatmap-and-annotation-legends">#</a></h2>
+<p>Pass legend options for a heatmap matrix via
+<code>heatmap_legend_param</code> in <code>Heatmap()</code>:</p>
+<div class="code-wrapper"><pre class="codehilite"><code><span class="n">rng</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">default_rng</span><span class="p">(</span><span class="mi">123</span><span class="p">)</span>
+<span class="n">m</span> <span class="o">=</span> <span class="n">rng</span><span class="o">.</span><span class="n">standard_normal</span><span class="p">((</span><span class="mi">10</span><span class="p">,</span> <span class="mi">10</span><span class="p">))</span>
+<span class="n">ht</span> <span class="o">=</span> <span class="n">ch</span><span class="o">.</span><span class="n">Heatmap</span><span class="p">(</span>
+    <span class="n">m</span><span class="p">,</span>
+    <span class="n">name</span><span class="o">=</span><span class="s2">"mat"</span><span class="p">,</span>
+    <span class="n">heatmap_legend_param</span><span class="o">=</span><span class="p">{</span>
+        <span class="s2">"at"</span><span class="p">:</span> <span class="p">[</span><span class="o">-</span><span class="mi">2</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">2</span><span class="p">],</span>
+        <span class="s2">"labels"</span><span class="p">:</span> <span class="p">[</span><span class="s2">"low"</span><span class="p">,</span> <span class="s2">"zero"</span><span class="p">,</span> <span class="s2">"high"</span><span class="p">],</span>
+        <span class="s2">"title"</span><span class="p">:</span> <span class="s2">"Some values"</span><span class="p">,</span>
+        <span class="s2">"legend_height"</span><span class="p">:</span> <span class="n">unit</span><span class="p">(</span><span class="mi">4</span><span class="p">,</span> <span class="s2">"cm"</span><span class="p">),</span>
+        <span class="s2">"title_position"</span><span class="p">:</span> <span class="s2">"lefttop-rot"</span><span class="p">,</span>
+    <span class="p">},</span>
+<span class="p">)</span>
+<span class="n">ch</span><span class="o">.</span><span class="n">draw</span><span class="p">(</span><span class="n">ht</span><span class="p">)</span></code></pre></div>
+<figure>
+<img src="images/ch05_65_hm_legend_param.png"
+alt="Heatmap with customized heatmap_legend_param" />
+<figcaption aria-hidden="true">Heatmap with customized
+heatmap_legend_param</figcaption>
+</figure>
+<p>For annotations, <code>annotation_legend_param</code> maps each
+annotation name to its parameter dictionary:</p>
+<div class="code-wrapper"><pre class="codehilite"><code><span class="n">ha</span> <span class="o">=</span> <span class="n">ch</span><span class="o">.</span><span class="n">HeatmapAnnotation</span><span class="p">(</span>
+    <span class="n">foo</span><span class="o">=</span><span class="n">rng</span><span class="o">.</span><span class="n">uniform</span><span class="p">(</span><span class="n">size</span><span class="o">=</span><span class="mi">10</span><span class="p">),</span>
+    <span class="n">bar</span><span class="o">=</span><span class="n">rng</span><span class="o">.</span><span class="n">choice</span><span class="p">([</span><span class="s2">"f"</span><span class="p">,</span> <span class="s2">"m"</span><span class="p">],</span> <span class="mi">10</span><span class="p">,</span> <span class="n">replace</span><span class="o">=</span><span class="kc">True</span><span class="p">),</span>
+    <span class="n">annotation_legend_param</span><span class="o">=</span><span class="p">{</span>
+        <span class="s2">"foo"</span><span class="p">:</span> <span class="p">{</span><span class="s2">"title"</span><span class="p">:</span> <span class="s2">"Fooooooh"</span><span class="p">,</span> <span class="s2">"at"</span><span class="p">:</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span> <span class="s2">"labels"</span><span class="p">:</span> <span class="p">[</span><span class="s2">"zero"</span><span class="p">,</span> <span class="s2">"median"</span><span class="p">,</span> <span class="s2">"one"</span><span class="p">]},</span>
+        <span class="s2">"bar"</span><span class="p">:</span> <span class="p">{</span><span class="s2">"title"</span><span class="p">:</span> <span class="s2">"Baaaaaaar"</span><span class="p">,</span> <span class="s2">"at"</span><span class="p">:</span> <span class="p">[</span><span class="s2">"f"</span><span class="p">,</span> <span class="s2">"m"</span><span class="p">],</span> <span class="s2">"labels"</span><span class="p">:</span> <span class="p">[</span><span class="s2">"Female"</span><span class="p">,</span> <span class="s2">"Male"</span><span class="p">]},</span>
+    <span class="p">},</span>
+<span class="p">)</span>
+<span class="n">ch</span><span class="o">.</span><span class="n">draw</span><span class="p">(</span><span class="n">ch</span><span class="o">.</span><span class="n">Heatmap</span><span class="p">(</span><span class="n">m</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s2">"mat"</span><span class="p">,</span> <span class="n">top_annotation</span><span class="o">=</span><span class="n">ha</span><span class="p">))</span></code></pre></div>
+<figure>
+<img src="images/ch05_66_anno_legend_param.png"
+alt="Heatmap with customized annotation_legend_param" />
+<figcaption aria-hidden="true">Heatmap with customized
+annotation_legend_param</figcaption>
+</figure>
+<p>When heatmaps are concatenated horizontally (<code>+</code>), heatmap
+legends and row-annotation legends are grouped together while
+column-annotation legends form a separate group:</p>
+<div class="code-wrapper"><pre class="codehilite"><code><span class="n">ha1</span> <span class="o">=</span> <span class="n">ch</span><span class="o">.</span><span class="n">HeatmapAnnotation</span><span class="p">(</span><span class="n">foo1</span><span class="o">=</span><span class="n">rng</span><span class="o">.</span><span class="n">uniform</span><span class="p">(</span><span class="n">size</span><span class="o">=</span><span class="mi">10</span><span class="p">),</span> <span class="n">bar1</span><span class="o">=</span><span class="n">rng</span><span class="o">.</span><span class="n">choice</span><span class="p">([</span><span class="s2">"f"</span><span class="p">,</span> <span class="s2">"m"</span><span class="p">],</span> <span class="mi">10</span><span class="p">,</span> <span class="n">replace</span><span class="o">=</span><span class="kc">True</span><span class="p">))</span>
+<span class="n">ha2</span> <span class="o">=</span> <span class="n">ch</span><span class="o">.</span><span class="n">HeatmapAnnotation</span><span class="p">(</span><span class="n">foo2</span><span class="o">=</span><span class="n">rng</span><span class="o">.</span><span class="n">uniform</span><span class="p">(</span><span class="n">size</span><span class="o">=</span><span class="mi">10</span><span class="p">),</span> <span class="n">bar2</span><span class="o">=</span><span class="n">rng</span><span class="o">.</span><span class="n">choice</span><span class="p">([</span><span class="s2">"f"</span><span class="p">,</span> <span class="s2">"m"</span><span class="p">],</span> <span class="mi">10</span><span class="p">,</span> <span class="n">replace</span><span class="o">=</span><span class="kc">True</span><span class="p">))</span>
+<span class="n">ht_list</span> <span class="o">=</span> <span class="p">(</span>
+    <span class="n">ch</span><span class="o">.</span><span class="n">Heatmap</span><span class="p">(</span><span class="n">m</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s2">"mat1"</span><span class="p">,</span> <span class="n">top_annotation</span><span class="o">=</span><span class="n">ha1</span><span class="p">)</span>
+    <span class="o">+</span> <span class="n">ch</span><span class="o">.</span><span class="n">rowAnnotation</span><span class="p">(</span><span class="n">sth</span><span class="o">=</span><span class="n">rng</span><span class="o">.</span><span class="n">uniform</span><span class="p">(</span><span class="n">size</span><span class="o">=</span><span class="mi">10</span><span class="p">))</span>
+    <span class="o">+</span> <span class="n">ch</span><span class="o">.</span><span class="n">Heatmap</span><span class="p">(</span><span class="n">m</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s2">"mat2"</span><span class="p">,</span> <span class="n">top_annotation</span><span class="o">=</span><span class="n">ha2</span><span class="p">)</span>
+<span class="p">)</span>
+<span class="n">ch</span><span class="o">.</span><span class="n">draw</span><span class="p">(</span><span class="n">ht_list</span><span class="p">,</span> <span class="n">padding</span><span class="o">=</span><span class="n">unit</span><span class="p">([</span><span class="mi">10</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">],</span> <span class="s2">"mm"</span><span class="p">))</span></code></pre></div>
+<figure>
+<img src="images/ch05_67_horiz_grouping.png"
+alt="Horizontal heatmap concatenation legend grouping" />
+<figcaption aria-hidden="true">Horizontal heatmap concatenation legend
+grouping</figcaption>
+</figure>
+<p>Conversely, in vertical concatenation (<code>% v %</code>), heatmap
+and column-annotation legends are grouped together while row-annotation
+legends form the second group:</p>
+<div class="code-wrapper"><pre class="codehilite"><code><span class="kn">from</span><span class="w"> </span><span class="nn">complexheatmap</span><span class="w"> </span><span class="kn">import</span> <span class="n">v</span>
+
+<span class="n">ha1</span> <span class="o">=</span> <span class="n">ch</span><span class="o">.</span><span class="n">HeatmapAnnotation</span><span class="p">(</span><span class="n">foo1</span><span class="o">=</span><span class="n">rng</span><span class="o">.</span><span class="n">uniform</span><span class="p">(</span><span class="n">size</span><span class="o">=</span><span class="mi">10</span><span class="p">),</span> <span class="n">bar1</span><span class="o">=</span><span class="n">rng</span><span class="o">.</span><span class="n">choice</span><span class="p">([</span><span class="s2">"f"</span><span class="p">,</span> <span class="s2">"m"</span><span class="p">],</span> <span class="mi">10</span><span class="p">,</span> <span class="n">replace</span><span class="o">=</span><span class="kc">True</span><span class="p">),</span> <span class="n">annotation_name_side</span><span class="o">=</span><span class="s2">"left"</span><span class="p">)</span>
+<span class="n">ha2</span> <span class="o">=</span> <span class="n">ch</span><span class="o">.</span><span class="n">HeatmapAnnotation</span><span class="p">(</span><span class="n">foo2</span><span class="o">=</span><span class="n">rng</span><span class="o">.</span><span class="n">uniform</span><span class="p">(</span><span class="n">size</span><span class="o">=</span><span class="mi">10</span><span class="p">),</span> <span class="n">bar2</span><span class="o">=</span><span class="n">rng</span><span class="o">.</span><span class="n">choice</span><span class="p">([</span><span class="s2">"f"</span><span class="p">,</span> <span class="s2">"m"</span><span class="p">],</span> <span class="mi">10</span><span class="p">,</span> <span class="n">replace</span><span class="o">=</span><span class="kc">True</span><span class="p">))</span>
+<span class="n">ht_list_v</span> <span class="o">=</span> <span class="p">(</span>
+    <span class="n">ch</span><span class="o">.</span><span class="n">Heatmap</span><span class="p">(</span><span class="n">m</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s2">"mat1"</span><span class="p">,</span> <span class="n">top_annotation</span><span class="o">=</span><span class="n">ha1</span><span class="p">)</span>
+    <span class="o">%</span> <span class="n">v</span>
+    <span class="o">%</span> <span class="n">ch</span><span class="o">.</span><span class="n">Heatmap</span><span class="p">(</span><span class="n">m</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s2">"mat2"</span><span class="p">,</span> <span class="n">top_annotation</span><span class="o">=</span><span class="n">ha2</span><span class="p">,</span> <span class="n">right_annotation</span><span class="o">=</span><span class="n">ch</span><span class="o">.</span><span class="n">rowAnnotation</span><span class="p">(</span><span class="n">sth</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">11</span><span class="p">)))</span>
+<span class="p">)</span>
+<span class="n">ch</span><span class="o">.</span><span class="n">draw</span><span class="p">(</span><span class="n">ht_list_v</span><span class="p">,</span> <span class="n">padding</span><span class="o">=</span><span class="n">unit</span><span class="p">([</span><span class="mi">10</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">],</span> <span class="s2">"mm"</span><span class="p">))</span></code></pre></div>
+<figure>
+<img src="images/ch05_68_vert_grouping.png"
+alt="Vertical heatmap concatenation legend grouping" />
+<figcaption aria-hidden="true">Vertical heatmap concatenation legend
+grouping</figcaption>
+</figure>
+<p>Control legend visibility with <code>show_legend</code> in
+<code>HeatmapAnnotation()</code> (accepts a boolean, sequence, or
+dictionary keyed by annotation name) and
+<code>show_heatmap_legend=False</code> in <code>Heatmap()</code>:</p>
+<div class="code-wrapper"><pre class="codehilite"><code><span class="n">ha</span> <span class="o">=</span> <span class="n">ch</span><span class="o">.</span><span class="n">HeatmapAnnotation</span><span class="p">(</span>
+    <span class="n">foo</span><span class="o">=</span><span class="n">rng</span><span class="o">.</span><span class="n">uniform</span><span class="p">(</span><span class="n">size</span><span class="o">=</span><span class="mi">10</span><span class="p">),</span>
+    <span class="n">bar</span><span class="o">=</span><span class="n">rng</span><span class="o">.</span><span class="n">choice</span><span class="p">([</span><span class="s2">"f"</span><span class="p">,</span> <span class="s2">"m"</span><span class="p">],</span> <span class="mi">10</span><span class="p">,</span> <span class="n">replace</span><span class="o">=</span><span class="kc">True</span><span class="p">),</span>
+    <span class="n">show_legend</span><span class="o">=</span><span class="p">[</span><span class="kc">True</span><span class="p">,</span> <span class="kc">False</span><span class="p">],</span>  <span class="c1"># or show_legend={"bar": False}</span>
+    <span class="n">annotation_name_side</span><span class="o">=</span><span class="s2">"left"</span><span class="p">,</span>
+<span class="p">)</span>
+<span class="n">ch</span><span class="o">.</span><span class="n">draw</span><span class="p">(</span>
+    <span class="n">ch</span><span class="o">.</span><span class="n">Heatmap</span><span class="p">(</span><span class="n">m</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s2">"mat1"</span><span class="p">,</span> <span class="n">top_annotation</span><span class="o">=</span><span class="n">ha</span><span class="p">)</span>
+    <span class="o">+</span> <span class="n">ch</span><span class="o">.</span><span class="n">Heatmap</span><span class="p">(</span><span class="n">m</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s2">"mat2"</span><span class="p">,</span> <span class="n">show_heatmap_legend</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+<span class="p">)</span></code></pre></div>
+<figure>
+<img src="images/ch05_69_hide_legends.png"
+alt="Hiding selected annotation and heatmap legends" />
+<figcaption aria-hidden="true">Hiding selected annotation and heatmap
+legends</figcaption>
+</figure>
+<p>Set <code>merge_legends=True</code> in <code>draw()</code> to combine
+heatmap and annotation legends into a single packed group:</p>
+<div class="code-wrapper"><pre class="codehilite"><code><span class="n">ha1</span> <span class="o">=</span> <span class="n">ch</span><span class="o">.</span><span class="n">HeatmapAnnotation</span><span class="p">(</span><span class="n">foo1</span><span class="o">=</span><span class="n">rng</span><span class="o">.</span><span class="n">uniform</span><span class="p">(</span><span class="n">size</span><span class="o">=</span><span class="mi">10</span><span class="p">),</span> <span class="n">bar1</span><span class="o">=</span><span class="n">rng</span><span class="o">.</span><span class="n">choice</span><span class="p">([</span><span class="s2">"f"</span><span class="p">,</span> <span class="s2">"m"</span><span class="p">],</span> <span class="mi">10</span><span class="p">,</span> <span class="n">replace</span><span class="o">=</span><span class="kc">True</span><span class="p">))</span>
+<span class="n">ha2</span> <span class="o">=</span> <span class="n">ch</span><span class="o">.</span><span class="n">rowAnnotation</span><span class="p">(</span><span class="n">foo2</span><span class="o">=</span><span class="n">rng</span><span class="o">.</span><span class="n">uniform</span><span class="p">(</span><span class="n">size</span><span class="o">=</span><span class="mi">10</span><span class="p">),</span> <span class="n">bar2</span><span class="o">=</span><span class="n">rng</span><span class="o">.</span><span class="n">choice</span><span class="p">(</span><span class="nb">list</span><span class="p">(</span><span class="s2">"abc"</span><span class="p">),</span> <span class="mi">10</span><span class="p">,</span> <span class="n">replace</span><span class="o">=</span><span class="kc">True</span><span class="p">))</span>
+<span class="n">ha3</span> <span class="o">=</span> <span class="n">ch</span><span class="o">.</span><span class="n">rowAnnotation</span><span class="p">(</span><span class="n">foo3</span><span class="o">=</span><span class="n">rng</span><span class="o">.</span><span class="n">uniform</span><span class="p">(</span><span class="n">size</span><span class="o">=</span><span class="mi">10</span><span class="p">),</span> <span class="n">bar3</span><span class="o">=</span><span class="n">rng</span><span class="o">.</span><span class="n">choice</span><span class="p">(</span><span class="n">MONTH_NAMES</span><span class="p">[:</span><span class="mi">3</span><span class="p">],</span> <span class="mi">10</span><span class="p">,</span> <span class="n">replace</span><span class="o">=</span><span class="kc">True</span><span class="p">))</span>
+<span class="n">ht_list</span> <span class="o">=</span> <span class="n">ch</span><span class="o">.</span><span class="n">Heatmap</span><span class="p">(</span><span class="n">m</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s2">"mat1"</span><span class="p">,</span> <span class="n">top_annotation</span><span class="o">=</span><span class="n">ha1</span><span class="p">)</span> <span class="o">+</span> <span class="n">ch</span><span class="o">.</span><span class="n">Heatmap</span><span class="p">(</span><span class="n">m</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s2">"mat2"</span><span class="p">,</span> <span class="n">left_annotation</span><span class="o">=</span><span class="n">ha2</span><span class="p">)</span> <span class="o">+</span> <span class="n">ha3</span>
+<span class="n">ch</span><span class="o">.</span><span class="n">draw</span><span class="p">(</span><span class="n">ht_list</span><span class="p">,</span> <span class="n">merge_legends</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span></code></pre></div>
+<figure>
+<img src="images/ch05_70_merge_legends.png"
+alt="Merging all heatmap and annotation legends with merge_legends=True" />
+<figcaption aria-hidden="true">Merging all heatmap and annotation
+legends with merge_legends=True</figcaption>
+</figure>
+<p>Set <code>legend_grouping="original"</code> to separate all
+annotation legends (both row and column) from pure heatmap legends:</p>
+<div class="code-wrapper"><pre class="codehilite"><code><span class="n">ch</span><span class="o">.</span><span class="n">draw</span><span class="p">(</span><span class="n">ht_list</span><span class="p">,</span> <span class="n">legend_grouping</span><span class="o">=</span><span class="s2">"original"</span><span class="p">)</span></code></pre></div>
+<figure>
+<img src="images/ch05_71_legend_grouping_original.png"
+alt="Separating pure heatmap and annotation legends with legend_grouping=‘original’" />
+<figcaption aria-hidden="true">Separating pure heatmap and annotation
+legends with legend_grouping=‘original’</figcaption>
+</figure>
+<p>A continuous color mapping can be rendered as discrete legend
+swatches by setting <code>color_bar="discrete"</code>:</p>
+<div class="code-wrapper"><pre class="codehilite"><code><span class="n">ch</span><span class="o">.</span><span class="n">draw</span><span class="p">(</span>
+    <span class="n">ch</span><span class="o">.</span><span class="n">Heatmap</span><span class="p">(</span>
+        <span class="n">m</span><span class="p">,</span>
+        <span class="n">name</span><span class="o">=</span><span class="s2">"mat"</span><span class="p">,</span>
+        <span class="n">heatmap_legend_param</span><span class="o">=</span><span class="p">{</span><span class="s2">"color_bar"</span><span class="p">:</span> <span class="s2">"discrete"</span><span class="p">},</span>
+        <span class="n">top_annotation</span><span class="o">=</span><span class="n">ch</span><span class="o">.</span><span class="n">HeatmapAnnotation</span><span class="p">(</span>
+            <span class="n">foo</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">11</span><span class="p">),</span>
+            <span class="n">annotation_legend_param</span><span class="o">=</span><span class="p">{</span><span class="s2">"foo"</span><span class="p">:</span> <span class="p">{</span><span class="s2">"color_bar"</span><span class="p">:</span> <span class="s2">"discrete"</span><span class="p">}},</span>
+        <span class="p">),</span>
+    <span class="p">)</span>
+<span class="p">)</span></code></pre></div>
+<figure>
+<img src="images/ch05_72_color_bar_discrete.png"
+alt="Rendering continuous color scales with discrete legend swatches" />
+<figcaption aria-hidden="true">Rendering continuous color scales with
+discrete legend swatches</figcaption>
+</figure>
+<p>For categorical annotation vectors, default colors preserve
+first-seen level order; you can enforce an explicit level order in the
+legend via a <code>col</code> dictionary or <code>at</code> inside
+<code>annotation_legend_param</code> (and
+<code>heatmap_legend_param</code>):</p>
+<div class="code-wrapper"><pre class="codehilite"><code><span class="n">chr_vec</span> <span class="o">=</span> <span class="n">rng</span><span class="o">.</span><span class="n">choice</span><span class="p">(</span><span class="nb">list</span><span class="p">(</span><span class="s2">"abc"</span><span class="p">),</span> <span class="mi">10</span><span class="p">,</span> <span class="n">replace</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">ch</span><span class="o">.</span><span class="n">draw</span><span class="p">(</span>
+    <span class="n">ch</span><span class="o">.</span><span class="n">Heatmap</span><span class="p">(</span>
+        <span class="n">m</span><span class="p">,</span>
+        <span class="n">name</span><span class="o">=</span><span class="s2">"mat"</span><span class="p">,</span>
+        <span class="n">top_annotation</span><span class="o">=</span><span class="n">ch</span><span class="o">.</span><span class="n">HeatmapAnnotation</span><span class="p">(</span>
+            <span class="nb">chr</span><span class="o">=</span><span class="n">chr_vec</span><span class="p">,</span>
+            <span class="n">fa_ordered</span><span class="o">=</span><span class="n">chr_vec</span><span class="p">,</span>
+            <span class="n">col</span><span class="o">=</span><span class="p">{</span><span class="s2">"fa_ordered"</span><span class="p">:</span> <span class="p">{</span><span class="s2">"c"</span><span class="p">:</span> <span class="s2">"#1B9E77"</span><span class="p">,</span> <span class="s2">"a"</span><span class="p">:</span> <span class="s2">"#D95F02"</span><span class="p">,</span> <span class="s2">"b"</span><span class="p">:</span> <span class="s2">"#7570B3"</span><span class="p">}},</span>
+            <span class="n">annotation_legend_param</span><span class="o">=</span><span class="p">{</span><span class="s2">"fa_ordered"</span><span class="p">:</span> <span class="p">{</span><span class="s2">"at"</span><span class="p">:</span> <span class="p">[</span><span class="s2">"b"</span><span class="p">,</span> <span class="s2">"c"</span><span class="p">,</span> <span class="s2">"a"</span><span class="p">]}},</span>
+        <span class="p">),</span>
+    <span class="p">)</span>
+<span class="p">)</span></code></pre></div>
+<figure>
+<img src="images/ch05_73_level_order.png"
+alt="Controlling discrete legend level ordering with col and at" />
+<figcaption aria-hidden="true">Controlling discrete legend level
+ordering with col and at</figcaption>
+</figure>
+<h2 id="add-customized-legends"><span class="header-section-number">5.5</span> Add customized legends<a class="anchor-section" aria-label="Anchor link to section" href="#add-customized-legends">#</a></h2>
+<p>Custom <code>Legend()</code> objects can be appended to the heatmap
+legend group via <code>heatmap_legend_list</code> or to the annotation
+legend group via <code>annotation_legend_list</code> in
+<code>draw()</code> (see also <a
+href="other-high-level-plots.html">Other High-level Plots</a>).</p>
+<p>Because <code>anno_points()</code>, <code>anno_lines()</code>, and
+<code>anno_summary()</code> do not automatically create legends, drawing
+the combined plot alone omits legends for those tracks:</p>
+<div class="code-wrapper"><pre class="codehilite"><code><span class="n">ha1</span> <span class="o">=</span> <span class="n">ch</span><span class="o">.</span><span class="n">HeatmapAnnotation</span><span class="p">(</span>
+    <span class="n">pt</span><span class="o">=</span><span class="n">ch</span><span class="o">.</span><span class="n">anno_points</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">11</span><span class="p">),</span> <span class="n">gp</span><span class="o">=</span><span class="n">gpar</span><span class="p">(</span><span class="n">col</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">repeat</span><span class="p">([</span><span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">],</span> <span class="mi">5</span><span class="p">)),</span> <span class="n">height</span><span class="o">=</span><span class="n">unit</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="s2">"cm"</span><span class="p">)),</span>
+    <span class="n">show_annotation_name</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+<span class="p">)</span>
+<span class="n">ha2</span> <span class="o">=</span> <span class="n">ch</span><span class="o">.</span><span class="n">HeatmapAnnotation</span><span class="p">(</span>
+    <span class="n">ln</span><span class="o">=</span><span class="n">ch</span><span class="o">.</span><span class="n">anno_lines</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">column_stack</span><span class="p">([</span><span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">11</span><span class="p">),</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">)]),</span> <span class="n">gp</span><span class="o">=</span><span class="n">gpar</span><span class="p">(</span><span class="n">col</span><span class="o">=</span><span class="p">[</span><span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">],</span> <span class="n">lty</span><span class="o">=</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">]),</span> <span class="n">height</span><span class="o">=</span><span class="n">unit</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="s2">"cm"</span><span class="p">)),</span>
+    <span class="n">show_annotation_name</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+<span class="p">)</span>
+<span class="n">ht_list</span> <span class="o">=</span> <span class="p">(</span>
+    <span class="n">ch</span><span class="o">.</span><span class="n">Heatmap</span><span class="p">(</span><span class="n">m</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s2">"mat1"</span><span class="p">,</span> <span class="n">top_annotation</span><span class="o">=</span><span class="n">ha1</span><span class="p">)</span>
+    <span class="o">+</span> <span class="n">ch</span><span class="o">.</span><span class="n">Heatmap</span><span class="p">(</span><span class="n">m</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s2">"mat2"</span><span class="p">,</span> <span class="n">top_annotation</span><span class="o">=</span><span class="n">ha2</span><span class="p">)</span>
+    <span class="o">+</span> <span class="n">ch</span><span class="o">.</span><span class="n">Heatmap</span><span class="p">(</span>
+        <span class="n">m</span><span class="p">[:,</span> <span class="p">[</span><span class="mi">0</span><span class="p">]],</span>
+        <span class="n">name</span><span class="o">=</span><span class="s2">"mat3"</span><span class="p">,</span>
+        <span class="n">top_annotation</span><span class="o">=</span><span class="n">ch</span><span class="o">.</span><span class="n">HeatmapAnnotation</span><span class="p">(</span><span class="n">summary</span><span class="o">=</span><span class="n">ch</span><span class="o">.</span><span class="n">anno_summary</span><span class="p">(</span><span class="n">gp</span><span class="o">=</span><span class="n">gpar</span><span class="p">(</span><span class="n">fill</span><span class="o">=</span><span class="p">[</span><span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">]))),</span>
+        <span class="n">width</span><span class="o">=</span><span class="n">unit</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="s2">"cm"</span><span class="p">),</span>
+    <span class="p">)</span>
+<span class="p">)</span>
+<span class="n">ch</span><span class="o">.</span><span class="n">draw</span><span class="p">(</span><span class="n">ht_list</span><span class="p">,</span> <span class="n">ht_gap</span><span class="o">=</span><span class="n">unit</span><span class="p">(</span><span class="mi">7</span><span class="p">,</span> <span class="s2">"mm"</span><span class="p">),</span> <span class="n">row_km</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span></code></pre></div>
+<figure>
+<img src="images/ch05_74_custom_annos_no_legend.png"
+alt="Complex annotations without manually added legends" />
+<figcaption aria-hidden="true">Complex annotations without manually
+added legends</figcaption>
+</figure>
+<p>Construct matching <code>Legend()</code> objects and pass them to
+<code>annotation_legend_list</code>:</p>
+<div class="code-wrapper"><pre class="codehilite"><code><span class="n">lgd_list</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="n">Legend</span><span class="p">(</span><span class="n">labels</span><span class="o">=</span><span class="p">[</span><span class="s2">"red"</span><span class="p">,</span> <span class="s2">"green"</span><span class="p">],</span> <span class="n">title</span><span class="o">=</span><span class="s2">"pt"</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="s2">"points"</span><span class="p">,</span> <span class="n">pch</span><span class="o">=</span><span class="mi">16</span><span class="p">,</span> <span class="n">legend_gp</span><span class="o">=</span><span class="n">gpar</span><span class="p">(</span><span class="n">col</span><span class="o">=</span><span class="p">[</span><span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">])),</span>
+    <span class="n">Legend</span><span class="p">(</span><span class="n">labels</span><span class="o">=</span><span class="p">[</span><span class="s2">"darkblue"</span><span class="p">,</span> <span class="s2">"lightblue"</span><span class="p">],</span> <span class="n">title</span><span class="o">=</span><span class="s2">"ln"</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="s2">"lines"</span><span class="p">,</span> <span class="n">legend_gp</span><span class="o">=</span><span class="n">gpar</span><span class="p">(</span><span class="n">col</span><span class="o">=</span><span class="p">[</span><span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">],</span> <span class="n">lty</span><span class="o">=</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">])),</span>
+    <span class="n">Legend</span><span class="p">(</span><span class="n">labels</span><span class="o">=</span><span class="p">[</span><span class="s2">"group1"</span><span class="p">,</span> <span class="s2">"group2"</span><span class="p">],</span> <span class="n">title</span><span class="o">=</span><span class="s2">"km"</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="s2">"boxplot"</span><span class="p">,</span> <span class="n">legend_gp</span><span class="o">=</span><span class="n">gpar</span><span class="p">(</span><span class="n">fill</span><span class="o">=</span><span class="p">[</span><span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">])),</span>
+<span class="p">]</span>
+<span class="n">ch</span><span class="o">.</span><span class="n">draw</span><span class="p">(</span><span class="n">ht_list</span><span class="p">,</span> <span class="n">ht_gap</span><span class="o">=</span><span class="n">unit</span><span class="p">(</span><span class="mi">7</span><span class="p">,</span> <span class="s2">"mm"</span><span class="p">),</span> <span class="n">row_km</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">annotation_legend_list</span><span class="o">=</span><span class="n">lgd_list</span><span class="p">)</span></code></pre></div>
+<figure>
+<img src="images/ch05_75_custom_annos_with_legend.png"
+alt="Attaching custom Legends via annotation_legend_list" />
+<figcaption aria-hidden="true">Attaching custom Legends via
+annotation_legend_list</figcaption>
+</figure>
+<h2 id="the-side-of-legends"><span class="header-section-number">5.6</span> The side of legends<a class="anchor-section" aria-label="Anchor link to section" href="#the-side-of-legends">#</a></h2>
+<p>By default, both heatmap and annotation legends sit on the right side
+of the plot. Use <code>heatmap_legend_side</code> and
+<code>annotation_legend_side</code> in <code>draw()</code> to place them
+on <code>"left"</code>, <code>"right"</code>, <code>"bottom"</code>, or
+<code>"top"</code>:</p>
+<div class="code-wrapper"><pre class="codehilite"><code><span class="n">ha1</span> <span class="o">=</span> <span class="n">ch</span><span class="o">.</span><span class="n">HeatmapAnnotation</span><span class="p">(</span><span class="n">foo1</span><span class="o">=</span><span class="n">rng</span><span class="o">.</span><span class="n">uniform</span><span class="p">(</span><span class="n">size</span><span class="o">=</span><span class="mi">10</span><span class="p">),</span> <span class="n">bar1</span><span class="o">=</span><span class="n">rng</span><span class="o">.</span><span class="n">choice</span><span class="p">([</span><span class="s2">"f"</span><span class="p">,</span> <span class="s2">"m"</span><span class="p">],</span> <span class="mi">10</span><span class="p">,</span> <span class="n">replace</span><span class="o">=</span><span class="kc">True</span><span class="p">),</span> <span class="n">annotation_name_side</span><span class="o">=</span><span class="s2">"left"</span><span class="p">)</span>
+<span class="n">ha2</span> <span class="o">=</span> <span class="n">ch</span><span class="o">.</span><span class="n">HeatmapAnnotation</span><span class="p">(</span><span class="n">foo2</span><span class="o">=</span><span class="n">rng</span><span class="o">.</span><span class="n">uniform</span><span class="p">(</span><span class="n">size</span><span class="o">=</span><span class="mi">10</span><span class="p">),</span> <span class="n">bar2</span><span class="o">=</span><span class="n">rng</span><span class="o">.</span><span class="n">choice</span><span class="p">([</span><span class="s2">"f"</span><span class="p">,</span> <span class="s2">"m"</span><span class="p">],</span> <span class="mi">10</span><span class="p">,</span> <span class="n">replace</span><span class="o">=</span><span class="kc">True</span><span class="p">))</span>
+<span class="n">ht_list</span> <span class="o">=</span> <span class="n">ch</span><span class="o">.</span><span class="n">Heatmap</span><span class="p">(</span><span class="n">m</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s2">"mat1"</span><span class="p">,</span> <span class="n">top_annotation</span><span class="o">=</span><span class="n">ha1</span><span class="p">)</span> <span class="o">+</span> <span class="n">ch</span><span class="o">.</span><span class="n">rowAnnotation</span><span class="p">(</span><span class="n">sth</span><span class="o">=</span><span class="n">rng</span><span class="o">.</span><span class="n">uniform</span><span class="p">(</span><span class="n">size</span><span class="o">=</span><span class="mi">10</span><span class="p">),</span> <span class="n">annotation_name_side</span><span class="o">=</span><span class="s2">"top"</span><span class="p">)</span> <span class="o">+</span> <span class="n">ch</span><span class="o">.</span><span class="n">Heatmap</span><span class="p">(</span><span class="n">m</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s2">"mat2"</span><span class="p">,</span> <span class="n">top_annotation</span><span class="o">=</span><span class="n">ha2</span><span class="p">)</span>
+<span class="n">ch</span><span class="o">.</span><span class="n">draw</span><span class="p">(</span>
+    <span class="n">ht_list</span><span class="p">,</span>
+    <span class="n">heatmap_legend_side</span><span class="o">=</span><span class="s2">"left"</span><span class="p">,</span>
+    <span class="n">annotation_legend_side</span><span class="o">=</span><span class="s2">"bottom"</span><span class="p">,</span>
+    <span class="n">ht_gap</span><span class="o">=</span><span class="n">unit</span><span class="p">(</span><span class="mi">4</span><span class="p">,</span> <span class="s2">"mm"</span><span class="p">),</span>
+    <span class="n">padding</span><span class="o">=</span><span class="n">unit</span><span class="p">([</span><span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">12</span><span class="p">],</span> <span class="s2">"mm"</span><span class="p">),</span>
+<span class="p">)</span></code></pre></div>
+<figure>
+<img src="images/ch05_76_legend_sides.png"
+alt="Placing heatmap legends on the left and annotation legends at the bottom" />
+<figcaption aria-hidden="true">Placing heatmap legends on the left and
+annotation legends at the bottom</figcaption>
+</figure>
+<p>When placing legends at the top or bottom, you can also make each
+individual continuous legend horizontal
+(<code>"legend_direction": "horizontal"</code>) and each discrete legend
+single-row (<code>"nrow": 1</code>) inside
+<code>heatmap_legend_param</code> and
+<code>annotation_legend_param</code>:</p>
+<blockquote>
+<p><strong>Python note:</strong> Standalone <code>Legend()</code> uses
+<code>direction="horizontal"</code>, whereas
+<code>heatmap_legend_param</code> and
+<code>annotation_legend_param</code> forward arguments to
+<code>ColorMapping.color_mapping_legend()</code>, where the parameter
+name is <code>legend_direction="horizontal"</code>.</p>
+</blockquote>
+<div class="code-wrapper"><pre class="codehilite"><code><span class="n">ha1</span> <span class="o">=</span> <span class="n">ch</span><span class="o">.</span><span class="n">HeatmapAnnotation</span><span class="p">(</span>
+    <span class="n">foo1</span><span class="o">=</span><span class="n">rng</span><span class="o">.</span><span class="n">uniform</span><span class="p">(</span><span class="n">size</span><span class="o">=</span><span class="mi">10</span><span class="p">),</span>
+    <span class="n">bar1</span><span class="o">=</span><span class="n">rng</span><span class="o">.</span><span class="n">choice</span><span class="p">([</span><span class="s2">"f"</span><span class="p">,</span> <span class="s2">"m"</span><span class="p">],</span> <span class="mi">10</span><span class="p">,</span> <span class="n">replace</span><span class="o">=</span><span class="kc">True</span><span class="p">),</span>
+    <span class="n">annotation_name_side</span><span class="o">=</span><span class="s2">"left"</span><span class="p">,</span>
+    <span class="n">annotation_legend_param</span><span class="o">=</span><span class="p">{</span><span class="s2">"foo1"</span><span class="p">:</span> <span class="p">{</span><span class="s2">"legend_direction"</span><span class="p">:</span> <span class="s2">"horizontal"</span><span class="p">},</span> <span class="s2">"bar1"</span><span class="p">:</span> <span class="p">{</span><span class="s2">"nrow"</span><span class="p">:</span> <span class="mi">1</span><span class="p">}},</span>
+<span class="p">)</span>
+<span class="n">ha2</span> <span class="o">=</span> <span class="n">ch</span><span class="o">.</span><span class="n">HeatmapAnnotation</span><span class="p">(</span>
+    <span class="n">foo2</span><span class="o">=</span><span class="n">rng</span><span class="o">.</span><span class="n">uniform</span><span class="p">(</span><span class="n">size</span><span class="o">=</span><span class="mi">10</span><span class="p">),</span>
+    <span class="n">bar2</span><span class="o">=</span><span class="n">rng</span><span class="o">.</span><span class="n">choice</span><span class="p">([</span><span class="s2">"f"</span><span class="p">,</span> <span class="s2">"m"</span><span class="p">],</span> <span class="mi">10</span><span class="p">,</span> <span class="n">replace</span><span class="o">=</span><span class="kc">True</span><span class="p">),</span>
+    <span class="n">annotation_legend_param</span><span class="o">=</span><span class="p">{</span><span class="s2">"foo2"</span><span class="p">:</span> <span class="p">{</span><span class="s2">"legend_direction"</span><span class="p">:</span> <span class="s2">"horizontal"</span><span class="p">},</span> <span class="s2">"bar2"</span><span class="p">:</span> <span class="p">{</span><span class="s2">"nrow"</span><span class="p">:</span> <span class="mi">1</span><span class="p">}},</span>
+<span class="p">)</span>
+<span class="n">ht_list</span> <span class="o">=</span> <span class="p">(</span>
+    <span class="n">ch</span><span class="o">.</span><span class="n">Heatmap</span><span class="p">(</span><span class="n">m</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s2">"mat1"</span><span class="p">,</span> <span class="n">top_annotation</span><span class="o">=</span><span class="n">ha1</span><span class="p">,</span> <span class="n">heatmap_legend_param</span><span class="o">=</span><span class="p">{</span><span class="s2">"legend_direction"</span><span class="p">:</span> <span class="s2">"horizontal"</span><span class="p">})</span>
+    <span class="o">+</span> <span class="n">ch</span><span class="o">.</span><span class="n">rowAnnotation</span><span class="p">(</span><span class="n">sth</span><span class="o">=</span><span class="n">rng</span><span class="o">.</span><span class="n">uniform</span><span class="p">(</span><span class="n">size</span><span class="o">=</span><span class="mi">10</span><span class="p">),</span> <span class="n">annotation_name_side</span><span class="o">=</span><span class="s2">"top"</span><span class="p">,</span> <span class="n">annotation_legend_param</span><span class="o">=</span><span class="p">{</span><span class="s2">"sth"</span><span class="p">:</span> <span class="p">{</span><span class="s2">"legend_direction"</span><span class="p">:</span> <span class="s2">"horizontal"</span><span class="p">}})</span>
+    <span class="o">+</span> <span class="n">ch</span><span class="o">.</span><span class="n">Heatmap</span><span class="p">(</span><span class="n">m</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s2">"mat2"</span><span class="p">,</span> <span class="n">top_annotation</span><span class="o">=</span><span class="n">ha2</span><span class="p">,</span> <span class="n">heatmap_legend_param</span><span class="o">=</span><span class="p">{</span><span class="s2">"legend_direction"</span><span class="p">:</span> <span class="s2">"horizontal"</span><span class="p">})</span>
+<span class="p">)</span>
+<span class="n">ch</span><span class="o">.</span><span class="n">draw</span><span class="p">(</span>
+    <span class="n">ht_list</span><span class="p">,</span>
+    <span class="n">merge_legends</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+    <span class="n">heatmap_legend_side</span><span class="o">=</span><span class="s2">"bottom"</span><span class="p">,</span>
+    <span class="n">annotation_legend_side</span><span class="o">=</span><span class="s2">"bottom"</span><span class="p">,</span>
+    <span class="n">ht_gap</span><span class="o">=</span><span class="n">unit</span><span class="p">(</span><span class="mi">4</span><span class="p">,</span> <span class="s2">"mm"</span><span class="p">),</span>
+    <span class="n">padding</span><span class="o">=</span><span class="n">unit</span><span class="p">([</span><span class="mi">2</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">12</span><span class="p">],</span> <span class="s2">"mm"</span><span class="p">),</span>
+<span class="p">)</span></code></pre></div>
+<figure>
+<img src="images/ch05_77_all_horizontal_bottom.png"
+alt="All legends horizontal and merged at the bottom" />
+<figcaption aria-hidden="true">All legends horizontal and merged at the
+bottom</figcaption>
+</figure>
+
+          </section>
+          <nav class="chapter-footer-nav" aria-label="Chapter Navigation">
+            <a href="a-list-of-heatmaps.html">&larr; 4 A List of Heatmaps</a>
+            <a href="heatmap-decoration.html">6 Heatmap Decoration &rarr;</a>
+          </nav>
+        </main>
+        <a href="a-list-of-heatmaps.html" class="navigation navigation-prev" aria-label="Previous chapter: A List of Heatmaps" title="Previous: A List of Heatmaps">&#8249;</a>
+        <a href="heatmap-decoration.html" class="navigation navigation-next" aria-label="Next chapter: Heatmap Decoration" title="Next: Heatmap Decoration">&#8250;</a>
+      </div>
+    </div>
+  </div>
+  <script src="assets/gitbook.js"></script>
+</body>
+</html>

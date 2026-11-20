@@ -1,0 +1,1067 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Chapter 4 A List of Heatmaps | ComplexHeatmap-py Complete Reference</title>
+  <meta name="description" content="Python port of ComplexHeatmap Complete Reference using ComplexHeatmap-py.">
+  <link rel="stylesheet" href="assets/gitbook.css">
+</head>
+<body>
+  <div class="book">
+    <nav class="book-summary" aria-label="Table of Contents">
+      <div class="book-summary-header">
+        <a class="book-summary-title" href="index.html">ComplexHeatmap-py Complete Reference</a>
+        <span class="book-summary-subtitle">Python Port via ComplexHeatmap-py</span>
+      </div>
+      <div class="book-search-box">
+        <input id="book-search-input" type="search" placeholder="Search book..." aria-label="Search book">
+      </div>
+      <ul class="summary">
+        <li class="chapter"><a href="index.html"><span>About</span></a><ul><li class="level-2"><a href="index.html#installation">Installation</a></li>
+<li class="level-2"><a href="index.html#r-to-python-migration-highlights">R-to-Python Migration
+Highlights</a></li>
+<li class="level-2"><a href="index.html#citation">Citation</a></li>
+<li class="level-2"><a href="index.html#python-environment">Python Environment</a></li></ul></li>
+<li class="chapter"><a href="introduction.html"><span class="header-section-number">1</span><span>Introduction</span></a><ul><li class="level-2"><a href="introduction.html#general-design"><span class="header-section-number">1.1</span> General design</a></li>
+<li class="level-2"><a href="introduction.html#a-brief-description-of-following-chapters"><span class="header-section-number">1.2</span> A brief description
+of following chapters</a></li></ul></li>
+<li class="chapter"><a href="a-single-heatmap.html"><span class="header-section-number">2</span><span>A Single Heatmap</span></a><ul><li class="level-2"><a href="a-single-heatmap.html#colors"><span class="header-section-number">2.1</span> Colors</a></li>
+<li class="level-2"><a href="a-single-heatmap.html#heatmap-titles"><span class="header-section-number">2.2</span> Titles</a></li>
+<li class="level-2"><a href="a-single-heatmap.html#clustering"><span class="header-section-number">2.3</span> Clustering</a></li>
+<li class="level-3"><a href="a-single-heatmap.html#distance-methods"><span class="header-section-number">2.3.1</span> Distance methods</a></li>
+<li class="level-3"><a href="a-single-heatmap.html#clustering-methods"><span class="header-section-number">2.3.2</span> Clustering methods</a></li>
+<li class="level-3"><a href="a-single-heatmap.html#render-dendrograms"><span class="header-section-number">2.3.3</span> Render dendrograms</a></li>
+<li class="level-3"><a href="a-single-heatmap.html#reorder-dendrograms"><span class="header-section-number">2.3.4</span> Reorder dendrograms</a></li>
+<li class="level-2"><a href="a-single-heatmap.html#row-and-column-orders"><span class="header-section-number">2.4</span> Set row and column orders</a></li>
+<li class="level-2"><a href="a-single-heatmap.html#heatmap-seriation"><span class="header-section-number">2.5</span> Seriation</a></li>
+<li class="level-2"><a href="a-single-heatmap.html#dimension-names"><span class="header-section-number">2.6</span> Dimension labels</a></li>
+<li class="level-2"><a href="a-single-heatmap.html#heatmap-split"><span class="header-section-number">2.7</span> Heatmap split</a></li>
+<li class="level-3"><a href="a-single-heatmap.html#split-by-kmeans-clustering"><span class="header-section-number">2.7.1</span> Split by k-means clustering</a></li>
+<li class="level-3"><a href="a-single-heatmap.html#split-by-categorical-variables"><span class="header-section-number">2.7.2</span> Split by categorical
+variables</a></li>
+<li class="level-3"><a href="a-single-heatmap.html#split-by-dendrogram"><span class="header-section-number">2.7.3</span> Split by dendrogram</a></li>
+<li class="level-3"><a href="a-single-heatmap.html#order-of-slices"><span class="header-section-number">2.7.4</span> Order of slices</a></li>
+<li class="level-3"><a href="a-single-heatmap.html#titles-for-splitting"><span class="header-section-number">2.7.5</span> Titles for splitting</a></li>
+<li class="level-3"><a href="a-single-heatmap.html#graphic-parameters-for-splitting"><span class="header-section-number">2.7.6</span> Graphic parameters for
+splitting</a></li>
+<li class="level-3"><a href="a-single-heatmap.html#gaps-between-slices"><span class="header-section-number">2.7.7</span> Gaps between slices</a></li>
+<li class="level-3"><a href="a-single-heatmap.html#split-heatmap-annotations"><span class="header-section-number">2.7.8</span> Split heatmap annotations</a></li>
+<li class="level-2"><a href="a-single-heatmap.html#heatmap-as-raster-image"><span class="header-section-number">2.8</span> Heatmap as raster image</a></li>
+<li class="level-2"><a href="a-single-heatmap.html#customize-the-heatmap-body"><span class="header-section-number">2.9</span> Customize the heatmap body</a></li>
+<li class="level-3"><a href="a-single-heatmap.html#cell-fun"><span class="header-section-number">2.9.1</span> cell_fun</a></li>
+<li class="level-3"><a href="a-single-heatmap.html#layer-fun"><span class="header-section-number">2.9.2</span> layer_fun</a></li>
+<li class="level-2"><a href="a-single-heatmap.html#size-of-the-heatmap"><span class="header-section-number">2.10</span> Size of the heatmap</a></li>
+<li class="level-2"><a href="a-single-heatmap.html#plot-the-heatmap"><span class="header-section-number">2.11</span> Plot the heatmap</a></li>
+<li class="level-2"><a href="a-single-heatmap.html#get-orders-and-dendrograms-from-heatmap"><span class="header-section-number">2.12</span> Extract orders and
+dendrograms</a></li>
+<li class="level-2"><a href="a-single-heatmap.html#subset-a-heatmap"><span class="header-section-number">2.13</span> Subset a heatmap</a></li></ul></li>
+<li class="chapter"><a href="heatmap-annotations.html"><span class="header-section-number">3</span><span>Heatmap Annotations</span></a><ul><li class="level-2"><a href="heatmap-annotations.html#simple-annotation"><span class="header-section-number">3.1</span> Simple annotation</a></li>
+<li class="level-2"><a href="heatmap-annotations.html#simple-annotation-as-an-annotation-function"><span class="header-section-number">3.2</span> Simple annotation
+as an annotation function</a></li>
+<li class="level-2"><a href="heatmap-annotations.html#empty-annotation"><span class="header-section-number">3.3</span> Empty annotation</a></li>
+<li class="level-2"><a href="heatmap-annotations.html#block-annotation"><span class="header-section-number">3.4</span> Block annotation</a></li>
+<li class="level-3"><a href="heatmap-annotations.html#block-for-putting-labels"><span class="header-section-number">3.4.1</span> Block for putting labels</a></li>
+<li class="level-3"><a href="heatmap-annotations.html#blocks-as-plotting-regions"><span class="header-section-number">3.4.2</span> Blocks as plotting regions</a></li>
+<li class="level-2"><a href="heatmap-annotations.html#image-annotation"><span class="header-section-number">3.5</span> Image annotation</a></li>
+<li class="level-2"><a href="heatmap-annotations.html#points-annotation"><span class="header-section-number">3.6</span> Points annotation</a></li>
+<li class="level-2"><a href="heatmap-annotations.html#lines-annotation"><span class="header-section-number">3.7</span> Line annotation</a></li>
+<li class="level-2"><a href="heatmap-annotations.html#barplot_annotation"><span class="header-section-number">3.8</span> Barplot annotation</a></li>
+<li class="level-2"><a href="heatmap-annotations.html#box-annotation"><span class="header-section-number">3.9</span> Boxplot annotation</a></li>
+<li class="level-2"><a href="heatmap-annotations.html#histogram-annotation"><span class="header-section-number">3.10</span> Histogram annotation</a></li>
+<li class="level-2"><a href="heatmap-annotations.html#density-annotation"><span class="header-section-number">3.11</span> Density annotation</a></li>
+<li class="level-2"><a href="heatmap-annotations.html#joyplot-annotation"><span class="header-section-number">3.12</span> Joyplot annotation</a></li>
+<li class="level-2"><a href="heatmap-annotations.html#horizon-chart-annotation"><span class="header-section-number">3.13</span> Horizon chart annotation</a></li>
+<li class="level-2"><a href="heatmap-annotations.html#text-annotation"><span class="header-section-number">3.14</span> Text annotation</a></li>
+<li class="level-2"><a href="heatmap-annotations.html#anno-numeric"><span class="header-section-number">3.15</span> Numeric labels annotation</a></li>
+<li class="level-2"><a href="heatmap-annotations.html#completely-customized-annotation"><span class="header-section-number">3.16</span> Completely customized
+annotation</a></li>
+<li class="level-2"><a href="heatmap-annotations.html#mark-annotation"><span class="header-section-number">3.17</span> Mark annotation</a></li>
+<li class="level-2"><a href="heatmap-annotations.html#zoom-annotation"><span class="header-section-number">3.18</span> Zoom/link annotation</a></li>
+<li class="level-2"><a href="heatmap-annotations.html#anno-text-box"><span class="header-section-number">3.19</span> Text box annotation</a></li>
+<li class="level-3"><a href="heatmap-annotations.html#construct-the-text-box"><span class="header-section-number">3.19.1</span> Construct the text box</a></li>
+<li class="level-3"><a href="heatmap-annotations.html#draw-textbox-annotation"><span class="header-section-number">3.19.2</span> Draw textbox annotation</a></li>
+<li class="level-2"><a href="heatmap-annotations.html#summary-annotation"><span class="header-section-number">3.20</span> Summary annotation</a></li>
+<li class="level-2"><a href="heatmap-annotations.html#multiple-annotations"><span class="header-section-number">3.21</span> Multiple annotations</a></li>
+<li class="level-3"><a href="heatmap-annotations.html#heatmap-annotation-general-settings"><span class="header-section-number">3.21.1</span> General settings</a></li>
+<li class="level-3"><a href="heatmap-annotations.html#size-of-annotations"><span class="header-section-number">3.21.2</span> Size of annotations</a></li>
+<li class="level-3"><a href="heatmap-annotations.html#annotation-labels"><span class="header-section-number">3.21.3</span> Annotation labels</a></li>
+<li class="level-2"><a href="heatmap-annotations.html#heatmap-annotation-utility-function"><span class="header-section-number">3.22</span> Utility functions</a></li>
+<li class="level-2"><a href="heatmap-annotations.html#implement-new-annotation-functions"><span class="header-section-number">3.23</span> Implement new annotation
+functions</a></li>
+<li class="level-3"><a href="heatmap-annotations.html#construct-annotation-function-by-cell-fun"><span class="header-section-number">3.23.1</span> Construct annotation
+function by cell_fun</a></li></ul></li>
+<li class="chapter active"><a href="a-list-of-heatmaps.html"><span class="header-section-number">4</span><span>A List of Heatmaps</span></a><ul><li class="level-2"><a href="a-list-of-heatmaps.html#heatmap-list-titles"><span class="header-section-number">4.1</span> Titles</a></li>
+<li class="level-2"><a href="a-list-of-heatmaps.html#size-of-heatmaps"><span class="header-section-number">4.2</span> Size of heatmaps</a></li>
+<li class="level-2"><a href="a-list-of-heatmaps.html#gap-between-heatmaps"><span class="header-section-number">4.3</span> Gap between heatmaps</a></li>
+<li class="level-2"><a href="a-list-of-heatmaps.html#automatic-adjustment-to-the-main-heatmap"><span class="header-section-number">4.4</span> Automatic adjustment
+to the main heatmap</a></li>
+<li class="level-2"><a href="a-list-of-heatmaps.html#control-main-heatmap-in-draw-function"><span class="header-section-number">4.5</span> Control main heatmap in
+draw() function</a></li>
+<li class="level-2"><a href="a-list-of-heatmaps.html#annotations-as-components-are-adjusted"><span class="header-section-number">4.6</span> Annotations as
+components are adjusted</a></li>
+<li class="level-2"><a href="a-list-of-heatmaps.html#concatenate-with-annotations"><span class="header-section-number">4.7</span> Concatenate with annotations</a></li>
+<li class="level-2"><a href="a-list-of-heatmaps.html#concatenate-only-the-annotations"><span class="header-section-number">4.8</span> Concatenate only the
+annotations</a></li>
+<li class="level-2"><a href="a-list-of-heatmaps.html#vertical-concatenation"><span class="header-section-number">4.9</span> Vertical concatenation</a></li>
+<li class="level-2"><a href="a-list-of-heatmaps.html#subset-heatmap-list"><span class="header-section-number">4.10</span> Subset the heatmap list</a></li>
+<li class="level-2"><a href="a-list-of-heatmaps.html#plot-the-heatmap-list"><span class="header-section-number">4.11</span> Plot the heatmap list</a></li>
+<li class="level-2"><a href="a-list-of-heatmaps.html#get-orders-and-dendrograms-from-a-list-of-heatmaps"><span class="header-section-number">4.12</span> Get orders
+and dendrograms</a></li>
+<li class="level-2"><a href="a-list-of-heatmaps.html#change-parameters-globally"><span class="header-section-number">4.13</span> Change parameters globally</a></li>
+<li class="level-2"><a href="a-list-of-heatmaps.html#adjust-blank-space-caused-by-annotations"><span class="header-section-number">4.14</span> Adjust blank space
+caused by annotations</a></li>
+<li class="level-2"><a href="a-list-of-heatmaps.html#manually-increase-space-around-the-plot"><span class="header-section-number">4.15</span> Manually increase space
+around the plot</a></li></ul></li>
+<li class="chapter"><a href="legends.html"><span class="header-section-number">5</span><span>Legends</span></a><ul><li class="level-2"><a href="legends.html#continuous-legends"><span class="header-section-number">5.1</span> Continuous legends</a></li>
+<li class="level-2"><a href="legends.html#discrete-legends"><span class="header-section-number">5.2</span> Discrete legends</a></li>
+<li class="level-2"><a href="legends.html#a-list-of-legends"><span class="header-section-number">5.3</span> A list of legends</a></li>
+<li class="level-2"><a href="legends.html#heatmap-and-annotation-legends"><span class="header-section-number">5.4</span> Heatmap and annotation
+legends</a></li>
+<li class="level-2"><a href="legends.html#add-customized-legends"><span class="header-section-number">5.5</span> Add customized legends</a></li>
+<li class="level-2"><a href="legends.html#the-side-of-legends"><span class="header-section-number">5.6</span> The side of legends</a></li></ul></li>
+<li class="chapter"><a href="heatmap-decoration.html"><span class="header-section-number">6</span><span>Heatmap Decoration</span></a><ul><li class="level-2"><a href="heatmap-decoration.html#decoration-functions"><span class="header-section-number">6.1</span> Decoration functions</a></li>
+<li class="level-2"><a href="heatmap-decoration.html#decoration-examples"><span class="header-section-number">6.2</span> Examples</a></li>
+<li class="level-3"><a href="heatmap-decoration.html#barplot-for-single-column-heatmap"><span class="header-section-number">6.2.1</span> Barplot for single-column
+heatmap</a></li>
+<li class="level-3"><a href="heatmap-decoration.html#add-titles-for-row-annotations"><span class="header-section-number">6.2.2</span> Add titles for row
+annotations</a></li>
+<li class="level-3"><a href="heatmap-decoration.html#other-possible-use-of-decorations"><span class="header-section-number">6.2.3</span> Other possible use of
+decorations</a></li></ul></li>
+<li class="chapter"><a href="oncoprint.html"><span class="header-section-number">7</span><span>OncoPrint</span></a><ul><li class="level-2"><a href="oncoprint.html#oncoprint-general-settings"><span class="header-section-number">7.1</span> General settings</a></li>
+<li class="level-3"><a href="oncoprint.html#input-data-format"><span class="header-section-number">7.1.1</span> Input data format</a></li>
+<li class="level-3"><a href="oncoprint.html#define-the-alter-fun"><span class="header-section-number">7.1.2</span> Define the alter_fun()</a></li>
+<li class="level-3"><a href="oncoprint.html#oncoprint-background"><span class="header-section-number">7.1.3</span> Background</a></li>
+<li class="level-3"><a href="oncoprint.html#complex-alteration-types"><span class="header-section-number">7.1.4</span> Complex alteration types</a></li>
+<li class="level-3"><a href="oncoprint.html#simplify-alter-fun"><span class="header-section-number">7.1.5</span> Simplify alter_fun</a></li>
+<li class="level-3"><a href="oncoprint.html#other-heatmap-related-settings"><span class="header-section-number">7.1.6</span> Other heatmap-related
+settings</a></li>
+<li class="level-2"><a href="oncoprint.html#apply-to-cbioportal-dataset"><span class="header-section-number">7.2</span> Apply to cBioPortal dataset</a></li>
+<li class="level-3"><a href="oncoprint.html#remove-empty-rows-and-columns"><span class="header-section-number">7.2.1</span> Remove empty rows and
+columns</a></li>
+<li class="level-3"><a href="oncoprint.html#reorder-the-oncoprint"><span class="header-section-number">7.2.2</span> Reorder the oncoPrint</a></li>
+<li class="level-3"><a href="oncoprint.html#oncoprint-annotations"><span class="header-section-number">7.2.3</span> OncoPrint annotations</a></li>
+<li class="level-3"><a href="oncoprint.html#oncoprint-as-a-heatmap"><span class="header-section-number">7.2.4</span> oncoPrint as a Heatmap</a></li></ul></li>
+<li class="chapter"><a href="upset-plot.html"><span class="header-section-number">8</span><span>UpSet plot</span></a><ul><li class="level-2"><a href="upset-plot.html#input-data"><span class="header-section-number">8.1</span> Input data</a></li>
+<li class="level-2"><a href="upset-plot.html#upset-mode"><span class="header-section-number">8.2</span> Mode</a></li>
+<li class="level-2"><a href="upset-plot.html#make-the-combination-matrix"><span class="header-section-number">8.3</span> Make the combination matrix</a></li>
+<li class="level-2"><a href="upset-plot.html#upset-utility-functions"><span class="header-section-number">8.4</span> Utility functions</a></li>
+<li class="level-3"><a href="upset-plot.html#upset-subsetting"><span class="header-section-number">8.4.1</span> Subsetting a CombMat</a></li>
+<li class="level-2"><a href="upset-plot.html#upset-making-the-plot"><span class="header-section-number">8.5</span> Make the plot</a></li>
+<li class="level-2"><a href="upset-plot.html#upset-plots-as-heatmaps"><span class="header-section-number">8.6</span> UpSet plots as heatmaps</a></li>
+<li class="level-2"><a href="upset-plot.html#upset-movies"><span class="header-section-number">8.7</span> Example with the movies dataset</a></li>
+<li class="level-2"><a href="upset-plot.html#upset-genomic"><span class="header-section-number">8.8</span> Example with the genomic regions</a></li></ul></li>
+<li class="chapter"><a href="interactive-complexheatmap.html"><span class="header-section-number">9</span><span>Interactive ComplexHeatmap</span></a><ul><li class="level-2"><a href="interactive-complexheatmap.html#inline-jupyter"><span class="header-section-number">9.1</span> Inline rendering in Jupyter and IPython</a></li>
+<li class="level-2"><a href="interactive-complexheatmap.html#brush-and-zoom"><span class="header-section-number">9.2</span> Programmatic brush selection and sub-heatmap
+zoom</a></li>
+<li class="level-2"><a href="interactive-complexheatmap.html#split-slice-zoom"><span class="header-section-number">9.3</span> Extracting and zooming into split slices</a></li>
+<li class="level-2"><a href="interactive-complexheatmap.html#shiny-and-python"><span class="header-section-number">9.4</span> Interactive R Shiny ecosystem and Python
+notebooks</a></li></ul></li>
+<li class="chapter"><a href="integrate-with-other-packages.html"><span class="header-section-number">10</span><span>Integrate with other
+packages</span></a><ul><li class="level-2"><a href="integrate-with-other-packages.html#pheatmap"><span class="header-section-number">10.1</span> pheatmap, heatmap, and heatmap.2</a></li>
+<li class="level-3"><a href="integrate-with-other-packages.html#pheatmap-examples"><span class="header-section-number">10.1.1</span> Examples</a></li>
+<li class="level-3"><a href="integrate-with-other-packages.html#pheatmap-translation"><span class="header-section-number">10.1.2</span> Translation</a></li>
+<li class="level-3"><a href="integrate-with-other-packages.html#pheatmap-comparisons"><span class="header-section-number">10.1.3</span> Comparisons and legacy wrappers</a></li>
+<li class="level-2"><a href="integrate-with-other-packages.html#multipanel-composition"><span class="header-section-number">10.2</span> Multi-panel layout composition</a></li>
+<li class="level-3"><a href="integrate-with-other-packages.html#grid-grabexpr"><span class="header-section-number">10.2.1</span> Capturing heatmaps with
+grid_grabExpr</a></li>
+<li class="level-3"><a href="integrate-with-other-packages.html#matplotlib-integration"><span class="header-section-number">10.2.2</span> Combining ComplexHeatmap-py with
+Matplotlib Axes</a></li>
+<li class="level-2"><a href="integrate-with-other-packages.html#gt-render"><span class="header-section-number">10.3</span> Rich text with gt_render</a></li>
+<li class="level-3"><a href="integrate-with-other-packages.html#gt-render-title"><span class="header-section-number">10.3.1</span> Titles</a></li>
+<li class="level-3"><a href="integrate-with-other-packages.html#gt-render-dimnames"><span class="header-section-number">10.3.2</span> Row and column names</a></li>
+<li class="level-3"><a href="integrate-with-other-packages.html#gt-render-annotations"><span class="header-section-number">10.3.3</span> Styled titles with annotations</a></li>
+<li class="level-3"><a href="integrate-with-other-packages.html#gt-render-anno-text"><span class="header-section-number">10.3.4</span> Text and textbox annotations</a></li>
+<li class="level-3"><a href="integrate-with-other-packages.html#gt-render-legends"><span class="header-section-number">10.3.5</span> Legends</a></li></ul></li>
+<li class="chapter"><a href="other-high-level-plots.html"><span class="header-section-number">11</span><span>Other High-level Plots</span></a><ul><li class="level-2"><a href="other-high-level-plots.html#density-heatmap"><span class="header-section-number">11.1</span> Density heatmap</a></li>
+<li class="level-2"><a href="other-high-level-plots.html#stacked-summary-plot"><span class="header-section-number">11.2</span> Stacked summary plot</a></li></ul></li>
+<li class="chapter"><a href="three-dimensional-complexheatmap.html"><span class="header-section-number">12</span><span>Three-dimensional ComplexHeatmap</span></a><ul><li class="level-2"><a href="three-dimensional-complexheatmap.html#motivation"><span class="header-section-number">12.1</span> Motivation</a></li>
+<li class="level-2"><a href="three-dimensional-complexheatmap.html#implementation-of-3d-heatmap"><span class="header-section-number">12.2</span> Implementation of 3D heatmap</a></li></ul></li>
+<li class="chapter"><a href="genome-level-heatmap.html"><span class="header-section-number">13</span><span>Genome-level heatmap</span></a><ul><li class="level-2"><a href="genome-level-heatmap.html#genomic-bins"><span class="header-section-number">13.1</span> Genomic bins and signal normalization</a></li>
+<li class="level-2"><a href="genome-level-heatmap.html#horizontal-genome-heatmap"><span class="header-section-number">13.2</span> Horizontal genome-level heatmap</a></li>
+<li class="level-2"><a href="genome-level-heatmap.html#vertical-genome-heatmap"><span class="header-section-number">13.3</span> Vertical genome-level heatmap</a></li>
+<li class="level-2"><a href="genome-level-heatmap.html#genome-anno-block"><span class="header-section-number">13.4</span> Chromosome block headers and multi-track
+genomic features</a></li></ul></li>
+<li class="chapter"><a href="more-examples.html"><span class="header-section-number">14</span><span>More Examples</span></a><ul><li class="level-2"><a href="more-examples.html#gene-expression-matrix"><span class="header-section-number">14.1</span> Add more information for gene expression
+matrix</a></li>
+<li class="level-2"><a href="more-examples.html#the-measles-vaccine-heatmap"><span class="header-section-number">14.2</span> The measles vaccine heatmap</a></li>
+<li class="level-2"><a href="more-examples.html#scrna-seq-heterogeneity"><span class="header-section-number">14.3</span> Visualize cell heterogeneity from
+single-cell RNA-seq</a></li>
+<li class="level-2"><a href="more-examples.html#methylation-expression-correlations"><span class="header-section-number">14.4</span> Correlations between
+methylation, expression and other genomic features</a></li>
+<li class="level-2"><a href="more-examples.html#methylation-complex-annotations"><span class="header-section-number">14.5</span> Visualize methylation profile
+with complex annotations</a></li>
+<li class="level-2"><a href="more-examples.html#add-multiple-boxplots-for-single-row"><span class="header-section-number">14.6</span> Add multiple boxplots for
+single row</a></li></ul></li>
+<li class="chapter"><a href="other-tricks.html"><span class="header-section-number">15</span><span>Other Tricks</span></a><ul><li class="level-2"><a href="other-tricks.html#same-cell-size"><span class="header-section-number">15.1</span> Set the same cell size for different heatmaps
+with different dimensions</a></li>
+<li class="level-2"><a href="other-tricks.html#global-options-ht-opt"><span class="header-section-number">15.2</span> Global options with ht_opt</a></li>
+<li class="level-2"><a href="other-tricks.html#grid-grabexpr-composition"><span class="header-section-number">15.3</span> Capturing and composing heatmaps with
+grid_grabExpr</a></li></ul></li>
+        <li class="divider"></li>
+      </ul>
+      <div class="summary-footer">
+        <div>Published with <strong>ComplexHeatmap-py</strong></div>
+        <div><a href="https://github.com/zhanxw/ComplexHeatmap-reference-py" target="_blank" rel="noopener">GitHub Repository</a> &middot; <a href="https://jokergoo.github.io/ComplexHeatmap-reference/book/" target="_blank" rel="noopener">Original R Book</a></div>
+      </div>
+    </nav>
+
+    <div class="book-body">
+      <header class="book-header">
+        <div class="header-left">
+          <button id="sidebar-toggle" class="toolbar-btn" type="button" title="Toggle Table of Contents" aria-label="Toggle Table of Contents">&#9776;</button>
+          <button id="search-toggle-btn" class="toolbar-btn" type="button" title="Search" aria-label="Search">&#128269;</button>
+          <h1 class="header-title"><a href="index.html">ComplexHeatmap-py Complete Reference</a></h1>
+        </div>
+        <div class="header-right">
+          <div class="dropdown">
+            <button id="font-settings-btn" class="toolbar-btn" type="button" title="Font and Theme Settings" aria-label="Font Settings">A</button>
+            <div id="font-settings-menu" class="dropdown-menu">
+              <div class="dropdown-row">
+                <button id="font-size-dec" type="button">A-</button>
+                <button id="font-size-inc" type="button">A+</button>
+              </div>
+              <div class="dropdown-row">
+                <button type="button" data-font="sans">Sans</button>
+                <button type="button" data-font="serif">Serif</button>
+              </div>
+              <div class="dropdown-row">
+                <button type="button" data-theme="white">White</button>
+                <button type="button" data-theme="sepia">Sepia</button>
+                <button type="button" data-theme="night">Night</button>
+              </div>
+            </div>
+          </div>
+          <a class="toolbar-btn" href="https://github.com/zhanxw/ComplexHeatmap-reference-py" target="_blank" rel="noopener" title="View on GitHub">GitHub</a>
+        </div>
+      </header>
+
+      <div class="page-wrapper">
+        <main class="page-inner">
+          <div id="search-results" aria-live="polite"></div>
+          <section class="normal markdown-section">
+            <h1 id="a-list-of-heatmaps"><span class="header-section-number">4</span> A List of Heatmaps<a class="anchor-section" aria-label="Anchor link to section" href="#a-list-of-heatmaps">#</a></h1>
+<p>The main feature of <strong>ComplexHeatmap</strong> and
+<strong>ComplexHeatmap-py</strong> is support for concatenating a list
+of heatmaps and annotations horizontally or vertically so you can
+visualize associations across multiple data sources in a single aligned
+layout. In this chapter, we focus mainly on horizontal concatenation
+(which shares rows across heatmaps and annotations), and then show
+vertical concatenation at the end. The underlying layout principles are
+the same in both directions.</p>
+<p>For horizontal concatenation, the number of rows must match across
+all heatmaps and row annotations. Below we construct three inputs—two
+numeric matrices (<code>mat1</code>, <code>mat2</code>) and a 1D
+categorical vector (<code>le</code>) that is automatically converted
+into a single-column heatmap. Single-column heatmaps are particularly
+useful for row-level metadata or summary statistics (for instance, gene
+biotypes, log fold changes, or p-values) aligned beside a primary
+expression matrix.</p>
+<div class="code-wrapper"><pre class="codehilite"><code><span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">complexheatmap</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">ch</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">complexheatmap</span><span class="w"> </span><span class="kn">import</span> <span class="p">(</span>
+    <span class="n">Heatmap</span><span class="p">,</span>
+    <span class="n">HeatmapAnnotation</span><span class="p">,</span>
+    <span class="n">anno_barplot</span><span class="p">,</span>
+    <span class="n">anno_points</span><span class="p">,</span>
+    <span class="n">anno_text</span><span class="p">,</span>
+    <span class="n">colorRamp2</span><span class="p">,</span>
+    <span class="n">gpar</span><span class="p">,</span>
+    <span class="n">ht_opt</span><span class="p">,</span>
+    <span class="n">rowAnnotation</span><span class="p">,</span>
+    <span class="n">unit</span><span class="p">,</span>
+    <span class="n">v</span><span class="p">,</span>
+<span class="p">)</span>
+
+<span class="n">rng</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">default_rng</span><span class="p">(</span><span class="mi">123</span><span class="p">)</span>
+<span class="n">mat1</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span>
+    <span class="n">np</span><span class="o">.</span><span class="n">vstack</span><span class="p">([</span><span class="n">rng</span><span class="o">.</span><span class="n">normal</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="p">(</span><span class="mi">8</span><span class="p">,</span> <span class="mi">10</span><span class="p">)),</span> <span class="n">rng</span><span class="o">.</span><span class="n">normal</span><span class="p">(</span><span class="o">-</span><span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="p">(</span><span class="mi">4</span><span class="p">,</span> <span class="mi">10</span><span class="p">))]),</span>
+    <span class="n">index</span><span class="o">=</span><span class="p">[</span><span class="sa">f</span><span class="s2">"R</span><span class="si">{</span><span class="n">i</span><span class="si">}</span><span class="s2">"</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">13</span><span class="p">)],</span>
+    <span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="sa">f</span><span class="s2">"C</span><span class="si">{</span><span class="n">j</span><span class="si">}</span><span class="s2">"</span> <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">11</span><span class="p">)],</span>
+<span class="p">)</span>
+<span class="n">mat2</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span>
+    <span class="n">np</span><span class="o">.</span><span class="n">vstack</span><span class="p">([</span><span class="n">rng</span><span class="o">.</span><span class="n">uniform</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="p">(</span><span class="mi">6</span><span class="p">,</span> <span class="mi">10</span><span class="p">)),</span> <span class="n">rng</span><span class="o">.</span><span class="n">uniform</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="p">(</span><span class="mi">6</span><span class="p">,</span> <span class="mi">10</span><span class="p">))]),</span>
+    <span class="n">index</span><span class="o">=</span><span class="p">[</span><span class="sa">f</span><span class="s2">"R</span><span class="si">{</span><span class="n">i</span><span class="si">}</span><span class="s2">"</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">13</span><span class="p">)],</span>
+    <span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="sa">f</span><span class="s2">"C</span><span class="si">{</span><span class="n">j</span><span class="si">}</span><span class="s2">"</span> <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">11</span><span class="p">)],</span>
+<span class="p">)</span>
+<span class="n">le</span> <span class="o">=</span> <span class="n">rng</span><span class="o">.</span><span class="n">choice</span><span class="p">([</span><span class="s2">"a"</span><span class="p">,</span> <span class="s2">"b"</span><span class="p">,</span> <span class="s2">"c"</span><span class="p">],</span> <span class="mi">12</span><span class="p">)</span>
+
+<span class="n">ind</span> <span class="o">=</span> <span class="n">rng</span><span class="o">.</span><span class="n">permutation</span><span class="p">(</span><span class="mi">12</span><span class="p">)</span>
+<span class="n">mat1</span> <span class="o">=</span> <span class="n">mat1</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="n">ind</span><span class="p">]</span>
+<span class="n">mat2</span> <span class="o">=</span> <span class="n">mat2</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="n">ind</span><span class="p">]</span>
+<span class="n">le</span> <span class="o">=</span> <span class="n">le</span><span class="p">[</span><span class="n">ind</span><span class="p">]</span></code></pre></div>
+<p>To concatenate heatmaps horizontally, simply use the <code>+</code>
+operator and render with <code>ch.draw()</code>:</p>
+<div class="code-wrapper"><pre class="codehilite"><code><span class="n">ht1</span> <span class="o">=</span> <span class="n">Heatmap</span><span class="p">(</span><span class="n">mat1</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s2">"rnorm"</span><span class="p">)</span>
+<span class="n">ht2</span> <span class="o">=</span> <span class="n">Heatmap</span><span class="p">(</span><span class="n">mat2</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s2">"runif"</span><span class="p">)</span>
+<span class="n">ht3</span> <span class="o">=</span> <span class="n">Heatmap</span><span class="p">(</span><span class="n">le</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s2">"letters"</span><span class="p">)</span>
+
+<span class="n">ch</span><span class="o">.</span><span class="n">draw</span><span class="p">(</span><span class="n">ht1</span> <span class="o">+</span> <span class="n">ht2</span> <span class="o">+</span> <span class="n">ht3</span><span class="p">)</span></code></pre></div>
+<figure>
+<img src="images/ch04_intro_concat.png"
+alt="Horizontal concatenation of three heatmaps with +" />
+<figcaption aria-hidden="true">Horizontal concatenation of three
+heatmaps with +</figcaption>
+</figure>
+<p>By default, row dendrograms from the second and subsequent heatmaps
+are hidden, and all heatmaps inherit the row ordering of the first
+(main) heatmap. Row names on all heatmaps except the rightmost one are
+also hidden automatically.</p>
+<p>Concatenating heatmaps returns a <code>HeatmapList</code> object. As
+explained in <a href="a-single-heatmap.html#plot-the-heatmap">Plot the
+heatmap</a>, displaying <code>ht_list</code> in an interactive notebook
+cell invokes <code>_repr_png_()</code> (calling <code>draw()</code>
+internally), while calling <code>ch.draw(ht_list)</code> explicitly lets
+you configure global layout options, legend placement, and export
+parameters.</p>
+<div class="code-wrapper"><pre class="codehilite"><code><span class="n">ht_list</span> <span class="o">=</span> <span class="n">ht1</span> <span class="o">+</span> <span class="n">ht2</span> <span class="o">+</span> <span class="n">ht3</span>
+<span class="nb">type</span><span class="p">(</span><span class="n">ht_list</span><span class="p">)</span>
+<span class="c1"># &lt;class 'complexheatmap.heatmap_list.HeatmapList'&gt;</span></code></pre></div>
+<p>You can append additional heatmaps to a <code>HeatmapList</code>,
+prepend heatmaps to a <code>HeatmapList</code>, or combine two
+<code>HeatmapList</code> objects:</p>
+<div class="code-wrapper"><pre class="codehilite"><code><span class="c1"># Code only for demonstration</span>
+<span class="n">ht1</span> <span class="o">+</span> <span class="n">ht_list</span>
+<span class="n">ht_list</span> <span class="o">+</span> <span class="n">ht1</span>
+<span class="n">ht_list</span> <span class="o">+</span> <span class="n">ht_list</span></code></pre></div>
+<p><code>None</code> can also be added to a <code>Heatmap</code> or
+<code>HeatmapList</code>, which is convenient when building a heatmap
+list dynamically inside a <code>for</code> loop:</p>
+<div class="code-wrapper"><pre class="codehilite"><code><span class="c1"># Code only for demonstration</span>
+<span class="n">ht_list</span> <span class="o">=</span> <span class="kc">None</span>  <span class="c1"># None + Heatmap(...) creates a HeatmapList</span>
+<span class="k">for</span> <span class="n">item</span> <span class="ow">in</span> <span class="n">items</span><span class="p">:</span>
+    <span class="n">ht_list</span> <span class="o">=</span> <span class="n">ht_list</span> <span class="o">+</span> <span class="n">Heatmap</span><span class="p">(</span><span class="o">...</span><span class="p">)</span></code></pre></div>
+<p>You can also concatenate heatmaps directly with standalone row
+annotations; see <a href="#concatenate-with-annotations">Concatenate
+with annotations</a>.</p>
+<h2 id="heatmap-list-titles"><span class="header-section-number">4.1</span> Titles<a class="anchor-section" aria-label="Anchor link to section" href="#heatmap-list-titles">#</a></h2>
+<p>A <code>HeatmapList</code> supports global <code>row_title</code> and
+<code>column_title</code> settings spanning all concatenated heatmaps.
+Specify them in <code>ch.draw()</code>:</p>
+<div class="code-wrapper"><pre class="codehilite"><code><span class="n">col_rnorm</span> <span class="o">=</span> <span class="n">colorRamp2</span><span class="p">([</span><span class="o">-</span><span class="mi">3</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">3</span><span class="p">],</span> <span class="p">[</span><span class="s2">"green"</span><span class="p">,</span> <span class="s2">"white"</span><span class="p">,</span> <span class="s2">"red"</span><span class="p">])</span>
+<span class="n">col_runif</span> <span class="o">=</span> <span class="n">colorRamp2</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span> <span class="mi">3</span><span class="p">],</span> <span class="p">[</span><span class="s2">"white"</span><span class="p">,</span> <span class="s2">"orange"</span><span class="p">])</span>
+<span class="n">col_letters</span> <span class="o">=</span> <span class="p">{</span><span class="s2">"a"</span><span class="p">:</span> <span class="s2">"pink"</span><span class="p">,</span> <span class="s2">"b"</span><span class="p">:</span> <span class="s2">"purple"</span><span class="p">,</span> <span class="s2">"c"</span><span class="p">:</span> <span class="s2">"blue"</span><span class="p">}</span>
+
+<span class="n">ht1</span> <span class="o">=</span> <span class="n">Heatmap</span><span class="p">(</span><span class="n">mat1</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s2">"rnorm"</span><span class="p">,</span> <span class="n">col</span><span class="o">=</span><span class="n">col_rnorm</span><span class="p">,</span> <span class="n">row_title</span><span class="o">=</span><span class="s2">"Heatmap 1"</span><span class="p">,</span> <span class="n">column_title</span><span class="o">=</span><span class="s2">"Heatmap 1"</span><span class="p">)</span>
+<span class="n">ht2</span> <span class="o">=</span> <span class="n">Heatmap</span><span class="p">(</span><span class="n">mat2</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s2">"runif"</span><span class="p">,</span> <span class="n">col</span><span class="o">=</span><span class="n">col_runif</span><span class="p">,</span> <span class="n">row_title</span><span class="o">=</span><span class="s2">"Heatmap 2"</span><span class="p">,</span> <span class="n">column_title</span><span class="o">=</span><span class="s2">"Heatmap 2"</span><span class="p">)</span>
+<span class="n">ht3</span> <span class="o">=</span> <span class="n">Heatmap</span><span class="p">(</span><span class="n">le</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s2">"letters"</span><span class="p">,</span> <span class="n">col</span><span class="o">=</span><span class="n">col_letters</span><span class="p">)</span>
+<span class="n">ht_list</span> <span class="o">=</span> <span class="n">ht1</span> <span class="o">+</span> <span class="n">ht2</span> <span class="o">+</span> <span class="n">ht3</span>
+
+<span class="n">ch</span><span class="o">.</span><span class="n">draw</span><span class="p">(</span>
+    <span class="n">ht_list</span><span class="p">,</span>
+    <span class="n">row_title</span><span class="o">=</span><span class="s2">"Three heatmaps, row title"</span><span class="p">,</span>
+    <span class="n">row_title_gp</span><span class="o">=</span><span class="n">gpar</span><span class="p">(</span><span class="n">col</span><span class="o">=</span><span class="s2">"red"</span><span class="p">),</span>
+    <span class="n">column_title</span><span class="o">=</span><span class="s2">"Three heatmaps, column title"</span><span class="p">,</span>
+    <span class="n">column_title_gp</span><span class="o">=</span><span class="n">gpar</span><span class="p">(</span><span class="n">fontsize</span><span class="o">=</span><span class="mi">16</span><span class="p">),</span>
+<span class="p">)</span></code></pre></div>
+<figure>
+<img src="images/ch04_titles.png"
+alt="Global heatmap list titles alongside per-heatmap titles" />
+<figcaption aria-hidden="true">Global heatmap list titles alongside
+per-heatmap titles</figcaption>
+</figure>
+<p>You can use <code>gt_render()</code> to style titles with inline
+Markdown/HTML formatting; see <a
+href="integrate-with-other-packages.html#gt-render">Rich text with
+<code>gt_render</code></a>.</p>
+<h2 id="size-of-heatmaps"><span class="header-section-number">4.2</span> Size of heatmaps<a class="anchor-section" aria-label="Anchor link to section" href="#size-of-heatmaps">#</a></h2>
+<p>Individual heatmaps in a horizontal list can be assigned fixed
+absolute widths via <code>width</code> (which controls the heatmap body
+width):</p>
+<div class="code-wrapper"><pre class="codehilite"><code><span class="n">ht1</span> <span class="o">=</span> <span class="n">Heatmap</span><span class="p">(</span><span class="n">mat1</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s2">"rnorm"</span><span class="p">,</span> <span class="n">col</span><span class="o">=</span><span class="n">col_rnorm</span><span class="p">)</span>
+<span class="n">ht2</span> <span class="o">=</span> <span class="n">Heatmap</span><span class="p">(</span><span class="n">mat2</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s2">"runif"</span><span class="p">,</span> <span class="n">col</span><span class="o">=</span><span class="n">col_runif</span><span class="p">,</span> <span class="n">width</span><span class="o">=</span><span class="n">unit</span><span class="p">(</span><span class="mi">4</span><span class="p">,</span> <span class="s2">"cm"</span><span class="p">))</span>
+<span class="n">ht3</span> <span class="o">=</span> <span class="n">Heatmap</span><span class="p">(</span><span class="n">le</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s2">"letters"</span><span class="p">,</span> <span class="n">col</span><span class="o">=</span><span class="n">col_letters</span><span class="p">,</span> <span class="n">width</span><span class="o">=</span><span class="n">unit</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span> <span class="s2">"mm"</span><span class="p">))</span>
+<span class="n">ch</span><span class="o">.</span><span class="n">draw</span><span class="p">(</span><span class="n">ht1</span> <span class="o">+</span> <span class="n">ht2</span> <span class="o">+</span> <span class="n">ht3</span><span class="p">)</span></code></pre></div>
+<figure>
+<img src="images/ch04_size_partial.png"
+alt="Setting fixed widths on selected heatmaps in a list" />
+<figcaption aria-hidden="true">Setting fixed widths on selected heatmaps
+in a list</figcaption>
+</figure>
+<p>Or set absolute widths for every heatmap in the list:</p>
+<div class="code-wrapper"><pre class="codehilite"><code><span class="n">ht1</span> <span class="o">=</span> <span class="n">Heatmap</span><span class="p">(</span><span class="n">mat1</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s2">"rnorm"</span><span class="p">,</span> <span class="n">col</span><span class="o">=</span><span class="n">col_rnorm</span><span class="p">,</span> <span class="n">width</span><span class="o">=</span><span class="n">unit</span><span class="p">(</span><span class="mi">4</span><span class="p">,</span> <span class="s2">"cm"</span><span class="p">))</span>
+<span class="n">ht2</span> <span class="o">=</span> <span class="n">Heatmap</span><span class="p">(</span><span class="n">mat2</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s2">"runif"</span><span class="p">,</span> <span class="n">col</span><span class="o">=</span><span class="n">col_runif</span><span class="p">,</span> <span class="n">width</span><span class="o">=</span><span class="n">unit</span><span class="p">(</span><span class="mi">6</span><span class="p">,</span> <span class="s2">"cm"</span><span class="p">))</span>
+<span class="n">ht3</span> <span class="o">=</span> <span class="n">Heatmap</span><span class="p">(</span><span class="n">le</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s2">"letters"</span><span class="p">,</span> <span class="n">col</span><span class="o">=</span><span class="n">col_letters</span><span class="p">,</span> <span class="n">width</span><span class="o">=</span><span class="n">unit</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="s2">"cm"</span><span class="p">))</span>
+<span class="n">ch</span><span class="o">.</span><span class="n">draw</span><span class="p">(</span><span class="n">ht1</span> <span class="o">+</span> <span class="n">ht2</span> <span class="o">+</span> <span class="n">ht3</span><span class="p">)</span></code></pre></div>
+<figure>
+<img src="images/ch04_size_all_abs.png"
+alt="Setting absolute widths for all heatmaps" />
+<figcaption aria-hidden="true">Setting absolute widths for all
+heatmaps</figcaption>
+</figure>
+<p>To share available horizontal space proportionally across heatmaps,
+use <code>"null"</code> units with <code>unit(..., "null")</code> (note
+that in <strong>ComplexHeatmap-py</strong>, a bare number such as
+<code>width=6</code> is interpreted as <code>6 mm</code>, so always pass
+<code>unit(..., "null")</code> explicitly for relative proportions):</p>
+<div class="code-wrapper"><pre class="codehilite"><code><span class="n">ht1</span> <span class="o">=</span> <span class="n">Heatmap</span><span class="p">(</span><span class="n">mat1</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s2">"rnorm"</span><span class="p">,</span> <span class="n">col</span><span class="o">=</span><span class="n">col_rnorm</span><span class="p">,</span> <span class="n">width</span><span class="o">=</span><span class="n">unit</span><span class="p">(</span><span class="mi">6</span><span class="p">,</span> <span class="s2">"null"</span><span class="p">))</span>
+<span class="n">ht2</span> <span class="o">=</span> <span class="n">Heatmap</span><span class="p">(</span><span class="n">mat2</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s2">"runif"</span><span class="p">,</span> <span class="n">col</span><span class="o">=</span><span class="n">col_runif</span><span class="p">,</span> <span class="n">width</span><span class="o">=</span><span class="n">unit</span><span class="p">(</span><span class="mi">4</span><span class="p">,</span> <span class="s2">"null"</span><span class="p">))</span>
+<span class="n">ht3</span> <span class="o">=</span> <span class="n">Heatmap</span><span class="p">(</span><span class="n">le</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s2">"letters"</span><span class="p">,</span> <span class="n">col</span><span class="o">=</span><span class="n">col_letters</span><span class="p">,</span> <span class="n">width</span><span class="o">=</span><span class="n">unit</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="s2">"null"</span><span class="p">))</span>
+<span class="n">ch</span><span class="o">.</span><span class="n">draw</span><span class="p">(</span><span class="n">ht1</span> <span class="o">+</span> <span class="n">ht2</span> <span class="o">+</span> <span class="n">ht3</span><span class="p">)</span></code></pre></div>
+<figure>
+<img src="images/ch04_size_null.png"
+alt="Proportional heatmap widths specified in null units" />
+<figcaption aria-hidden="true">Proportional heatmap widths specified in
+null units</figcaption>
+</figure>
+<p><code>heatmap_width</code> can also control width, measuring the
+total width of the heatmap body plus all attached heatmap
+components.</p>
+<h2 id="gap-between-heatmaps"><span class="header-section-number">4.3</span> Gap between heatmaps<a class="anchor-section" aria-label="Anchor link to section" href="#gap-between-heatmaps">#</a></h2>
+<p><code>ht_gap</code> in <code>ch.draw()</code> controls the horizontal
+(or vertical) spacing between consecutive heatmaps or standalone
+annotations. It accepts either a single <code>Unit</code> or a vector of
+<code>Unit</code> values:</p>
+<div class="code-wrapper"><pre class="codehilite"><code><span class="n">ht1</span> <span class="o">=</span> <span class="n">Heatmap</span><span class="p">(</span><span class="n">mat1</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s2">"rnorm"</span><span class="p">,</span> <span class="n">col</span><span class="o">=</span><span class="n">col_rnorm</span><span class="p">)</span>
+<span class="n">ht2</span> <span class="o">=</span> <span class="n">Heatmap</span><span class="p">(</span><span class="n">mat2</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s2">"runif"</span><span class="p">,</span> <span class="n">col</span><span class="o">=</span><span class="n">col_runif</span><span class="p">)</span>
+<span class="n">ht3</span> <span class="o">=</span> <span class="n">Heatmap</span><span class="p">(</span><span class="n">le</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s2">"letters"</span><span class="p">,</span> <span class="n">col</span><span class="o">=</span><span class="n">col_letters</span><span class="p">)</span>
+<span class="n">ht_list</span> <span class="o">=</span> <span class="n">ht1</span> <span class="o">+</span> <span class="n">ht2</span> <span class="o">+</span> <span class="n">ht3</span>
+
+<span class="n">ch</span><span class="o">.</span><span class="n">draw</span><span class="p">(</span><span class="n">ht_list</span><span class="p">,</span> <span class="n">ht_gap</span><span class="o">=</span><span class="n">unit</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="s2">"cm"</span><span class="p">))</span>
+<span class="n">ch</span><span class="o">.</span><span class="n">draw</span><span class="p">(</span><span class="n">ht_list</span><span class="p">,</span> <span class="n">ht_gap</span><span class="o">=</span><span class="n">unit</span><span class="p">([</span><span class="mi">3</span><span class="p">,</span> <span class="mi">10</span><span class="p">],</span> <span class="s2">"mm"</span><span class="p">))</span></code></pre></div>
+<figure>
+<img src="images/ch04_gap_single.png"
+alt="Uniform gap of 1 cm between heatmaps" />
+<figcaption aria-hidden="true">Uniform gap of 1 cm between
+heatmaps</figcaption>
+</figure>
+<figure>
+<img src="images/ch04_gap_vector.png"
+alt="Different per-gap widths (3 mm and 10 mm)" />
+<figcaption aria-hidden="true">Different per-gap widths (3 mm and 10
+mm)</figcaption>
+</figure>
+<h2 id="automatic-adjustment-to-the-main-heatmap"><span class="header-section-number">4.4</span> Automatic adjustment
+to the main heatmap<a class="anchor-section" aria-label="Anchor link to section" href="#automatic-adjustment-to-the-main-heatmap">#</a></h2>
+<p>Every <code>HeatmapList</code> designates one heatmap as the
+<strong>main heatmap</strong>, which dictates the global row ordering
+and row splitting for all remaining heatmaps and annotations. For
+non-main heatmaps, <strong>ComplexHeatmap-py</strong> applies the
+following automatic adjustments:</p>
+<ul>
+<li>Row clustering is disabled and rows follow the ordering of the main
+heatmap.</li>
+<li>Individual <code>row_title</code> labels are suppressed.</li>
+<li>If the main heatmap is split by rows, all other heatmaps and row
+annotations are split identically.</li>
+<li>All heatmaps share the body height of the main heatmap.</li>
+</ul>
+<p>By default, the first heatmap in the list is selected as the main
+heatmap. In the example below, <code>ht2</code> comes first, so
+<code>row_km=2</code> on <code>ht1</code> is ignored:</p>
+<div class="code-wrapper"><pre class="codehilite"><code><span class="n">ht1</span> <span class="o">=</span> <span class="n">Heatmap</span><span class="p">(</span><span class="n">mat1</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s2">"rnorm"</span><span class="p">,</span> <span class="n">col</span><span class="o">=</span><span class="n">col_rnorm</span><span class="p">,</span> <span class="n">row_km</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+<span class="n">ht2</span> <span class="o">=</span> <span class="n">Heatmap</span><span class="p">(</span><span class="n">mat2</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s2">"runif"</span><span class="p">,</span> <span class="n">col</span><span class="o">=</span><span class="n">col_runif</span><span class="p">)</span>
+<span class="n">ht3</span> <span class="o">=</span> <span class="n">Heatmap</span><span class="p">(</span><span class="n">le</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s2">"letters"</span><span class="p">,</span> <span class="n">col</span><span class="o">=</span><span class="n">col_letters</span><span class="p">)</span>
+<span class="n">ch</span><span class="o">.</span><span class="n">draw</span><span class="p">(</span><span class="n">ht2</span> <span class="o">+</span> <span class="n">ht1</span> <span class="o">+</span> <span class="n">ht3</span><span class="p">)</span></code></pre></div>
+<figure>
+<img src="images/ch04_auto_adjust_first.png"
+alt="First heatmap selected as main heatmap by default" />
+<figcaption aria-hidden="true">First heatmap selected as main heatmap by
+default</figcaption>
+</figure>
+<p>You can designate any heatmap as the main heatmap via
+<code>main_heatmap</code> in <code>ch.draw()</code>, passing either its
+0-based position among heatmaps or its <code>name</code>:</p>
+<div class="code-wrapper"><pre class="codehilite"><code><span class="n">ht_list</span> <span class="o">=</span> <span class="n">ht2</span> <span class="o">+</span> <span class="n">ht1</span> <span class="o">+</span> <span class="n">ht3</span>
+<span class="n">ch</span><span class="o">.</span><span class="n">draw</span><span class="p">(</span><span class="n">ht_list</span><span class="p">,</span> <span class="n">main_heatmap</span><span class="o">=</span><span class="s2">"rnorm"</span><span class="p">)</span></code></pre></div>
+<figure>
+<img src="images/ch04_main_heatmap_name.png"
+alt="Selecting the second heatmap as main_heatmap by name" />
+<figcaption aria-hidden="true">Selecting the second heatmap as
+main_heatmap by name</figcaption>
+</figure>
+<p>By default, the main heatmap’s row dendrogram and row slice titles
+stay attached directly beside the main heatmap so it is visually clear
+which matrix drives clustering and splitting. You can relocate them to
+the outer edges of the heatmap list using <code>row_dend_side</code> and
+<code>row_sub_title_side</code> in <code>ch.draw()</code>:</p>
+<div class="code-wrapper"><pre class="codehilite"><code><span class="n">ch</span><span class="o">.</span><span class="n">draw</span><span class="p">(</span><span class="n">ht_list</span><span class="p">,</span> <span class="n">main_heatmap</span><span class="o">=</span><span class="s2">"rnorm"</span><span class="p">,</span> <span class="n">row_dend_side</span><span class="o">=</span><span class="s2">"right"</span><span class="p">,</span> <span class="n">row_sub_title_side</span><span class="o">=</span><span class="s2">"left"</span><span class="p">)</span></code></pre></div>
+<figure>
+<img src="images/ch04_main_heatmap_sides.png"
+alt="Moving main heatmap dendrogram and slice titles to outer sides" />
+<figcaption aria-hidden="true">Moving main heatmap dendrogram and slice
+titles to outer sides</figcaption>
+</figure>
+<p>Similarly, if row clustering is disabled on the main heatmap
+(<code>cluster_rows=False</code>), none of the remaining heatmaps are
+clustered:</p>
+<div class="code-wrapper"><pre class="codehilite"><code><span class="n">ht1</span> <span class="o">=</span> <span class="n">Heatmap</span><span class="p">(</span><span class="n">mat1</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s2">"rnorm"</span><span class="p">,</span> <span class="n">col</span><span class="o">=</span><span class="n">col_rnorm</span><span class="p">,</span> <span class="n">cluster_rows</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+<span class="n">ch</span><span class="o">.</span><span class="n">draw</span><span class="p">(</span><span class="n">ht1</span> <span class="o">+</span> <span class="n">ht2</span> <span class="o">+</span> <span class="n">ht3</span><span class="p">)</span></code></pre></div>
+<figure>
+<img src="images/ch04_main_no_cluster.png"
+alt="No row clustering when main heatmap sets cluster_rows=False" />
+<figcaption aria-hidden="true">No row clustering when main heatmap sets
+cluster_rows=False</figcaption>
+</figure>
+<p>By default, row names between adjacent heatmaps are hidden. Set
+<code>auto_adjust=False</code> in <code>ch.draw()</code> to keep
+intermediate row names visible:</p>
+<div class="code-wrapper"><pre class="codehilite"><code><span class="n">ht1</span> <span class="o">=</span> <span class="n">Heatmap</span><span class="p">(</span><span class="n">mat1</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s2">"rnorm"</span><span class="p">,</span> <span class="n">col</span><span class="o">=</span><span class="n">col_rnorm</span><span class="p">)</span>
+<span class="n">ch</span><span class="o">.</span><span class="n">draw</span><span class="p">(</span><span class="n">ht1</span> <span class="o">+</span> <span class="n">ht2</span> <span class="o">+</span> <span class="n">ht3</span><span class="p">,</span> <span class="n">auto_adjust</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span></code></pre></div>
+<figure>
+<img src="images/ch04_auto_adjust_false.png"
+alt="Keeping intermediate row names visible with auto_adjust=False" />
+<figcaption aria-hidden="true">Keeping intermediate row names visible
+with auto_adjust=False</figcaption>
+</figure>
+<h2 id="control-main-heatmap-in-draw-function"><span class="header-section-number">4.5</span> Control main heatmap in
+draw() function<a class="anchor-section" aria-label="Anchor link to section" href="#control-main-heatmap-in-draw-function">#</a></h2>
+<p>Row-layout settings can be passed directly to <code>ch.draw()</code>,
+overriding the corresponding arguments defined on the main
+<code>Heatmap()</code>.</p>
+<p>Parameters controlling row ordering:</p>
+<ul>
+<li><code>cluster_rows</code></li>
+<li><code>clustering_distance_rows</code></li>
+<li><code>clustering_method_rows</code></li>
+<li><code>row_dend_width</code></li>
+<li><code>show_row_dend</code></li>
+<li><code>row_dend_reorder</code></li>
+<li><code>row_dend_gp</code></li>
+<li><code>row_order</code></li>
+</ul>
+<p>Parameters controlling row slicing:</p>
+<ul>
+<li><code>row_gap</code></li>
+<li><code>row_km</code></li>
+<li><code>row_km_repeats</code></li>
+<li><code>row_split</code></li>
+</ul>
+<p>Parameters controlling height:</p>
+<ul>
+<li><code>height</code></li>
+<li><code>heatmap_height</code></li>
+</ul>
+<p>In the example below, <code>row_km=2</code> and
+<code>cluster_rows=False</code> on <code>ht1</code> are overridden in
+<code>ch.draw()</code>:</p>
+<div class="code-wrapper"><pre class="codehilite"><code><span class="n">ht1</span> <span class="o">=</span> <span class="n">Heatmap</span><span class="p">(</span><span class="n">mat1</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s2">"rnorm"</span><span class="p">,</span> <span class="n">col</span><span class="o">=</span><span class="n">col_rnorm</span><span class="p">,</span> <span class="n">row_km</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">cluster_rows</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+<span class="n">ht2</span> <span class="o">=</span> <span class="n">Heatmap</span><span class="p">(</span><span class="n">mat2</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s2">"runif"</span><span class="p">,</span> <span class="n">col</span><span class="o">=</span><span class="n">col_runif</span><span class="p">)</span>
+<span class="n">ht3</span> <span class="o">=</span> <span class="n">Heatmap</span><span class="p">(</span><span class="n">le</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s2">"letters"</span><span class="p">,</span> <span class="n">col</span><span class="o">=</span><span class="n">col_letters</span><span class="p">)</span>
+<span class="n">ht_list</span> <span class="o">=</span> <span class="n">ht1</span> <span class="o">+</span> <span class="n">ht2</span> <span class="o">+</span> <span class="n">ht3</span>
+
+<span class="n">ch</span><span class="o">.</span><span class="n">draw</span><span class="p">(</span><span class="n">ht_list</span><span class="p">,</span> <span class="n">row_km</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">row_split</span><span class="o">=</span><span class="n">le</span><span class="p">,</span> <span class="n">cluster_rows</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span></code></pre></div>
+<figure>
+<img src="images/ch04_draw_override.png"
+alt="Overriding main heatmap row_km, row_split, and cluster_rows in draw()" />
+<figcaption aria-hidden="true">Overriding main heatmap row_km,
+row_split, and cluster_rows in draw()</figcaption>
+</figure>
+<h2 id="annotations-as-components-are-adjusted"><span class="header-section-number">4.6</span> Annotations as
+components are adjusted<a class="anchor-section" aria-label="Anchor link to section" href="#annotations-as-components-are-adjusted">#</a></h2>
+<p>When heatmaps in a horizontal list carry <code>top_annotation</code>
+or <code>bottom_annotation</code> tracks of differing heights,
+<strong>ComplexHeatmap-py</strong> aligns the heatmap bodies by
+automatically adjusting complex annotations and/or column
+dendrograms.</p>
+<p>Simple annotations retain their fixed size by default
+(<code>simple_anno_size</code>), so if only one heatmap has a simple top
+annotation, the column dendrograms of the remaining heatmaps stretch
+vertically to match the total top height:</p>
+<div class="code-wrapper"><pre class="codehilite"><code><span class="n">ha1</span> <span class="o">=</span> <span class="n">HeatmapAnnotation</span><span class="p">(</span><span class="n">foo1</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">11</span><span class="p">),</span> <span class="n">annotation_name_side</span><span class="o">=</span><span class="s2">"left"</span><span class="p">)</span>
+<span class="n">ht1</span> <span class="o">=</span> <span class="n">Heatmap</span><span class="p">(</span><span class="n">mat1</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s2">"rnorm"</span><span class="p">,</span> <span class="n">col</span><span class="o">=</span><span class="n">col_rnorm</span><span class="p">,</span> <span class="n">top_annotation</span><span class="o">=</span><span class="n">ha1</span><span class="p">)</span>
+<span class="n">ch</span><span class="o">.</span><span class="n">draw</span><span class="p">(</span><span class="n">ht1</span> <span class="o">+</span> <span class="n">ht2</span> <span class="o">+</span> <span class="n">ht3</span><span class="p">)</span></code></pre></div>
+<figure>
+<img src="images/ch04_anno_adj_dend.png"
+alt="Column dendrograms adjusted to match top simple annotation height" />
+<figcaption aria-hidden="true">Column dendrograms adjusted to match top
+simple annotation height</figcaption>
+</figure>
+<p>When multiple heatmaps carry complex annotations, the complex
+annotation heights are scaled so all <code>top_annotation</code> regions
+have equal height while simple annotations keep their configured
+height:</p>
+<div class="code-wrapper"><pre class="codehilite"><code><span class="n">ha1</span> <span class="o">=</span> <span class="n">HeatmapAnnotation</span><span class="p">(</span><span class="n">foo1</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">11</span><span class="p">),</span> <span class="n">bar1</span><span class="o">=</span><span class="n">anno_points</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">11</span><span class="p">)),</span> <span class="n">annotation_name_side</span><span class="o">=</span><span class="s2">"left"</span><span class="p">)</span>
+<span class="n">ha2</span> <span class="o">=</span> <span class="n">HeatmapAnnotation</span><span class="p">(</span><span class="n">bar2</span><span class="o">=</span><span class="n">anno_barplot</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">11</span><span class="p">)))</span>
+<span class="n">ht1</span> <span class="o">=</span> <span class="n">Heatmap</span><span class="p">(</span><span class="n">mat1</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s2">"rnorm"</span><span class="p">,</span> <span class="n">col</span><span class="o">=</span><span class="n">col_rnorm</span><span class="p">,</span> <span class="n">top_annotation</span><span class="o">=</span><span class="n">ha1</span><span class="p">)</span>
+<span class="n">ht2</span> <span class="o">=</span> <span class="n">Heatmap</span><span class="p">(</span><span class="n">mat2</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s2">"runif"</span><span class="p">,</span> <span class="n">col</span><span class="o">=</span><span class="n">col_runif</span><span class="p">,</span> <span class="n">top_annotation</span><span class="o">=</span><span class="n">ha2</span><span class="p">)</span>
+<span class="n">ch</span><span class="o">.</span><span class="n">draw</span><span class="p">(</span><span class="n">ht1</span> <span class="o">+</span> <span class="n">ht2</span> <span class="o">+</span> <span class="n">ht3</span><span class="p">,</span> <span class="n">ht_gap</span><span class="o">=</span><span class="n">unit</span><span class="p">([</span><span class="mi">6</span><span class="p">,</span> <span class="mi">2</span><span class="p">],</span> <span class="s2">"mm"</span><span class="p">))</span></code></pre></div>
+<figure>
+<img src="images/ch04_anno_adj_complex.png"
+alt="Complex annotation heights aligned across heatmaps" />
+<figcaption aria-hidden="true">Complex annotation heights aligned across
+heatmaps</figcaption>
+</figure>
+<p>If the first heatmap has only a simple annotation while the second
+has a tall complex annotation, the first heatmap’s column dendrogram
+expands to match the taller annotation:</p>
+<div class="code-wrapper"><pre class="codehilite"><code><span class="n">ha1</span> <span class="o">=</span> <span class="n">HeatmapAnnotation</span><span class="p">(</span><span class="n">foo1</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">11</span><span class="p">),</span> <span class="n">annotation_name_side</span><span class="o">=</span><span class="s2">"left"</span><span class="p">)</span>
+<span class="n">ha2</span> <span class="o">=</span> <span class="n">HeatmapAnnotation</span><span class="p">(</span><span class="n">bar2</span><span class="o">=</span><span class="n">anno_barplot</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">11</span><span class="p">),</span> <span class="n">height</span><span class="o">=</span><span class="n">unit</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="s2">"cm"</span><span class="p">)))</span>
+<span class="n">ht1</span> <span class="o">=</span> <span class="n">Heatmap</span><span class="p">(</span><span class="n">mat1</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s2">"rnorm"</span><span class="p">,</span> <span class="n">col</span><span class="o">=</span><span class="n">col_rnorm</span><span class="p">,</span> <span class="n">top_annotation</span><span class="o">=</span><span class="n">ha1</span><span class="p">)</span>
+<span class="n">ht2</span> <span class="o">=</span> <span class="n">Heatmap</span><span class="p">(</span><span class="n">mat2</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s2">"runif"</span><span class="p">,</span> <span class="n">col</span><span class="o">=</span><span class="n">col_runif</span><span class="p">,</span> <span class="n">top_annotation</span><span class="o">=</span><span class="n">ha2</span><span class="p">)</span>
+<span class="n">ch</span><span class="o">.</span><span class="n">draw</span><span class="p">(</span><span class="n">ht1</span> <span class="o">+</span> <span class="n">ht2</span> <span class="o">+</span> <span class="n">ht3</span><span class="p">,</span> <span class="n">ht_gap</span><span class="o">=</span><span class="n">unit</span><span class="p">([</span><span class="mi">6</span><span class="p">,</span> <span class="mi">2</span><span class="p">],</span> <span class="s2">"mm"</span><span class="p">))</span></code></pre></div>
+<figure>
+<img src="images/ch04_anno_adj_simple_vs_complex.png"
+alt="Column dendrogram adjusted when matching a tall complex annotation" />
+<figcaption aria-hidden="true">Column dendrogram adjusted when matching
+a tall complex annotation</figcaption>
+</figure>
+<p>When two heatmaps have unequal numbers of simple annotations, the
+dendrogram of the shorter stack adjusts automatically (unless
+<code>simple_anno_size_adjust=True</code> is set in each
+<code>HeatmapAnnotation()</code>):</p>
+<div class="code-wrapper"><pre class="codehilite"><code><span class="n">ha2</span> <span class="o">=</span> <span class="n">HeatmapAnnotation</span><span class="p">(</span><span class="n">bar2</span><span class="o">=</span><span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">({</span><span class="s2">"b1"</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">11</span><span class="p">),</span> <span class="s2">"b2"</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">11</span><span class="p">,</span> <span class="mi">21</span><span class="p">),</span> <span class="s2">"b3"</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">21</span><span class="p">,</span> <span class="mi">31</span><span class="p">)}))</span>
+<span class="n">ht1</span> <span class="o">=</span> <span class="n">Heatmap</span><span class="p">(</span><span class="n">mat1</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s2">"rnorm"</span><span class="p">,</span> <span class="n">col</span><span class="o">=</span><span class="n">col_rnorm</span><span class="p">,</span> <span class="n">top_annotation</span><span class="o">=</span><span class="n">ha1</span><span class="p">)</span>
+<span class="n">ht2</span> <span class="o">=</span> <span class="n">Heatmap</span><span class="p">(</span><span class="n">mat2</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s2">"runif"</span><span class="p">,</span> <span class="n">col</span><span class="o">=</span><span class="n">col_runif</span><span class="p">,</span> <span class="n">top_annotation</span><span class="o">=</span><span class="n">ha2</span><span class="p">)</span>
+<span class="n">ch</span><span class="o">.</span><span class="n">draw</span><span class="p">(</span><span class="n">ht1</span> <span class="o">+</span> <span class="n">ht2</span> <span class="o">+</span> <span class="n">ht3</span><span class="p">)</span></code></pre></div>
+<figure>
+<img src="images/ch04_anno_adj_unequal_simple.png"
+alt="Dendrogram adjusted for unequal simple annotation counts" />
+<figcaption aria-hidden="true">Dendrogram adjusted for unequal simple
+annotation counts</figcaption>
+</figure>
+<p>For bottom annotations, heatmaps without a
+<code>bottom_annotation</code> align their column names directly beneath
+their heatmap bodies:</p>
+<div class="code-wrapper"><pre class="codehilite"><code><span class="n">ha1</span> <span class="o">=</span> <span class="n">HeatmapAnnotation</span><span class="p">(</span><span class="n">foo1</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">11</span><span class="p">),</span> <span class="n">bar1</span><span class="o">=</span><span class="n">anno_points</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">11</span><span class="p">)),</span> <span class="n">annotation_name_side</span><span class="o">=</span><span class="s2">"left"</span><span class="p">)</span>
+<span class="n">ht1</span> <span class="o">=</span> <span class="n">Heatmap</span><span class="p">(</span><span class="n">mat1</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s2">"rnorm"</span><span class="p">,</span> <span class="n">col</span><span class="o">=</span><span class="n">col_rnorm</span><span class="p">,</span> <span class="n">bottom_annotation</span><span class="o">=</span><span class="n">ha1</span><span class="p">)</span>
+<span class="n">ch</span><span class="o">.</span><span class="n">draw</span><span class="p">(</span><span class="n">ht1</span> <span class="o">+</span> <span class="n">ht2</span> <span class="o">+</span> <span class="n">ht3</span><span class="p">)</span></code></pre></div>
+<figure>
+<img src="images/ch04_anno_adj_bottom.png"
+alt="Column names aligned when only one heatmap has a bottom annotation" />
+<figcaption aria-hidden="true">Column names aligned when only one
+heatmap has a bottom annotation</figcaption>
+</figure>
+<h2 id="concatenate-with-annotations"><span class="header-section-number">4.7</span> Concatenate with annotations<a class="anchor-section" aria-label="Anchor link to section" href="#concatenate-with-annotations">#</a></h2>
+<p>Independent <code>rowAnnotation</code> objects can be concatenated
+directly onto a horizontal <code>HeatmapList</code> with
+<code>+</code>:</p>
+<div class="code-wrapper"><pre class="codehilite"><code><span class="n">ha</span> <span class="o">=</span> <span class="n">rowAnnotation</span><span class="p">(</span><span class="n">foo</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">13</span><span class="p">),</span> <span class="n">bar</span><span class="o">=</span><span class="n">anno_barplot</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">13</span><span class="p">),</span> <span class="n">width</span><span class="o">=</span><span class="n">unit</span><span class="p">(</span><span class="mi">4</span><span class="p">,</span> <span class="s2">"cm"</span><span class="p">)))</span>
+<span class="n">ht1</span> <span class="o">=</span> <span class="n">Heatmap</span><span class="p">(</span><span class="n">mat1</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s2">"rnorm"</span><span class="p">,</span> <span class="n">col</span><span class="o">=</span><span class="n">col_rnorm</span><span class="p">,</span> <span class="n">row_km</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+<span class="n">ch</span><span class="o">.</span><span class="n">draw</span><span class="p">(</span><span class="n">ht1</span> <span class="o">+</span> <span class="n">ha</span><span class="p">)</span></code></pre></div>
+<figure>
+<img src="images/ch04_concat_row_anno.png"
+alt="Concatenating a Heatmap with a rowAnnotation object" />
+<figcaption aria-hidden="true">Concatenating a Heatmap with a
+rowAnnotation object</figcaption>
+</figure>
+<p>Multiple tracks can be defined in separate
+<code>rowAnnotation()</code> calls:</p>
+<div class="code-wrapper"><pre class="codehilite"><code><span class="n">ch</span><span class="o">.</span><span class="n">draw</span><span class="p">(</span>
+    <span class="n">ht1</span>
+    <span class="o">+</span> <span class="n">rowAnnotation</span><span class="p">(</span><span class="n">foo</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">13</span><span class="p">))</span>
+    <span class="o">+</span> <span class="n">rowAnnotation</span><span class="p">(</span><span class="n">bar</span><span class="o">=</span><span class="n">anno_barplot</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">13</span><span class="p">),</span> <span class="n">width</span><span class="o">=</span><span class="n">unit</span><span class="p">(</span><span class="mi">4</span><span class="p">,</span> <span class="s2">"cm"</span><span class="p">)))</span>
+<span class="p">)</span></code></pre></div>
+<figure>
+<img src="images/ch04_concat_sep_anno.png"
+alt="Concatenating separate rowAnnotation tracks" />
+<figcaption aria-hidden="true">Concatenating separate rowAnnotation
+tracks</figcaption>
+</figure>
+<p>Notice that when row annotations are concatenated with
+<code>+</code>, the heatmap’s built-in row names are suppressed between
+components. To display row names on the right, either:</p>
+<ol type="1">
+<li>Attach the annotation via <code>right_annotation=ha</code> (or
+<code>attach_annotation(ht1, ha, side="right")</code>) on the last
+heatmap:</li>
+</ol>
+<div class="code-wrapper"><pre class="codehilite"><code><span class="n">ch</span><span class="o">.</span><span class="n">draw</span><span class="p">(</span><span class="n">Heatmap</span><span class="p">(</span><span class="n">mat1</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s2">"rnorm"</span><span class="p">,</span> <span class="n">col</span><span class="o">=</span><span class="n">col_rnorm</span><span class="p">,</span> <span class="n">row_km</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">right_annotation</span><span class="o">=</span><span class="n">ha</span><span class="p">))</span></code></pre></div>
+<figure>
+<img src="images/ch04_concat_right_anno.png"
+alt="Keeping row names to the right using right_annotation" />
+<figcaption aria-hidden="true">Keeping row names to the right using
+right_annotation</figcaption>
+</figure>
+<ol start="2" type="1">
+<li>Or append an explicit <code>anno_text()</code> track:</li>
+</ol>
+<div class="code-wrapper"><pre class="codehilite"><code><span class="n">ch</span><span class="o">.</span><span class="n">draw</span><span class="p">(</span><span class="n">ht1</span> <span class="o">+</span> <span class="n">ha</span> <span class="o">+</span> <span class="n">rowAnnotation</span><span class="p">(</span><span class="n">rn</span><span class="o">=</span><span class="n">anno_text</span><span class="p">(</span><span class="n">mat1</span><span class="o">.</span><span class="n">index</span><span class="p">,</span> <span class="n">location</span><span class="o">=</span><span class="n">unit</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="s2">"npc"</span><span class="p">),</span> <span class="n">just</span><span class="o">=</span><span class="s2">"left"</span><span class="p">)))</span></code></pre></div>
+<figure>
+<img src="images/ch04_concat_text_anno.png"
+alt="Adding row names after concatenated row annotations via anno_text" />
+<figcaption aria-hidden="true">Adding row names after concatenated row
+annotations via anno_text</figcaption>
+</figure>
+<p>Heatmaps and <code>rowAnnotation</code> objects can be interleaved in
+any order:</p>
+<div class="code-wrapper"><pre class="codehilite"><code><span class="n">ch</span><span class="o">.</span><span class="n">draw</span><span class="p">(</span>
+    <span class="n">rowAnnotation</span><span class="p">(</span><span class="n">foo</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">13</span><span class="p">))</span>
+    <span class="o">+</span> <span class="n">ht1</span>
+    <span class="o">+</span> <span class="n">rowAnnotation</span><span class="p">(</span><span class="n">bar</span><span class="o">=</span><span class="n">anno_barplot</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">13</span><span class="p">),</span> <span class="n">width</span><span class="o">=</span><span class="n">unit</span><span class="p">(</span><span class="mi">4</span><span class="p">,</span> <span class="s2">"cm"</span><span class="p">)))</span>
+    <span class="o">+</span> <span class="n">Heatmap</span><span class="p">(</span><span class="n">mat2</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s2">"runif"</span><span class="p">,</span> <span class="n">col</span><span class="o">=</span><span class="n">col_runif</span><span class="p">)</span>
+<span class="p">)</span></code></pre></div>
+<figure>
+<img src="images/ch04_concat_arbitrary.png"
+alt="Arbitrarily interleaving rowAnnotation tracks and Heatmaps" />
+<figcaption aria-hidden="true">Arbitrarily interleaving rowAnnotation
+tracks and Heatmaps</figcaption>
+</figure>
+<p>The difference between annotations attached as heatmap components
+(<code>left_annotation</code> / <code>right_annotation</code>) and
+standalone concatenated annotations is highlighted further in <a
+href="#vertical-concatenation">Vertical concatenation</a>.</p>
+<h2 id="concatenate-only-the-annotations"><span class="header-section-number">4.8</span> Concatenate only the
+annotations<a class="anchor-section" aria-label="Anchor link to section" href="#concatenate-only-the-annotations">#</a></h2>
+<p>Row annotations can be concatenated without any heatmap:</p>
+<div class="code-wrapper"><pre class="codehilite"><code><span class="n">anno_list</span> <span class="o">=</span> <span class="n">rowAnnotation</span><span class="p">(</span><span class="n">foo</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">13</span><span class="p">))</span> <span class="o">+</span> <span class="n">rowAnnotation</span><span class="p">(</span><span class="n">bar</span><span class="o">=</span><span class="n">anno_barplot</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">13</span><span class="p">),</span> <span class="n">width</span><span class="o">=</span><span class="n">unit</span><span class="p">(</span><span class="mi">4</span><span class="p">,</span> <span class="s2">"cm"</span><span class="p">)))</span>
+<span class="n">ch</span><span class="o">.</span><span class="n">draw</span><span class="p">(</span><span class="n">anno_list</span><span class="p">)</span></code></pre></div>
+<figure>
+<img src="images/ch04_anno_only.png"
+alt="Concatenating standalone rowAnnotation tracks without a heatmap" />
+<figcaption aria-hidden="true">Concatenating standalone rowAnnotation
+tracks without a heatmap</figcaption>
+</figure>
+<p>To wrap a single <code>rowAnnotation</code> into a
+<code>HeatmapList</code>, concatenate it with <code>None</code>:</p>
+<div class="code-wrapper"><pre class="codehilite"><code><span class="n">ch</span><span class="o">.</span><span class="n">draw</span><span class="p">(</span><span class="n">rowAnnotation</span><span class="p">(</span><span class="n">bar</span><span class="o">=</span><span class="n">anno_barplot</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">13</span><span class="p">),</span> <span class="n">width</span><span class="o">=</span><span class="n">unit</span><span class="p">(</span><span class="mi">4</span><span class="p">,</span> <span class="s2">"cm"</span><span class="p">)))</span> <span class="o">+</span> <span class="kc">None</span><span class="p">)</span></code></pre></div>
+<figure>
+<img src="images/ch04_anno_only_single.png"
+alt="Single rowAnnotation wrapped into a HeatmapList via + None" />
+<figcaption aria-hidden="true">Single rowAnnotation wrapped into a
+HeatmapList via + None</figcaption>
+</figure>
+<p>When you want to split a standalone list of row annotations with
+<code>row_split</code> (while keeping legends and slice gaps aligned
+cleanly), prepend a zero-column anchor <code>Heatmap</code> with
+clustering disabled:</p>
+<div class="code-wrapper"><pre class="codehilite"><code><span class="n">ch</span><span class="o">.</span><span class="n">draw</span><span class="p">(</span>
+    <span class="n">Heatmap</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">empty</span><span class="p">((</span><span class="mi">12</span><span class="p">,</span> <span class="mi">0</span><span class="p">)),</span> <span class="n">cluster_rows</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">row_dend_reorder</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">show_heatmap_legend</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">width</span><span class="o">=</span><span class="n">unit</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="s2">"mm"</span><span class="p">))</span>
+    <span class="o">+</span> <span class="n">anno_list</span><span class="p">,</span>
+    <span class="n">row_split</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">repeat</span><span class="p">([</span><span class="s2">"A"</span><span class="p">,</span> <span class="s2">"B"</span><span class="p">],</span> <span class="mi">6</span><span class="p">),</span>
+<span class="p">)</span></code></pre></div>
+<figure>
+<img src="images/ch04_anno_only_split.png"
+alt="Splitting an annotation-only layout by row_split" />
+<figcaption aria-hidden="true">Splitting an annotation-only layout by
+row_split</figcaption>
+</figure>
+<p>See <a
+href="other-high-level-plots.html#stacked-summary-plot">Stacked summary
+plot</a> for a real multi-annotation dashboard built using this
+pattern.</p>
+<h2 id="vertical-concatenation"><span class="header-section-number">4.9</span> Vertical concatenation<a class="anchor-section" aria-label="Anchor link to section" href="#vertical-concatenation">#</a></h2>
+<p>Heatmaps and column annotations can be stacked vertically using the
+<code>%v%</code> infix operator
+(<code>from complexheatmap import v</code>) or Python’s division
+operator (<code>ht1 / ht2</code>). Every rule from horizontal
+concatenation carries over symmetrically—columns are aligned across
+items, and <code>column_km</code> / <code>column_split</code> on the
+main heatmap governs all vertically concatenated heatmaps and column
+annotations:</p>
+<div class="code-wrapper"><pre class="codehilite"><code><span class="n">mat1t</span> <span class="o">=</span> <span class="n">mat1</span><span class="o">.</span><span class="n">T</span>
+<span class="n">mat2t</span> <span class="o">=</span> <span class="n">mat2</span><span class="o">.</span><span class="n">T</span>
+
+<span class="n">ht1</span> <span class="o">=</span> <span class="n">Heatmap</span><span class="p">(</span><span class="n">mat1t</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s2">"rnorm"</span><span class="p">,</span> <span class="n">col</span><span class="o">=</span><span class="n">col_rnorm</span><span class="p">,</span> <span class="n">row_title</span><span class="o">=</span><span class="s2">"rnorm"</span><span class="p">)</span>
+<span class="n">ht2</span> <span class="o">=</span> <span class="n">Heatmap</span><span class="p">(</span><span class="n">mat2t</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s2">"runif"</span><span class="p">,</span> <span class="n">col</span><span class="o">=</span><span class="n">col_runif</span><span class="p">,</span> <span class="n">row_title</span><span class="o">=</span><span class="s2">"runif"</span><span class="p">)</span>
+<span class="n">ht3</span> <span class="o">=</span> <span class="n">Heatmap</span><span class="p">(</span><span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">([</span><span class="n">le</span><span class="p">],</span> <span class="n">index</span><span class="o">=</span><span class="p">[</span><span class="s2">"letters"</span><span class="p">]),</span> <span class="n">name</span><span class="o">=</span><span class="s2">"letters"</span><span class="p">,</span> <span class="n">col</span><span class="o">=</span><span class="n">col_letters</span><span class="p">)</span>
+
+<span class="n">ht_list</span> <span class="o">=</span> <span class="n">ht1</span> <span class="o">%</span><span class="n">v</span><span class="o">%</span> <span class="n">ht2</span> <span class="o">%</span><span class="n">v</span><span class="o">%</span> <span class="n">ht3</span>
+<span class="n">ch</span><span class="o">.</span><span class="n">draw</span><span class="p">(</span><span class="n">ht_list</span><span class="p">)</span>
+<span class="n">ch</span><span class="o">.</span><span class="n">draw</span><span class="p">(</span><span class="n">ht_list</span><span class="p">,</span> <span class="n">column_km</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span></code></pre></div>
+<figure>
+<img src="images/ch04_vertical_basic.png"
+alt="Vertical concatenation of three heatmaps with %v%" />
+<figcaption aria-hidden="true">Vertical concatenation of three heatmaps
+with %v%</figcaption>
+</figure>
+<figure>
+<img src="images/ch04_vertical_col_km.png"
+alt="Vertical heatmap list split across columns with column_km=2" />
+<figcaption aria-hidden="true">Vertical heatmap list split across
+columns with column_km=2</figcaption>
+</figure>
+<p>Column annotations (<code>HeatmapAnnotation()</code>) can be inserted
+anywhere in a vertical <code>%v%</code> stack:</p>
+<div class="code-wrapper"><pre class="codehilite"><code><span class="n">ha</span> <span class="o">=</span> <span class="n">HeatmapAnnotation</span><span class="p">(</span><span class="n">foo</span><span class="o">=</span><span class="n">anno_barplot</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">13</span><span class="p">),</span> <span class="n">height</span><span class="o">=</span><span class="n">unit</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="s2">"cm"</span><span class="p">)))</span>
+<span class="n">ch</span><span class="o">.</span><span class="n">draw</span><span class="p">(</span><span class="n">ht1</span> <span class="o">%</span><span class="n">v</span><span class="o">%</span> <span class="n">ha</span> <span class="o">%</span><span class="n">v</span><span class="o">%</span> <span class="n">ht2</span> <span class="o">%</span><span class="n">v</span><span class="o">%</span> <span class="n">ht3</span><span class="p">,</span> <span class="n">column_km</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span></code></pre></div>
+<figure>
+<img src="images/ch04_vertical_with_anno.png"
+alt="Inserting a column HeatmapAnnotation inside a vertical stack" />
+<figcaption aria-hidden="true">Inserting a column HeatmapAnnotation
+inside a vertical stack</figcaption>
+</figure>
+<p>Individual heatmaps in a vertical stack can still carry independent
+row k-means splits or row clustering:</p>
+<div class="code-wrapper"><pre class="codehilite"><code><span class="n">ht1</span> <span class="o">=</span> <span class="n">Heatmap</span><span class="p">(</span><span class="n">mat1t</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s2">"rnorm"</span><span class="p">,</span> <span class="n">col</span><span class="o">=</span><span class="n">col_rnorm</span><span class="p">,</span> <span class="n">row_km</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+<span class="n">ht2</span> <span class="o">=</span> <span class="n">Heatmap</span><span class="p">(</span><span class="n">mat2t</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s2">"runif"</span><span class="p">,</span> <span class="n">col</span><span class="o">=</span><span class="n">col_runif</span><span class="p">,</span> <span class="n">row_km</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+<span class="n">ch</span><span class="o">.</span><span class="n">draw</span><span class="p">(</span><span class="n">ht1</span> <span class="o">%</span><span class="n">v</span><span class="o">%</span> <span class="n">ha</span> <span class="o">%</span><span class="n">v</span><span class="o">%</span> <span class="n">ht2</span> <span class="o">%</span><span class="n">v</span><span class="o">%</span> <span class="n">ht3</span><span class="p">,</span> <span class="n">column_km</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span></code></pre></div>
+<figure>
+<img src="images/ch04_vertical_row_km.png"
+alt="Vertical stack with independent row_km per heatmap and shared column_km" />
+<figcaption aria-hidden="true">Vertical stack with independent row_km
+per heatmap and shared column_km</figcaption>
+</figure>
+<p>To add row annotations to heatmaps inside a vertical stack, attach
+them as <code>left_annotation</code> or <code>right_annotation</code>
+components on each <code>Heatmap</code>.
+<strong>ComplexHeatmap-py</strong> aligns their widths automatically
+across the vertical stack—providing the standard way to expand a layout
+both horizontally and vertically at once:</p>
+<div class="code-wrapper"><pre class="codehilite"><code><span class="n">ht1</span> <span class="o">=</span> <span class="n">Heatmap</span><span class="p">(</span>
+    <span class="n">mat1t</span><span class="p">,</span>
+    <span class="n">name</span><span class="o">=</span><span class="s2">"rnorm"</span><span class="p">,</span>
+    <span class="n">col</span><span class="o">=</span><span class="n">col_rnorm</span><span class="p">,</span>
+    <span class="n">row_km</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span>
+    <span class="n">left_annotation</span><span class="o">=</span><span class="n">rowAnnotation</span><span class="p">(</span><span class="n">foo1</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">11</span><span class="p">),</span> <span class="n">bar1</span><span class="o">=</span><span class="n">anno_barplot</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">11</span><span class="p">))),</span>
+<span class="p">)</span>
+<span class="n">ha</span> <span class="o">=</span> <span class="n">HeatmapAnnotation</span><span class="p">(</span><span class="n">foo</span><span class="o">=</span><span class="n">anno_barplot</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">13</span><span class="p">),</span> <span class="n">height</span><span class="o">=</span><span class="n">unit</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="s2">"cm"</span><span class="p">),</span> <span class="n">axis_param</span><span class="o">=</span><span class="p">{</span><span class="s2">"side"</span><span class="p">:</span> <span class="s2">"right"</span><span class="p">}))</span>
+<span class="n">ht2</span> <span class="o">=</span> <span class="n">Heatmap</span><span class="p">(</span><span class="n">mat2t</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s2">"runif"</span><span class="p">,</span> <span class="n">col</span><span class="o">=</span><span class="n">col_runif</span><span class="p">,</span> <span class="n">row_km</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">left_annotation</span><span class="o">=</span><span class="n">rowAnnotation</span><span class="p">(</span><span class="n">foo2</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">11</span><span class="p">)))</span>
+<span class="n">ht_list</span> <span class="o">=</span> <span class="n">ht1</span> <span class="o">%</span><span class="n">v</span><span class="o">%</span> <span class="n">ha</span> <span class="o">%</span><span class="n">v</span><span class="o">%</span> <span class="n">ht2</span> <span class="o">%</span><span class="n">v</span><span class="o">%</span> <span class="n">ht3</span>
+<span class="n">ch</span><span class="o">.</span><span class="n">draw</span><span class="p">(</span><span class="n">ht_list</span><span class="p">,</span> <span class="n">column_km</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span></code></pre></div>
+<figure>
+<img src="images/ch04_vertical_row_and_col_anno.png"
+alt="Expanding both vertically (%v%) and horizontally (left_annotation)" />
+<figcaption aria-hidden="true">Expanding both vertically (%v%) and
+horizontally (left_annotation)</figcaption>
+</figure>
+<h2 id="subset-heatmap-list"><span class="header-section-number">4.10</span> Subset the heatmap list<a class="anchor-section" aria-label="Anchor link to section" href="#subset-heatmap-list">#</a></h2>
+<p>Just like subsetting a single <code>Heatmap</code> (<a
+href="a-single-heatmap.html#subset-a-heatmap">Subset a heatmap</a>), an
+uninitialized <code>HeatmapList</code> supports <strong>0-based</strong>
+indexing via <code>ht_list[rows, cols]</code>. For a horizontal
+<code>HeatmapList</code>, the row selector subsets rows across all
+heatmaps and annotations, while the column selector picks a subset of
+heatmaps or standalone annotations by name or index (for a vertical
+<code>HeatmapList</code>, the roles reverse):</p>
+<div class="code-wrapper"><pre class="codehilite"><code><span class="n">ht1</span> <span class="o">=</span> <span class="n">Heatmap</span><span class="p">(</span>
+    <span class="n">mat1</span><span class="p">,</span>
+    <span class="n">name</span><span class="o">=</span><span class="s2">"rnorm"</span><span class="p">,</span>
+    <span class="n">col</span><span class="o">=</span><span class="n">col_rnorm</span><span class="p">,</span>
+    <span class="n">left_annotation</span><span class="o">=</span><span class="n">rowAnnotation</span><span class="p">(</span><span class="n">foo1</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">13</span><span class="p">),</span> <span class="n">bar1</span><span class="o">=</span><span class="n">anno_points</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">13</span><span class="p">))),</span>
+<span class="p">)</span>
+<span class="n">ht2</span> <span class="o">=</span> <span class="n">Heatmap</span><span class="p">(</span><span class="n">mat2</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s2">"runif"</span><span class="p">,</span> <span class="n">col</span><span class="o">=</span><span class="n">col_runif</span><span class="p">)</span>
+<span class="n">ha</span> <span class="o">=</span> <span class="n">rowAnnotation</span><span class="p">(</span><span class="n">foo2</span><span class="o">=</span><span class="n">anno_barplot</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">13</span><span class="p">)),</span> <span class="n">bar2</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">12</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">))</span>
+<span class="n">ht_list</span> <span class="o">=</span> <span class="n">ht1</span> <span class="o">+</span> <span class="n">ht2</span> <span class="o">+</span> <span class="n">ha</span>
+
+<span class="n">ht_list</span><span class="o">.</span><span class="n">names</span>
+<span class="c1"># ['rnorm', 'runif', 'heatmap_annotation_5']</span>
+
+<span class="n">ch</span><span class="o">.</span><span class="n">draw</span><span class="p">(</span><span class="n">ht_list</span><span class="p">[:</span><span class="mi">6</span><span class="p">,</span> <span class="p">[</span><span class="s2">"rnorm"</span><span class="p">,</span> <span class="s2">"bar2"</span><span class="p">]])</span></code></pre></div>
+<figure>
+<img src="images/ch04_subset.png"
+alt="Subsetting rows and selecting specific components from a HeatmapList" />
+<figcaption aria-hidden="true">Subsetting rows and selecting specific
+components from a HeatmapList</figcaption>
+</figure>
+<p>Notice that <code>foo1</code> and <code>bar1</code> belong internally
+to <code>ht1</code> (<code>"rnorm"</code>), so they follow
+<code>"rnorm"</code> automatically and cannot be selected independently,
+whereas <code>foo2</code> and <code>bar2</code> belong to the standalone
+<code>rowAnnotation</code> (<code>ha</code>) and can be selected
+individually by name (<code>"bar2"</code>).</p>
+<h2 id="plot-the-heatmap-list"><span class="header-section-number">4.11</span> Plot the heatmap list<a class="anchor-section" aria-label="Anchor link to section" href="#plot-the-heatmap-list">#</a></h2>
+<p>As in <a href="a-single-heatmap.html#plot-the-heatmap">Plot the
+heatmap</a>, evaluating a <code>HeatmapList</code> expression in Jupyter
+renders its <code>_repr_png_()</code> preview automatically, while
+inside scripts, loops, or multi-statement blocks you should call
+<code>ch.draw(ht_list, ...)</code> (or <code>ht_list.draw(...)</code>)
+explicitly:</p>
+<div class="code-wrapper"><pre class="codehilite"><code><span class="c1"># Code only for demonstration</span>
+<span class="n">drawn</span> <span class="o">=</span> <span class="n">ch</span><span class="o">.</span><span class="n">draw</span><span class="p">(</span><span class="n">ht_list</span><span class="p">,</span> <span class="o">...</span><span class="p">)</span></code></pre></div>
+<h2 id="get-orders-and-dendrograms-from-a-list-of-heatmaps"><span class="header-section-number">4.12</span> Get orders
+and dendrograms<a class="anchor-section" aria-label="Anchor link to section" href="#get-orders-and-dendrograms-from-a-list-of-heatmaps">#</a></h2>
+<p>Use <code>row_order()</code>, <code>column_order()</code>,
+<code>row_dend()</code>, and <code>column_dend()</code> on the drawn
+<code>HeatmapList</code> returned by <code>ch.draw()</code> to inspect
+the <strong>0-based</strong> display ordering and
+<code>Dendrogram</code> objects:</p>
+<div class="code-wrapper"><pre class="codehilite"><code><span class="kn">from</span><span class="w"> </span><span class="nn">complexheatmap</span><span class="w"> </span><span class="kn">import</span> <span class="n">column_order</span><span class="p">,</span> <span class="n">row_order</span>
+
+<span class="n">ht1</span> <span class="o">=</span> <span class="n">Heatmap</span><span class="p">(</span><span class="n">mat1</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s2">"rnorm"</span><span class="p">,</span> <span class="n">col</span><span class="o">=</span><span class="n">col_rnorm</span><span class="p">)</span>
+<span class="n">ht2</span> <span class="o">=</span> <span class="n">Heatmap</span><span class="p">(</span><span class="n">mat2</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s2">"runif"</span><span class="p">,</span> <span class="n">col</span><span class="o">=</span><span class="n">col_runif</span><span class="p">)</span>
+<span class="n">ht_list</span> <span class="o">=</span> <span class="n">ch</span><span class="o">.</span><span class="n">draw</span><span class="p">(</span><span class="n">ht1</span> <span class="o">+</span> <span class="n">ht2</span><span class="p">)</span>
+
+<span class="n">row_order</span><span class="p">(</span><span class="n">ht_list</span><span class="p">)</span>
+<span class="c1"># [9, 5, 2, 8, 4, 7, 3, 11, 1, 6, 0, 10]</span>
+<span class="n">column_order</span><span class="p">(</span><span class="n">ht_list</span><span class="p">)</span>
+<span class="c1"># {'rnorm': [2, 8, 7, 5, 6, 4, 1, 3, 9, 0], 'runif': [3, 5, 0, 6, 8, 9, 1, 7, 4, 2]}</span></code></pre></div>
+<p>When rows or columns are split, the corresponding return values
+become nested lists (one list per slice):</p>
+<div class="code-wrapper"><pre class="codehilite"><code><span class="n">ht1</span> <span class="o">=</span> <span class="n">Heatmap</span><span class="p">(</span><span class="n">mat1</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s2">"rnorm"</span><span class="p">,</span> <span class="n">col</span><span class="o">=</span><span class="n">col_rnorm</span><span class="p">)</span>
+<span class="n">ht2</span> <span class="o">=</span> <span class="n">Heatmap</span><span class="p">(</span><span class="n">mat2</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s2">"runif"</span><span class="p">,</span> <span class="n">col</span><span class="o">=</span><span class="n">col_runif</span><span class="p">,</span> <span class="n">column_km</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+<span class="n">ht_list</span> <span class="o">=</span> <span class="n">ch</span><span class="o">.</span><span class="n">draw</span><span class="p">(</span><span class="n">ht1</span> <span class="o">+</span> <span class="n">ht2</span><span class="p">,</span> <span class="n">row_km</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+
+<span class="n">row_order</span><span class="p">(</span><span class="n">ht_list</span><span class="p">)</span>
+<span class="c1"># [[9, 5, 2, 8, 4, 7, 3, 11], [1, 6, 0, 10]]</span>
+<span class="n">column_order</span><span class="p">(</span><span class="n">ht_list</span><span class="p">)</span>
+<span class="c1"># {'rnorm': [2, 8, 7, 5, 6, 4, 1, 3, 9, 0], 'runif': [[1, 3, 8, 6, 0], [7, 5, 4, 9, 2]]}</span></code></pre></div>
+<p>Pass <code>name=</code> to <code>column_order()</code> (or
+<code>column_dend()</code>) to extract the result for a single
+heatmap:</p>
+<div class="code-wrapper"><pre class="codehilite"><code><span class="n">column_order</span><span class="p">(</span><span class="n">ht_list</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s2">"runif"</span><span class="p">)</span>
+<span class="c1"># [[1, 3, 8, 6, 0], [7, 5, 4, 9, 2]]</span></code></pre></div>
+<p>The exact same functions work for <code>row_dend()</code> /
+<code>column_dend()</code> and for vertical <code>%v%</code> heatmap
+lists.</p>
+<h2 id="change-parameters-globally"><span class="header-section-number">4.13</span> Change parameters globally<a class="anchor-section" aria-label="Anchor link to section" href="#change-parameters-globally">#</a></h2>
+<p><code>ht_opt</code> manages global defaults applied across all
+heatmaps, annotations, legends, and component paddings. Always reset
+options afterward with <code>ht_opt(RESET=True)</code>—or better yet,
+scope temporary overrides safely with Python’s
+<code>with ht_opt.local(...):</code> context manager.</p>
+<p>Print <code>ht_opt</code> to inspect every option and its default
+value:</p>
+<div class="code-wrapper"><pre class="codehilite"><code><span class="nb">print</span><span class="p">(</span><span class="n">ht_opt</span><span class="p">)</span></code></pre></div>
+<div class="code-wrapper"><pre class="codehilite"><code> Option                        Value
+ -----------------------------:--------------------------------
+ heatmap_row_names_gp          None
+ heatmap_column_names_gp       None
+ heatmap_row_title_gp          None
+ heatmap_column_title_gp       None
+ legend_title_gp               None
+ legend_title_position         None
+ legend_labels_gp              None
+ legend_grid_height            None
+ legend_grid_width             None
+ legend_border                 None
+ legend_gap                    unit([4mm, 4mm])
+ merge_legends                 False
+ heatmap_border                None
+ annotation_border             None
+ fast_hclust                   False
+ show_parent_dend_line         True
+ kmeans_seed                   None
+ verbose                       False
+ message                       True
+ show_vp                       False
+ simple_anno_size              5mm
+ DENDROGRAM_PADDING            0.5mm
+ DIMNAME_PADDING               1mm
+ TITLE_PADDING                 None
+ COLUMN_ANNO_PADDING           1mm
+ ROW_ANNO_PADDING              1mm
+ HEATMAP_LEGEND_PADDING        2mm
+ ANNOTATION_LEGEND_PADDING     2mm
+ PAGE_PADDING                  None
+ ht_gap                        None
+ save_last                     False
+ validate_names                True
+ raster_temp_image_max_width   30000
+ raster_temp_image_max_height  30000
+ COLOR                         ['blue', '#EEEEEE', 'red']</code></pre></div>
+<p>Options group into five categories:</p>
+<ul>
+<li><strong>Heatmaps</strong>: <code>heatmap_row_names_gp</code>,
+<code>heatmap_column_names_gp</code>, <code>heatmap_row_title_gp</code>,
+<code>heatmap_column_title_gp</code>, <code>heatmap_border</code>.</li>
+<li><strong>Legends</strong>: <code>legend_title_gp</code>,
+<code>legend_title_position</code>, <code>legend_labels_gp</code>,
+<code>legend_grid_width</code>, <code>legend_grid_height</code>,
+<code>legend_border</code>, <code>legend_gap</code>,
+<code>merge_legends</code>.</li>
+<li><strong>Annotations</strong>: <code>annotation_border</code>,
+<code>simple_anno_size</code>.</li>
+<li><strong>Component padding</strong>: <code>DENDROGRAM_PADDING</code>,
+<code>DIMNAME_PADDING</code>, <code>TITLE_PADDING</code>,
+<code>COLUMN_ANNO_PADDING</code>, <code>ROW_ANNO_PADDING</code>,
+<code>HEATMAP_LEGEND_PADDING</code>,
+<code>ANNOTATION_LEGEND_PADDING</code>, <code>PAGE_PADDING</code>.</li>
+<li><strong>Execution &amp; defaults</strong>: <code>fast_hclust</code>,
+<code>show_parent_dend_line</code>, <code>kmeans_seed</code>,
+<code>ht_gap</code>, <code>validate_names</code>,
+<code>COLOR</code>.</li>
+</ul>
+<p>Options can be read or updated via function call or attribute access,
+and reset with <code>RESET=True</code>:</p>
+<div class="code-wrapper"><pre class="codehilite"><code><span class="c1"># Code only for demonstration</span>
+<span class="n">ht_opt</span><span class="p">(</span><span class="s2">"heatmap_row_names_gp"</span><span class="p">)</span>
+<span class="n">ht_opt</span><span class="o">.</span><span class="n">heatmap_row_names_gp</span>
+
+<span class="n">ht_opt</span><span class="p">(</span><span class="n">heatmap_row_names_gp</span><span class="o">=</span><span class="n">gpar</span><span class="p">(</span><span class="n">fontsize</span><span class="o">=</span><span class="mi">8</span><span class="p">))</span>
+<span class="n">ht_opt</span><span class="o">.</span><span class="n">heatmap_row_names_gp</span> <span class="o">=</span> <span class="n">gpar</span><span class="p">(</span><span class="n">fontsize</span><span class="o">=</span><span class="mi">8</span><span class="p">)</span>
+<span class="n">ht_opt</span><span class="p">(</span><span class="n">RESET</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span></code></pre></div>
+<p>Using <code>with ht_opt.local(...):</code> applies options to a
+specific block and automatically restores previous settings
+afterward:</p>
+<div class="code-wrapper"><pre class="codehilite"><code><span class="k">with</span> <span class="n">ht_opt</span><span class="o">.</span><span class="n">local</span><span class="p">(</span>
+    <span class="n">heatmap_column_names_gp</span><span class="o">=</span><span class="n">gpar</span><span class="p">(</span><span class="n">fontface</span><span class="o">=</span><span class="s2">"italic"</span><span class="p">),</span>
+    <span class="n">heatmap_column_title_gp</span><span class="o">=</span><span class="n">gpar</span><span class="p">(</span><span class="n">fontsize</span><span class="o">=</span><span class="mi">10</span><span class="p">),</span>
+    <span class="n">legend_border</span><span class="o">=</span><span class="s2">"black"</span><span class="p">,</span>
+    <span class="n">heatmap_border</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+    <span class="n">annotation_border</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+<span class="p">):</span>
+    <span class="n">ht1</span> <span class="o">=</span> <span class="n">Heatmap</span><span class="p">(</span><span class="n">mat1</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s2">"ht1"</span><span class="p">,</span> <span class="n">column_title</span><span class="o">=</span><span class="s2">"Heatmap 1"</span><span class="p">,</span> <span class="n">top_annotation</span><span class="o">=</span><span class="n">HeatmapAnnotation</span><span class="p">(</span><span class="n">foo</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">11</span><span class="p">)))</span>
+    <span class="n">ht2</span> <span class="o">=</span> <span class="n">Heatmap</span><span class="p">(</span><span class="n">mat2</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s2">"ht2"</span><span class="p">,</span> <span class="n">column_title</span><span class="o">=</span><span class="s2">"Heatmap 2"</span><span class="p">,</span> <span class="n">top_annotation</span><span class="o">=</span><span class="n">HeatmapAnnotation</span><span class="p">(</span><span class="n">bar</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">11</span><span class="p">)))</span>
+    <span class="n">ch</span><span class="o">.</span><span class="n">draw</span><span class="p">(</span><span class="n">ht1</span> <span class="o">+</span> <span class="n">ht2</span><span class="p">)</span></code></pre></div>
+<figure>
+<img src="images/ch04_ht_opt.png"
+alt="Applying global styles via ht_opt.local()" />
+<figcaption aria-hidden="true">Applying global styles via
+ht_opt.local()</figcaption>
+</figure>
+<h2 id="adjust-blank-space-caused-by-annotations"><span class="header-section-number">4.14</span> Adjust blank space
+caused by annotations<a class="anchor-section" aria-label="Anchor link to section" href="#adjust-blank-space-caused-by-annotations">#</a></h2>
+<p>Because heatmap annotations carry annotation names and data axes
+outside the column bounds, <strong>ComplexHeatmap-py</strong> reserves
+space for those overhangs in the overall layout. Depending on your plot
+dimensions, this can create extra blank space on the left or right of
+the heatmap body—for example, when a matrix has no row names on the
+right or no row dendrogram on the left.</p>
+<p>In R <strong>ComplexHeatmap</strong>,
+<code>adjust_annotation_extension</code> toggles whether annotation
+overhangs reserve layout margin. In <strong>ComplexHeatmap-py</strong>,
+annotation overhang extension is applied automatically when building the
+<code>HeatmapList</code> layout, and a clean way to eliminate unwanted
+right-side blank space or align a <code>row_title</code> with an
+annotation axis is to move the annotation name to the opposite side
+(<code>annotation_name_side="left"</code>):</p>
+<div class="code-wrapper"><pre class="codehilite"><code><span class="n">m</span> <span class="o">=</span> <span class="n">rng</span><span class="o">.</span><span class="n">standard_normal</span><span class="p">((</span><span class="mi">10</span><span class="p">,</span> <span class="mi">10</span><span class="p">))</span>
+<span class="n">ht_right</span> <span class="o">=</span> <span class="n">Heatmap</span><span class="p">(</span>
+    <span class="n">m</span><span class="p">,</span>
+    <span class="n">name</span><span class="o">=</span><span class="s2">"mat"</span><span class="p">,</span>
+    <span class="n">top_annotation</span><span class="o">=</span><span class="n">HeatmapAnnotation</span><span class="p">(</span><span class="n">foo</span><span class="o">=</span><span class="n">anno_points</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">11</span><span class="p">))),</span>
+    <span class="n">show_row_dend</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+<span class="p">)</span>
+<span class="n">ht_left</span> <span class="o">=</span> <span class="n">Heatmap</span><span class="p">(</span>
+    <span class="n">m</span><span class="p">,</span>
+    <span class="n">name</span><span class="o">=</span><span class="s2">"mat"</span><span class="p">,</span>
+    <span class="n">top_annotation</span><span class="o">=</span><span class="n">HeatmapAnnotation</span><span class="p">(</span><span class="n">foo</span><span class="o">=</span><span class="n">anno_points</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">11</span><span class="p">)),</span> <span class="n">annotation_name_side</span><span class="o">=</span><span class="s2">"left"</span><span class="p">),</span>
+    <span class="n">row_title</span><span class="o">=</span><span class="s2">"fooooooooooo"</span><span class="p">,</span>
+    <span class="n">show_row_dend</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+<span class="p">)</span>
+
+<span class="n">ch</span><span class="o">.</span><span class="n">draw</span><span class="p">(</span><span class="n">ht_right</span><span class="p">,</span> <span class="n">row_title</span><span class="o">=</span><span class="s2">"fooooooooooo"</span><span class="p">)</span>
+<span class="n">ch</span><span class="o">.</span><span class="n">draw</span><span class="p">(</span><span class="n">ht_left</span><span class="p">)</span></code></pre></div>
+<figure>
+<img src="images/ch04_adj_ext_comparison.png"
+alt="Comparing default right annotation_name_side vs annotation_name_side=‘left’" />
+<figcaption aria-hidden="true">Comparing default right
+annotation_name_side vs annotation_name_side=‘left’</figcaption>
+</figure>
+<p>Automatic annotation extension is especially important on very short
+heatmaps, where annotation axes and titles would otherwise be clipped at
+the top or bottom without reserving space:</p>
+<div class="code-wrapper"><pre class="codehilite"><code><span class="n">ch</span><span class="o">.</span><span class="n">draw</span><span class="p">(</span><span class="n">ht_right</span><span class="p">,</span> <span class="n">row_title</span><span class="o">=</span><span class="s2">"fooooooooooo"</span><span class="p">,</span> <span class="n">column_title</span><span class="o">=</span><span class="s2">"Short heatmap with automatic annotation extension"</span><span class="p">)</span></code></pre></div>
+<figure>
+<img src="images/ch04_adj_ext_short.png"
+alt="Automatic annotation extension protecting annotation axes on a short heatmap" />
+<figcaption aria-hidden="true">Automatic annotation extension protecting
+annotation axes on a short heatmap</figcaption>
+</figure>
+<h2 id="manually-increase-space-around-the-plot"><span class="header-section-number">4.15</span> Manually increase space
+around the plot<a class="anchor-section" aria-label="Anchor link to section" href="#manually-increase-space-around-the-plot">#</a></h2>
+<p>If long labels or rotated titles still extend past the figure
+margins, use <code>padding</code> in <code>ch.draw()</code> (or
+<code>ht_opt.PAGE_PADDING</code>) to add explicit blank margins around
+all four sides. <code>padding</code> takes a 4-element <code>Unit</code>
+vector ordered <code>[bottom, left, top, right]</code>:</p>
+<div class="code-wrapper"><pre class="codehilite"><code><span class="n">rnames</span> <span class="o">=</span> <span class="p">[</span><span class="sa">f</span><span class="s2">"R</span><span class="si">{</span><span class="n">i</span><span class="si">}</span><span class="s2">"</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">11</span><span class="p">)]</span>
+<span class="n">rnames</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="s2">"a long long long long long row name"</span>
+<span class="n">m2</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">m</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="n">rnames</span><span class="p">,</span> <span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="sa">f</span><span class="s2">"C</span><span class="si">{</span><span class="n">j</span><span class="si">}</span><span class="s2">"</span> <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">11</span><span class="p">)])</span>
+<span class="n">ht</span> <span class="o">=</span> <span class="n">Heatmap</span><span class="p">(</span><span class="n">m2</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s2">"mat"</span><span class="p">,</span> <span class="n">row_names_side</span><span class="o">=</span><span class="s2">"left"</span><span class="p">,</span> <span class="n">show_row_dend</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+
+<span class="n">ch</span><span class="o">.</span><span class="n">draw</span><span class="p">(</span><span class="n">ht</span><span class="p">)</span>
+<span class="n">ch</span><span class="o">.</span><span class="n">draw</span><span class="p">(</span><span class="n">ht</span><span class="p">,</span> <span class="n">padding</span><span class="o">=</span><span class="n">unit</span><span class="p">([</span><span class="mi">2</span><span class="p">,</span> <span class="mi">20</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">],</span> <span class="s2">"mm"</span><span class="p">))</span>  <span class="c1"># extra 20 mm on the left</span></code></pre></div>
+<figure>
+<img src="images/ch04_padding.png"
+alt="Adding extra left canvas margin via padding (2, 20, 2, 2) mm" />
+<figcaption aria-hidden="true">Adding extra left canvas margin via
+padding (2, 20, 2, 2) mm</figcaption>
+</figure>
+
+          </section>
+          <nav class="chapter-footer-nav" aria-label="Chapter Navigation">
+            <a href="heatmap-annotations.html">&larr; 3 Heatmap Annotations</a>
+            <a href="legends.html">5 Legends &rarr;</a>
+          </nav>
+        </main>
+        <a href="heatmap-annotations.html" class="navigation navigation-prev" aria-label="Previous chapter: Heatmap Annotations" title="Previous: Heatmap Annotations">&#8249;</a>
+        <a href="legends.html" class="navigation navigation-next" aria-label="Next chapter: Legends" title="Next: Legends">&#8250;</a>
+      </div>
+    </div>
+  </div>
+  <script src="assets/gitbook.js"></script>
+</body>
+</html>

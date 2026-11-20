@@ -1,0 +1,1228 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Chapter 8 UpSet plot | ComplexHeatmap-py Complete Reference</title>
+  <meta name="description" content="Python port of ComplexHeatmap Complete Reference using ComplexHeatmap-py.">
+  <link rel="stylesheet" href="assets/gitbook.css">
+</head>
+<body>
+  <div class="book">
+    <nav class="book-summary" aria-label="Table of Contents">
+      <div class="book-summary-header">
+        <a class="book-summary-title" href="index.html">ComplexHeatmap-py Complete Reference</a>
+        <span class="book-summary-subtitle">Python Port via ComplexHeatmap-py</span>
+      </div>
+      <div class="book-search-box">
+        <input id="book-search-input" type="search" placeholder="Search book..." aria-label="Search book">
+      </div>
+      <ul class="summary">
+        <li class="chapter"><a href="index.html"><span>About</span></a><ul><li class="level-2"><a href="index.html#installation">Installation</a></li>
+<li class="level-2"><a href="index.html#r-to-python-migration-highlights">R-to-Python Migration
+Highlights</a></li>
+<li class="level-2"><a href="index.html#citation">Citation</a></li>
+<li class="level-2"><a href="index.html#python-environment">Python Environment</a></li></ul></li>
+<li class="chapter"><a href="introduction.html"><span class="header-section-number">1</span><span>Introduction</span></a><ul><li class="level-2"><a href="introduction.html#general-design"><span class="header-section-number">1.1</span> General design</a></li>
+<li class="level-2"><a href="introduction.html#a-brief-description-of-following-chapters"><span class="header-section-number">1.2</span> A brief description
+of following chapters</a></li></ul></li>
+<li class="chapter"><a href="a-single-heatmap.html"><span class="header-section-number">2</span><span>A Single Heatmap</span></a><ul><li class="level-2"><a href="a-single-heatmap.html#colors"><span class="header-section-number">2.1</span> Colors</a></li>
+<li class="level-2"><a href="a-single-heatmap.html#heatmap-titles"><span class="header-section-number">2.2</span> Titles</a></li>
+<li class="level-2"><a href="a-single-heatmap.html#clustering"><span class="header-section-number">2.3</span> Clustering</a></li>
+<li class="level-3"><a href="a-single-heatmap.html#distance-methods"><span class="header-section-number">2.3.1</span> Distance methods</a></li>
+<li class="level-3"><a href="a-single-heatmap.html#clustering-methods"><span class="header-section-number">2.3.2</span> Clustering methods</a></li>
+<li class="level-3"><a href="a-single-heatmap.html#render-dendrograms"><span class="header-section-number">2.3.3</span> Render dendrograms</a></li>
+<li class="level-3"><a href="a-single-heatmap.html#reorder-dendrograms"><span class="header-section-number">2.3.4</span> Reorder dendrograms</a></li>
+<li class="level-2"><a href="a-single-heatmap.html#row-and-column-orders"><span class="header-section-number">2.4</span> Set row and column orders</a></li>
+<li class="level-2"><a href="a-single-heatmap.html#heatmap-seriation"><span class="header-section-number">2.5</span> Seriation</a></li>
+<li class="level-2"><a href="a-single-heatmap.html#dimension-names"><span class="header-section-number">2.6</span> Dimension labels</a></li>
+<li class="level-2"><a href="a-single-heatmap.html#heatmap-split"><span class="header-section-number">2.7</span> Heatmap split</a></li>
+<li class="level-3"><a href="a-single-heatmap.html#split-by-kmeans-clustering"><span class="header-section-number">2.7.1</span> Split by k-means clustering</a></li>
+<li class="level-3"><a href="a-single-heatmap.html#split-by-categorical-variables"><span class="header-section-number">2.7.2</span> Split by categorical
+variables</a></li>
+<li class="level-3"><a href="a-single-heatmap.html#split-by-dendrogram"><span class="header-section-number">2.7.3</span> Split by dendrogram</a></li>
+<li class="level-3"><a href="a-single-heatmap.html#order-of-slices"><span class="header-section-number">2.7.4</span> Order of slices</a></li>
+<li class="level-3"><a href="a-single-heatmap.html#titles-for-splitting"><span class="header-section-number">2.7.5</span> Titles for splitting</a></li>
+<li class="level-3"><a href="a-single-heatmap.html#graphic-parameters-for-splitting"><span class="header-section-number">2.7.6</span> Graphic parameters for
+splitting</a></li>
+<li class="level-3"><a href="a-single-heatmap.html#gaps-between-slices"><span class="header-section-number">2.7.7</span> Gaps between slices</a></li>
+<li class="level-3"><a href="a-single-heatmap.html#split-heatmap-annotations"><span class="header-section-number">2.7.8</span> Split heatmap annotations</a></li>
+<li class="level-2"><a href="a-single-heatmap.html#heatmap-as-raster-image"><span class="header-section-number">2.8</span> Heatmap as raster image</a></li>
+<li class="level-2"><a href="a-single-heatmap.html#customize-the-heatmap-body"><span class="header-section-number">2.9</span> Customize the heatmap body</a></li>
+<li class="level-3"><a href="a-single-heatmap.html#cell-fun"><span class="header-section-number">2.9.1</span> cell_fun</a></li>
+<li class="level-3"><a href="a-single-heatmap.html#layer-fun"><span class="header-section-number">2.9.2</span> layer_fun</a></li>
+<li class="level-2"><a href="a-single-heatmap.html#size-of-the-heatmap"><span class="header-section-number">2.10</span> Size of the heatmap</a></li>
+<li class="level-2"><a href="a-single-heatmap.html#plot-the-heatmap"><span class="header-section-number">2.11</span> Plot the heatmap</a></li>
+<li class="level-2"><a href="a-single-heatmap.html#get-orders-and-dendrograms-from-heatmap"><span class="header-section-number">2.12</span> Extract orders and
+dendrograms</a></li>
+<li class="level-2"><a href="a-single-heatmap.html#subset-a-heatmap"><span class="header-section-number">2.13</span> Subset a heatmap</a></li></ul></li>
+<li class="chapter"><a href="heatmap-annotations.html"><span class="header-section-number">3</span><span>Heatmap Annotations</span></a><ul><li class="level-2"><a href="heatmap-annotations.html#simple-annotation"><span class="header-section-number">3.1</span> Simple annotation</a></li>
+<li class="level-2"><a href="heatmap-annotations.html#simple-annotation-as-an-annotation-function"><span class="header-section-number">3.2</span> Simple annotation
+as an annotation function</a></li>
+<li class="level-2"><a href="heatmap-annotations.html#empty-annotation"><span class="header-section-number">3.3</span> Empty annotation</a></li>
+<li class="level-2"><a href="heatmap-annotations.html#block-annotation"><span class="header-section-number">3.4</span> Block annotation</a></li>
+<li class="level-3"><a href="heatmap-annotations.html#block-for-putting-labels"><span class="header-section-number">3.4.1</span> Block for putting labels</a></li>
+<li class="level-3"><a href="heatmap-annotations.html#blocks-as-plotting-regions"><span class="header-section-number">3.4.2</span> Blocks as plotting regions</a></li>
+<li class="level-2"><a href="heatmap-annotations.html#image-annotation"><span class="header-section-number">3.5</span> Image annotation</a></li>
+<li class="level-2"><a href="heatmap-annotations.html#points-annotation"><span class="header-section-number">3.6</span> Points annotation</a></li>
+<li class="level-2"><a href="heatmap-annotations.html#lines-annotation"><span class="header-section-number">3.7</span> Line annotation</a></li>
+<li class="level-2"><a href="heatmap-annotations.html#barplot_annotation"><span class="header-section-number">3.8</span> Barplot annotation</a></li>
+<li class="level-2"><a href="heatmap-annotations.html#box-annotation"><span class="header-section-number">3.9</span> Boxplot annotation</a></li>
+<li class="level-2"><a href="heatmap-annotations.html#histogram-annotation"><span class="header-section-number">3.10</span> Histogram annotation</a></li>
+<li class="level-2"><a href="heatmap-annotations.html#density-annotation"><span class="header-section-number">3.11</span> Density annotation</a></li>
+<li class="level-2"><a href="heatmap-annotations.html#joyplot-annotation"><span class="header-section-number">3.12</span> Joyplot annotation</a></li>
+<li class="level-2"><a href="heatmap-annotations.html#horizon-chart-annotation"><span class="header-section-number">3.13</span> Horizon chart annotation</a></li>
+<li class="level-2"><a href="heatmap-annotations.html#text-annotation"><span class="header-section-number">3.14</span> Text annotation</a></li>
+<li class="level-2"><a href="heatmap-annotations.html#anno-numeric"><span class="header-section-number">3.15</span> Numeric labels annotation</a></li>
+<li class="level-2"><a href="heatmap-annotations.html#completely-customized-annotation"><span class="header-section-number">3.16</span> Completely customized
+annotation</a></li>
+<li class="level-2"><a href="heatmap-annotations.html#mark-annotation"><span class="header-section-number">3.17</span> Mark annotation</a></li>
+<li class="level-2"><a href="heatmap-annotations.html#zoom-annotation"><span class="header-section-number">3.18</span> Zoom/link annotation</a></li>
+<li class="level-2"><a href="heatmap-annotations.html#anno-text-box"><span class="header-section-number">3.19</span> Text box annotation</a></li>
+<li class="level-3"><a href="heatmap-annotations.html#construct-the-text-box"><span class="header-section-number">3.19.1</span> Construct the text box</a></li>
+<li class="level-3"><a href="heatmap-annotations.html#draw-textbox-annotation"><span class="header-section-number">3.19.2</span> Draw textbox annotation</a></li>
+<li class="level-2"><a href="heatmap-annotations.html#summary-annotation"><span class="header-section-number">3.20</span> Summary annotation</a></li>
+<li class="level-2"><a href="heatmap-annotations.html#multiple-annotations"><span class="header-section-number">3.21</span> Multiple annotations</a></li>
+<li class="level-3"><a href="heatmap-annotations.html#heatmap-annotation-general-settings"><span class="header-section-number">3.21.1</span> General settings</a></li>
+<li class="level-3"><a href="heatmap-annotations.html#size-of-annotations"><span class="header-section-number">3.21.2</span> Size of annotations</a></li>
+<li class="level-3"><a href="heatmap-annotations.html#annotation-labels"><span class="header-section-number">3.21.3</span> Annotation labels</a></li>
+<li class="level-2"><a href="heatmap-annotations.html#heatmap-annotation-utility-function"><span class="header-section-number">3.22</span> Utility functions</a></li>
+<li class="level-2"><a href="heatmap-annotations.html#implement-new-annotation-functions"><span class="header-section-number">3.23</span> Implement new annotation
+functions</a></li>
+<li class="level-3"><a href="heatmap-annotations.html#construct-annotation-function-by-cell-fun"><span class="header-section-number">3.23.1</span> Construct annotation
+function by cell_fun</a></li></ul></li>
+<li class="chapter"><a href="a-list-of-heatmaps.html"><span class="header-section-number">4</span><span>A List of Heatmaps</span></a><ul><li class="level-2"><a href="a-list-of-heatmaps.html#heatmap-list-titles"><span class="header-section-number">4.1</span> Titles</a></li>
+<li class="level-2"><a href="a-list-of-heatmaps.html#size-of-heatmaps"><span class="header-section-number">4.2</span> Size of heatmaps</a></li>
+<li class="level-2"><a href="a-list-of-heatmaps.html#gap-between-heatmaps"><span class="header-section-number">4.3</span> Gap between heatmaps</a></li>
+<li class="level-2"><a href="a-list-of-heatmaps.html#automatic-adjustment-to-the-main-heatmap"><span class="header-section-number">4.4</span> Automatic adjustment
+to the main heatmap</a></li>
+<li class="level-2"><a href="a-list-of-heatmaps.html#control-main-heatmap-in-draw-function"><span class="header-section-number">4.5</span> Control main heatmap in
+draw() function</a></li>
+<li class="level-2"><a href="a-list-of-heatmaps.html#annotations-as-components-are-adjusted"><span class="header-section-number">4.6</span> Annotations as
+components are adjusted</a></li>
+<li class="level-2"><a href="a-list-of-heatmaps.html#concatenate-with-annotations"><span class="header-section-number">4.7</span> Concatenate with annotations</a></li>
+<li class="level-2"><a href="a-list-of-heatmaps.html#concatenate-only-the-annotations"><span class="header-section-number">4.8</span> Concatenate only the
+annotations</a></li>
+<li class="level-2"><a href="a-list-of-heatmaps.html#vertical-concatenation"><span class="header-section-number">4.9</span> Vertical concatenation</a></li>
+<li class="level-2"><a href="a-list-of-heatmaps.html#subset-heatmap-list"><span class="header-section-number">4.10</span> Subset the heatmap list</a></li>
+<li class="level-2"><a href="a-list-of-heatmaps.html#plot-the-heatmap-list"><span class="header-section-number">4.11</span> Plot the heatmap list</a></li>
+<li class="level-2"><a href="a-list-of-heatmaps.html#get-orders-and-dendrograms-from-a-list-of-heatmaps"><span class="header-section-number">4.12</span> Get orders
+and dendrograms</a></li>
+<li class="level-2"><a href="a-list-of-heatmaps.html#change-parameters-globally"><span class="header-section-number">4.13</span> Change parameters globally</a></li>
+<li class="level-2"><a href="a-list-of-heatmaps.html#adjust-blank-space-caused-by-annotations"><span class="header-section-number">4.14</span> Adjust blank space
+caused by annotations</a></li>
+<li class="level-2"><a href="a-list-of-heatmaps.html#manually-increase-space-around-the-plot"><span class="header-section-number">4.15</span> Manually increase space
+around the plot</a></li></ul></li>
+<li class="chapter"><a href="legends.html"><span class="header-section-number">5</span><span>Legends</span></a><ul><li class="level-2"><a href="legends.html#continuous-legends"><span class="header-section-number">5.1</span> Continuous legends</a></li>
+<li class="level-2"><a href="legends.html#discrete-legends"><span class="header-section-number">5.2</span> Discrete legends</a></li>
+<li class="level-2"><a href="legends.html#a-list-of-legends"><span class="header-section-number">5.3</span> A list of legends</a></li>
+<li class="level-2"><a href="legends.html#heatmap-and-annotation-legends"><span class="header-section-number">5.4</span> Heatmap and annotation
+legends</a></li>
+<li class="level-2"><a href="legends.html#add-customized-legends"><span class="header-section-number">5.5</span> Add customized legends</a></li>
+<li class="level-2"><a href="legends.html#the-side-of-legends"><span class="header-section-number">5.6</span> The side of legends</a></li></ul></li>
+<li class="chapter"><a href="heatmap-decoration.html"><span class="header-section-number">6</span><span>Heatmap Decoration</span></a><ul><li class="level-2"><a href="heatmap-decoration.html#decoration-functions"><span class="header-section-number">6.1</span> Decoration functions</a></li>
+<li class="level-2"><a href="heatmap-decoration.html#decoration-examples"><span class="header-section-number">6.2</span> Examples</a></li>
+<li class="level-3"><a href="heatmap-decoration.html#barplot-for-single-column-heatmap"><span class="header-section-number">6.2.1</span> Barplot for single-column
+heatmap</a></li>
+<li class="level-3"><a href="heatmap-decoration.html#add-titles-for-row-annotations"><span class="header-section-number">6.2.2</span> Add titles for row
+annotations</a></li>
+<li class="level-3"><a href="heatmap-decoration.html#other-possible-use-of-decorations"><span class="header-section-number">6.2.3</span> Other possible use of
+decorations</a></li></ul></li>
+<li class="chapter"><a href="oncoprint.html"><span class="header-section-number">7</span><span>OncoPrint</span></a><ul><li class="level-2"><a href="oncoprint.html#oncoprint-general-settings"><span class="header-section-number">7.1</span> General settings</a></li>
+<li class="level-3"><a href="oncoprint.html#input-data-format"><span class="header-section-number">7.1.1</span> Input data format</a></li>
+<li class="level-3"><a href="oncoprint.html#define-the-alter-fun"><span class="header-section-number">7.1.2</span> Define the alter_fun()</a></li>
+<li class="level-3"><a href="oncoprint.html#oncoprint-background"><span class="header-section-number">7.1.3</span> Background</a></li>
+<li class="level-3"><a href="oncoprint.html#complex-alteration-types"><span class="header-section-number">7.1.4</span> Complex alteration types</a></li>
+<li class="level-3"><a href="oncoprint.html#simplify-alter-fun"><span class="header-section-number">7.1.5</span> Simplify alter_fun</a></li>
+<li class="level-3"><a href="oncoprint.html#other-heatmap-related-settings"><span class="header-section-number">7.1.6</span> Other heatmap-related
+settings</a></li>
+<li class="level-2"><a href="oncoprint.html#apply-to-cbioportal-dataset"><span class="header-section-number">7.2</span> Apply to cBioPortal dataset</a></li>
+<li class="level-3"><a href="oncoprint.html#remove-empty-rows-and-columns"><span class="header-section-number">7.2.1</span> Remove empty rows and
+columns</a></li>
+<li class="level-3"><a href="oncoprint.html#reorder-the-oncoprint"><span class="header-section-number">7.2.2</span> Reorder the oncoPrint</a></li>
+<li class="level-3"><a href="oncoprint.html#oncoprint-annotations"><span class="header-section-number">7.2.3</span> OncoPrint annotations</a></li>
+<li class="level-3"><a href="oncoprint.html#oncoprint-as-a-heatmap"><span class="header-section-number">7.2.4</span> oncoPrint as a Heatmap</a></li></ul></li>
+<li class="chapter active"><a href="upset-plot.html"><span class="header-section-number">8</span><span>UpSet plot</span></a><ul><li class="level-2"><a href="upset-plot.html#input-data"><span class="header-section-number">8.1</span> Input data</a></li>
+<li class="level-2"><a href="upset-plot.html#upset-mode"><span class="header-section-number">8.2</span> Mode</a></li>
+<li class="level-2"><a href="upset-plot.html#make-the-combination-matrix"><span class="header-section-number">8.3</span> Make the combination matrix</a></li>
+<li class="level-2"><a href="upset-plot.html#upset-utility-functions"><span class="header-section-number">8.4</span> Utility functions</a></li>
+<li class="level-3"><a href="upset-plot.html#upset-subsetting"><span class="header-section-number">8.4.1</span> Subsetting a CombMat</a></li>
+<li class="level-2"><a href="upset-plot.html#upset-making-the-plot"><span class="header-section-number">8.5</span> Make the plot</a></li>
+<li class="level-2"><a href="upset-plot.html#upset-plots-as-heatmaps"><span class="header-section-number">8.6</span> UpSet plots as heatmaps</a></li>
+<li class="level-2"><a href="upset-plot.html#upset-movies"><span class="header-section-number">8.7</span> Example with the movies dataset</a></li>
+<li class="level-2"><a href="upset-plot.html#upset-genomic"><span class="header-section-number">8.8</span> Example with the genomic regions</a></li></ul></li>
+<li class="chapter"><a href="interactive-complexheatmap.html"><span class="header-section-number">9</span><span>Interactive ComplexHeatmap</span></a><ul><li class="level-2"><a href="interactive-complexheatmap.html#inline-jupyter"><span class="header-section-number">9.1</span> Inline rendering in Jupyter and IPython</a></li>
+<li class="level-2"><a href="interactive-complexheatmap.html#brush-and-zoom"><span class="header-section-number">9.2</span> Programmatic brush selection and sub-heatmap
+zoom</a></li>
+<li class="level-2"><a href="interactive-complexheatmap.html#split-slice-zoom"><span class="header-section-number">9.3</span> Extracting and zooming into split slices</a></li>
+<li class="level-2"><a href="interactive-complexheatmap.html#shiny-and-python"><span class="header-section-number">9.4</span> Interactive R Shiny ecosystem and Python
+notebooks</a></li></ul></li>
+<li class="chapter"><a href="integrate-with-other-packages.html"><span class="header-section-number">10</span><span>Integrate with other
+packages</span></a><ul><li class="level-2"><a href="integrate-with-other-packages.html#pheatmap"><span class="header-section-number">10.1</span> pheatmap, heatmap, and heatmap.2</a></li>
+<li class="level-3"><a href="integrate-with-other-packages.html#pheatmap-examples"><span class="header-section-number">10.1.1</span> Examples</a></li>
+<li class="level-3"><a href="integrate-with-other-packages.html#pheatmap-translation"><span class="header-section-number">10.1.2</span> Translation</a></li>
+<li class="level-3"><a href="integrate-with-other-packages.html#pheatmap-comparisons"><span class="header-section-number">10.1.3</span> Comparisons and legacy wrappers</a></li>
+<li class="level-2"><a href="integrate-with-other-packages.html#multipanel-composition"><span class="header-section-number">10.2</span> Multi-panel layout composition</a></li>
+<li class="level-3"><a href="integrate-with-other-packages.html#grid-grabexpr"><span class="header-section-number">10.2.1</span> Capturing heatmaps with
+grid_grabExpr</a></li>
+<li class="level-3"><a href="integrate-with-other-packages.html#matplotlib-integration"><span class="header-section-number">10.2.2</span> Combining ComplexHeatmap-py with
+Matplotlib Axes</a></li>
+<li class="level-2"><a href="integrate-with-other-packages.html#gt-render"><span class="header-section-number">10.3</span> Rich text with gt_render</a></li>
+<li class="level-3"><a href="integrate-with-other-packages.html#gt-render-title"><span class="header-section-number">10.3.1</span> Titles</a></li>
+<li class="level-3"><a href="integrate-with-other-packages.html#gt-render-dimnames"><span class="header-section-number">10.3.2</span> Row and column names</a></li>
+<li class="level-3"><a href="integrate-with-other-packages.html#gt-render-annotations"><span class="header-section-number">10.3.3</span> Styled titles with annotations</a></li>
+<li class="level-3"><a href="integrate-with-other-packages.html#gt-render-anno-text"><span class="header-section-number">10.3.4</span> Text and textbox annotations</a></li>
+<li class="level-3"><a href="integrate-with-other-packages.html#gt-render-legends"><span class="header-section-number">10.3.5</span> Legends</a></li></ul></li>
+<li class="chapter"><a href="other-high-level-plots.html"><span class="header-section-number">11</span><span>Other High-level Plots</span></a><ul><li class="level-2"><a href="other-high-level-plots.html#density-heatmap"><span class="header-section-number">11.1</span> Density heatmap</a></li>
+<li class="level-2"><a href="other-high-level-plots.html#stacked-summary-plot"><span class="header-section-number">11.2</span> Stacked summary plot</a></li></ul></li>
+<li class="chapter"><a href="three-dimensional-complexheatmap.html"><span class="header-section-number">12</span><span>Three-dimensional ComplexHeatmap</span></a><ul><li class="level-2"><a href="three-dimensional-complexheatmap.html#motivation"><span class="header-section-number">12.1</span> Motivation</a></li>
+<li class="level-2"><a href="three-dimensional-complexheatmap.html#implementation-of-3d-heatmap"><span class="header-section-number">12.2</span> Implementation of 3D heatmap</a></li></ul></li>
+<li class="chapter"><a href="genome-level-heatmap.html"><span class="header-section-number">13</span><span>Genome-level heatmap</span></a><ul><li class="level-2"><a href="genome-level-heatmap.html#genomic-bins"><span class="header-section-number">13.1</span> Genomic bins and signal normalization</a></li>
+<li class="level-2"><a href="genome-level-heatmap.html#horizontal-genome-heatmap"><span class="header-section-number">13.2</span> Horizontal genome-level heatmap</a></li>
+<li class="level-2"><a href="genome-level-heatmap.html#vertical-genome-heatmap"><span class="header-section-number">13.3</span> Vertical genome-level heatmap</a></li>
+<li class="level-2"><a href="genome-level-heatmap.html#genome-anno-block"><span class="header-section-number">13.4</span> Chromosome block headers and multi-track
+genomic features</a></li></ul></li>
+<li class="chapter"><a href="more-examples.html"><span class="header-section-number">14</span><span>More Examples</span></a><ul><li class="level-2"><a href="more-examples.html#gene-expression-matrix"><span class="header-section-number">14.1</span> Add more information for gene expression
+matrix</a></li>
+<li class="level-2"><a href="more-examples.html#the-measles-vaccine-heatmap"><span class="header-section-number">14.2</span> The measles vaccine heatmap</a></li>
+<li class="level-2"><a href="more-examples.html#scrna-seq-heterogeneity"><span class="header-section-number">14.3</span> Visualize cell heterogeneity from
+single-cell RNA-seq</a></li>
+<li class="level-2"><a href="more-examples.html#methylation-expression-correlations"><span class="header-section-number">14.4</span> Correlations between
+methylation, expression and other genomic features</a></li>
+<li class="level-2"><a href="more-examples.html#methylation-complex-annotations"><span class="header-section-number">14.5</span> Visualize methylation profile
+with complex annotations</a></li>
+<li class="level-2"><a href="more-examples.html#add-multiple-boxplots-for-single-row"><span class="header-section-number">14.6</span> Add multiple boxplots for
+single row</a></li></ul></li>
+<li class="chapter"><a href="other-tricks.html"><span class="header-section-number">15</span><span>Other Tricks</span></a><ul><li class="level-2"><a href="other-tricks.html#same-cell-size"><span class="header-section-number">15.1</span> Set the same cell size for different heatmaps
+with different dimensions</a></li>
+<li class="level-2"><a href="other-tricks.html#global-options-ht-opt"><span class="header-section-number">15.2</span> Global options with ht_opt</a></li>
+<li class="level-2"><a href="other-tricks.html#grid-grabexpr-composition"><span class="header-section-number">15.3</span> Capturing and composing heatmaps with
+grid_grabExpr</a></li></ul></li>
+        <li class="divider"></li>
+      </ul>
+      <div class="summary-footer">
+        <div>Published with <strong>ComplexHeatmap-py</strong></div>
+        <div><a href="https://github.com/zhanxw/ComplexHeatmap-reference-py" target="_blank" rel="noopener">GitHub Repository</a> &middot; <a href="https://jokergoo.github.io/ComplexHeatmap-reference/book/" target="_blank" rel="noopener">Original R Book</a></div>
+      </div>
+    </nav>
+
+    <div class="book-body">
+      <header class="book-header">
+        <div class="header-left">
+          <button id="sidebar-toggle" class="toolbar-btn" type="button" title="Toggle Table of Contents" aria-label="Toggle Table of Contents">&#9776;</button>
+          <button id="search-toggle-btn" class="toolbar-btn" type="button" title="Search" aria-label="Search">&#128269;</button>
+          <h1 class="header-title"><a href="index.html">ComplexHeatmap-py Complete Reference</a></h1>
+        </div>
+        <div class="header-right">
+          <div class="dropdown">
+            <button id="font-settings-btn" class="toolbar-btn" type="button" title="Font and Theme Settings" aria-label="Font Settings">A</button>
+            <div id="font-settings-menu" class="dropdown-menu">
+              <div class="dropdown-row">
+                <button id="font-size-dec" type="button">A-</button>
+                <button id="font-size-inc" type="button">A+</button>
+              </div>
+              <div class="dropdown-row">
+                <button type="button" data-font="sans">Sans</button>
+                <button type="button" data-font="serif">Serif</button>
+              </div>
+              <div class="dropdown-row">
+                <button type="button" data-theme="white">White</button>
+                <button type="button" data-theme="sepia">Sepia</button>
+                <button type="button" data-theme="night">Night</button>
+              </div>
+            </div>
+          </div>
+          <a class="toolbar-btn" href="https://github.com/zhanxw/ComplexHeatmap-reference-py" target="_blank" rel="noopener" title="View on GitHub">GitHub</a>
+        </div>
+      </header>
+
+      <div class="page-wrapper">
+        <main class="page-inner">
+          <div id="search-results" aria-live="polite"></div>
+          <section class="normal markdown-section">
+            <h1 id="upset-plot"><span class="header-section-number">8</span> UpSet plot<a class="anchor-section" aria-label="Anchor link to section" href="#upset-plot">#</a></h1>
+<p><a href="https://caleydo.org/tools/upset/">UpSet plots</a> provide an
+efficient way to visualize intersections across multiple sets compared
+to traditional approaches such as Venn diagrams, especially when there
+are more than three sets. Originally popularized in R by <a
+href="https://github.com/hms-dbmi/UpSetR">UpSetR</a>, UpSet plots are
+implemented directly in <strong>ComplexHeatmap-py</strong> on top of the
+<code>Heatmap</code> and <code>HeatmapAnnotation</code> architecture,
+enabling full customization, arbitrary annotations, concatenation, and
+genomic interval support.</p>
+<h2 id="input-data"><span class="header-section-number">8.1</span> Input data<a class="anchor-section" aria-label="Anchor link to section" href="#input-data">#</a></h2>
+<p>Multiple sets can be passed to <strong>ComplexHeatmap-py</strong> in
+three formats:</p>
+<ol type="1">
+<li><strong>A dictionary (or sequence) of sets</strong>, where each
+value is an iterable of element identifiers:</li>
+</ol>
+<div class="code-wrapper"><pre class="codehilite"><code><span class="kn">import</span><span class="w"> </span><span class="nn">complexheatmap</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">ch</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">complexheatmap</span><span class="w"> </span><span class="kn">import</span> <span class="n">v</span>
+
+<span class="n">lt</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s2">"set1"</span><span class="p">:</span> <span class="p">[</span><span class="s2">"a"</span><span class="p">,</span> <span class="s2">"b"</span><span class="p">,</span> <span class="s2">"c"</span><span class="p">],</span>
+    <span class="s2">"set2"</span><span class="p">:</span> <span class="p">[</span><span class="s2">"b"</span><span class="p">,</span> <span class="s2">"c"</span><span class="p">,</span> <span class="s2">"d"</span><span class="p">,</span> <span class="s2">"e"</span><span class="p">],</span>
+<span class="p">}</span></code></pre></div>
+<ol start="2" type="1">
+<li><strong>A binary matrix or <code>pandas.DataFrame</code></strong>
+where rows correspond to elements and columns correspond to sets
+(<code>1</code>/<code>0</code> or boolean
+<code>True</code>/<code>False</code>). You can convert a dictionary of
+sets to a binary <code>DataFrame</code> with
+<code>ch.list_to_matrix()</code>:</li>
+</ol>
+<div class="code-wrapper"><pre class="codehilite"><code><span class="n">lt</span> <span class="o">=</span> <span class="p">{</span><span class="s2">"set1"</span><span class="p">:</span> <span class="p">[</span><span class="s2">"a"</span><span class="p">,</span> <span class="s2">"b"</span><span class="p">,</span> <span class="s2">"c"</span><span class="p">],</span> <span class="s2">"set2"</span><span class="p">:</span> <span class="p">[</span><span class="s2">"b"</span><span class="p">,</span> <span class="s2">"c"</span><span class="p">,</span> <span class="s2">"d"</span><span class="p">,</span> <span class="s2">"e"</span><span class="p">]}</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">ch</span><span class="o">.</span><span class="n">list_to_matrix</span><span class="p">(</span><span class="n">lt</span><span class="p">))</span></code></pre></div>
+<div class="code-wrapper"><pre class="codehilite"><code>   set1  set2
+a     1     0
+b     1     1
+c     1     1
+d     0     1
+e     0     1</code></pre></div>
+<p>You can also specify <code>universal_set</code> in
+<code>ch.list_to_matrix()</code> to include background elements not
+belonging to any set:</p>
+<div class="code-wrapper"><pre class="codehilite"><code><span class="nb">print</span><span class="p">(</span><span class="n">ch</span><span class="o">.</span><span class="n">list_to_matrix</span><span class="p">(</span><span class="n">lt</span><span class="p">,</span> <span class="n">universal_set</span><span class="o">=</span><span class="nb">list</span><span class="p">(</span><span class="s2">"abcdefghij"</span><span class="p">)))</span></code></pre></div>
+<div class="code-wrapper"><pre class="codehilite"><code>   set1  set2
+a     1     0
+b     1     1
+c     1     1
+d     0     1
+e     0     1
+f     0     0
+g     0     0
+h     0     0
+i     0     0
+j     0     0</code></pre></div>
+<p>If <code>universal_set</code> does not cover every element of the
+input sets, elements outside <code>universal_set</code> are
+excluded:</p>
+<div class="code-wrapper"><pre class="codehilite"><code><span class="nb">print</span><span class="p">(</span><span class="n">ch</span><span class="o">.</span><span class="n">list_to_matrix</span><span class="p">(</span><span class="n">lt</span><span class="p">,</span> <span class="n">universal_set</span><span class="o">=</span><span class="nb">list</span><span class="p">(</span><span class="s2">"abcd"</span><span class="p">)))</span></code></pre></div>
+<div class="code-wrapper"><pre class="codehilite"><code>   set1  set2
+a     1     0
+b     1     1
+c     1     1
+d     0     1</code></pre></div>
+<ol start="3" type="1">
+<li><strong>Genomic intervals</strong>, represented as a dictionary of
+<code>ch.GRanges</code> or <code>ch.IRanges</code> objects:</li>
+</ol>
+<div class="code-wrapper"><pre class="codehilite"><code><span class="n">peaks</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s2">"set1"</span><span class="p">:</span> <span class="n">ch</span><span class="o">.</span><span class="n">GRanges</span><span class="p">([</span><span class="s2">"chr1"</span><span class="p">,</span> <span class="s2">"chr1"</span><span class="p">],</span> <span class="n">ch</span><span class="o">.</span><span class="n">IRanges</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">20</span><span class="p">],</span> <span class="p">[</span><span class="mi">10</span><span class="p">,</span> <span class="mi">30</span><span class="p">])),</span>
+    <span class="s2">"set2"</span><span class="p">:</span> <span class="n">ch</span><span class="o">.</span><span class="n">GRanges</span><span class="p">([</span><span class="s2">"chr1"</span><span class="p">],</span> <span class="n">ch</span><span class="o">.</span><span class="n">IRanges</span><span class="p">([</span><span class="mi">5</span><span class="p">],</span> <span class="p">[</span><span class="mi">25</span><span class="p">])),</span>
+<span class="p">}</span></code></pre></div>
+<h2 id="upset-mode"><span class="header-section-number">8.2</span> Mode<a class="anchor-section" aria-label="Anchor link to section" href="#upset-mode">#</a></h2>
+<p>For three sets (<strong>A</strong>, <strong>B</strong>,
+<strong>C</strong>), all non-empty combinations of selecting or
+excluding each set are encoded as binary strings:</p>
+<div class="code-wrapper"><pre class="codehilite"><code>A B C
+1 1 1
+1 1 0
+1 0 1
+0 1 1
+1 0 0
+0 1 0
+0 0 1</code></pre></div>
+<p>A value of <code>1</code> means set membership is selected and
+<code>0</code> means it is not (for example, <code>110</code> selects
+<strong>A</strong> and <strong>B</strong>, while <strong>C</strong> is
+<code>0</code>). Notice <code>000</code> is omitted unless a universal
+set or explicit complement size is supplied. We refer to
+<strong>A</strong>, <strong>B</strong>, and <strong>C</strong> as
+<strong>sets</strong> and each binary pattern as a <strong>combination
+set</strong> stored in a <strong>combination matrix</strong>.</p>
+<p>There are three modes for calculating the size of each combination
+set:</p>
+<ol type="1">
+<li><code>"distinct"</code> mode (default): <code>1</code> means
+<em>in</em> that set and <code>0</code> means <em>not in</em> that set.
+Thus <code>110</code> represents elements present in <strong>A</strong>
+and <strong>B</strong> and absent from <strong>C</strong>
+(<code>(A &amp; B) - C</code>). Under <code>"distinct"</code> mode, the
+seven combination sets correspond to the seven disjoint regions of a
+Venn diagram.</li>
+<li><code>"intersect"</code> mode: <code>1</code> means <em>in</em> that
+set and <code>0</code> is ignored. Thus <code>110</code> represents
+elements in <code>A &amp; B</code> regardless of whether they are also
+in <strong>C</strong>. Combination sets can overlap.</li>
+<li><code>"union"</code> mode: <code>1</code> means <em>in</em> that set
+(combined with logical <strong>OR</strong>) and <code>0</code> is
+ignored. Thus <code>110</code> represents elements in <code>A | B</code>
+regardless of <strong>C</strong>.</li>
+</ol>
+<p>The geometric meaning of all three modes is illustrated below:</p>
+<figure>
+<img src="images/ch08_upset_mode.png"
+alt="Comparison of distinct, intersect, and union combination modes" />
+<figcaption aria-hidden="true">Comparison of distinct, intersect, and
+union combination modes</figcaption>
+</figure>
+<h2 id="make-the-combination-matrix"><span class="header-section-number">8.3</span> Make the combination matrix<a class="anchor-section" aria-label="Anchor link to section" href="#make-the-combination-matrix">#</a></h2>
+<p><code>ch.make_comb_mat()</code> builds a <code>CombMat</code> object
+and computes all set sizes and combination set sizes. It accepts a
+dictionary of sets, positional set arguments, a binary
+<code>DataFrame</code>/NumPy array, or a dictionary of
+<code>GRanges</code>/<code>IRanges</code>:</p>
+<div class="code-wrapper"><pre class="codehilite"><code><span class="n">rng</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">default_rng</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
+<span class="n">letters</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="s2">"abcdefghijklmnopqrstuvwxyz"</span><span class="p">)</span>
+<span class="n">lt</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s2">"a"</span><span class="p">:</span> <span class="nb">sorted</span><span class="p">(</span><span class="n">rng</span><span class="o">.</span><span class="n">choice</span><span class="p">(</span><span class="n">letters</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="n">replace</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span><span class="o">.</span><span class="n">tolist</span><span class="p">()),</span>
+    <span class="s2">"b"</span><span class="p">:</span> <span class="nb">sorted</span><span class="p">(</span><span class="n">rng</span><span class="o">.</span><span class="n">choice</span><span class="p">(</span><span class="n">letters</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="n">replace</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span><span class="o">.</span><span class="n">tolist</span><span class="p">()),</span>
+    <span class="s2">"c"</span><span class="p">:</span> <span class="nb">sorted</span><span class="p">(</span><span class="n">rng</span><span class="o">.</span><span class="n">choice</span><span class="p">(</span><span class="n">letters</span><span class="p">,</span> <span class="mi">15</span><span class="p">,</span> <span class="n">replace</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span><span class="o">.</span><span class="n">tolist</span><span class="p">()),</span>
+<span class="p">}</span>
+<span class="n">m1</span> <span class="o">=</span> <span class="n">ch</span><span class="o">.</span><span class="n">make_comb_mat</span><span class="p">(</span><span class="n">lt</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">m1</span><span class="p">)</span>
+<span class="n">m2</span> <span class="o">=</span> <span class="n">ch</span><span class="o">.</span><span class="n">make_comb_mat</span><span class="p">(</span><span class="n">ch</span><span class="o">.</span><span class="n">list_to_matrix</span><span class="p">(</span><span class="n">lt</span><span class="p">))</span></code></pre></div>
+<div class="code-wrapper"><pre class="codehilite"><code>A combination matrix with 3 sets and 7 combinations.
+  mode: distinct, sets on: rows
+  sets: a, b, c</code></pre></div>
+<blockquote>
+<p><strong>Note:</strong> In Python, <code>ch.make_comb_mat()</code>
+takes a dictionary <code>{"a": ..., "b": ..., "c": ...}</code> (or a
+binary <code>DataFrame</code>/<code>ndarray</code>, or positional
+arguments) rather than keyword pairs <code>a=..., b=...</code>, because
+keyword arguments are reserved for configuration options like
+<code>mode</code>, <code>top_n_sets</code>, and
+<code>universal_set</code>.</p>
+</blockquote>
+<p>Control the combination mode with <code>mode</code>:</p>
+<div class="code-wrapper"><pre class="codehilite"><code><span class="n">m1</span> <span class="o">=</span> <span class="n">ch</span><span class="o">.</span><span class="n">make_comb_mat</span><span class="p">(</span><span class="n">lt</span><span class="p">)</span>                     <span class="c1"># default mode='distinct'</span>
+<span class="n">m2</span> <span class="o">=</span> <span class="n">ch</span><span class="o">.</span><span class="n">make_comb_mat</span><span class="p">(</span><span class="n">lt</span><span class="p">,</span> <span class="n">mode</span><span class="o">=</span><span class="s2">"intersect"</span><span class="p">)</span>
+<span class="n">m3</span> <span class="o">=</span> <span class="n">ch</span><span class="o">.</span><span class="n">make_comb_mat</span><span class="p">(</span><span class="n">lt</span><span class="p">,</span> <span class="n">mode</span><span class="o">=</span><span class="s2">"union"</span><span class="p">)</span></code></pre></div>
+<p>When there are many sets, pre-filter them before computing
+combinations using <code>min_set_size</code> and
+<code>top_n_sets</code>:</p>
+<div class="code-wrapper"><pre class="codehilite"><code><span class="n">m_min</span> <span class="o">=</span> <span class="n">ch</span><span class="o">.</span><span class="n">make_comb_mat</span><span class="p">(</span><span class="n">lt</span><span class="p">,</span> <span class="n">min_set_size</span><span class="o">=</span><span class="mi">6</span><span class="p">)</span>
+<span class="n">m_top</span> <span class="o">=</span> <span class="n">ch</span><span class="o">.</span><span class="n">make_comb_mat</span><span class="p">(</span><span class="n">lt</span><span class="p">,</span> <span class="n">top_n_sets</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span></code></pre></div>
+<p>Pre-filtering sets changes the resulting combination partitions,
+which is why it happens inside <code>make_comb_mat()</code>. By
+contrast, subsetting combination sets happens directly by indexing the
+<code>CombMat</code> object (using 2D column slicing
+<code>m[:, ...]</code> when sets are on rows):</p>
+<div class="code-wrapper"><pre class="codehilite"><code><span class="n">m</span> <span class="o">=</span> <span class="n">ch</span><span class="o">.</span><span class="n">make_comb_mat</span><span class="p">(</span><span class="n">lt</span><span class="p">)</span>
+<span class="n">m</span><span class="p">[:,</span> <span class="p">:</span><span class="mi">4</span><span class="p">]</span></code></pre></div>
+<p>You can also pass <code>universal_set</code> so that the complement
+set (<code>"000"</code>, elements belonging to none of the sets) is
+tracked:</p>
+<div class="code-wrapper"><pre class="codehilite"><code><span class="n">m_univ</span> <span class="o">=</span> <span class="n">ch</span><span class="o">.</span><span class="n">make_comb_mat</span><span class="p">(</span><span class="n">lt</span><span class="p">,</span> <span class="n">universal_set</span><span class="o">=</span><span class="n">letters</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">m_univ</span><span class="p">)</span></code></pre></div>
+<div class="code-wrapper"><pre class="codehilite"><code>A combination matrix with 3 sets and 8 combinations.
+  mode: distinct, sets on: rows
+  sets: a, b, c</code></pre></div>
+<p>If <code>universal_set</code> is smaller than the union of the sets,
+every set is intersected with <code>universal_set</code> first:</p>
+<div class="code-wrapper"><pre class="codehilite"><code><span class="n">m_small</span> <span class="o">=</span> <span class="n">ch</span><span class="o">.</span><span class="n">make_comb_mat</span><span class="p">(</span><span class="n">lt</span><span class="p">,</span> <span class="n">universal_set</span><span class="o">=</span><span class="n">letters</span><span class="p">[:</span><span class="mi">10</span><span class="p">])</span></code></pre></div>
+<p>If you already know the complement count, pass
+<code>complement_size</code> directly:</p>
+<div class="code-wrapper"><pre class="codehilite"><code><span class="n">m_comp</span> <span class="o">=</span> <span class="n">ch</span><span class="o">.</span><span class="n">make_comb_mat</span><span class="p">(</span><span class="n">lt</span><span class="p">,</span> <span class="n">complement_size</span><span class="o">=</span><span class="mi">5</span><span class="p">)</span></code></pre></div>
+<p>When passing a binary matrix/DataFrame created with a
+<code>universal_set</code>, rows with all zeros are automatically
+treated as the complement set:</p>
+<div class="code-wrapper"><pre class="codehilite"><code><span class="n">x</span> <span class="o">=</span> <span class="n">ch</span><span class="o">.</span><span class="n">list_to_matrix</span><span class="p">(</span><span class="n">lt</span><span class="p">,</span> <span class="n">universal_set</span><span class="o">=</span><span class="n">letters</span><span class="p">)</span>
+<span class="n">m_from_mat</span> <span class="o">=</span> <span class="n">ch</span><span class="o">.</span><span class="n">make_comb_mat</span><span class="p">(</span><span class="n">x</span><span class="p">)</span></code></pre></div>
+<p>For genomic intervals (<code>GRanges</code> or <code>IRanges</code>),
+<strong>the size of every set and combination set is measured as the
+total width in base pairs across elementary disjoint intervals</strong>
+(rather than raw interval counts, which are asymmetric across
+overlapping peak sets):</p>
+<div class="code-wrapper"><pre class="codehilite"><code><span class="n">gr_dict</span> <span class="o">=</span> <span class="p">{}</span>
+<span class="k">for</span> <span class="n">nm</span> <span class="ow">in</span> <span class="p">(</span><span class="s2">"a"</span><span class="p">,</span> <span class="s2">"b"</span><span class="p">,</span> <span class="s2">"c"</span><span class="p">,</span> <span class="s2">"d"</span><span class="p">):</span>
+    <span class="n">bed</span> <span class="o">=</span> <span class="n">ch</span><span class="o">.</span><span class="n">generateRandomBed</span><span class="p">(</span><span class="n">nr</span><span class="o">=</span><span class="mi">25</span><span class="p">,</span> <span class="n">nc</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">seed</span><span class="o">=</span><span class="nb">ord</span><span class="p">(</span><span class="n">nm</span><span class="p">))</span>
+    <span class="n">gr_dict</span><span class="p">[</span><span class="n">nm</span><span class="p">]</span> <span class="o">=</span> <span class="n">ch</span><span class="o">.</span><span class="n">GRanges</span><span class="p">(</span>
+        <span class="n">bed</span><span class="p">[</span><span class="s2">"chr"</span><span class="p">]</span><span class="o">.</span><span class="n">tolist</span><span class="p">(),</span>
+        <span class="n">ch</span><span class="o">.</span><span class="n">IRanges</span><span class="p">(</span><span class="n">bed</span><span class="p">[</span><span class="s2">"start"</span><span class="p">]</span><span class="o">.</span><span class="n">to_numpy</span><span class="p">(),</span> <span class="n">bed</span><span class="p">[</span><span class="s2">"end"</span><span class="p">]</span><span class="o">.</span><span class="n">to_numpy</span><span class="p">()),</span>
+    <span class="p">)</span>
+<span class="n">m_gr</span> <span class="o">=</span> <span class="n">ch</span><span class="o">.</span><span class="n">make_comb_mat</span><span class="p">(</span><span class="n">gr_dict</span><span class="p">)</span></code></pre></div>
+<h2 id="upset-utility-functions"><span class="header-section-number">8.4</span> Utility functions<a class="anchor-section" aria-label="Anchor link to section" href="#upset-utility-functions">#</a></h2>
+<p><code>ch.make_comb_mat()</code> returns a <code>CombMat</code> object
+with companion accessor functions:</p>
+<ul>
+<li><code>ch.set_name(m)</code>: Returns the list of set names (pass
+<code>new_names=...</code> to return a renamed copy).</li>
+<li><code>ch.comb_name(m, readable=False)</code>: Returns combination
+bit-codes (<code>"101"</code>) or human-readable labels
+(<code>"a &amp; c"</code> when <code>readable=True</code>).</li>
+<li><code>ch.set_size(m)</code>: Returns a NumPy array of set
+sizes.</li>
+<li><code>ch.comb_size(m)</code>: Returns a NumPy array of combination
+set sizes.</li>
+<li><code>ch.comb_degree(m)</code>: Returns the degree (number of
+<code>1</code>s) for each combination set.</li>
+<li><code>ch.complement_size(m)</code>: Returns the complement size (if
+any).</li>
+<li><code>ch.t(m)</code>: Transposes the combination matrix so sets move
+to columns and combinations move to rows.</li>
+<li><code>ch.extract_comb(m, comb_name)</code>: Extracts the elements
+belonging to a specified combination set.</li>
+<li><code>ch.order_comb_mat(m)</code> and
+<code>ch.normalize_comb_mat(...)</code>: Sort or align multiple
+<code>CombMat</code> objects onto a shared set and combination
+layout.</li>
+</ul>
+<div class="code-wrapper"><pre class="codehilite"><code><span class="n">m</span> <span class="o">=</span> <span class="n">ch</span><span class="o">.</span><span class="n">make_comb_mat</span><span class="p">(</span><span class="n">lt</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">"set_name:"</span><span class="p">,</span> <span class="n">ch</span><span class="o">.</span><span class="n">set_name</span><span class="p">(</span><span class="n">m</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">"comb_name:"</span><span class="p">,</span> <span class="n">ch</span><span class="o">.</span><span class="n">comb_name</span><span class="p">(</span><span class="n">m</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">"readable:"</span><span class="p">,</span> <span class="n">ch</span><span class="o">.</span><span class="n">comb_name</span><span class="p">(</span><span class="n">m</span><span class="p">,</span> <span class="n">readable</span><span class="o">=</span><span class="kc">True</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">"set_size:"</span><span class="p">,</span> <span class="n">ch</span><span class="o">.</span><span class="n">set_size</span><span class="p">(</span><span class="n">m</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">"comb_size:"</span><span class="p">,</span> <span class="n">ch</span><span class="o">.</span><span class="n">comb_size</span><span class="p">(</span><span class="n">m</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">"comb_degree:"</span><span class="p">,</span> <span class="n">ch</span><span class="o">.</span><span class="n">comb_degree</span><span class="p">(</span><span class="n">m</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">"extract_comb('101'):"</span><span class="p">,</span> <span class="n">ch</span><span class="o">.</span><span class="n">extract_comb</span><span class="p">(</span><span class="n">m</span><span class="p">,</span> <span class="s2">"101"</span><span class="p">))</span></code></pre></div>
+<div class="code-wrapper"><pre class="codehilite"><code>set_name: ['a', 'b', 'c']
+comb_name: ['101', '100', '111', '110', '010', '011', '001']
+readable: ['a &amp; c', 'a', 'a &amp; b &amp; c', 'a &amp; b', 'b', 'b &amp; c', 'c']
+set_size: [ 6. 10. 15.]
+comb_size: [1. 2. 2. 1. 4. 3. 9.]
+comb_degree: [2 1 3 2 1 2 1]
+extract_comb('101'): ['c']</code></pre></div>
+<p>For genomic <code>GRanges</code> inputs,
+<code>ch.extract_comb(m_gr, "111111")</code> returns a
+<code>GRanges</code> object of elementary intervals belonging to that
+intersection:</p>
+<div class="code-wrapper"><pre class="codehilite"><code><span class="c1"># Using the 6-sample H3K4me3 peak dictionary from the genomic example below</span>
+<span class="n">m_genomic</span> <span class="o">=</span> <span class="n">ch</span><span class="o">.</span><span class="n">make_comb_mat</span><span class="p">(</span><span class="n">peak_list</span><span class="p">)</span>
+<span class="n">core_gr</span> <span class="o">=</span> <span class="n">ch</span><span class="o">.</span><span class="n">extract_comb</span><span class="p">(</span><span class="n">m_genomic</span><span class="p">,</span> <span class="s2">"111111"</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">core_gr</span><span class="p">)</span></code></pre></div>
+<div class="code-wrapper"><pre class="codehilite"><code>GRanges(n=5398, mcols=[])</code></pre></div>
+<h3 id="upset-subsetting"><span class="header-section-number">8.4.1</span> Subsetting a <code>CombMat</code><a class="anchor-section" aria-label="Anchor link to section" href="#upset-subsetting">#</a></h3>
+<p>In <strong>ComplexHeatmap-py</strong>, <code>CombMat</code> uses
+standard 2D NumPy/pandas <code>(rows, cols)</code> indexing:</p>
+<ul>
+<li>When <code>m</code> is untransposed (<code>sets on: rows</code>,
+shape <code>(n_sets, n_combs)</code>):
+<ul>
+<li><strong>1D indexing <code>m[key]</code></strong> selects
+<strong>rows (sets)</strong>!</li>
+<li><strong>2D column indexing <code>m[:, key]</code></strong> selects
+or reorders <strong>combinations</strong>:</li>
+</ul></li>
+</ul>
+<div class="code-wrapper"><pre class="codehilite"><code><span class="c1"># Filter combination sets by size or degree (use 2D column slicing on m)</span>
+<span class="n">m_ge4</span> <span class="o">=</span> <span class="n">m</span><span class="p">[:,</span> <span class="n">ch</span><span class="o">.</span><span class="n">comb_size</span><span class="p">(</span><span class="n">m</span><span class="p">)</span> <span class="o">&gt;=</span> <span class="mi">4</span><span class="p">]</span>
+<span class="n">m_deg2</span> <span class="o">=</span> <span class="n">m</span><span class="p">[:,</span> <span class="n">ch</span><span class="o">.</span><span class="n">comb_degree</span><span class="p">(</span><span class="n">m</span><span class="p">)</span> <span class="o">==</span> <span class="mi">2</span><span class="p">]</span>
+
+<span class="c1"># Reorder or select combinations by 0-based indices or bit-code names</span>
+<span class="n">m_sub_idx</span> <span class="o">=</span> <span class="n">m</span><span class="p">[:,</span> <span class="p">:</span><span class="mi">3</span><span class="p">]</span>
+<span class="n">m_sub_rev</span> <span class="o">=</span> <span class="n">m</span><span class="p">[:,</span> <span class="p">[</span><span class="mi">4</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">]]</span>
+<span class="n">m_sub_code</span> <span class="o">=</span> <span class="n">m</span><span class="p">[:,</span> <span class="p">[</span><span class="s2">"110"</span><span class="p">,</span> <span class="s2">"101"</span><span class="p">,</span> <span class="s2">"011"</span><span class="p">]]</span>
+
+<span class="c1"># Subset or reorder sets along rows</span>
+<span class="n">m_rows</span> <span class="o">=</span> <span class="n">m</span><span class="p">[[</span><span class="s2">"c"</span><span class="p">,</span> <span class="s2">"b"</span><span class="p">,</span> <span class="s2">"a"</span><span class="p">],</span> <span class="p">:]</span></code></pre></div>
+<ul>
+<li>When <code>tm = ch.t(m)</code> (<code>sets on: columns</code>, shape
+<code>(n_combs, n_sets)</code>), <code>CombMat.__getitem__</code> maps
+the first axis to combinations and the second axis to sets, so
+<strong>both</strong> <code>tm[ch.comb_size(tm) &gt;= 4, :]</code> and
+1D <code>tm[:5]</code> slice combinations!</li>
+</ul>
+<p>For the complement set (when <code>universal_set</code> is supplied),
+its combination code consists of all zeros (<code>"000"</code>):</p>
+<div class="code-wrapper"><pre class="codehilite"><code><span class="n">m_univ</span> <span class="o">=</span> <span class="n">ch</span><span class="o">.</span><span class="n">make_comb_mat</span><span class="p">(</span><span class="n">lt</span><span class="p">,</span> <span class="n">universal_set</span><span class="o">=</span><span class="n">letters</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">ch</span><span class="o">.</span><span class="n">comb_name</span><span class="p">(</span><span class="n">m_univ</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">ch</span><span class="o">.</span><span class="n">comb_degree</span><span class="p">(</span><span class="n">m_univ</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">ch</span><span class="o">.</span><span class="n">extract_comb</span><span class="p">(</span><span class="n">m_univ</span><span class="p">,</span> <span class="s2">"000"</span><span class="p">))</span></code></pre></div>
+<div class="code-wrapper"><pre class="codehilite"><code>['001', '010', '101', '011', '100', '111', '000', '110']
+[1 1 2 2 1 3 0 2]
+['j', 'u', 'y', 'z']</code></pre></div>
+<h2 id="upset-making-the-plot"><span class="header-section-number">8.5</span> Make the plot<a class="anchor-section" aria-label="Anchor link to section" href="#upset-making-the-plot">#</a></h2>
+<p>Pass a <code>CombMat</code> object directly to
+<code>ch.UpSet()</code> and draw it with <code>ch.draw()</code> (or
+<code>ht.draw(save=...)</code>):</p>
+<div class="code-wrapper"><pre class="codehilite"><code><span class="n">m</span> <span class="o">=</span> <span class="n">ch</span><span class="o">.</span><span class="n">make_comb_mat</span><span class="p">(</span><span class="n">lt</span><span class="p">)</span>
+<span class="n">ch</span><span class="o">.</span><span class="n">draw</span><span class="p">(</span><span class="n">ch</span><span class="o">.</span><span class="n">UpSet</span><span class="p">(</span><span class="n">m</span><span class="p">))</span></code></pre></div>
+<figure>
+<img src="images/ch08_upset_basic.png" alt="Default UpSet plot" />
+<figcaption aria-hidden="true">Default UpSet plot</figcaption>
+</figure>
+<p>By default, combination sets are ordered by increasing degree and
+decreasing combination size within each degree. Override the ordering
+with <code>set_order</code> and <code>comb_order</code>:</p>
+<div class="code-wrapper"><pre class="codehilite"><code><span class="n">ch</span><span class="o">.</span><span class="n">draw</span><span class="p">(</span>
+    <span class="n">ch</span><span class="o">.</span><span class="n">UpSet</span><span class="p">(</span>
+        <span class="n">m</span><span class="p">,</span>
+        <span class="n">set_order</span><span class="o">=</span><span class="p">[</span><span class="s2">"a"</span><span class="p">,</span> <span class="s2">"b"</span><span class="p">,</span> <span class="s2">"c"</span><span class="p">],</span>
+        <span class="n">comb_order</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">argsort</span><span class="p">(</span><span class="n">ch</span><span class="o">.</span><span class="n">comb_size</span><span class="p">(</span><span class="n">m</span><span class="p">))</span><span class="o">.</span><span class="n">tolist</span><span class="p">(),</span>
+    <span class="p">)</span>
+<span class="p">)</span></code></pre></div>
+<figure>
+<img src="images/ch08_upset_order.png"
+alt="UpSet plot with custom set and combination ordering" />
+<figcaption aria-hidden="true">UpSet plot with custom set and
+combination ordering</figcaption>
+</figure>
+<p>Point size, line width, and active combination colors are controlled
+by <code>pt_size</code>, <code>lwd</code>, and <code>comb_col</code>.
+Since <code>ch.comb_degree(m)</code> returns integer degrees
+(<code>1</code>, <code>2</code>, <code>3</code>), map them cleanly to
+colors:</p>
+<div class="code-wrapper"><pre class="codehilite"><code><span class="n">pal</span> <span class="o">=</span> <span class="p">{</span><span class="mi">1</span><span class="p">:</span> <span class="s2">"red"</span><span class="p">,</span> <span class="mi">2</span><span class="p">:</span> <span class="s2">"blue"</span><span class="p">,</span> <span class="mi">3</span><span class="p">:</span> <span class="s2">"black"</span><span class="p">}</span>
+<span class="n">ch</span><span class="o">.</span><span class="n">draw</span><span class="p">(</span>
+    <span class="n">ch</span><span class="o">.</span><span class="n">UpSet</span><span class="p">(</span>
+        <span class="n">m</span><span class="p">,</span>
+        <span class="n">pt_size</span><span class="o">=</span><span class="n">ch</span><span class="o">.</span><span class="n">unit</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span> <span class="s2">"mm"</span><span class="p">),</span>
+        <span class="n">lwd</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span>
+        <span class="n">comb_col</span><span class="o">=</span><span class="p">[</span><span class="n">pal</span><span class="p">[</span><span class="nb">int</span><span class="p">(</span><span class="n">d</span><span class="p">)]</span> <span class="k">for</span> <span class="n">d</span> <span class="ow">in</span> <span class="n">ch</span><span class="o">.</span><span class="n">comb_degree</span><span class="p">(</span><span class="n">m</span><span class="p">)],</span>
+    <span class="p">)</span>
+<span class="p">)</span></code></pre></div>
+<figure>
+<img src="images/ch08_upset_style.png"
+alt="UpSet plot with custom dot sizes, line widths, and degree colors" />
+<figcaption aria-hidden="true">UpSet plot with custom dot sizes, line
+widths, and degree colors</figcaption>
+</figure>
+<p>Background row bands and inactive dot colors are controlled by
+<code>bg_col</code> (single color or 2-element alternating list) and
+<code>bg_pt_col</code>:</p>
+<div class="code-wrapper"><pre class="codehilite"><code><span class="n">ch</span><span class="o">.</span><span class="n">UpSet</span><span class="p">(</span><span class="n">m</span><span class="p">,</span> <span class="n">comb_col</span><span class="o">=</span><span class="s2">"#0000FF"</span><span class="p">,</span> <span class="n">bg_col</span><span class="o">=</span><span class="s2">"#F0F0FF"</span><span class="p">,</span> <span class="n">bg_pt_col</span><span class="o">=</span><span class="s2">"#CCCCFF"</span><span class="p">)</span>
+<span class="n">ch</span><span class="o">.</span><span class="n">UpSet</span><span class="p">(</span><span class="n">m</span><span class="p">,</span> <span class="n">comb_col</span><span class="o">=</span><span class="s2">"#0000FF"</span><span class="p">,</span> <span class="n">bg_col</span><span class="o">=</span><span class="p">[</span><span class="s2">"#F0F0FF"</span><span class="p">,</span> <span class="s2">"#FFF0F0"</span><span class="p">],</span> <span class="n">bg_pt_col</span><span class="o">=</span><span class="s2">"#CCCCFF"</span><span class="p">)</span></code></pre></div>
+<figure>
+<img src="images/ch08_upset_bg.png"
+alt="Single versus alternating background colors in UpSet plots" />
+<figcaption aria-hidden="true">Single versus alternating background
+colors in UpSet plots</figcaption>
+</figure>
+<p>Transposing with <code>ch.t(m)</code> rotates the layout so sets
+appear as columns and combination sets appear as rows:</p>
+<div class="code-wrapper"><pre class="codehilite"><code><span class="n">ch</span><span class="o">.</span><span class="n">draw</span><span class="p">(</span><span class="n">ch</span><span class="o">.</span><span class="n">UpSet</span><span class="p">(</span><span class="n">ch</span><span class="o">.</span><span class="n">t</span><span class="p">(</span><span class="n">m</span><span class="p">)))</span></code></pre></div>
+<figure>
+<img src="images/ch08_upset_transpose.png"
+alt="Transposed UpSet plot" />
+<figcaption aria-hidden="true">Transposed UpSet plot</figcaption>
+</figure>
+<p>Subsetted combination matrices can be plotted directly:</p>
+<div class="code-wrapper"><pre class="codehilite"><code><span class="n">ch</span><span class="o">.</span><span class="n">UpSet</span><span class="p">(</span><span class="n">m</span><span class="p">[:,</span> <span class="n">ch</span><span class="o">.</span><span class="n">comb_size</span><span class="p">(</span><span class="n">m</span><span class="p">)</span> <span class="o">&gt;=</span> <span class="mi">4</span><span class="p">],</span> <span class="n">column_title</span><span class="o">=</span><span class="s2">"comb_size(m) &gt;= 4"</span><span class="p">)</span>
+<span class="n">ch</span><span class="o">.</span><span class="n">UpSet</span><span class="p">(</span><span class="n">m</span><span class="p">[:,</span> <span class="n">ch</span><span class="o">.</span><span class="n">comb_degree</span><span class="p">(</span><span class="n">m</span><span class="p">)</span> <span class="o">==</span> <span class="mi">2</span><span class="p">],</span> <span class="n">column_title</span><span class="o">=</span><span class="s2">"comb_degree(m) == 2"</span><span class="p">)</span></code></pre></div>
+<figure>
+<img src="images/ch08_upset_subset.png"
+alt="Subsetting UpSet plots by combination size and degree" />
+<figcaption aria-hidden="true">Subsetting UpSet plots by combination
+size and degree</figcaption>
+</figure>
+<p>Comparing <code>"distinct"</code>, <code>"intersect"</code>, and
+<code>"union"</code> modes on the same three sets highlights how
+intersection sizes change across modes:</p>
+<div class="code-wrapper"><pre class="codehilite"><code><span class="n">m1</span> <span class="o">=</span> <span class="n">ch</span><span class="o">.</span><span class="n">make_comb_mat</span><span class="p">(</span><span class="n">lt</span><span class="p">)</span>
+<span class="n">m2</span> <span class="o">=</span> <span class="n">ch</span><span class="o">.</span><span class="n">make_comb_mat</span><span class="p">(</span><span class="n">lt</span><span class="p">,</span> <span class="n">mode</span><span class="o">=</span><span class="s2">"intersect"</span><span class="p">)</span>
+<span class="n">m3</span> <span class="o">=</span> <span class="n">ch</span><span class="o">.</span><span class="n">make_comb_mat</span><span class="p">(</span><span class="n">lt</span><span class="p">,</span> <span class="n">mode</span><span class="o">=</span><span class="s2">"union"</span><span class="p">)</span></code></pre></div>
+<figure>
+<img src="images/ch08_upset_modes.png"
+alt="Comparing distinct, intersect, and union modes" />
+<figcaption aria-hidden="true">Comparing distinct, intersect, and union
+modes</figcaption>
+</figure>
+<p>When a <code>universal_set</code> is given, an additional combination
+column with all-grey dots represents elements absent from all sets:</p>
+<div class="code-wrapper"><pre class="codehilite"><code><span class="n">m2</span> <span class="o">=</span> <span class="n">ch</span><span class="o">.</span><span class="n">make_comb_mat</span><span class="p">(</span><span class="n">lt</span><span class="p">,</span> <span class="n">universal_set</span><span class="o">=</span><span class="n">letters</span><span class="p">)</span>
+<span class="n">ch</span><span class="o">.</span><span class="n">draw</span><span class="p">(</span><span class="n">ch</span><span class="o">.</span><span class="n">UpSet</span><span class="p">(</span><span class="n">m2</span><span class="p">))</span></code></pre></div>
+<figure>
+<img src="images/ch08_upset_universal.png"
+alt="UpSet plot showing the complement set from universal_set" />
+<figcaption aria-hidden="true">UpSet plot showing the complement set
+from universal_set</figcaption>
+</figure>
+<p>Or pass <code>complement_size</code> directly:</p>
+<div class="code-wrapper"><pre class="codehilite"><code><span class="n">m2</span> <span class="o">=</span> <span class="n">ch</span><span class="o">.</span><span class="n">make_comb_mat</span><span class="p">(</span><span class="n">lt</span><span class="p">,</span> <span class="n">complement_size</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
+<span class="n">ch</span><span class="o">.</span><span class="n">draw</span><span class="p">(</span><span class="n">ch</span><span class="o">.</span><span class="n">UpSet</span><span class="p">(</span><span class="n">m2</span><span class="p">))</span></code></pre></div>
+<figure>
+<img src="images/ch08_upset_complement_size.png"
+alt="UpSet plot with an explicit complement_size" />
+<figcaption aria-hidden="true">UpSet plot with an explicit
+complement_size</figcaption>
+</figure>
+<p>When <code>universal_set</code> is smaller than the union of the
+input sets, only elements inside <code>universal_set</code> are
+counted:</p>
+<div class="code-wrapper"><pre class="codehilite"><code><span class="n">m2</span> <span class="o">=</span> <span class="n">ch</span><span class="o">.</span><span class="n">make_comb_mat</span><span class="p">(</span><span class="n">lt</span><span class="p">,</span> <span class="n">universal_set</span><span class="o">=</span><span class="n">letters</span><span class="p">[:</span><span class="mi">10</span><span class="p">])</span>
+<span class="n">ch</span><span class="o">.</span><span class="n">draw</span><span class="p">(</span><span class="n">ch</span><span class="o">.</span><span class="n">UpSet</span><span class="p">(</span><span class="n">m2</span><span class="p">))</span></code></pre></div>
+<figure>
+<img src="images/ch08_upset_smaller_universal.png"
+alt="UpSet plot restricted to a smaller universal set" />
+<figcaption aria-hidden="true">UpSet plot restricted to a smaller
+universal set</figcaption>
+</figure>
+<p>If a binary matrix already contains all-zero complement rows that you
+prefer to hide, filter out zero-degree combinations before plotting:</p>
+<div class="code-wrapper"><pre class="codehilite"><code><span class="n">x</span> <span class="o">=</span> <span class="n">ch</span><span class="o">.</span><span class="n">list_to_matrix</span><span class="p">(</span><span class="n">lt</span><span class="p">,</span> <span class="n">universal_set</span><span class="o">=</span><span class="n">letters</span><span class="p">)</span>
+<span class="n">m2</span> <span class="o">=</span> <span class="n">ch</span><span class="o">.</span><span class="n">make_comb_mat</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+<span class="n">m2</span> <span class="o">=</span> <span class="n">m2</span><span class="p">[:,</span> <span class="n">ch</span><span class="o">.</span><span class="n">comb_degree</span><span class="p">(</span><span class="n">m2</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">]</span>
+<span class="n">ch</span><span class="o">.</span><span class="n">draw</span><span class="p">(</span><span class="n">ch</span><span class="o">.</span><span class="n">UpSet</span><span class="p">(</span><span class="n">m2</span><span class="p">))</span></code></pre></div>
+<figure>
+<img src="images/ch08_upset_remove_complement.png"
+alt="UpSet plot with the complement set filtered out" />
+<figcaption aria-hidden="true">UpSet plot with the complement set
+filtered out</figcaption>
+</figure>
+<h2 id="upset-plots-as-heatmaps"><span class="header-section-number">8.6</span> UpSet plots as heatmaps<a class="anchor-section" aria-label="Anchor link to section" href="#upset-plots-as-heatmaps">#</a></h2>
+<p>Internally, <code>ch.UpSet()</code> constructs a <code>Heatmap</code>
+object whose body uses a custom <code>layer_fun</code> for dots and
+segments, paired with <code>anno_barplot()</code> tracks on the top and
+right. The helper functions <code>ch.upset_top_annotation()</code>,
+<code>ch.upset_right_annotation()</code>, and
+<code>ch.upset_left_annotation()</code> expose
+<code>anno_barplot()</code> parameters directly.</p>
+<p>For example, setting bar border colors by combination degree:</p>
+<div class="code-wrapper"><pre class="codehilite"><code><span class="n">ch</span><span class="o">.</span><span class="n">draw</span><span class="p">(</span>
+    <span class="n">ch</span><span class="o">.</span><span class="n">UpSet</span><span class="p">(</span>
+        <span class="n">m</span><span class="p">,</span>
+        <span class="n">top_annotation</span><span class="o">=</span><span class="n">ch</span><span class="o">.</span><span class="n">upset_top_annotation</span><span class="p">(</span>
+            <span class="n">m</span><span class="p">,</span> <span class="n">gp</span><span class="o">=</span><span class="n">ch</span><span class="o">.</span><span class="n">gpar</span><span class="p">(</span><span class="n">col</span><span class="o">=</span><span class="n">ch</span><span class="o">.</span><span class="n">comb_degree</span><span class="p">(</span><span class="n">m</span><span class="p">),</span> <span class="n">fill</span><span class="o">=</span><span class="s2">"white"</span><span class="p">)</span>
+        <span class="p">),</span>
+    <span class="p">)</span>
+<span class="p">)</span></code></pre></div>
+<figure>
+<img src="images/ch08_upset_top_gp.png"
+alt="Customizing top barplot graphics parameters" />
+<figcaption aria-hidden="true">Customizing top barplot graphics
+parameters</figcaption>
+</figure>
+<p>Controlling <code>ylim</code>, <code>bar_width</code>, and
+<code>axis_param</code> on the top barplot:</p>
+<div class="code-wrapper"><pre class="codehilite"><code><span class="n">ch</span><span class="o">.</span><span class="n">draw</span><span class="p">(</span>
+    <span class="n">ch</span><span class="o">.</span><span class="n">UpSet</span><span class="p">(</span>
+        <span class="n">m</span><span class="p">,</span>
+        <span class="n">top_annotation</span><span class="o">=</span><span class="n">ch</span><span class="o">.</span><span class="n">upset_top_annotation</span><span class="p">(</span>
+            <span class="n">m</span><span class="p">,</span>
+            <span class="n">ylim</span><span class="o">=</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">15</span><span class="p">),</span>
+            <span class="n">bar_width</span><span class="o">=</span><span class="mf">1.0</span><span class="p">,</span>
+            <span class="n">axis_param</span><span class="o">=</span><span class="p">{</span>
+                <span class="s2">"side"</span><span class="p">:</span> <span class="s2">"right"</span><span class="p">,</span>
+                <span class="s2">"at"</span><span class="p">:</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">15</span><span class="p">],</span>
+                <span class="s2">"labels"</span><span class="p">:</span> <span class="p">[</span><span class="s2">"zero"</span><span class="p">,</span> <span class="s2">"five"</span><span class="p">,</span> <span class="s2">"ten"</span><span class="p">,</span> <span class="s2">"fifteen"</span><span class="p">],</span>
+            <span class="p">},</span>
+        <span class="p">),</span>
+    <span class="p">)</span>
+<span class="p">)</span></code></pre></div>
+<figure>
+<img src="images/ch08_upset_top_axis.png"
+alt="Customizing top barplot limits and right-side axis labels" />
+<figcaption aria-hidden="true">Customizing top barplot limits and
+right-side axis labels</figcaption>
+</figure>
+<p>Adjusting the annotation name rotation and side:</p>
+<div class="code-wrapper"><pre class="codehilite"><code><span class="n">ch</span><span class="o">.</span><span class="n">draw</span><span class="p">(</span>
+    <span class="n">ch</span><span class="o">.</span><span class="n">UpSet</span><span class="p">(</span>
+        <span class="n">m</span><span class="p">,</span>
+        <span class="n">top_annotation</span><span class="o">=</span><span class="n">ch</span><span class="o">.</span><span class="n">upset_top_annotation</span><span class="p">(</span>
+            <span class="n">m</span><span class="p">,</span>
+            <span class="n">annotation_name_rot</span><span class="o">=</span><span class="mi">90</span><span class="p">,</span>
+            <span class="n">annotation_name_side</span><span class="o">=</span><span class="s2">"right"</span><span class="p">,</span>
+            <span class="n">axis_param</span><span class="o">=</span><span class="p">{</span><span class="s2">"side"</span><span class="p">:</span> <span class="s2">"right"</span><span class="p">},</span>
+        <span class="p">),</span>
+    <span class="p">)</span>
+<span class="p">)</span></code></pre></div>
+<figure>
+<img src="images/ch08_upset_top_name.png"
+alt="Rotating and repositioning the top annotation name" />
+<figcaption aria-hidden="true">Rotating and repositioning the top
+annotation name</figcaption>
+</figure>
+<p>Similarly, customize <code>upset_right_annotation()</code>:</p>
+<div class="code-wrapper"><pre class="codehilite"><code><span class="n">ch</span><span class="o">.</span><span class="n">draw</span><span class="p">(</span>
+    <span class="n">ch</span><span class="o">.</span><span class="n">UpSet</span><span class="p">(</span>
+        <span class="n">m</span><span class="p">,</span>
+        <span class="n">right_annotation</span><span class="o">=</span><span class="n">ch</span><span class="o">.</span><span class="n">upset_right_annotation</span><span class="p">(</span>
+            <span class="n">m</span><span class="p">,</span>
+            <span class="n">ylim</span><span class="o">=</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">30</span><span class="p">),</span>
+            <span class="n">gp</span><span class="o">=</span><span class="n">ch</span><span class="o">.</span><span class="n">gpar</span><span class="p">(</span><span class="n">fill</span><span class="o">=</span><span class="s2">"green"</span><span class="p">),</span>
+            <span class="n">annotation_name_side</span><span class="o">=</span><span class="s2">"top"</span><span class="p">,</span>
+            <span class="n">axis_param</span><span class="o">=</span><span class="p">{</span><span class="s2">"side"</span><span class="p">:</span> <span class="s2">"top"</span><span class="p">},</span>
+        <span class="p">),</span>
+    <span class="p">)</span>
+<span class="p">)</span></code></pre></div>
+<figure>
+<img src="images/ch08_upset_right_custom.png"
+alt="Customizing the right set-size barplot annotation" />
+<figcaption aria-hidden="true">Customizing the right set-size barplot
+annotation</figcaption>
+</figure>
+<p>To stack multiple annotations on top or on the right, build a
+<code>ch.HeatmapAnnotation</code> or <code>ch.rowAnnotation</code>
+explicitly:</p>
+<div class="code-wrapper"><pre class="codehilite"><code><span class="n">ch</span><span class="o">.</span><span class="n">draw</span><span class="p">(</span>
+    <span class="n">ch</span><span class="o">.</span><span class="n">UpSet</span><span class="p">(</span>
+        <span class="n">m</span><span class="p">,</span>
+        <span class="n">top_annotation</span><span class="o">=</span><span class="n">ch</span><span class="o">.</span><span class="n">HeatmapAnnotation</span><span class="p">(</span>
+            <span class="n">degree</span><span class="o">=</span><span class="p">[</span><span class="nb">str</span><span class="p">(</span><span class="nb">int</span><span class="p">(</span><span class="n">d</span><span class="p">))</span> <span class="k">for</span> <span class="n">d</span> <span class="ow">in</span> <span class="n">ch</span><span class="o">.</span><span class="n">comb_degree</span><span class="p">(</span><span class="n">m</span><span class="p">)],</span>
+            <span class="o">**</span><span class="p">{</span>
+                <span class="s2">"Intersection</span><span class="se">\n</span><span class="s2">size"</span><span class="p">:</span> <span class="n">ch</span><span class="o">.</span><span class="n">anno_barplot</span><span class="p">(</span>
+                    <span class="n">ch</span><span class="o">.</span><span class="n">comb_size</span><span class="p">(</span><span class="n">m</span><span class="p">),</span>
+                    <span class="n">border</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+                    <span class="n">gp</span><span class="o">=</span><span class="n">ch</span><span class="o">.</span><span class="n">gpar</span><span class="p">(</span><span class="n">fill</span><span class="o">=</span><span class="s2">"black"</span><span class="p">),</span>
+                    <span class="n">height</span><span class="o">=</span><span class="n">ch</span><span class="o">.</span><span class="n">unit</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="s2">"cm"</span><span class="p">),</span>
+                <span class="p">)</span>
+            <span class="p">},</span>
+            <span class="n">annotation_name_side</span><span class="o">=</span><span class="s2">"left"</span><span class="p">,</span>
+            <span class="n">annotation_name_rot</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span>
+        <span class="p">),</span>
+    <span class="p">)</span>
+<span class="p">)</span></code></pre></div>
+<figure>
+<img src="images/ch08_upset_top_multi.png"
+alt="Adding multiple top annotations to an UpSet plot" />
+<figcaption aria-hidden="true">Adding multiple top annotations to an
+UpSet plot</figcaption>
+</figure>
+<p>And on the right:</p>
+<div class="code-wrapper"><pre class="codehilite"><code><span class="n">ch</span><span class="o">.</span><span class="n">draw</span><span class="p">(</span>
+    <span class="n">ch</span><span class="o">.</span><span class="n">UpSet</span><span class="p">(</span>
+        <span class="n">m</span><span class="p">,</span>
+        <span class="n">right_annotation</span><span class="o">=</span><span class="n">ch</span><span class="o">.</span><span class="n">rowAnnotation</span><span class="p">(</span>
+            <span class="o">**</span><span class="p">{</span>
+                <span class="s2">"Set size"</span><span class="p">:</span> <span class="n">ch</span><span class="o">.</span><span class="n">anno_barplot</span><span class="p">(</span>
+                    <span class="n">ch</span><span class="o">.</span><span class="n">set_size</span><span class="p">(</span><span class="n">m</span><span class="p">),</span>
+                    <span class="n">border</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+                    <span class="n">gp</span><span class="o">=</span><span class="n">ch</span><span class="o">.</span><span class="n">gpar</span><span class="p">(</span><span class="n">fill</span><span class="o">=</span><span class="s2">"black"</span><span class="p">),</span>
+                    <span class="n">width</span><span class="o">=</span><span class="n">ch</span><span class="o">.</span><span class="n">unit</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="s2">"cm"</span><span class="p">),</span>
+                <span class="p">)</span>
+            <span class="p">},</span>
+            <span class="n">group</span><span class="o">=</span><span class="p">[</span><span class="s2">"group1"</span><span class="p">,</span> <span class="s2">"group1"</span><span class="p">,</span> <span class="s2">"group2"</span><span class="p">],</span>
+        <span class="p">),</span>
+    <span class="p">)</span>
+<span class="p">)</span></code></pre></div>
+<figure>
+<img src="images/ch08_upset_right_multi.png"
+alt="Adding multiple right annotations to an UpSet plot" />
+<figcaption aria-hidden="true">Adding multiple right annotations to an
+UpSet plot</figcaption>
+</figure>
+<p>Move the set-size barplot to the left side with
+<code>ch.upset_left_annotation()</code> (setting
+<code>right_annotation=None</code>):</p>
+<div class="code-wrapper"><pre class="codehilite"><code><span class="n">ch</span><span class="o">.</span><span class="n">draw</span><span class="p">(</span>
+    <span class="n">ch</span><span class="o">.</span><span class="n">UpSet</span><span class="p">(</span>
+        <span class="n">m</span><span class="p">,</span>
+        <span class="n">left_annotation</span><span class="o">=</span><span class="n">ch</span><span class="o">.</span><span class="n">upset_left_annotation</span><span class="p">(</span><span class="n">m</span><span class="p">),</span>
+        <span class="n">right_annotation</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+    <span class="p">)</span>
+<span class="p">)</span></code></pre></div>
+<figure>
+<img src="images/ch08_upset_left.png"
+alt="Moving the set-size barplot to the left side" />
+<figcaption aria-hidden="true">Moving the set-size barplot to the left
+side</figcaption>
+</figure>
+<p>Display counts directly on the bars with
+<code>add_numbers=True</code>:</p>
+<div class="code-wrapper"><pre class="codehilite"><code><span class="n">ch</span><span class="o">.</span><span class="n">draw</span><span class="p">(</span>
+    <span class="n">ch</span><span class="o">.</span><span class="n">UpSet</span><span class="p">(</span>
+        <span class="n">m</span><span class="p">,</span>
+        <span class="n">top_annotation</span><span class="o">=</span><span class="n">ch</span><span class="o">.</span><span class="n">upset_top_annotation</span><span class="p">(</span><span class="n">m</span><span class="p">,</span> <span class="n">add_numbers</span><span class="o">=</span><span class="kc">True</span><span class="p">),</span>
+        <span class="n">right_annotation</span><span class="o">=</span><span class="n">ch</span><span class="o">.</span><span class="n">upset_right_annotation</span><span class="p">(</span><span class="n">m</span><span class="p">,</span> <span class="n">add_numbers</span><span class="o">=</span><span class="kc">True</span><span class="p">),</span>
+    <span class="p">)</span>
+<span class="p">)</span></code></pre></div>
+<figure>
+<img src="images/ch08_upset_numbers.png"
+alt="Adding numeric counts above UpSet bars" />
+<figcaption aria-hidden="true">Adding numeric counts above UpSet
+bars</figcaption>
+</figure>
+<p>Because <code>ch.UpSet()</code> returns a standard
+<code>Heatmap</code> instance, it can be concatenated horizontally
+(<code>+</code>) or vertically (<code>%v%</code> or <code>/</code>) with
+any heatmap or annotation (see <a href="a-list-of-heatmaps.html">A List
+of Heatmaps</a>):</p>
+<div class="code-wrapper"><pre class="codehilite"><code><span class="n">ht</span> <span class="o">=</span> <span class="n">ch</span><span class="o">.</span><span class="n">UpSet</span><span class="p">(</span><span class="n">m</span><span class="p">)</span>
+<span class="n">ch</span><span class="o">.</span><span class="n">draw</span><span class="p">(</span>
+    <span class="n">ht</span>
+    <span class="o">+</span> <span class="n">ch</span><span class="o">.</span><span class="n">Heatmap</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">4</span><span class="p">),</span> <span class="n">name</span><span class="o">=</span><span class="s2">"foo"</span><span class="p">,</span> <span class="n">width</span><span class="o">=</span><span class="n">ch</span><span class="o">.</span><span class="n">unit</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span> <span class="s2">"mm"</span><span class="p">))</span>
+    <span class="o">+</span> <span class="n">ch</span><span class="o">.</span><span class="n">rowAnnotation</span><span class="p">(</span><span class="n">bar</span><span class="o">=</span><span class="n">ch</span><span class="o">.</span><span class="n">anno_points</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">4</span><span class="p">)))</span>
+<span class="p">)</span></code></pre></div>
+<figure>
+<img src="images/ch08_upset_concat_h.png"
+alt="Horizontally concatenating an UpSet plot with a Heatmap and rowAnnotation" />
+<figcaption aria-hidden="true">Horizontally concatenating an UpSet plot
+with a Heatmap and rowAnnotation</figcaption>
+</figure>
+<p>Vertical concatenation with <code>%v%</code> (note
+<code>from complexheatmap import v</code>):</p>
+<div class="code-wrapper"><pre class="codehilite"><code><span class="n">nc</span> <span class="o">=</span> <span class="n">m</span><span class="o">.</span><span class="n">ncol</span>
+<span class="n">ch</span><span class="o">.</span><span class="n">draw</span><span class="p">(</span>
+    <span class="n">ht</span>
+    <span class="o">%</span> <span class="n">v</span>
+    <span class="o">%</span> <span class="n">ch</span><span class="o">.</span><span class="n">Heatmap</span><span class="p">(</span>
+        <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">nc</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">),</span>
+        <span class="n">name</span><span class="o">=</span><span class="s2">"foo"</span><span class="p">,</span>
+        <span class="n">row_names_side</span><span class="o">=</span><span class="s2">"left"</span><span class="p">,</span>
+        <span class="n">height</span><span class="o">=</span><span class="n">ch</span><span class="o">.</span><span class="n">unit</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span> <span class="s2">"mm"</span><span class="p">),</span>
+    <span class="p">)</span>
+    <span class="o">%</span> <span class="n">v</span>
+    <span class="o">%</span> <span class="n">ch</span><span class="o">.</span><span class="n">HeatmapAnnotation</span><span class="p">(</span>
+        <span class="n">bar</span><span class="o">=</span><span class="n">ch</span><span class="o">.</span><span class="n">anno_points</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">nc</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)),</span>
+        <span class="n">annotation_name_side</span><span class="o">=</span><span class="s2">"left"</span><span class="p">,</span>
+    <span class="p">)</span>
+<span class="p">)</span></code></pre></div>
+<figure>
+<img src="images/ch08_upset_concat_v.png"
+alt="Vertically concatenating an UpSet plot with a Heatmap and column annotation" />
+<figcaption aria-hidden="true">Vertically concatenating an UpSet plot
+with a Heatmap and column annotation</figcaption>
+</figure>
+<p>When comparing multiple <code>CombMat</code> objects across modes in
+a single stacked <code>HeatmapList</code>, call
+<code>ch.normalize_comb_mat(m1, m2, m3)</code> first so all three share
+identical set and combination indices:</p>
+<div class="code-wrapper"><pre class="codehilite"><code><span class="n">m1n</span><span class="p">,</span> <span class="n">m2n</span><span class="p">,</span> <span class="n">m3n</span> <span class="o">=</span> <span class="n">ch</span><span class="o">.</span><span class="n">normalize_comb_mat</span><span class="p">(</span><span class="n">m1</span><span class="p">,</span> <span class="n">m2</span><span class="p">,</span> <span class="n">m3</span><span class="p">)</span>
+<span class="n">ch</span><span class="o">.</span><span class="n">draw</span><span class="p">(</span>
+    <span class="n">ch</span><span class="o">.</span><span class="n">UpSet</span><span class="p">(</span><span class="n">m1n</span><span class="p">,</span> <span class="n">row_title</span><span class="o">=</span><span class="s2">"distinct mode"</span><span class="p">)</span>
+    <span class="o">%</span> <span class="n">v</span>
+    <span class="o">%</span> <span class="n">ch</span><span class="o">.</span><span class="n">UpSet</span><span class="p">(</span><span class="n">m2n</span><span class="p">,</span> <span class="n">row_title</span><span class="o">=</span><span class="s2">"intersect mode"</span><span class="p">)</span>
+    <span class="o">%</span> <span class="n">v</span>
+    <span class="o">%</span> <span class="n">ch</span><span class="o">.</span><span class="n">UpSet</span><span class="p">(</span><span class="n">m3n</span><span class="p">,</span> <span class="n">row_title</span><span class="o">=</span><span class="s2">"union mode"</span><span class="p">)</span>
+<span class="p">)</span></code></pre></div>
+<figure>
+<img src="images/ch08_upset_stack_v.png"
+alt="Vertically stacked UpSet plots comparing three modes" />
+<figcaption aria-hidden="true">Vertically stacked UpSet plots comparing
+three modes</figcaption>
+</figure>
+<p>Or transpose all three and concatenate horizontally:</p>
+<div class="code-wrapper"><pre class="codehilite"><code><span class="n">ch</span><span class="o">.</span><span class="n">draw</span><span class="p">(</span>
+    <span class="n">ch</span><span class="o">.</span><span class="n">UpSet</span><span class="p">(</span><span class="n">ch</span><span class="o">.</span><span class="n">t</span><span class="p">(</span><span class="n">m1n</span><span class="p">),</span> <span class="n">column_title</span><span class="o">=</span><span class="s2">"distinct mode"</span><span class="p">)</span>
+    <span class="o">+</span> <span class="n">ch</span><span class="o">.</span><span class="n">UpSet</span><span class="p">(</span><span class="n">ch</span><span class="o">.</span><span class="n">t</span><span class="p">(</span><span class="n">m2n</span><span class="p">),</span> <span class="n">column_title</span><span class="o">=</span><span class="s2">"intersect mode"</span><span class="p">)</span>
+    <span class="o">+</span> <span class="n">ch</span><span class="o">.</span><span class="n">UpSet</span><span class="p">(</span><span class="n">ch</span><span class="o">.</span><span class="n">t</span><span class="p">(</span><span class="n">m3n</span><span class="p">),</span> <span class="n">column_title</span><span class="o">=</span><span class="s2">"union mode"</span><span class="p">)</span>
+<span class="p">)</span></code></pre></div>
+<figure>
+<img src="images/ch08_upset_stack_h.png"
+alt="Horizontally concatenated transposed UpSet plots comparing three modes" />
+<figcaption aria-hidden="true">Horizontally concatenated transposed
+UpSet plots comparing three modes</figcaption>
+</figure>
+<p>Rather than repeating the dot matrix three times, align the
+combination sizes of <code>"intersect"</code> and <code>"union"</code>
+onto <code>ch.comb_name(m1)</code> and display all three barplots
+together in a single <code>HeatmapAnnotation</code>:</p>
+<div class="code-wrapper"><pre class="codehilite"><code><span class="n">codes1</span> <span class="o">=</span> <span class="n">ch</span><span class="o">.</span><span class="n">comb_name</span><span class="p">(</span><span class="n">m1</span><span class="p">)</span>
+<span class="n">cs_dist</span> <span class="o">=</span> <span class="n">ch</span><span class="o">.</span><span class="n">comb_size</span><span class="p">(</span><span class="n">m1</span><span class="p">)</span>
+<span class="n">cs_int</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="nb">dict</span><span class="p">(</span><span class="nb">zip</span><span class="p">(</span><span class="n">ch</span><span class="o">.</span><span class="n">comb_name</span><span class="p">(</span><span class="n">m2</span><span class="p">),</span> <span class="n">ch</span><span class="o">.</span><span class="n">comb_size</span><span class="p">(</span><span class="n">m2</span><span class="p">)))</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">c</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">)</span> <span class="k">for</span> <span class="n">c</span> <span class="ow">in</span> <span class="n">codes1</span><span class="p">])</span>
+<span class="n">cs_uni</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="nb">dict</span><span class="p">(</span><span class="nb">zip</span><span class="p">(</span><span class="n">ch</span><span class="o">.</span><span class="n">comb_name</span><span class="p">(</span><span class="n">m3</span><span class="p">),</span> <span class="n">ch</span><span class="o">.</span><span class="n">comb_size</span><span class="p">(</span><span class="n">m3</span><span class="p">)))</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">c</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">)</span> <span class="k">for</span> <span class="n">c</span> <span class="ow">in</span> <span class="n">codes1</span><span class="p">])</span>
+
+<span class="n">top_ha</span> <span class="o">=</span> <span class="n">ch</span><span class="o">.</span><span class="n">HeatmapAnnotation</span><span class="p">(</span>
+    <span class="n">distinct</span><span class="o">=</span><span class="n">ch</span><span class="o">.</span><span class="n">anno_barplot</span><span class="p">(</span><span class="n">cs_dist</span><span class="p">,</span> <span class="n">gp</span><span class="o">=</span><span class="n">ch</span><span class="o">.</span><span class="n">gpar</span><span class="p">(</span><span class="n">fill</span><span class="o">=</span><span class="s2">"black"</span><span class="p">),</span> <span class="n">height</span><span class="o">=</span><span class="n">ch</span><span class="o">.</span><span class="n">unit</span><span class="p">(</span><span class="mf">1.8</span><span class="p">,</span> <span class="s2">"cm"</span><span class="p">)),</span>
+    <span class="n">intersect</span><span class="o">=</span><span class="n">ch</span><span class="o">.</span><span class="n">anno_barplot</span><span class="p">(</span><span class="n">cs_int</span><span class="p">,</span> <span class="n">gp</span><span class="o">=</span><span class="n">ch</span><span class="o">.</span><span class="n">gpar</span><span class="p">(</span><span class="n">fill</span><span class="o">=</span><span class="s2">"black"</span><span class="p">),</span> <span class="n">height</span><span class="o">=</span><span class="n">ch</span><span class="o">.</span><span class="n">unit</span><span class="p">(</span><span class="mf">1.8</span><span class="p">,</span> <span class="s2">"cm"</span><span class="p">)),</span>
+    <span class="n">union</span><span class="o">=</span><span class="n">ch</span><span class="o">.</span><span class="n">anno_barplot</span><span class="p">(</span><span class="n">cs_uni</span><span class="p">,</span> <span class="n">gp</span><span class="o">=</span><span class="n">ch</span><span class="o">.</span><span class="n">gpar</span><span class="p">(</span><span class="n">fill</span><span class="o">=</span><span class="s2">"black"</span><span class="p">),</span> <span class="n">height</span><span class="o">=</span><span class="n">ch</span><span class="o">.</span><span class="n">unit</span><span class="p">(</span><span class="mf">1.8</span><span class="p">,</span> <span class="s2">"cm"</span><span class="p">)),</span>
+    <span class="n">gap</span><span class="o">=</span><span class="n">ch</span><span class="o">.</span><span class="n">unit</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="s2">"mm"</span><span class="p">),</span>
+    <span class="n">annotation_name_side</span><span class="o">=</span><span class="s2">"left"</span><span class="p">,</span>
+    <span class="n">annotation_name_rot</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span>
+<span class="p">)</span>
+<span class="n">ch</span><span class="o">.</span><span class="n">draw</span><span class="p">(</span><span class="n">ch</span><span class="o">.</span><span class="n">UpSet</span><span class="p">(</span><span class="n">m1</span><span class="p">,</span> <span class="n">top_annotation</span><span class="o">=</span><span class="n">top_ha</span><span class="p">))</span></code></pre></div>
+<figure>
+<img src="images/ch08_upset_three_bars_top.png"
+alt="Combining distinct, intersect, and union barplots on one UpSet plot" />
+<figcaption aria-hidden="true">Combining distinct, intersect, and union
+barplots on one UpSet plot</figcaption>
+</figure>
+<p>And similarly on the right when transposed:</p>
+<div class="code-wrapper"><pre class="codehilite"><code><span class="n">right_ha</span> <span class="o">=</span> <span class="n">ch</span><span class="o">.</span><span class="n">rowAnnotation</span><span class="p">(</span>
+    <span class="n">distinct</span><span class="o">=</span><span class="n">ch</span><span class="o">.</span><span class="n">anno_barplot</span><span class="p">(</span><span class="n">cs_dist</span><span class="p">,</span> <span class="n">gp</span><span class="o">=</span><span class="n">ch</span><span class="o">.</span><span class="n">gpar</span><span class="p">(</span><span class="n">fill</span><span class="o">=</span><span class="s2">"black"</span><span class="p">),</span> <span class="n">width</span><span class="o">=</span><span class="n">ch</span><span class="o">.</span><span class="n">unit</span><span class="p">(</span><span class="mf">1.8</span><span class="p">,</span> <span class="s2">"cm"</span><span class="p">)),</span>
+    <span class="n">intersect</span><span class="o">=</span><span class="n">ch</span><span class="o">.</span><span class="n">anno_barplot</span><span class="p">(</span><span class="n">cs_int</span><span class="p">,</span> <span class="n">gp</span><span class="o">=</span><span class="n">ch</span><span class="o">.</span><span class="n">gpar</span><span class="p">(</span><span class="n">fill</span><span class="o">=</span><span class="s2">"black"</span><span class="p">),</span> <span class="n">width</span><span class="o">=</span><span class="n">ch</span><span class="o">.</span><span class="n">unit</span><span class="p">(</span><span class="mf">1.8</span><span class="p">,</span> <span class="s2">"cm"</span><span class="p">)),</span>
+    <span class="n">union</span><span class="o">=</span><span class="n">ch</span><span class="o">.</span><span class="n">anno_barplot</span><span class="p">(</span><span class="n">cs_uni</span><span class="p">,</span> <span class="n">gp</span><span class="o">=</span><span class="n">ch</span><span class="o">.</span><span class="n">gpar</span><span class="p">(</span><span class="n">fill</span><span class="o">=</span><span class="s2">"black"</span><span class="p">),</span> <span class="n">width</span><span class="o">=</span><span class="n">ch</span><span class="o">.</span><span class="n">unit</span><span class="p">(</span><span class="mf">1.8</span><span class="p">,</span> <span class="s2">"cm"</span><span class="p">)),</span>
+    <span class="n">gap</span><span class="o">=</span><span class="n">ch</span><span class="o">.</span><span class="n">unit</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="s2">"mm"</span><span class="p">),</span>
+    <span class="n">annotation_name_side</span><span class="o">=</span><span class="s2">"bottom"</span><span class="p">,</span>
+<span class="p">)</span>
+<span class="n">ch</span><span class="o">.</span><span class="n">draw</span><span class="p">(</span><span class="n">ch</span><span class="o">.</span><span class="n">UpSet</span><span class="p">(</span><span class="n">ch</span><span class="o">.</span><span class="n">t</span><span class="p">(</span><span class="n">m1</span><span class="p">),</span> <span class="n">right_annotation</span><span class="o">=</span><span class="n">right_ha</span><span class="p">))</span></code></pre></div>
+<figure>
+<img src="images/ch08_upset_three_bars_right.png"
+alt="Combining distinct, intersect, and union barplots on a transposed UpSet plot" />
+<figcaption aria-hidden="true">Combining distinct, intersect, and union
+barplots on a transposed UpSet plot</figcaption>
+</figure>
+<h2 id="upset-movies"><span class="header-section-number">8.7</span> Example with the movies dataset<a class="anchor-section" aria-label="Anchor link to section" href="#upset-movies">#</a></h2>
+<p>Next we reproduce the classic <code>UpSetR</code> <code>movies</code>
+workflow using a deterministic synthetic <code>movies</code>
+<code>DataFrame</code> (3,883 movies with <code>ReleaseDate</code>,
+binary genre columns <code>Action</code>, <code>Romance</code>,
+<code>Horror</code>, <code>Children</code>, <code>SciFi</code>,
+<code>Documentary</code>, <code>Comedy</code>, <code>Drama</code>, plus
+<code>AvgRating</code> and <code>Watches</code>). Because
+<code>ch.make_comb_mat()</code> converts every column of a
+<code>DataFrame</code> into binary membership (<code>!= 0</code>), pass
+the binary genre columns explicitly
+(<code>movies[all_genres]</code>):</p>
+<div class="code-wrapper"><pre class="codehilite"><code><span class="n">all_genres</span> <span class="o">=</span> <span class="p">[</span><span class="s2">"Action"</span><span class="p">,</span> <span class="s2">"Romance"</span><span class="p">,</span> <span class="s2">"Horror"</span><span class="p">,</span> <span class="s2">"Children"</span><span class="p">,</span> <span class="s2">"SciFi"</span><span class="p">,</span> <span class="s2">"Documentary"</span><span class="p">,</span> <span class="s2">"Comedy"</span><span class="p">,</span> <span class="s2">"Drama"</span><span class="p">]</span>
+<span class="n">m</span> <span class="o">=</span> <span class="n">ch</span><span class="o">.</span><span class="n">make_comb_mat</span><span class="p">(</span><span class="n">movies</span><span class="p">[</span><span class="n">all_genres</span><span class="p">],</span> <span class="n">top_n_sets</span><span class="o">=</span><span class="mi">6</span><span class="p">)</span>
+<span class="n">m</span> <span class="o">=</span> <span class="n">m</span><span class="p">[:,</span> <span class="n">ch</span><span class="o">.</span><span class="n">comb_degree</span><span class="p">(</span><span class="n">m</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">]</span>
+<span class="n">ch</span><span class="o">.</span><span class="n">draw</span><span class="p">(</span><span class="n">ch</span><span class="o">.</span><span class="n">UpSet</span><span class="p">(</span><span class="n">m</span><span class="p">))</span></code></pre></div>
+<figure>
+<img src="images/ch08_movies_basic.png"
+alt="Basic UpSet plot of the top 6 movie genres" />
+<figcaption aria-hidden="true">Basic UpSet plot of the top 6 movie
+genres</figcaption>
+</figure>
+<p>To mirror the classic <code>UpSetR</code> layout—with genre bars
+extending leftward via negative values (<code>baseline=0.0</code>),
+custom positive axis labels, centered genre names via
+<code>anno_text()</code>, and angled counts above the intersection bars
+via <code>decorate_annotation()</code> (see <a
+href="heatmap-decoration.html">Heatmap Decoration</a>)—build the top and
+left annotations explicitly:</p>
+<div class="code-wrapper"><pre class="codehilite"><code><span class="n">ss</span> <span class="o">=</span> <span class="n">ch</span><span class="o">.</span><span class="n">set_size</span><span class="p">(</span><span class="n">m</span><span class="p">)</span>
+<span class="n">cs</span> <span class="o">=</span> <span class="n">ch</span><span class="o">.</span><span class="n">comb_size</span><span class="p">(</span><span class="n">m</span><span class="p">)</span>
+<span class="n">ht</span> <span class="o">=</span> <span class="n">ch</span><span class="o">.</span><span class="n">UpSet</span><span class="p">(</span>
+    <span class="n">m</span><span class="p">,</span>
+    <span class="n">set_order</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">argsort</span><span class="p">(</span><span class="n">ss</span><span class="p">)</span><span class="o">.</span><span class="n">tolist</span><span class="p">(),</span>
+    <span class="n">comb_order</span><span class="o">=</span><span class="nb">sorted</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="n">m</span><span class="o">.</span><span class="n">ncol</span><span class="p">),</span> <span class="n">key</span><span class="o">=</span><span class="k">lambda</span> <span class="n">j</span><span class="p">:</span> <span class="p">(</span><span class="nb">int</span><span class="p">(</span><span class="n">ch</span><span class="o">.</span><span class="n">comb_degree</span><span class="p">(</span><span class="n">m</span><span class="p">)[</span><span class="n">j</span><span class="p">]),</span> <span class="o">-</span><span class="nb">float</span><span class="p">(</span><span class="n">cs</span><span class="p">[</span><span class="n">j</span><span class="p">]))),</span>
+    <span class="n">top_annotation</span><span class="o">=</span><span class="n">ch</span><span class="o">.</span><span class="n">HeatmapAnnotation</span><span class="p">(</span>
+        <span class="o">**</span><span class="p">{</span>
+            <span class="s2">"Genre Intersections"</span><span class="p">:</span> <span class="n">ch</span><span class="o">.</span><span class="n">anno_barplot</span><span class="p">(</span>
+                <span class="n">cs</span><span class="p">,</span>
+                <span class="n">ylim</span><span class="o">=</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="nb">float</span><span class="p">(</span><span class="n">cs</span><span class="o">.</span><span class="n">max</span><span class="p">())</span> <span class="o">*</span> <span class="mf">1.15</span><span class="p">),</span>
+                <span class="n">border</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+                <span class="n">gp</span><span class="o">=</span><span class="n">ch</span><span class="o">.</span><span class="n">gpar</span><span class="p">(</span><span class="n">fill</span><span class="o">=</span><span class="s2">"black"</span><span class="p">),</span>
+                <span class="n">height</span><span class="o">=</span><span class="n">ch</span><span class="o">.</span><span class="n">unit</span><span class="p">(</span><span class="mf">4.0</span><span class="p">,</span> <span class="s2">"cm"</span><span class="p">),</span>
+            <span class="p">)</span>
+        <span class="p">},</span>
+        <span class="n">annotation_name_side</span><span class="o">=</span><span class="s2">"left"</span><span class="p">,</span>
+        <span class="n">annotation_name_rot</span><span class="o">=</span><span class="mi">90</span><span class="p">,</span>
+    <span class="p">),</span>
+    <span class="n">left_annotation</span><span class="o">=</span><span class="n">ch</span><span class="o">.</span><span class="n">rowAnnotation</span><span class="p">(</span>
+        <span class="o">**</span><span class="p">{</span>
+            <span class="s2">"Movies Per Genre"</span><span class="p">:</span> <span class="n">ch</span><span class="o">.</span><span class="n">anno_barplot</span><span class="p">(</span>
+                <span class="o">-</span><span class="n">ss</span><span class="p">,</span>
+                <span class="n">baseline</span><span class="o">=</span><span class="mf">0.0</span><span class="p">,</span>
+                <span class="n">axis_param</span><span class="o">=</span><span class="p">{</span>
+                    <span class="s2">"at"</span><span class="p">:</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="o">-</span><span class="mi">500</span><span class="p">,</span> <span class="o">-</span><span class="mi">1000</span><span class="p">,</span> <span class="o">-</span><span class="mi">1500</span><span class="p">],</span>
+                    <span class="s2">"labels"</span><span class="p">:</span> <span class="p">[</span><span class="s2">"0"</span><span class="p">,</span> <span class="s2">"500"</span><span class="p">,</span> <span class="s2">"1000"</span><span class="p">,</span> <span class="s2">"1500"</span><span class="p">],</span>
+                    <span class="s2">"labels_rot"</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span>
+                <span class="p">},</span>
+                <span class="n">border</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+                <span class="n">gp</span><span class="o">=</span><span class="n">ch</span><span class="o">.</span><span class="n">gpar</span><span class="p">(</span><span class="n">fill</span><span class="o">=</span><span class="s2">"black"</span><span class="p">),</span>
+                <span class="n">width</span><span class="o">=</span><span class="n">ch</span><span class="o">.</span><span class="n">unit</span><span class="p">(</span><span class="mf">4.0</span><span class="p">,</span> <span class="s2">"cm"</span><span class="p">),</span>
+            <span class="p">),</span>
+            <span class="s2">"set_name"</span><span class="p">:</span> <span class="n">ch</span><span class="o">.</span><span class="n">anno_text</span><span class="p">(</span>
+                <span class="n">ch</span><span class="o">.</span><span class="n">set_name</span><span class="p">(</span><span class="n">m</span><span class="p">),</span>
+                <span class="n">location</span><span class="o">=</span><span class="mf">0.5</span><span class="p">,</span>
+                <span class="n">just</span><span class="o">=</span><span class="s2">"center"</span><span class="p">,</span>
+                <span class="n">width</span><span class="o">=</span><span class="n">ch</span><span class="o">.</span><span class="n">max_text_width</span><span class="p">(</span><span class="n">ch</span><span class="o">.</span><span class="n">set_name</span><span class="p">(</span><span class="n">m</span><span class="p">))</span> <span class="o">+</span> <span class="n">ch</span><span class="o">.</span><span class="n">unit</span><span class="p">(</span><span class="mi">4</span><span class="p">,</span> <span class="s2">"mm"</span><span class="p">),</span>
+            <span class="p">),</span>
+        <span class="p">},</span>
+        <span class="n">annotation_name_side</span><span class="o">=</span><span class="s2">"top"</span><span class="p">,</span>
+    <span class="p">),</span>
+    <span class="n">right_annotation</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+    <span class="n">show_row_names</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+<span class="p">)</span>
+<span class="n">res</span> <span class="o">=</span> <span class="n">ch</span><span class="o">.</span><span class="n">draw</span><span class="p">(</span><span class="n">ht</span><span class="p">,</span> <span class="n">padding</span><span class="o">=</span><span class="n">ch</span><span class="o">.</span><span class="n">unit</span><span class="p">([</span><span class="mi">6</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span> <span class="mi">4</span><span class="p">],</span> <span class="s2">"mm"</span><span class="p">))</span>
+<span class="n">od</span> <span class="o">=</span> <span class="n">ch</span><span class="o">.</span><span class="n">column_order</span><span class="p">(</span><span class="n">res</span><span class="p">)</span>
+<span class="k">with</span> <span class="n">ch</span><span class="o">.</span><span class="n">decorate_annotation</span><span class="p">(</span><span class="s2">"Genre Intersections"</span><span class="p">):</span>
+    <span class="n">ch</span><span class="o">.</span><span class="n">grid_text</span><span class="p">(</span>
+        <span class="p">[</span><span class="nb">str</span><span class="p">(</span><span class="nb">int</span><span class="p">(</span><span class="n">cs</span><span class="p">[</span><span class="n">j</span><span class="p">]))</span> <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="n">od</span><span class="p">],</span>
+        <span class="n">x</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">cs</span><span class="p">)</span> <span class="o">+</span> <span class="mi">1</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="nb">float</span><span class="p">),</span>
+        <span class="n">y</span><span class="o">=</span><span class="n">ch</span><span class="o">.</span><span class="n">unit</span><span class="p">(</span><span class="n">cs</span><span class="p">[</span><span class="n">od</span><span class="p">],</span> <span class="s2">"native"</span><span class="p">)</span> <span class="o">+</span> <span class="n">ch</span><span class="o">.</span><span class="n">unit</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="s2">"pt"</span><span class="p">),</span>
+        <span class="n">default_units</span><span class="o">=</span><span class="s2">"native"</span><span class="p">,</span>
+        <span class="n">just</span><span class="o">=</span><span class="p">[</span><span class="s2">"left"</span><span class="p">,</span> <span class="s2">"bottom"</span><span class="p">],</span>
+        <span class="n">gp</span><span class="o">=</span><span class="n">ch</span><span class="o">.</span><span class="n">gpar</span><span class="p">(</span><span class="n">fontsize</span><span class="o">=</span><span class="mi">7</span><span class="p">,</span> <span class="n">col</span><span class="o">=</span><span class="s2">"#404040"</span><span class="p">),</span>
+        <span class="n">rot</span><span class="o">=</span><span class="mi">45</span><span class="p">,</span>
+    <span class="p">)</span></code></pre></div>
+<figure>
+<img src="images/ch08_movies_formatted.png"
+alt="UpSetR-style formatted movies UpSet plot with decorated bar counts" />
+<figcaption aria-hidden="true">UpSetR-style formatted movies UpSet plot
+with decorated bar counts</figcaption>
+</figure>
+<p>Next, stratify movies into five groups by <code>AvgRating</code>,
+normalize the resulting combination matrices with
+<code>ch.normalize_comb_mat()</code> so every subgroup shares identical
+sets and combination columns, and stack the five UpSet plots vertically
+with shared axis limits:</p>
+<div class="code-wrapper"><pre class="codehilite"><code><span class="n">genre</span> <span class="o">=</span> <span class="p">[</span><span class="s2">"Action"</span><span class="p">,</span> <span class="s2">"Romance"</span><span class="p">,</span> <span class="s2">"Horror"</span><span class="p">,</span> <span class="s2">"Children"</span><span class="p">,</span> <span class="s2">"SciFi"</span><span class="p">,</span> <span class="s2">"Documentary"</span><span class="p">]</span>
+<span class="n">rating_cat</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">cut</span><span class="p">(</span><span class="n">movies</span><span class="p">[</span><span class="s2">"AvgRating"</span><span class="p">],</span> <span class="n">bins</span><span class="o">=</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">])</span>
+<span class="n">m_list</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="n">rating_labels</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="k">for</span> <span class="n">cat</span> <span class="ow">in</span> <span class="n">rating_cat</span><span class="o">.</span><span class="n">cat</span><span class="o">.</span><span class="n">categories</span><span class="p">:</span>
+    <span class="n">mc</span> <span class="o">=</span> <span class="n">ch</span><span class="o">.</span><span class="n">make_comb_mat</span><span class="p">(</span><span class="n">movies</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">rating_cat</span> <span class="o">==</span> <span class="n">cat</span><span class="p">,</span> <span class="n">genre</span><span class="p">])</span>
+    <span class="n">m_list</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">mc</span><span class="p">[:,</span> <span class="n">ch</span><span class="o">.</span><span class="n">comb_degree</span><span class="p">(</span><span class="n">mc</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">])</span>
+    <span class="n">rating_labels</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">cat</span><span class="p">))</span>
+
+<span class="n">m_list</span> <span class="o">=</span> <span class="n">ch</span><span class="o">.</span><span class="n">normalize_comb_mat</span><span class="p">(</span><span class="n">m_list</span><span class="p">)</span>
+<span class="n">tot_cs</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">([</span><span class="n">ch</span><span class="o">.</span><span class="n">comb_size</span><span class="p">(</span><span class="n">mk</span><span class="p">)</span> <span class="k">for</span> <span class="n">mk</span> <span class="ow">in</span> <span class="n">m_list</span><span class="p">],</span> <span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+<span class="n">shared_comb_ord</span> <span class="o">=</span> <span class="nb">sorted</span><span class="p">(</span>
+    <span class="nb">range</span><span class="p">(</span><span class="n">m_list</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">ncol</span><span class="p">),</span>
+    <span class="n">key</span><span class="o">=</span><span class="k">lambda</span> <span class="n">j</span><span class="p">:</span> <span class="p">(</span><span class="nb">int</span><span class="p">(</span><span class="n">ch</span><span class="o">.</span><span class="n">comb_degree</span><span class="p">(</span><span class="n">m_list</span><span class="p">[</span><span class="mi">0</span><span class="p">])[</span><span class="n">j</span><span class="p">]),</span> <span class="o">-</span><span class="nb">float</span><span class="p">(</span><span class="n">tot_cs</span><span class="p">[</span><span class="n">j</span><span class="p">])),</span>
+<span class="p">)</span>
+<span class="n">max_set_size</span> <span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="nb">max</span><span class="p">(</span><span class="n">ch</span><span class="o">.</span><span class="n">set_size</span><span class="p">(</span><span class="n">mk</span><span class="p">)</span><span class="o">.</span><span class="n">max</span><span class="p">()</span> <span class="k">for</span> <span class="n">mk</span> <span class="ow">in</span> <span class="n">m_list</span><span class="p">))</span>
+<span class="n">max_comb_size</span> <span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="nb">max</span><span class="p">(</span><span class="n">ch</span><span class="o">.</span><span class="n">comb_size</span><span class="p">(</span><span class="n">mk</span><span class="p">)</span><span class="o">.</span><span class="n">max</span><span class="p">()</span> <span class="k">for</span> <span class="n">mk</span> <span class="ow">in</span> <span class="n">m_list</span><span class="p">))</span>
+
+<span class="n">ht_list</span> <span class="o">=</span> <span class="kc">None</span>
+<span class="k">for</span> <span class="n">lbl</span><span class="p">,</span> <span class="n">mk</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">rating_labels</span><span class="p">,</span> <span class="n">m_list</span><span class="p">):</span>
+    <span class="n">u</span> <span class="o">=</span> <span class="n">ch</span><span class="o">.</span><span class="n">UpSet</span><span class="p">(</span>
+        <span class="n">mk</span><span class="p">,</span>
+        <span class="n">row_title</span><span class="o">=</span><span class="sa">f</span><span class="s2">"rating in </span><span class="si">{</span><span class="n">lbl</span><span class="si">}</span><span class="s2">"</span><span class="p">,</span>
+        <span class="n">set_order</span><span class="o">=</span><span class="nb">list</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="n">mk</span><span class="o">.</span><span class="n">nrow</span><span class="p">)),</span>
+        <span class="n">comb_order</span><span class="o">=</span><span class="n">shared_comb_ord</span><span class="p">,</span>
+        <span class="n">top_annotation</span><span class="o">=</span><span class="n">ch</span><span class="o">.</span><span class="n">upset_top_annotation</span><span class="p">(</span><span class="n">mk</span><span class="p">,</span> <span class="n">ylim</span><span class="o">=</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">max_comb_size</span><span class="p">),</span> <span class="n">height</span><span class="o">=</span><span class="n">ch</span><span class="o">.</span><span class="n">unit</span><span class="p">(</span><span class="mf">1.8</span><span class="p">,</span> <span class="s2">"cm"</span><span class="p">)),</span>
+        <span class="n">right_annotation</span><span class="o">=</span><span class="n">ch</span><span class="o">.</span><span class="n">upset_right_annotation</span><span class="p">(</span><span class="n">mk</span><span class="p">,</span> <span class="n">ylim</span><span class="o">=</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">max_set_size</span><span class="p">)),</span>
+    <span class="p">)</span>
+    <span class="n">ht_list</span> <span class="o">=</span> <span class="n">ch</span><span class="o">.</span><span class="n">add_heatmap</span><span class="p">(</span><span class="n">ht_list</span><span class="p">,</span> <span class="n">u</span><span class="p">,</span> <span class="n">direction</span><span class="o">=</span><span class="s2">"vertical"</span><span class="p">)</span>
+
+<span class="n">ch</span><span class="o">.</span><span class="n">draw</span><span class="p">(</span><span class="n">ht_list</span><span class="p">)</span></code></pre></div>
+<figure>
+<img src="images/ch08_movies_by_rating.png"
+alt="Movie genre combinations stratified across five rating intervals" />
+<figcaption aria-hidden="true">Movie genre combinations stratified
+across five rating intervals</figcaption>
+</figure>
+<p>Replacing raw counts with relative fractions within each rating bin
+(excluding the sparse <code>(0, 1]</code> bin) reveals genre rating
+trends even more clearly—horror films skew toward lower ratings while
+documentaries and romances skew higher:</p>
+<figure>
+<img src="images/ch08_movies_by_rating_rel.png"
+alt="Relative fraction of movie genre combinations across rating intervals" />
+<figcaption aria-hidden="true">Relative fraction of movie genre
+combinations across rating intervals</figcaption>
+</figure>
+<p>Stratifying by release decade (<code>1910s</code> through
+<code>2000s</code>) and arranging five decades per column via
+<code>ch.viewport()</code> shows the surge of 1990s releases in both raw
+counts and relative proportions:</p>
+<figure>
+<img src="images/ch08_movies_by_decade.png"
+alt="Movie genre combinations stratified by decade" />
+<figcaption aria-hidden="true">Movie genre combinations stratified by
+decade</figcaption>
+</figure>
+<figure>
+<img src="images/ch08_movies_by_decade_rel.png"
+alt="Relative fraction of movie genre combinations stratified by decade" />
+<figcaption aria-hidden="true">Relative fraction of movie genre
+combinations stratified by decade</figcaption>
+</figure>
+<p>Finally, extract the movie row indices in each combination set via
+<code>ch.extract_comb()</code>, look up <code>ReleaseDate</code>,
+<code>AvgRating</code>, and <code>Watches</code>, and attach
+<code>ch.anno_boxplot()</code> tracks to a transposed UpSet plot:</p>
+<div class="code-wrapper"><pre class="codehilite"><code><span class="n">m_sub</span> <span class="o">=</span> <span class="n">ch</span><span class="o">.</span><span class="n">make_comb_mat</span><span class="p">(</span><span class="n">movies</span><span class="p">[</span><span class="n">genre</span><span class="p">])</span>
+<span class="n">m_sub</span> <span class="o">=</span> <span class="n">m_sub</span><span class="p">[:,</span> <span class="n">ch</span><span class="o">.</span><span class="n">comb_degree</span><span class="p">(</span><span class="n">m_sub</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">]</span>
+<span class="n">comb_elements</span> <span class="o">=</span> <span class="p">[</span><span class="n">ch</span><span class="o">.</span><span class="n">extract_comb</span><span class="p">(</span><span class="n">m_sub</span><span class="p">,</span> <span class="n">nm</span><span class="p">)</span> <span class="k">for</span> <span class="n">nm</span> <span class="ow">in</span> <span class="n">ch</span><span class="o">.</span><span class="n">comb_name</span><span class="p">(</span><span class="n">m_sub</span><span class="p">)]</span>
+<span class="n">years_list</span> <span class="o">=</span> <span class="p">[</span><span class="n">movies</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">ind</span><span class="p">,</span> <span class="s2">"ReleaseDate"</span><span class="p">]</span><span class="o">.</span><span class="n">to_numpy</span><span class="p">()</span> <span class="k">for</span> <span class="n">ind</span> <span class="ow">in</span> <span class="n">comb_elements</span><span class="p">]</span>
+<span class="n">rating_list</span> <span class="o">=</span> <span class="p">[</span><span class="n">movies</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">ind</span><span class="p">,</span> <span class="s2">"AvgRating"</span><span class="p">]</span><span class="o">.</span><span class="n">to_numpy</span><span class="p">()</span> <span class="k">for</span> <span class="n">ind</span> <span class="ow">in</span> <span class="n">comb_elements</span><span class="p">]</span>
+<span class="n">watches_list</span> <span class="o">=</span> <span class="p">[</span><span class="n">movies</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">ind</span><span class="p">,</span> <span class="s2">"Watches"</span><span class="p">]</span><span class="o">.</span><span class="n">to_numpy</span><span class="p">()</span> <span class="k">for</span> <span class="n">ind</span> <span class="ow">in</span> <span class="n">comb_elements</span><span class="p">]</span>
+
+<span class="n">ch</span><span class="o">.</span><span class="n">draw</span><span class="p">(</span>
+    <span class="n">ch</span><span class="o">.</span><span class="n">UpSet</span><span class="p">(</span>
+        <span class="n">ch</span><span class="o">.</span><span class="n">t</span><span class="p">(</span><span class="n">m_sub</span><span class="p">),</span>
+        <span class="n">right_annotation</span><span class="o">=</span><span class="n">ch</span><span class="o">.</span><span class="n">upset_right_annotation</span><span class="p">(</span>
+            <span class="n">ch</span><span class="o">.</span><span class="n">t</span><span class="p">(</span><span class="n">m_sub</span><span class="p">),</span> <span class="n">annotation_name_side</span><span class="o">=</span><span class="s2">"top"</span><span class="p">,</span> <span class="n">axis_param</span><span class="o">=</span><span class="p">{</span><span class="s2">"side"</span><span class="p">:</span> <span class="s2">"top"</span><span class="p">}</span>
+        <span class="p">),</span>
+    <span class="p">)</span>
+    <span class="o">+</span> <span class="n">ch</span><span class="o">.</span><span class="n">rowAnnotation</span><span class="p">(</span>
+        <span class="n">years</span><span class="o">=</span><span class="n">ch</span><span class="o">.</span><span class="n">anno_boxplot</span><span class="p">(</span><span class="n">years_list</span><span class="p">,</span> <span class="n">width</span><span class="o">=</span><span class="n">ch</span><span class="o">.</span><span class="n">unit</span><span class="p">(</span><span class="mf">2.2</span><span class="p">,</span> <span class="s2">"cm"</span><span class="p">)),</span>
+        <span class="n">rating</span><span class="o">=</span><span class="n">ch</span><span class="o">.</span><span class="n">anno_boxplot</span><span class="p">(</span><span class="n">rating_list</span><span class="p">,</span> <span class="n">width</span><span class="o">=</span><span class="n">ch</span><span class="o">.</span><span class="n">unit</span><span class="p">(</span><span class="mf">2.2</span><span class="p">,</span> <span class="s2">"cm"</span><span class="p">)),</span>
+        <span class="n">watches</span><span class="o">=</span><span class="n">ch</span><span class="o">.</span><span class="n">anno_boxplot</span><span class="p">(</span><span class="n">watches_list</span><span class="p">,</span> <span class="n">width</span><span class="o">=</span><span class="n">ch</span><span class="o">.</span><span class="n">unit</span><span class="p">(</span><span class="mf">2.2</span><span class="p">,</span> <span class="s2">"cm"</span><span class="p">)),</span>
+        <span class="n">gap</span><span class="o">=</span><span class="n">ch</span><span class="o">.</span><span class="n">unit</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="s2">"mm"</span><span class="p">),</span>
+        <span class="n">annotation_name_offset</span><span class="o">=</span><span class="n">ch</span><span class="o">.</span><span class="n">unit</span><span class="p">(</span><span class="mi">8</span><span class="p">,</span> <span class="s2">"mm"</span><span class="p">),</span>
+    <span class="p">)</span>
+<span class="p">)</span></code></pre></div>
+<figure>
+<img src="images/ch08_movies_boxplots.png"
+alt="Transposed UpSet plot enriched with release year, rating, and watch boxplots" />
+<figcaption aria-hidden="true">Transposed UpSet plot enriched with
+release year, rating, and watch boxplots</figcaption>
+</figure>
+<p>Notice how <code>SciFi + Children</code> films skew toward earlier
+release years while <code>Action + Children</code> films exhibit lower
+median ratings.</p>
+<h2 id="upset-genomic"><span class="header-section-number">8.8</span> Example with the genomic regions<a class="anchor-section" aria-label="Anchor link to section" href="#upset-genomic">#</a></h2>
+<p>For genomic interval sets, construct <code>ch.GRanges</code> objects
+representing ChIP-seq peaks across six samples (<code>ESC</code>,
+<code>ES-deriv1</code>, <code>ES-deriv2</code>, <code>Brain</code>,
+<code>Muscle</code>, <code>Heart</code>). When
+<code>ch.make_comb_mat()</code> receives a dictionary of
+<code>GRanges</code> objects, sizes represent <strong>total base pairs
+covered</strong>. Here we keep combination sets covering more than 500
+kb:</p>
+<div class="code-wrapper"><pre class="codehilite"><code><span class="n">m</span> <span class="o">=</span> <span class="n">ch</span><span class="o">.</span><span class="n">make_comb_mat</span><span class="p">(</span><span class="n">peak_list</span><span class="p">)</span>
+<span class="n">m</span> <span class="o">=</span> <span class="n">m</span><span class="p">[:,</span> <span class="n">ch</span><span class="o">.</span><span class="n">comb_size</span><span class="p">(</span><span class="n">m</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">500_000</span><span class="p">]</span>
+<span class="n">ch</span><span class="o">.</span><span class="n">draw</span><span class="p">(</span><span class="n">ch</span><span class="o">.</span><span class="n">UpSet</span><span class="p">(</span><span class="n">m</span><span class="p">))</span></code></pre></div>
+<figure>
+<img src="images/ch08_genomic_basic.png"
+alt="UpSet plot of H3K4me3 genomic peak overlaps (&gt; 500 kb)" />
+<figcaption aria-hidden="true">UpSet plot of H3K4me3 genomic peak
+overlaps (&gt; 500 kb)</figcaption>
+</figure>
+<p>Format the barplot axes in megabases using
+<code>axis_param</code>:</p>
+<div class="code-wrapper"><pre class="codehilite"><code><span class="n">ch</span><span class="o">.</span><span class="n">draw</span><span class="p">(</span>
+    <span class="n">ch</span><span class="o">.</span><span class="n">UpSet</span><span class="p">(</span>
+        <span class="n">m</span><span class="p">,</span>
+        <span class="n">top_annotation</span><span class="o">=</span><span class="n">ch</span><span class="o">.</span><span class="n">upset_top_annotation</span><span class="p">(</span>
+            <span class="n">m</span><span class="p">,</span>
+            <span class="n">axis_param</span><span class="o">=</span><span class="p">{</span><span class="s2">"at"</span><span class="p">:</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">5_000_000</span><span class="p">,</span> <span class="mi">10_000_000</span><span class="p">,</span> <span class="mi">15_000_000</span><span class="p">],</span> <span class="s2">"labels"</span><span class="p">:</span> <span class="p">[</span><span class="s2">"0Mb"</span><span class="p">,</span> <span class="s2">"5Mb"</span><span class="p">,</span> <span class="s2">"10Mb"</span><span class="p">,</span> <span class="s2">"15Mb"</span><span class="p">]},</span>
+            <span class="n">height</span><span class="o">=</span><span class="n">ch</span><span class="o">.</span><span class="n">unit</span><span class="p">(</span><span class="mf">3.8</span><span class="p">,</span> <span class="s2">"cm"</span><span class="p">),</span>
+        <span class="p">),</span>
+        <span class="n">right_annotation</span><span class="o">=</span><span class="n">ch</span><span class="o">.</span><span class="n">upset_right_annotation</span><span class="p">(</span>
+            <span class="n">m</span><span class="p">,</span>
+            <span class="n">axis_param</span><span class="o">=</span><span class="p">{</span><span class="s2">"at"</span><span class="p">:</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">10_000_000</span><span class="p">,</span> <span class="mi">20_000_000</span><span class="p">,</span> <span class="mi">30_000_000</span><span class="p">],</span> <span class="s2">"labels"</span><span class="p">:</span> <span class="p">[</span><span class="s2">"0Mb"</span><span class="p">,</span> <span class="s2">"10Mb"</span><span class="p">,</span> <span class="s2">"20Mb"</span><span class="p">,</span> <span class="s2">"30Mb"</span><span class="p">],</span> <span class="s2">"labels_rot"</span><span class="p">:</span> <span class="mi">0</span><span class="p">},</span>
+            <span class="n">width</span><span class="o">=</span><span class="n">ch</span><span class="o">.</span><span class="n">unit</span><span class="p">(</span><span class="mf">3.8</span><span class="p">,</span> <span class="s2">"cm"</span><span class="p">),</span>
+        <span class="p">),</span>
+    <span class="p">)</span>
+<span class="p">)</span></code></pre></div>
+<figure>
+<img src="images/ch08_genomic_axes.png"
+alt="Genomic UpSet plot with megabase-formatted axes" />
+<figcaption aria-hidden="true">Genomic UpSet plot with
+megabase-formatted axes</figcaption>
+</figure>
+<p>Finally, use <code>ch.extract_comb(m, nm)</code> to retrieve the
+<code>GRanges</code> intervals for each combination set and summarize
+genomic metadata—such as distance to the nearest TSS
+(<code>anno_boxplot</code>) and mean methylation
+(<code>mean_meth</code>)—alongside sample subgroup colors:</p>
+<div class="code-wrapper"><pre class="codehilite"><code><span class="n">subgroup</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s2">"ESC"</span><span class="p">:</span> <span class="s2">"group1"</span><span class="p">,</span>
+    <span class="s2">"ES-deriv1"</span><span class="p">:</span> <span class="s2">"group1"</span><span class="p">,</span>
+    <span class="s2">"ES-deriv2"</span><span class="p">:</span> <span class="s2">"group1"</span><span class="p">,</span>
+    <span class="s2">"Brain"</span><span class="p">:</span> <span class="s2">"group2"</span><span class="p">,</span>
+    <span class="s2">"Muscle"</span><span class="p">:</span> <span class="s2">"group2"</span><span class="p">,</span>
+    <span class="s2">"Heart"</span><span class="p">:</span> <span class="s2">"group2"</span><span class="p">,</span>
+<span class="p">}</span>
+<span class="n">comb_sets</span> <span class="o">=</span> <span class="p">[</span><span class="n">ch</span><span class="o">.</span><span class="n">extract_comb</span><span class="p">(</span><span class="n">m</span><span class="p">,</span> <span class="n">nm</span><span class="p">)</span> <span class="k">for</span> <span class="n">nm</span> <span class="ow">in</span> <span class="n">ch</span><span class="o">.</span><span class="n">comb_name</span><span class="p">(</span><span class="n">m</span><span class="p">)]</span>
+<span class="c1"># Suppose each GRanges in comb_sets carries dist_to_tss and mean_meth arrays</span>
+<span class="n">ch</span><span class="o">.</span><span class="n">draw</span><span class="p">(</span>
+    <span class="n">ch</span><span class="o">.</span><span class="n">UpSet</span><span class="p">(</span>
+        <span class="n">m</span><span class="p">,</span>
+        <span class="n">top_annotation</span><span class="o">=</span><span class="n">ch</span><span class="o">.</span><span class="n">upset_top_annotation</span><span class="p">(</span>
+            <span class="n">m</span><span class="p">,</span>
+            <span class="n">axis_param</span><span class="o">=</span><span class="p">{</span><span class="s2">"at"</span><span class="p">:</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">5_000_000</span><span class="p">,</span> <span class="mi">10_000_000</span><span class="p">,</span> <span class="mi">15_000_000</span><span class="p">],</span> <span class="s2">"labels"</span><span class="p">:</span> <span class="p">[</span><span class="s2">"0Mb"</span><span class="p">,</span> <span class="s2">"5Mb"</span><span class="p">,</span> <span class="s2">"10Mb"</span><span class="p">,</span> <span class="s2">"15Mb"</span><span class="p">]},</span>
+            <span class="n">height</span><span class="o">=</span><span class="n">ch</span><span class="o">.</span><span class="n">unit</span><span class="p">(</span><span class="mf">3.8</span><span class="p">,</span> <span class="s2">"cm"</span><span class="p">),</span>
+        <span class="p">),</span>
+        <span class="n">right_annotation</span><span class="o">=</span><span class="n">ch</span><span class="o">.</span><span class="n">upset_right_annotation</span><span class="p">(</span>
+            <span class="n">m</span><span class="p">,</span>
+            <span class="n">axis_param</span><span class="o">=</span><span class="p">{</span><span class="s2">"at"</span><span class="p">:</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">10_000_000</span><span class="p">,</span> <span class="mi">20_000_000</span><span class="p">,</span> <span class="mi">30_000_000</span><span class="p">],</span> <span class="s2">"labels"</span><span class="p">:</span> <span class="p">[</span><span class="s2">"0Mb"</span><span class="p">,</span> <span class="s2">"10Mb"</span><span class="p">,</span> <span class="s2">"20Mb"</span><span class="p">,</span> <span class="s2">"30Mb"</span><span class="p">],</span> <span class="s2">"labels_rot"</span><span class="p">:</span> <span class="mi">0</span><span class="p">},</span>
+            <span class="n">width</span><span class="o">=</span><span class="n">ch</span><span class="o">.</span><span class="n">unit</span><span class="p">(</span><span class="mf">3.8</span><span class="p">,</span> <span class="s2">"cm"</span><span class="p">),</span>
+        <span class="p">),</span>
+        <span class="n">left_annotation</span><span class="o">=</span><span class="n">ch</span><span class="o">.</span><span class="n">rowAnnotation</span><span class="p">(</span>
+            <span class="n">group</span><span class="o">=</span><span class="p">[</span><span class="n">subgroup</span><span class="p">[</span><span class="n">s</span><span class="p">]</span> <span class="k">for</span> <span class="n">s</span> <span class="ow">in</span> <span class="n">ch</span><span class="o">.</span><span class="n">set_name</span><span class="p">(</span><span class="n">m</span><span class="p">)],</span>
+            <span class="n">col</span><span class="o">=</span><span class="p">{</span><span class="s2">"group"</span><span class="p">:</span> <span class="p">{</span><span class="s2">"group1"</span><span class="p">:</span> <span class="s2">"#1B9E77"</span><span class="p">,</span> <span class="s2">"group2"</span><span class="p">:</span> <span class="s2">"#D95F02"</span><span class="p">}},</span>
+            <span class="n">show_annotation_name</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+        <span class="p">),</span>
+        <span class="n">bottom_annotation</span><span class="o">=</span><span class="n">ch</span><span class="o">.</span><span class="n">HeatmapAnnotation</span><span class="p">(</span>
+            <span class="n">dist_to_tss</span><span class="o">=</span><span class="n">ch</span><span class="o">.</span><span class="n">anno_boxplot</span><span class="p">(</span><span class="n">dist_to_tss</span><span class="p">,</span> <span class="n">outline</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">height</span><span class="o">=</span><span class="n">ch</span><span class="o">.</span><span class="n">unit</span><span class="p">(</span><span class="mf">1.8</span><span class="p">,</span> <span class="s2">"cm"</span><span class="p">)),</span>
+            <span class="n">mean_meth</span><span class="o">=</span><span class="n">mean_meth</span><span class="p">,</span>
+            <span class="n">annotation_name_side</span><span class="o">=</span><span class="s2">"left"</span><span class="p">,</span>
+            <span class="n">annotation_name_offset</span><span class="o">=</span><span class="n">ch</span><span class="o">.</span><span class="n">unit</span><span class="p">(</span><span class="mi">9</span><span class="p">,</span> <span class="s2">"mm"</span><span class="p">),</span>
+        <span class="p">),</span>
+    <span class="p">)</span>
+<span class="p">)</span></code></pre></div>
+<figure>
+<img src="images/ch08_genomic_annotated.png"
+alt="Genomic UpSet plot with subgroup tracks, TSS distance boxplots, and mean methylation" />
+<figcaption aria-hidden="true">Genomic UpSet plot with subgroup tracks,
+TSS distance boxplots, and mean methylation</figcaption>
+</figure>
+
+          </section>
+          <nav class="chapter-footer-nav" aria-label="Chapter Navigation">
+            <a href="oncoprint.html">&larr; 7 OncoPrint</a>
+            <a href="interactive-complexheatmap.html">9 Interactive ComplexHeatmap &rarr;</a>
+          </nav>
+        </main>
+        <a href="oncoprint.html" class="navigation navigation-prev" aria-label="Previous chapter: OncoPrint" title="Previous: OncoPrint">&#8249;</a>
+        <a href="interactive-complexheatmap.html" class="navigation navigation-next" aria-label="Next chapter: Interactive ComplexHeatmap" title="Next: Interactive ComplexHeatmap">&#8250;</a>
+      </div>
+    </div>
+  </div>
+  <script src="assets/gitbook.js"></script>
+</body>
+</html>

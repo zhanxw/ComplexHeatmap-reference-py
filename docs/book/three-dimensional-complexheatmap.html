@@ -1,0 +1,485 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Chapter 12 Three-dimensional ComplexHeatmap | ComplexHeatmap-py Complete Reference</title>
+  <meta name="description" content="Python port of ComplexHeatmap Complete Reference using ComplexHeatmap-py.">
+  <link rel="stylesheet" href="assets/gitbook.css">
+</head>
+<body>
+  <div class="book">
+    <nav class="book-summary" aria-label="Table of Contents">
+      <div class="book-summary-header">
+        <a class="book-summary-title" href="index.html">ComplexHeatmap-py Complete Reference</a>
+        <span class="book-summary-subtitle">Python Port via ComplexHeatmap-py</span>
+      </div>
+      <div class="book-search-box">
+        <input id="book-search-input" type="search" placeholder="Search book..." aria-label="Search book">
+      </div>
+      <ul class="summary">
+        <li class="chapter"><a href="index.html"><span>About</span></a><ul><li class="level-2"><a href="index.html#installation">Installation</a></li>
+<li class="level-2"><a href="index.html#r-to-python-migration-highlights">R-to-Python Migration
+Highlights</a></li>
+<li class="level-2"><a href="index.html#citation">Citation</a></li>
+<li class="level-2"><a href="index.html#python-environment">Python Environment</a></li></ul></li>
+<li class="chapter"><a href="introduction.html"><span class="header-section-number">1</span><span>Introduction</span></a><ul><li class="level-2"><a href="introduction.html#general-design"><span class="header-section-number">1.1</span> General design</a></li>
+<li class="level-2"><a href="introduction.html#a-brief-description-of-following-chapters"><span class="header-section-number">1.2</span> A brief description
+of following chapters</a></li></ul></li>
+<li class="chapter"><a href="a-single-heatmap.html"><span class="header-section-number">2</span><span>A Single Heatmap</span></a><ul><li class="level-2"><a href="a-single-heatmap.html#colors"><span class="header-section-number">2.1</span> Colors</a></li>
+<li class="level-2"><a href="a-single-heatmap.html#heatmap-titles"><span class="header-section-number">2.2</span> Titles</a></li>
+<li class="level-2"><a href="a-single-heatmap.html#clustering"><span class="header-section-number">2.3</span> Clustering</a></li>
+<li class="level-3"><a href="a-single-heatmap.html#distance-methods"><span class="header-section-number">2.3.1</span> Distance methods</a></li>
+<li class="level-3"><a href="a-single-heatmap.html#clustering-methods"><span class="header-section-number">2.3.2</span> Clustering methods</a></li>
+<li class="level-3"><a href="a-single-heatmap.html#render-dendrograms"><span class="header-section-number">2.3.3</span> Render dendrograms</a></li>
+<li class="level-3"><a href="a-single-heatmap.html#reorder-dendrograms"><span class="header-section-number">2.3.4</span> Reorder dendrograms</a></li>
+<li class="level-2"><a href="a-single-heatmap.html#row-and-column-orders"><span class="header-section-number">2.4</span> Set row and column orders</a></li>
+<li class="level-2"><a href="a-single-heatmap.html#heatmap-seriation"><span class="header-section-number">2.5</span> Seriation</a></li>
+<li class="level-2"><a href="a-single-heatmap.html#dimension-names"><span class="header-section-number">2.6</span> Dimension labels</a></li>
+<li class="level-2"><a href="a-single-heatmap.html#heatmap-split"><span class="header-section-number">2.7</span> Heatmap split</a></li>
+<li class="level-3"><a href="a-single-heatmap.html#split-by-kmeans-clustering"><span class="header-section-number">2.7.1</span> Split by k-means clustering</a></li>
+<li class="level-3"><a href="a-single-heatmap.html#split-by-categorical-variables"><span class="header-section-number">2.7.2</span> Split by categorical
+variables</a></li>
+<li class="level-3"><a href="a-single-heatmap.html#split-by-dendrogram"><span class="header-section-number">2.7.3</span> Split by dendrogram</a></li>
+<li class="level-3"><a href="a-single-heatmap.html#order-of-slices"><span class="header-section-number">2.7.4</span> Order of slices</a></li>
+<li class="level-3"><a href="a-single-heatmap.html#titles-for-splitting"><span class="header-section-number">2.7.5</span> Titles for splitting</a></li>
+<li class="level-3"><a href="a-single-heatmap.html#graphic-parameters-for-splitting"><span class="header-section-number">2.7.6</span> Graphic parameters for
+splitting</a></li>
+<li class="level-3"><a href="a-single-heatmap.html#gaps-between-slices"><span class="header-section-number">2.7.7</span> Gaps between slices</a></li>
+<li class="level-3"><a href="a-single-heatmap.html#split-heatmap-annotations"><span class="header-section-number">2.7.8</span> Split heatmap annotations</a></li>
+<li class="level-2"><a href="a-single-heatmap.html#heatmap-as-raster-image"><span class="header-section-number">2.8</span> Heatmap as raster image</a></li>
+<li class="level-2"><a href="a-single-heatmap.html#customize-the-heatmap-body"><span class="header-section-number">2.9</span> Customize the heatmap body</a></li>
+<li class="level-3"><a href="a-single-heatmap.html#cell-fun"><span class="header-section-number">2.9.1</span> cell_fun</a></li>
+<li class="level-3"><a href="a-single-heatmap.html#layer-fun"><span class="header-section-number">2.9.2</span> layer_fun</a></li>
+<li class="level-2"><a href="a-single-heatmap.html#size-of-the-heatmap"><span class="header-section-number">2.10</span> Size of the heatmap</a></li>
+<li class="level-2"><a href="a-single-heatmap.html#plot-the-heatmap"><span class="header-section-number">2.11</span> Plot the heatmap</a></li>
+<li class="level-2"><a href="a-single-heatmap.html#get-orders-and-dendrograms-from-heatmap"><span class="header-section-number">2.12</span> Extract orders and
+dendrograms</a></li>
+<li class="level-2"><a href="a-single-heatmap.html#subset-a-heatmap"><span class="header-section-number">2.13</span> Subset a heatmap</a></li></ul></li>
+<li class="chapter"><a href="heatmap-annotations.html"><span class="header-section-number">3</span><span>Heatmap Annotations</span></a><ul><li class="level-2"><a href="heatmap-annotations.html#simple-annotation"><span class="header-section-number">3.1</span> Simple annotation</a></li>
+<li class="level-2"><a href="heatmap-annotations.html#simple-annotation-as-an-annotation-function"><span class="header-section-number">3.2</span> Simple annotation
+as an annotation function</a></li>
+<li class="level-2"><a href="heatmap-annotations.html#empty-annotation"><span class="header-section-number">3.3</span> Empty annotation</a></li>
+<li class="level-2"><a href="heatmap-annotations.html#block-annotation"><span class="header-section-number">3.4</span> Block annotation</a></li>
+<li class="level-3"><a href="heatmap-annotations.html#block-for-putting-labels"><span class="header-section-number">3.4.1</span> Block for putting labels</a></li>
+<li class="level-3"><a href="heatmap-annotations.html#blocks-as-plotting-regions"><span class="header-section-number">3.4.2</span> Blocks as plotting regions</a></li>
+<li class="level-2"><a href="heatmap-annotations.html#image-annotation"><span class="header-section-number">3.5</span> Image annotation</a></li>
+<li class="level-2"><a href="heatmap-annotations.html#points-annotation"><span class="header-section-number">3.6</span> Points annotation</a></li>
+<li class="level-2"><a href="heatmap-annotations.html#lines-annotation"><span class="header-section-number">3.7</span> Line annotation</a></li>
+<li class="level-2"><a href="heatmap-annotations.html#barplot_annotation"><span class="header-section-number">3.8</span> Barplot annotation</a></li>
+<li class="level-2"><a href="heatmap-annotations.html#box-annotation"><span class="header-section-number">3.9</span> Boxplot annotation</a></li>
+<li class="level-2"><a href="heatmap-annotations.html#histogram-annotation"><span class="header-section-number">3.10</span> Histogram annotation</a></li>
+<li class="level-2"><a href="heatmap-annotations.html#density-annotation"><span class="header-section-number">3.11</span> Density annotation</a></li>
+<li class="level-2"><a href="heatmap-annotations.html#joyplot-annotation"><span class="header-section-number">3.12</span> Joyplot annotation</a></li>
+<li class="level-2"><a href="heatmap-annotations.html#horizon-chart-annotation"><span class="header-section-number">3.13</span> Horizon chart annotation</a></li>
+<li class="level-2"><a href="heatmap-annotations.html#text-annotation"><span class="header-section-number">3.14</span> Text annotation</a></li>
+<li class="level-2"><a href="heatmap-annotations.html#anno-numeric"><span class="header-section-number">3.15</span> Numeric labels annotation</a></li>
+<li class="level-2"><a href="heatmap-annotations.html#completely-customized-annotation"><span class="header-section-number">3.16</span> Completely customized
+annotation</a></li>
+<li class="level-2"><a href="heatmap-annotations.html#mark-annotation"><span class="header-section-number">3.17</span> Mark annotation</a></li>
+<li class="level-2"><a href="heatmap-annotations.html#zoom-annotation"><span class="header-section-number">3.18</span> Zoom/link annotation</a></li>
+<li class="level-2"><a href="heatmap-annotations.html#anno-text-box"><span class="header-section-number">3.19</span> Text box annotation</a></li>
+<li class="level-3"><a href="heatmap-annotations.html#construct-the-text-box"><span class="header-section-number">3.19.1</span> Construct the text box</a></li>
+<li class="level-3"><a href="heatmap-annotations.html#draw-textbox-annotation"><span class="header-section-number">3.19.2</span> Draw textbox annotation</a></li>
+<li class="level-2"><a href="heatmap-annotations.html#summary-annotation"><span class="header-section-number">3.20</span> Summary annotation</a></li>
+<li class="level-2"><a href="heatmap-annotations.html#multiple-annotations"><span class="header-section-number">3.21</span> Multiple annotations</a></li>
+<li class="level-3"><a href="heatmap-annotations.html#heatmap-annotation-general-settings"><span class="header-section-number">3.21.1</span> General settings</a></li>
+<li class="level-3"><a href="heatmap-annotations.html#size-of-annotations"><span class="header-section-number">3.21.2</span> Size of annotations</a></li>
+<li class="level-3"><a href="heatmap-annotations.html#annotation-labels"><span class="header-section-number">3.21.3</span> Annotation labels</a></li>
+<li class="level-2"><a href="heatmap-annotations.html#heatmap-annotation-utility-function"><span class="header-section-number">3.22</span> Utility functions</a></li>
+<li class="level-2"><a href="heatmap-annotations.html#implement-new-annotation-functions"><span class="header-section-number">3.23</span> Implement new annotation
+functions</a></li>
+<li class="level-3"><a href="heatmap-annotations.html#construct-annotation-function-by-cell-fun"><span class="header-section-number">3.23.1</span> Construct annotation
+function by cell_fun</a></li></ul></li>
+<li class="chapter"><a href="a-list-of-heatmaps.html"><span class="header-section-number">4</span><span>A List of Heatmaps</span></a><ul><li class="level-2"><a href="a-list-of-heatmaps.html#heatmap-list-titles"><span class="header-section-number">4.1</span> Titles</a></li>
+<li class="level-2"><a href="a-list-of-heatmaps.html#size-of-heatmaps"><span class="header-section-number">4.2</span> Size of heatmaps</a></li>
+<li class="level-2"><a href="a-list-of-heatmaps.html#gap-between-heatmaps"><span class="header-section-number">4.3</span> Gap between heatmaps</a></li>
+<li class="level-2"><a href="a-list-of-heatmaps.html#automatic-adjustment-to-the-main-heatmap"><span class="header-section-number">4.4</span> Automatic adjustment
+to the main heatmap</a></li>
+<li class="level-2"><a href="a-list-of-heatmaps.html#control-main-heatmap-in-draw-function"><span class="header-section-number">4.5</span> Control main heatmap in
+draw() function</a></li>
+<li class="level-2"><a href="a-list-of-heatmaps.html#annotations-as-components-are-adjusted"><span class="header-section-number">4.6</span> Annotations as
+components are adjusted</a></li>
+<li class="level-2"><a href="a-list-of-heatmaps.html#concatenate-with-annotations"><span class="header-section-number">4.7</span> Concatenate with annotations</a></li>
+<li class="level-2"><a href="a-list-of-heatmaps.html#concatenate-only-the-annotations"><span class="header-section-number">4.8</span> Concatenate only the
+annotations</a></li>
+<li class="level-2"><a href="a-list-of-heatmaps.html#vertical-concatenation"><span class="header-section-number">4.9</span> Vertical concatenation</a></li>
+<li class="level-2"><a href="a-list-of-heatmaps.html#subset-heatmap-list"><span class="header-section-number">4.10</span> Subset the heatmap list</a></li>
+<li class="level-2"><a href="a-list-of-heatmaps.html#plot-the-heatmap-list"><span class="header-section-number">4.11</span> Plot the heatmap list</a></li>
+<li class="level-2"><a href="a-list-of-heatmaps.html#get-orders-and-dendrograms-from-a-list-of-heatmaps"><span class="header-section-number">4.12</span> Get orders
+and dendrograms</a></li>
+<li class="level-2"><a href="a-list-of-heatmaps.html#change-parameters-globally"><span class="header-section-number">4.13</span> Change parameters globally</a></li>
+<li class="level-2"><a href="a-list-of-heatmaps.html#adjust-blank-space-caused-by-annotations"><span class="header-section-number">4.14</span> Adjust blank space
+caused by annotations</a></li>
+<li class="level-2"><a href="a-list-of-heatmaps.html#manually-increase-space-around-the-plot"><span class="header-section-number">4.15</span> Manually increase space
+around the plot</a></li></ul></li>
+<li class="chapter"><a href="legends.html"><span class="header-section-number">5</span><span>Legends</span></a><ul><li class="level-2"><a href="legends.html#continuous-legends"><span class="header-section-number">5.1</span> Continuous legends</a></li>
+<li class="level-2"><a href="legends.html#discrete-legends"><span class="header-section-number">5.2</span> Discrete legends</a></li>
+<li class="level-2"><a href="legends.html#a-list-of-legends"><span class="header-section-number">5.3</span> A list of legends</a></li>
+<li class="level-2"><a href="legends.html#heatmap-and-annotation-legends"><span class="header-section-number">5.4</span> Heatmap and annotation
+legends</a></li>
+<li class="level-2"><a href="legends.html#add-customized-legends"><span class="header-section-number">5.5</span> Add customized legends</a></li>
+<li class="level-2"><a href="legends.html#the-side-of-legends"><span class="header-section-number">5.6</span> The side of legends</a></li></ul></li>
+<li class="chapter"><a href="heatmap-decoration.html"><span class="header-section-number">6</span><span>Heatmap Decoration</span></a><ul><li class="level-2"><a href="heatmap-decoration.html#decoration-functions"><span class="header-section-number">6.1</span> Decoration functions</a></li>
+<li class="level-2"><a href="heatmap-decoration.html#decoration-examples"><span class="header-section-number">6.2</span> Examples</a></li>
+<li class="level-3"><a href="heatmap-decoration.html#barplot-for-single-column-heatmap"><span class="header-section-number">6.2.1</span> Barplot for single-column
+heatmap</a></li>
+<li class="level-3"><a href="heatmap-decoration.html#add-titles-for-row-annotations"><span class="header-section-number">6.2.2</span> Add titles for row
+annotations</a></li>
+<li class="level-3"><a href="heatmap-decoration.html#other-possible-use-of-decorations"><span class="header-section-number">6.2.3</span> Other possible use of
+decorations</a></li></ul></li>
+<li class="chapter"><a href="oncoprint.html"><span class="header-section-number">7</span><span>OncoPrint</span></a><ul><li class="level-2"><a href="oncoprint.html#oncoprint-general-settings"><span class="header-section-number">7.1</span> General settings</a></li>
+<li class="level-3"><a href="oncoprint.html#input-data-format"><span class="header-section-number">7.1.1</span> Input data format</a></li>
+<li class="level-3"><a href="oncoprint.html#define-the-alter-fun"><span class="header-section-number">7.1.2</span> Define the alter_fun()</a></li>
+<li class="level-3"><a href="oncoprint.html#oncoprint-background"><span class="header-section-number">7.1.3</span> Background</a></li>
+<li class="level-3"><a href="oncoprint.html#complex-alteration-types"><span class="header-section-number">7.1.4</span> Complex alteration types</a></li>
+<li class="level-3"><a href="oncoprint.html#simplify-alter-fun"><span class="header-section-number">7.1.5</span> Simplify alter_fun</a></li>
+<li class="level-3"><a href="oncoprint.html#other-heatmap-related-settings"><span class="header-section-number">7.1.6</span> Other heatmap-related
+settings</a></li>
+<li class="level-2"><a href="oncoprint.html#apply-to-cbioportal-dataset"><span class="header-section-number">7.2</span> Apply to cBioPortal dataset</a></li>
+<li class="level-3"><a href="oncoprint.html#remove-empty-rows-and-columns"><span class="header-section-number">7.2.1</span> Remove empty rows and
+columns</a></li>
+<li class="level-3"><a href="oncoprint.html#reorder-the-oncoprint"><span class="header-section-number">7.2.2</span> Reorder the oncoPrint</a></li>
+<li class="level-3"><a href="oncoprint.html#oncoprint-annotations"><span class="header-section-number">7.2.3</span> OncoPrint annotations</a></li>
+<li class="level-3"><a href="oncoprint.html#oncoprint-as-a-heatmap"><span class="header-section-number">7.2.4</span> oncoPrint as a Heatmap</a></li></ul></li>
+<li class="chapter"><a href="upset-plot.html"><span class="header-section-number">8</span><span>UpSet plot</span></a><ul><li class="level-2"><a href="upset-plot.html#input-data"><span class="header-section-number">8.1</span> Input data</a></li>
+<li class="level-2"><a href="upset-plot.html#upset-mode"><span class="header-section-number">8.2</span> Mode</a></li>
+<li class="level-2"><a href="upset-plot.html#make-the-combination-matrix"><span class="header-section-number">8.3</span> Make the combination matrix</a></li>
+<li class="level-2"><a href="upset-plot.html#upset-utility-functions"><span class="header-section-number">8.4</span> Utility functions</a></li>
+<li class="level-3"><a href="upset-plot.html#upset-subsetting"><span class="header-section-number">8.4.1</span> Subsetting a CombMat</a></li>
+<li class="level-2"><a href="upset-plot.html#upset-making-the-plot"><span class="header-section-number">8.5</span> Make the plot</a></li>
+<li class="level-2"><a href="upset-plot.html#upset-plots-as-heatmaps"><span class="header-section-number">8.6</span> UpSet plots as heatmaps</a></li>
+<li class="level-2"><a href="upset-plot.html#upset-movies"><span class="header-section-number">8.7</span> Example with the movies dataset</a></li>
+<li class="level-2"><a href="upset-plot.html#upset-genomic"><span class="header-section-number">8.8</span> Example with the genomic regions</a></li></ul></li>
+<li class="chapter"><a href="interactive-complexheatmap.html"><span class="header-section-number">9</span><span>Interactive ComplexHeatmap</span></a><ul><li class="level-2"><a href="interactive-complexheatmap.html#inline-jupyter"><span class="header-section-number">9.1</span> Inline rendering in Jupyter and IPython</a></li>
+<li class="level-2"><a href="interactive-complexheatmap.html#brush-and-zoom"><span class="header-section-number">9.2</span> Programmatic brush selection and sub-heatmap
+zoom</a></li>
+<li class="level-2"><a href="interactive-complexheatmap.html#split-slice-zoom"><span class="header-section-number">9.3</span> Extracting and zooming into split slices</a></li>
+<li class="level-2"><a href="interactive-complexheatmap.html#shiny-and-python"><span class="header-section-number">9.4</span> Interactive R Shiny ecosystem and Python
+notebooks</a></li></ul></li>
+<li class="chapter"><a href="integrate-with-other-packages.html"><span class="header-section-number">10</span><span>Integrate with other
+packages</span></a><ul><li class="level-2"><a href="integrate-with-other-packages.html#pheatmap"><span class="header-section-number">10.1</span> pheatmap, heatmap, and heatmap.2</a></li>
+<li class="level-3"><a href="integrate-with-other-packages.html#pheatmap-examples"><span class="header-section-number">10.1.1</span> Examples</a></li>
+<li class="level-3"><a href="integrate-with-other-packages.html#pheatmap-translation"><span class="header-section-number">10.1.2</span> Translation</a></li>
+<li class="level-3"><a href="integrate-with-other-packages.html#pheatmap-comparisons"><span class="header-section-number">10.1.3</span> Comparisons and legacy wrappers</a></li>
+<li class="level-2"><a href="integrate-with-other-packages.html#multipanel-composition"><span class="header-section-number">10.2</span> Multi-panel layout composition</a></li>
+<li class="level-3"><a href="integrate-with-other-packages.html#grid-grabexpr"><span class="header-section-number">10.2.1</span> Capturing heatmaps with
+grid_grabExpr</a></li>
+<li class="level-3"><a href="integrate-with-other-packages.html#matplotlib-integration"><span class="header-section-number">10.2.2</span> Combining ComplexHeatmap-py with
+Matplotlib Axes</a></li>
+<li class="level-2"><a href="integrate-with-other-packages.html#gt-render"><span class="header-section-number">10.3</span> Rich text with gt_render</a></li>
+<li class="level-3"><a href="integrate-with-other-packages.html#gt-render-title"><span class="header-section-number">10.3.1</span> Titles</a></li>
+<li class="level-3"><a href="integrate-with-other-packages.html#gt-render-dimnames"><span class="header-section-number">10.3.2</span> Row and column names</a></li>
+<li class="level-3"><a href="integrate-with-other-packages.html#gt-render-annotations"><span class="header-section-number">10.3.3</span> Styled titles with annotations</a></li>
+<li class="level-3"><a href="integrate-with-other-packages.html#gt-render-anno-text"><span class="header-section-number">10.3.4</span> Text and textbox annotations</a></li>
+<li class="level-3"><a href="integrate-with-other-packages.html#gt-render-legends"><span class="header-section-number">10.3.5</span> Legends</a></li></ul></li>
+<li class="chapter"><a href="other-high-level-plots.html"><span class="header-section-number">11</span><span>Other High-level Plots</span></a><ul><li class="level-2"><a href="other-high-level-plots.html#density-heatmap"><span class="header-section-number">11.1</span> Density heatmap</a></li>
+<li class="level-2"><a href="other-high-level-plots.html#stacked-summary-plot"><span class="header-section-number">11.2</span> Stacked summary plot</a></li></ul></li>
+<li class="chapter active"><a href="three-dimensional-complexheatmap.html"><span class="header-section-number">12</span><span>Three-dimensional ComplexHeatmap</span></a><ul><li class="level-2"><a href="three-dimensional-complexheatmap.html#motivation"><span class="header-section-number">12.1</span> Motivation</a></li>
+<li class="level-2"><a href="three-dimensional-complexheatmap.html#implementation-of-3d-heatmap"><span class="header-section-number">12.2</span> Implementation of 3D heatmap</a></li></ul></li>
+<li class="chapter"><a href="genome-level-heatmap.html"><span class="header-section-number">13</span><span>Genome-level heatmap</span></a><ul><li class="level-2"><a href="genome-level-heatmap.html#genomic-bins"><span class="header-section-number">13.1</span> Genomic bins and signal normalization</a></li>
+<li class="level-2"><a href="genome-level-heatmap.html#horizontal-genome-heatmap"><span class="header-section-number">13.2</span> Horizontal genome-level heatmap</a></li>
+<li class="level-2"><a href="genome-level-heatmap.html#vertical-genome-heatmap"><span class="header-section-number">13.3</span> Vertical genome-level heatmap</a></li>
+<li class="level-2"><a href="genome-level-heatmap.html#genome-anno-block"><span class="header-section-number">13.4</span> Chromosome block headers and multi-track
+genomic features</a></li></ul></li>
+<li class="chapter"><a href="more-examples.html"><span class="header-section-number">14</span><span>More Examples</span></a><ul><li class="level-2"><a href="more-examples.html#gene-expression-matrix"><span class="header-section-number">14.1</span> Add more information for gene expression
+matrix</a></li>
+<li class="level-2"><a href="more-examples.html#the-measles-vaccine-heatmap"><span class="header-section-number">14.2</span> The measles vaccine heatmap</a></li>
+<li class="level-2"><a href="more-examples.html#scrna-seq-heterogeneity"><span class="header-section-number">14.3</span> Visualize cell heterogeneity from
+single-cell RNA-seq</a></li>
+<li class="level-2"><a href="more-examples.html#methylation-expression-correlations"><span class="header-section-number">14.4</span> Correlations between
+methylation, expression and other genomic features</a></li>
+<li class="level-2"><a href="more-examples.html#methylation-complex-annotations"><span class="header-section-number">14.5</span> Visualize methylation profile
+with complex annotations</a></li>
+<li class="level-2"><a href="more-examples.html#add-multiple-boxplots-for-single-row"><span class="header-section-number">14.6</span> Add multiple boxplots for
+single row</a></li></ul></li>
+<li class="chapter"><a href="other-tricks.html"><span class="header-section-number">15</span><span>Other Tricks</span></a><ul><li class="level-2"><a href="other-tricks.html#same-cell-size"><span class="header-section-number">15.1</span> Set the same cell size for different heatmaps
+with different dimensions</a></li>
+<li class="level-2"><a href="other-tricks.html#global-options-ht-opt"><span class="header-section-number">15.2</span> Global options with ht_opt</a></li>
+<li class="level-2"><a href="other-tricks.html#grid-grabexpr-composition"><span class="header-section-number">15.3</span> Capturing and composing heatmaps with
+grid_grabExpr</a></li></ul></li>
+        <li class="divider"></li>
+      </ul>
+      <div class="summary-footer">
+        <div>Published with <strong>ComplexHeatmap-py</strong></div>
+        <div><a href="https://github.com/zhanxw/ComplexHeatmap-reference-py" target="_blank" rel="noopener">GitHub Repository</a> &middot; <a href="https://jokergoo.github.io/ComplexHeatmap-reference/book/" target="_blank" rel="noopener">Original R Book</a></div>
+      </div>
+    </nav>
+
+    <div class="book-body">
+      <header class="book-header">
+        <div class="header-left">
+          <button id="sidebar-toggle" class="toolbar-btn" type="button" title="Toggle Table of Contents" aria-label="Toggle Table of Contents">&#9776;</button>
+          <button id="search-toggle-btn" class="toolbar-btn" type="button" title="Search" aria-label="Search">&#128269;</button>
+          <h1 class="header-title"><a href="index.html">ComplexHeatmap-py Complete Reference</a></h1>
+        </div>
+        <div class="header-right">
+          <div class="dropdown">
+            <button id="font-settings-btn" class="toolbar-btn" type="button" title="Font and Theme Settings" aria-label="Font Settings">A</button>
+            <div id="font-settings-menu" class="dropdown-menu">
+              <div class="dropdown-row">
+                <button id="font-size-dec" type="button">A-</button>
+                <button id="font-size-inc" type="button">A+</button>
+              </div>
+              <div class="dropdown-row">
+                <button type="button" data-font="sans">Sans</button>
+                <button type="button" data-font="serif">Serif</button>
+              </div>
+              <div class="dropdown-row">
+                <button type="button" data-theme="white">White</button>
+                <button type="button" data-theme="sepia">Sepia</button>
+                <button type="button" data-theme="night">Night</button>
+              </div>
+            </div>
+          </div>
+          <a class="toolbar-btn" href="https://github.com/zhanxw/ComplexHeatmap-reference-py" target="_blank" rel="noopener" title="View on GitHub">GitHub</a>
+        </div>
+      </header>
+
+      <div class="page-wrapper">
+        <main class="page-inner">
+          <div id="search-results" aria-live="polite"></div>
+          <section class="normal markdown-section">
+            <h1 id="three-d-heatmap"><span class="header-section-number">12</span> Three-dimensional ComplexHeatmap<a class="anchor-section" aria-label="Anchor link to section" href="#three-d-heatmap">#</a></h1>
+<h2 id="motivation"><span class="header-section-number">12.1</span> Motivation<a class="anchor-section" aria-label="Anchor link to section" href="#motivation">#</a></h2>
+<p><code>densityHeatmap()</code> visualizes a list of distributions
+using kernel density estimates mapped to colors:</p>
+<div class="code-wrapper"><pre class="codehilite"><code><span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">complexheatmap</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">ch</span>
+
+<span class="n">rng</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">default_rng</span><span class="p">(</span><span class="mi">123</span><span class="p">)</span>
+<span class="n">mat</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">rng</span><span class="o">.</span><span class="n">normal</span><span class="p">(</span><span class="n">size</span><span class="o">=</span><span class="p">(</span><span class="mi">50</span><span class="p">,</span> <span class="mi">10</span><span class="p">)),</span> <span class="n">columns</span><span class="o">=</span><span class="nb">list</span><span class="p">(</span><span class="s2">"abcdefghij"</span><span class="p">))</span>
+
+<span class="n">ch</span><span class="o">.</span><span class="n">ht_opt</span><span class="o">.</span><span class="n">HEATMAP_LEGEND_PADDING</span> <span class="o">=</span> <span class="n">ch</span><span class="o">.</span><span class="n">unit</span><span class="p">(</span><span class="mi">14</span><span class="p">,</span> <span class="s2">"mm"</span><span class="p">)</span>
+<span class="n">ch</span><span class="o">.</span><span class="n">draw</span><span class="p">(</span><span class="n">ch</span><span class="o">.</span><span class="n">densityHeatmap</span><span class="p">(</span><span class="n">mat</span><span class="p">,</span> <span class="n">title</span><span class="o">=</span><span class="s2">"Density heatmap"</span><span class="p">),</span> <span class="n">padding</span><span class="o">=</span><span class="n">ch</span><span class="o">.</span><span class="n">unit</span><span class="p">([</span><span class="mi">4</span><span class="p">,</span> <span class="mi">18</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">4</span><span class="p">],</span> <span class="s2">"mm"</span><span class="p">))</span></code></pre></div>
+<figure>
+<img src="images/ch12_motivation_density.png"
+alt="Density heatmap baseline" />
+<figcaption aria-hidden="true">Density heatmap baseline</figcaption>
+</figure>
+<p><code>frequencyHeatmap()</code> provides a histogram-binned
+counterpart, supporting <code>"count"</code>, <code>"proportion"</code>,
+and <code>"density"</code> statistics:</p>
+<div class="code-wrapper"><pre class="codehilite"><code><span class="n">ch</span><span class="o">.</span><span class="n">ht_opt</span><span class="p">(</span><span class="n">RESET</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">ch</span><span class="o">.</span><span class="n">draw</span><span class="p">(</span><span class="n">ch</span><span class="o">.</span><span class="n">frequencyHeatmap</span><span class="p">(</span><span class="n">mat</span><span class="p">,</span> <span class="n">title</span><span class="o">=</span><span class="s2">"Frequency heatmap (2D)"</span><span class="p">))</span></code></pre></div>
+<figure>
+<img src="images/ch12_motivation_freq.png" alt="2D frequency heatmap" />
+<figcaption aria-hidden="true">2D frequency heatmap</figcaption>
+</figure>
+<p>A 2D frequency heatmap does not immediately look like a 3D histogram.
+Passing <code>use_3d=True</code> renders each bin as an isometric 3D bar
+whose height is proportional to the cell value:</p>
+<div class="code-wrapper"><pre class="codehilite"><code><span class="n">ch</span><span class="o">.</span><span class="n">ht_opt</span><span class="o">.</span><span class="n">TITLE_PADDING</span> <span class="o">=</span> <span class="n">ch</span><span class="o">.</span><span class="n">unit</span><span class="p">([</span><span class="mi">10</span><span class="p">,</span> <span class="mi">2</span><span class="p">],</span> <span class="s2">"mm"</span><span class="p">)</span>
+<span class="n">ch</span><span class="o">.</span><span class="n">ht_opt</span><span class="o">.</span><span class="n">HEATMAP_LEGEND_PADDING</span> <span class="o">=</span> <span class="n">ch</span><span class="o">.</span><span class="n">unit</span><span class="p">(</span><span class="mi">8</span><span class="p">,</span> <span class="s2">"mm"</span><span class="p">)</span>
+<span class="n">fh3d</span> <span class="o">=</span> <span class="n">ch</span><span class="o">.</span><span class="n">frequencyHeatmap</span><span class="p">(</span>
+    <span class="n">mat</span><span class="p">,</span>
+    <span class="n">use_3d</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+    <span class="n">title</span><span class="o">=</span><span class="s2">"Frequency heatmap (use_3d=True)"</span><span class="p">,</span>
+    <span class="n">top_annotation</span><span class="o">=</span><span class="n">ch</span><span class="o">.</span><span class="n">HeatmapAnnotation</span><span class="p">(</span>
+        <span class="n">_spacer</span><span class="o">=</span><span class="n">ch</span><span class="o">.</span><span class="n">anno_empty</span><span class="p">(</span><span class="n">border</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">height</span><span class="o">=</span><span class="n">ch</span><span class="o">.</span><span class="n">unit</span><span class="p">(</span><span class="mi">6</span><span class="p">,</span> <span class="s2">"mm"</span><span class="p">)),</span>
+        <span class="n">show_annotation_name</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+    <span class="p">),</span>
+    <span class="n">bar_max_length</span><span class="o">=</span><span class="n">ch</span><span class="o">.</span><span class="n">unit</span><span class="p">(</span><span class="mi">8</span><span class="p">,</span> <span class="s2">"mm"</span><span class="p">),</span>
+<span class="p">)</span>
+<span class="n">ch</span><span class="o">.</span><span class="n">draw</span><span class="p">(</span><span class="n">fh3d</span><span class="p">,</span> <span class="n">padding</span><span class="o">=</span><span class="n">ch</span><span class="o">.</span><span class="n">unit</span><span class="p">([</span><span class="mi">4</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="mi">6</span><span class="p">],</span> <span class="s2">"mm"</span><span class="p">))</span></code></pre></div>
+<figure>
+<img src="images/ch12_motivation_freq3d.png"
+alt="3D frequency heatmap with isometric bars" />
+<figcaption aria-hidden="true">3D frequency heatmap with isometric
+bars</figcaption>
+</figure>
+<h2 id="implementation-of-3d-heatmap"><span class="header-section-number">12.2</span> Implementation of 3D heatmap<a class="anchor-section" aria-label="Anchor link to section" href="#implementation-of-3d-heatmap">#</a></h2>
+<p>3D heatmaps are built on the <code>bar3D()</code> primitive, which
+draws an isometric rectangular prism onto the active grid viewport:</p>
+<div class="code-wrapper"><pre class="codehilite"><code><span class="n">ch</span><span class="o">.</span><span class="n">grid_newpage</span><span class="p">(</span><span class="n">width_in</span><span class="o">=</span><span class="mf">3.5</span><span class="p">,</span> <span class="n">height_in</span><span class="o">=</span><span class="mf">3.0</span><span class="p">)</span>
+<span class="n">ch</span><span class="o">.</span><span class="n">bar3D</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="mf">0.5</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="mf">0.5</span><span class="p">,</span> <span class="n">w</span><span class="o">=</span><span class="mf">0.2</span><span class="p">,</span> <span class="n">h</span><span class="o">=</span><span class="mf">0.2</span><span class="p">,</span> <span class="n">l</span><span class="o">=</span><span class="n">ch</span><span class="o">.</span><span class="n">unit</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="s2">"cm"</span><span class="p">),</span> <span class="n">theta</span><span class="o">=</span><span class="mi">60</span><span class="p">)</span></code></pre></div>
+<figure>
+<img src="images/ch12_bar3d_single.png"
+alt="Single isometric 3D bar drawn by bar3D" />
+<figcaption aria-hidden="true">Single isometric 3D bar drawn by
+bar3D</figcaption>
+</figure>
+<p>The geometric parameters of <code>bar3D()</code> are illustrated
+below:</p>
+<ul>
+<li><code>x</code>, <code>y</code>: Center coordinates of the bottom
+face (defaults to <code>"npc"</code> if numeric).</li>
+<li><code>w</code>, <code>h</code>: Width (x-axis) and height (y-axis)
+of the bottom face.</li>
+<li><code>l</code>: Projected length of the bar along the z-axis.</li>
+<li><code>theta</code>: Projection angle in degrees, constrained to
+<code>[0, 90]</code>.</li>
+</ul>
+<figure>
+<img src="images/ch12_bar3d_diagram.png"
+alt="Isometric projection geometry of bar3D" />
+<figcaption aria-hidden="true">Isometric projection geometry of
+bar3D</figcaption>
+</figure>
+<p>To enhance depth perception, <code>bar3D()</code> automatically
+computes three distinct face brightness levels using
+<code>add_luminance()</code> in HCL color space:</p>
+<div class="code-wrapper"><pre class="codehilite"><code><span class="n">ch</span><span class="o">.</span><span class="n">grid_newpage</span><span class="p">(</span><span class="n">width_in</span><span class="o">=</span><span class="mf">6.0</span><span class="p">,</span> <span class="n">height_in</span><span class="o">=</span><span class="mf">2.2</span><span class="p">)</span>
+<span class="n">ch</span><span class="o">.</span><span class="n">bar3D</span><span class="p">(</span>
+    <span class="n">x</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mf">0.2</span><span class="p">,</span> <span class="mf">0.8</span><span class="p">,</span> <span class="mi">4</span><span class="p">),</span>
+    <span class="n">y</span><span class="o">=</span><span class="mf">0.35</span><span class="p">,</span>
+    <span class="n">w</span><span class="o">=</span><span class="n">ch</span><span class="o">.</span><span class="n">unit</span><span class="p">(</span><span class="mi">6</span><span class="p">,</span> <span class="s2">"mm"</span><span class="p">),</span>
+    <span class="n">h</span><span class="o">=</span><span class="n">ch</span><span class="o">.</span><span class="n">unit</span><span class="p">(</span><span class="mi">6</span><span class="p">,</span> <span class="s2">"mm"</span><span class="p">),</span>
+    <span class="n">l</span><span class="o">=</span><span class="n">ch</span><span class="o">.</span><span class="n">unit</span><span class="p">(</span><span class="mf">1.1</span><span class="p">,</span> <span class="s2">"cm"</span><span class="p">),</span>
+    <span class="n">fill</span><span class="o">=</span><span class="p">[</span><span class="s2">"red"</span><span class="p">,</span> <span class="s2">"green"</span><span class="p">,</span> <span class="s2">"blue"</span><span class="p">,</span> <span class="s2">"purple"</span><span class="p">],</span>
+<span class="p">)</span></code></pre></div>
+<figure>
+<img src="images/ch12_bar3d_colors.png"
+alt="3D bars with add_luminance shading across three visible faces" />
+<figcaption aria-hidden="true">3D bars with add_luminance shading across
+three visible faces</figcaption>
+</figure>
+<p>In <code>ComplexHeatmap-py</code>, <code>bar3D()</code> accepts a
+scalar <code>theta</code> angle per call (between <code>0</code> and
+<code>90</code>). Drawing across multiple angles simply iterates over
+<code>(x, theta)</code> pairs:</p>
+<div class="code-wrapper"><pre class="codehilite"><code><span class="n">ch</span><span class="o">.</span><span class="n">grid_newpage</span><span class="p">(</span><span class="n">width_in</span><span class="o">=</span><span class="mf">6.4</span><span class="p">,</span> <span class="n">height_in</span><span class="o">=</span><span class="mf">2.4</span><span class="p">)</span>
+<span class="k">for</span> <span class="n">x_pos</span><span class="p">,</span> <span class="n">th</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mf">0.18</span><span class="p">,</span> <span class="mf">0.78</span><span class="p">,</span> <span class="mi">4</span><span class="p">),</span> <span class="p">[</span><span class="mf">20.0</span><span class="p">,</span> <span class="mf">40.0</span><span class="p">,</span> <span class="mf">60.0</span><span class="p">,</span> <span class="mf">80.0</span><span class="p">]):</span>
+    <span class="n">ch</span><span class="o">.</span><span class="n">bar3D</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="nb">float</span><span class="p">(</span><span class="n">x_pos</span><span class="p">),</span> <span class="n">y</span><span class="o">=</span><span class="mf">0.32</span><span class="p">,</span> <span class="n">w</span><span class="o">=</span><span class="n">ch</span><span class="o">.</span><span class="n">unit</span><span class="p">(</span><span class="mi">6</span><span class="p">,</span> <span class="s2">"mm"</span><span class="p">),</span> <span class="n">h</span><span class="o">=</span><span class="n">ch</span><span class="o">.</span><span class="n">unit</span><span class="p">(</span><span class="mi">6</span><span class="p">,</span> <span class="s2">"mm"</span><span class="p">),</span> <span class="n">l</span><span class="o">=</span><span class="n">ch</span><span class="o">.</span><span class="n">unit</span><span class="p">(</span><span class="mf">1.1</span><span class="p">,</span> <span class="s2">"cm"</span><span class="p">),</span> <span class="n">theta</span><span class="o">=</span><span class="n">th</span><span class="p">,</span> <span class="n">fill</span><span class="o">=</span><span class="s2">"#4DAF4A"</span><span class="p">)</span>
+    <span class="n">ch</span><span class="o">.</span><span class="n">grid_text</span><span class="p">(</span><span class="sa">f</span><span class="s2">"theta=</span><span class="si">{</span><span class="nb">int</span><span class="p">(</span><span class="n">th</span><span class="p">)</span><span class="si">}</span><span class="s2">°"</span><span class="p">,</span> <span class="n">x</span><span class="o">=</span><span class="nb">float</span><span class="p">(</span><span class="n">x_pos</span><span class="p">),</span> <span class="n">y</span><span class="o">=</span><span class="mf">0.14</span><span class="p">,</span> <span class="n">just</span><span class="o">=</span><span class="s2">"top"</span><span class="p">,</span> <span class="n">gp</span><span class="o">=</span><span class="n">ch</span><span class="o">.</span><span class="n">gpar</span><span class="p">(</span><span class="n">fontsize</span><span class="o">=</span><span class="mf">9.5</span><span class="p">))</span></code></pre></div>
+<figure>
+<img src="images/ch12_bar3d_theta.png"
+alt="3D bar projection angles from 20 to 80 degrees" />
+<figcaption aria-hidden="true">3D bar projection angles from 20 to 80
+degrees</figcaption>
+</figure>
+<p><code>Heatmap3D()</code> wraps <code>Heatmap()</code> with a
+vectorized <code>layer_fun</code> that draws <code>bar3D()</code> bars
+back-to-front across each heatmap slice. The input matrix must be
+non-negative, row names default to <code>"left"</code>, and dendrograms
+are hidden by default (<code>show_row_dend=False</code>,
+<code>show_column_dend=False</code>) while clustering still runs:</p>
+<div class="code-wrapper"><pre class="codehilite"><code><span class="n">mat3d</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span>
+    <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">default_rng</span><span class="p">(</span><span class="mi">7</span><span class="p">)</span><span class="o">.</span><span class="n">uniform</span><span class="p">(</span><span class="mf">0.0</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">10</span><span class="p">)),</span>
+    <span class="n">index</span><span class="o">=</span><span class="nb">list</span><span class="p">(</span><span class="s2">"ABCDEFGHIJ"</span><span class="p">),</span>
+    <span class="n">columns</span><span class="o">=</span><span class="nb">list</span><span class="p">(</span><span class="s2">"abcdefghij"</span><span class="p">),</span>
+<span class="p">)</span>
+<span class="n">ch</span><span class="o">.</span><span class="n">draw</span><span class="p">(</span><span class="n">ch</span><span class="o">.</span><span class="n">Heatmap3D</span><span class="p">(</span><span class="n">mat3d</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s2">"mat"</span><span class="p">,</span> <span class="n">column_title</span><span class="o">=</span><span class="s2">"This is a 3D heatmap"</span><span class="p">))</span></code></pre></div>
+<figure>
+<img src="images/ch12_heatmap3d_basic.png"
+alt="Basic Heatmap3D where tall top/right bars overlap title and legend" />
+<figcaption aria-hidden="true">Basic Heatmap3D where tall top/right bars
+overlap title and legend</figcaption>
+</figure>
+<p>Because 3D bars project upward and to the right, tall bars near the
+top or right edges can overlap the column title or legend. You can
+prevent overlap by adjusting <code>ht_opt.HEATMAP_LEGEND_PADDING</code>
+and <code>ht_opt.TITLE_PADDING</code>, and optionally inserting a
+transparent <code>_spacer</code> top annotation
+(<code>anno_empty(border=False)</code>) to reserve extra overhead
+clearance:</p>
+<div class="code-wrapper"><pre class="codehilite"><code><span class="n">ch</span><span class="o">.</span><span class="n">ht_opt</span><span class="o">.</span><span class="n">HEATMAP_LEGEND_PADDING</span> <span class="o">=</span> <span class="n">ch</span><span class="o">.</span><span class="n">unit</span><span class="p">(</span><span class="mi">8</span><span class="p">,</span> <span class="s2">"mm"</span><span class="p">)</span>
+<span class="n">ch</span><span class="o">.</span><span class="n">ht_opt</span><span class="o">.</span><span class="n">TITLE_PADDING</span> <span class="o">=</span> <span class="n">ch</span><span class="o">.</span><span class="n">unit</span><span class="p">([</span><span class="mi">10</span><span class="p">,</span> <span class="mi">2</span><span class="p">],</span> <span class="s2">"mm"</span><span class="p">)</span>
+<span class="n">ht_pad</span> <span class="o">=</span> <span class="n">ch</span><span class="o">.</span><span class="n">Heatmap3D</span><span class="p">(</span>
+    <span class="n">mat3d</span><span class="p">,</span>
+    <span class="n">name</span><span class="o">=</span><span class="s2">"mat"</span><span class="p">,</span>
+    <span class="n">column_title</span><span class="o">=</span><span class="s2">"3D heatmap with adjusted padding"</span><span class="p">,</span>
+    <span class="n">top_annotation</span><span class="o">=</span><span class="n">ch</span><span class="o">.</span><span class="n">HeatmapAnnotation</span><span class="p">(</span>
+        <span class="n">_spacer</span><span class="o">=</span><span class="n">ch</span><span class="o">.</span><span class="n">anno_empty</span><span class="p">(</span><span class="n">border</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">height</span><span class="o">=</span><span class="n">ch</span><span class="o">.</span><span class="n">unit</span><span class="p">(</span><span class="mi">7</span><span class="p">,</span> <span class="s2">"mm"</span><span class="p">)),</span>
+        <span class="n">show_annotation_name</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+    <span class="p">),</span>
+    <span class="n">bar_max_length</span><span class="o">=</span><span class="n">ch</span><span class="o">.</span><span class="n">unit</span><span class="p">(</span><span class="mi">8</span><span class="p">,</span> <span class="s2">"mm"</span><span class="p">),</span>
+<span class="p">)</span>
+<span class="n">ch</span><span class="o">.</span><span class="n">draw</span><span class="p">(</span><span class="n">ht_pad</span><span class="p">,</span> <span class="n">padding</span><span class="o">=</span><span class="n">ch</span><span class="o">.</span><span class="n">unit</span><span class="p">([</span><span class="mi">4</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="mi">6</span><span class="p">],</span> <span class="s2">"mm"</span><span class="p">))</span>
+<span class="n">ch</span><span class="o">.</span><span class="n">ht_opt</span><span class="p">(</span><span class="n">RESET</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span></code></pre></div>
+<figure>
+<img src="images/ch12_heatmap3d_padded.png"
+alt="Heatmap3D with spacer annotation and global padding adjustments" />
+<figcaption aria-hidden="true">Heatmap3D with spacer annotation and
+global padding adjustments</figcaption>
+</figure>
+<p><code>Heatmap3D()</code> supports standard <code>Heatmap()</code>
+features such as <code>row_split</code>, <code>column_split</code>,
+<code>bar_rel_width</code>, <code>bar_rel_height</code>, and
+<code>bar_max_length</code>:</p>
+<div class="code-wrapper"><pre class="codehilite"><code><span class="n">ch</span><span class="o">.</span><span class="n">ht_opt</span><span class="o">.</span><span class="n">HEATMAP_LEGEND_PADDING</span> <span class="o">=</span> <span class="n">ch</span><span class="o">.</span><span class="n">unit</span><span class="p">(</span><span class="mi">8</span><span class="p">,</span> <span class="s2">"mm"</span><span class="p">)</span>
+<span class="n">ch</span><span class="o">.</span><span class="n">ht_opt</span><span class="o">.</span><span class="n">TITLE_PADDING</span> <span class="o">=</span> <span class="n">ch</span><span class="o">.</span><span class="n">unit</span><span class="p">([</span><span class="mi">8</span><span class="p">,</span> <span class="mi">2</span><span class="p">],</span> <span class="s2">"mm"</span><span class="p">)</span>
+<span class="n">ht_split</span> <span class="o">=</span> <span class="n">ch</span><span class="o">.</span><span class="n">Heatmap3D</span><span class="p">(</span>
+    <span class="n">mat3d</span><span class="p">,</span>
+    <span class="n">name</span><span class="o">=</span><span class="s2">"score"</span><span class="p">,</span>
+    <span class="n">col</span><span class="o">=</span><span class="n">ch</span><span class="o">.</span><span class="n">colorRamp2</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span> <span class="p">[</span><span class="s2">"#2B8CBE"</span><span class="p">,</span> <span class="s2">"#FEE08B"</span><span class="p">,</span> <span class="s2">"#D7301F"</span><span class="p">]),</span>
+    <span class="n">row_split</span><span class="o">=</span><span class="p">[</span><span class="s2">"Group 1"</span><span class="p">]</span> <span class="o">*</span> <span class="mi">5</span> <span class="o">+</span> <span class="p">[</span><span class="s2">"Group 2"</span><span class="p">]</span> <span class="o">*</span> <span class="mi">5</span><span class="p">,</span>
+    <span class="n">column_split</span><span class="o">=</span><span class="p">[</span><span class="s2">"Cond A"</span><span class="p">]</span> <span class="o">*</span> <span class="mi">5</span> <span class="o">+</span> <span class="p">[</span><span class="s2">"Cond B"</span><span class="p">]</span> <span class="o">*</span> <span class="mi">5</span><span class="p">,</span>
+    <span class="n">bar_rel_width</span><span class="o">=</span><span class="mf">0.75</span><span class="p">,</span>
+    <span class="n">bar_rel_height</span><span class="o">=</span><span class="mf">0.75</span><span class="p">,</span>
+    <span class="n">bar_max_length</span><span class="o">=</span><span class="n">ch</span><span class="o">.</span><span class="n">unit</span><span class="p">(</span><span class="mf">7.5</span><span class="p">,</span> <span class="s2">"mm"</span><span class="p">),</span>
+    <span class="n">top_annotation</span><span class="o">=</span><span class="n">ch</span><span class="o">.</span><span class="n">HeatmapAnnotation</span><span class="p">(</span>
+        <span class="n">_spacer</span><span class="o">=</span><span class="n">ch</span><span class="o">.</span><span class="n">anno_empty</span><span class="p">(</span><span class="n">border</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">height</span><span class="o">=</span><span class="n">ch</span><span class="o">.</span><span class="n">unit</span><span class="p">(</span><span class="mi">6</span><span class="p">,</span> <span class="s2">"mm"</span><span class="p">)),</span>
+        <span class="n">show_annotation_name</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+    <span class="p">),</span>
+    <span class="n">row_gap</span><span class="o">=</span><span class="n">ch</span><span class="o">.</span><span class="n">unit</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="s2">"mm"</span><span class="p">),</span>
+    <span class="n">column_gap</span><span class="o">=</span><span class="n">ch</span><span class="o">.</span><span class="n">unit</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="s2">"mm"</span><span class="p">),</span>
+<span class="p">)</span>
+<span class="n">ch</span><span class="o">.</span><span class="n">draw</span><span class="p">(</span><span class="n">ht_split</span><span class="p">,</span> <span class="n">column_title</span><span class="o">=</span><span class="s2">"Split 3D Heatmap"</span><span class="p">,</span> <span class="n">padding</span><span class="o">=</span><span class="n">ch</span><span class="o">.</span><span class="n">unit</span><span class="p">([</span><span class="mi">4</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="mi">6</span><span class="p">],</span> <span class="s2">"mm"</span><span class="p">))</span>
+<span class="n">ch</span><span class="o">.</span><span class="n">ht_opt</span><span class="p">(</span><span class="n">RESET</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span></code></pre></div>
+<figure>
+<img src="images/ch12_heatmap3d_split.png"
+alt="Split Heatmap3D with custom bar geometry" />
+<figcaption aria-hidden="true">Split Heatmap3D with custom bar
+geometry</figcaption>
+</figure>
+<p>Finally, we apply <code>Heatmap3D()</code> to the bundled
+<code>measles</code> dataset (compare with the 2D version in <a
+href="more-examples.html#the-measles-vaccine-heatmap">Section
+14.2</a>):</p>
+<div class="code-wrapper"><pre class="codehilite"><code><span class="n">mat</span> <span class="o">=</span> <span class="n">ch</span><span class="o">.</span><span class="n">load_dataset</span><span class="p">(</span><span class="s2">"measles"</span><span class="p">)</span>
+<span class="n">year_text</span> <span class="o">=</span> <span class="p">[</span><span class="nb">str</span><span class="p">(</span><span class="n">c</span><span class="p">)</span> <span class="k">if</span> <span class="nb">int</span><span class="p">(</span><span class="n">c</span><span class="p">)</span> <span class="o">%</span> <span class="mi">10</span> <span class="o">==</span> <span class="mi">0</span> <span class="k">else</span> <span class="s2">""</span> <span class="k">for</span> <span class="n">c</span> <span class="ow">in</span> <span class="n">mat</span><span class="o">.</span><span class="n">columns</span><span class="p">]</span>
+<span class="n">ha_column</span> <span class="o">=</span> <span class="n">ch</span><span class="o">.</span><span class="n">HeatmapAnnotation</span><span class="p">(</span>
+    <span class="n">year</span><span class="o">=</span><span class="n">ch</span><span class="o">.</span><span class="n">anno_text</span><span class="p">(</span><span class="n">year_text</span><span class="p">,</span> <span class="n">rot</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">location</span><span class="o">=</span><span class="n">ch</span><span class="o">.</span><span class="n">unit</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="s2">"npc"</span><span class="p">),</span> <span class="n">just</span><span class="o">=</span><span class="s2">"top"</span><span class="p">,</span> <span class="n">gp</span><span class="o">=</span><span class="n">ch</span><span class="o">.</span><span class="n">gpar</span><span class="p">(</span><span class="n">fontsize</span><span class="o">=</span><span class="mi">9</span><span class="p">)),</span>
+    <span class="n">show_annotation_name</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+<span class="p">)</span>
+<span class="n">col_fun</span> <span class="o">=</span> <span class="n">ch</span><span class="o">.</span><span class="n">colorRamp2</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span> <span class="mi">800</span><span class="p">,</span> <span class="mi">1000</span><span class="p">,</span> <span class="mi">127000</span><span class="p">],</span> <span class="p">[</span><span class="s2">"white"</span><span class="p">,</span> <span class="s2">"cornflowerblue"</span><span class="p">,</span> <span class="s2">"yellow"</span><span class="p">,</span> <span class="s2">"red"</span><span class="p">])</span>
+
+<span class="k">with</span> <span class="n">ch</span><span class="o">.</span><span class="n">ht_opt</span><span class="o">.</span><span class="n">local</span><span class="p">(</span><span class="n">TITLE_PADDING</span><span class="o">=</span><span class="n">ch</span><span class="o">.</span><span class="n">unit</span><span class="p">([</span><span class="mi">14</span><span class="p">,</span> <span class="mi">2</span><span class="p">],</span> <span class="s2">"mm"</span><span class="p">),</span> <span class="n">HEATMAP_LEGEND_PADDING</span><span class="o">=</span><span class="n">ch</span><span class="o">.</span><span class="n">unit</span><span class="p">(</span><span class="mi">7</span><span class="p">,</span> <span class="s2">"mm"</span><span class="p">)):</span>
+    <span class="n">ht_measles</span> <span class="o">=</span> <span class="n">ch</span><span class="o">.</span><span class="n">Heatmap3D</span><span class="p">(</span>
+        <span class="n">mat</span><span class="p">,</span>
+        <span class="n">name</span><span class="o">=</span><span class="s2">"cases"</span><span class="p">,</span>
+        <span class="n">col</span><span class="o">=</span><span class="n">col_fun</span><span class="p">,</span>
+        <span class="n">cluster_columns</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+        <span class="n">show_row_dend</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+        <span class="n">show_column_names</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+        <span class="n">row_names_side</span><span class="o">=</span><span class="s2">"left"</span><span class="p">,</span>
+        <span class="n">row_names_gp</span><span class="o">=</span><span class="n">ch</span><span class="o">.</span><span class="n">gpar</span><span class="p">(</span><span class="n">fontsize</span><span class="o">=</span><span class="mf">7.5</span><span class="p">),</span>
+        <span class="n">column_title</span><span class="o">=</span><span class="s2">"Measles cases in US states 1930-2001</span><span class="se">\n</span><span class="s2">Vaccine introduced 1961"</span><span class="p">,</span>
+        <span class="n">top_annotation</span><span class="o">=</span><span class="n">ch</span><span class="o">.</span><span class="n">HeatmapAnnotation</span><span class="p">(</span>
+            <span class="n">_spacer</span><span class="o">=</span><span class="n">ch</span><span class="o">.</span><span class="n">anno_empty</span><span class="p">(</span><span class="n">border</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">height</span><span class="o">=</span><span class="n">ch</span><span class="o">.</span><span class="n">unit</span><span class="p">(</span><span class="mi">8</span><span class="p">,</span> <span class="s2">"mm"</span><span class="p">)),</span>
+            <span class="n">show_annotation_name</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+        <span class="p">),</span>
+        <span class="n">bottom_annotation</span><span class="o">=</span><span class="n">ha_column</span><span class="p">,</span>
+        <span class="n">heatmap_legend_param</span><span class="o">=</span><span class="p">{</span><span class="s2">"at"</span><span class="p">:</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mf">5e4</span><span class="p">,</span> <span class="mf">1e5</span><span class="p">,</span> <span class="mf">1.5e5</span><span class="p">],</span> <span class="s2">"labels"</span><span class="p">:</span> <span class="p">[</span><span class="s2">"0"</span><span class="p">,</span> <span class="s2">"50k"</span><span class="p">,</span> <span class="s2">"100k"</span><span class="p">,</span> <span class="s2">"150k"</span><span class="p">]},</span>
+        <span class="n">bar_rel_width</span><span class="o">=</span><span class="mf">1.0</span><span class="p">,</span>
+        <span class="n">bar_rel_height</span><span class="o">=</span><span class="mf">1.0</span><span class="p">,</span>
+        <span class="n">bar_max_length</span><span class="o">=</span><span class="n">ch</span><span class="o">.</span><span class="n">unit</span><span class="p">(</span><span class="mf">1.5</span><span class="p">,</span> <span class="s2">"cm"</span><span class="p">),</span>
+    <span class="p">)</span>
+    <span class="n">ch</span><span class="o">.</span><span class="n">draw</span><span class="p">(</span><span class="n">ht_measles</span><span class="p">,</span> <span class="n">width</span><span class="o">=</span><span class="mf">11.0</span><span class="p">,</span> <span class="n">height</span><span class="o">=</span><span class="mf">10.0</span><span class="p">,</span> <span class="n">padding</span><span class="o">=</span><span class="n">ch</span><span class="o">.</span><span class="n">unit</span><span class="p">([</span><span class="mi">4</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="mi">6</span><span class="p">],</span> <span class="s2">"mm"</span><span class="p">))</span></code></pre></div>
+<figure>
+<img src="images/ch12_heatmap3d_measles.png"
+alt="3D measles vaccine heatmap across US states" />
+<figcaption aria-hidden="true">3D measles vaccine heatmap across US
+states</figcaption>
+</figure>
+<p>While 3D bar heatmaps are visually striking, 2D heatmaps usually
+communicate dense quantitative matrices more accurately and render much
+faster on large datasets; reserve <code>Heatmap3D()</code> for compact
+matrices where highlighting extreme peaks is beneficial.</p>
+
+          </section>
+          <nav class="chapter-footer-nav" aria-label="Chapter Navigation">
+            <a href="other-high-level-plots.html">&larr; 11 Other High-level Plots</a>
+            <a href="genome-level-heatmap.html">13 Genome-level heatmap &rarr;</a>
+          </nav>
+        </main>
+        <a href="other-high-level-plots.html" class="navigation navigation-prev" aria-label="Previous chapter: Other High-level Plots" title="Previous: Other High-level Plots">&#8249;</a>
+        <a href="genome-level-heatmap.html" class="navigation navigation-next" aria-label="Next chapter: Genome-level heatmap" title="Next: Genome-level heatmap">&#8250;</a>
+      </div>
+    </div>
+  </div>
+  <script src="assets/gitbook.js"></script>
+</body>
+</html>

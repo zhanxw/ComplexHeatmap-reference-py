@@ -1,0 +1,1000 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Chapter 7 OncoPrint | ComplexHeatmap-py Complete Reference</title>
+  <meta name="description" content="Python port of ComplexHeatmap Complete Reference using ComplexHeatmap-py.">
+  <link rel="stylesheet" href="assets/gitbook.css">
+</head>
+<body>
+  <div class="book">
+    <nav class="book-summary" aria-label="Table of Contents">
+      <div class="book-summary-header">
+        <a class="book-summary-title" href="index.html">ComplexHeatmap-py Complete Reference</a>
+        <span class="book-summary-subtitle">Python Port via ComplexHeatmap-py</span>
+      </div>
+      <div class="book-search-box">
+        <input id="book-search-input" type="search" placeholder="Search book..." aria-label="Search book">
+      </div>
+      <ul class="summary">
+        <li class="chapter"><a href="index.html"><span>About</span></a><ul><li class="level-2"><a href="index.html#installation">Installation</a></li>
+<li class="level-2"><a href="index.html#r-to-python-migration-highlights">R-to-Python Migration
+Highlights</a></li>
+<li class="level-2"><a href="index.html#citation">Citation</a></li>
+<li class="level-2"><a href="index.html#python-environment">Python Environment</a></li></ul></li>
+<li class="chapter"><a href="introduction.html"><span class="header-section-number">1</span><span>Introduction</span></a><ul><li class="level-2"><a href="introduction.html#general-design"><span class="header-section-number">1.1</span> General design</a></li>
+<li class="level-2"><a href="introduction.html#a-brief-description-of-following-chapters"><span class="header-section-number">1.2</span> A brief description
+of following chapters</a></li></ul></li>
+<li class="chapter"><a href="a-single-heatmap.html"><span class="header-section-number">2</span><span>A Single Heatmap</span></a><ul><li class="level-2"><a href="a-single-heatmap.html#colors"><span class="header-section-number">2.1</span> Colors</a></li>
+<li class="level-2"><a href="a-single-heatmap.html#heatmap-titles"><span class="header-section-number">2.2</span> Titles</a></li>
+<li class="level-2"><a href="a-single-heatmap.html#clustering"><span class="header-section-number">2.3</span> Clustering</a></li>
+<li class="level-3"><a href="a-single-heatmap.html#distance-methods"><span class="header-section-number">2.3.1</span> Distance methods</a></li>
+<li class="level-3"><a href="a-single-heatmap.html#clustering-methods"><span class="header-section-number">2.3.2</span> Clustering methods</a></li>
+<li class="level-3"><a href="a-single-heatmap.html#render-dendrograms"><span class="header-section-number">2.3.3</span> Render dendrograms</a></li>
+<li class="level-3"><a href="a-single-heatmap.html#reorder-dendrograms"><span class="header-section-number">2.3.4</span> Reorder dendrograms</a></li>
+<li class="level-2"><a href="a-single-heatmap.html#row-and-column-orders"><span class="header-section-number">2.4</span> Set row and column orders</a></li>
+<li class="level-2"><a href="a-single-heatmap.html#heatmap-seriation"><span class="header-section-number">2.5</span> Seriation</a></li>
+<li class="level-2"><a href="a-single-heatmap.html#dimension-names"><span class="header-section-number">2.6</span> Dimension labels</a></li>
+<li class="level-2"><a href="a-single-heatmap.html#heatmap-split"><span class="header-section-number">2.7</span> Heatmap split</a></li>
+<li class="level-3"><a href="a-single-heatmap.html#split-by-kmeans-clustering"><span class="header-section-number">2.7.1</span> Split by k-means clustering</a></li>
+<li class="level-3"><a href="a-single-heatmap.html#split-by-categorical-variables"><span class="header-section-number">2.7.2</span> Split by categorical
+variables</a></li>
+<li class="level-3"><a href="a-single-heatmap.html#split-by-dendrogram"><span class="header-section-number">2.7.3</span> Split by dendrogram</a></li>
+<li class="level-3"><a href="a-single-heatmap.html#order-of-slices"><span class="header-section-number">2.7.4</span> Order of slices</a></li>
+<li class="level-3"><a href="a-single-heatmap.html#titles-for-splitting"><span class="header-section-number">2.7.5</span> Titles for splitting</a></li>
+<li class="level-3"><a href="a-single-heatmap.html#graphic-parameters-for-splitting"><span class="header-section-number">2.7.6</span> Graphic parameters for
+splitting</a></li>
+<li class="level-3"><a href="a-single-heatmap.html#gaps-between-slices"><span class="header-section-number">2.7.7</span> Gaps between slices</a></li>
+<li class="level-3"><a href="a-single-heatmap.html#split-heatmap-annotations"><span class="header-section-number">2.7.8</span> Split heatmap annotations</a></li>
+<li class="level-2"><a href="a-single-heatmap.html#heatmap-as-raster-image"><span class="header-section-number">2.8</span> Heatmap as raster image</a></li>
+<li class="level-2"><a href="a-single-heatmap.html#customize-the-heatmap-body"><span class="header-section-number">2.9</span> Customize the heatmap body</a></li>
+<li class="level-3"><a href="a-single-heatmap.html#cell-fun"><span class="header-section-number">2.9.1</span> cell_fun</a></li>
+<li class="level-3"><a href="a-single-heatmap.html#layer-fun"><span class="header-section-number">2.9.2</span> layer_fun</a></li>
+<li class="level-2"><a href="a-single-heatmap.html#size-of-the-heatmap"><span class="header-section-number">2.10</span> Size of the heatmap</a></li>
+<li class="level-2"><a href="a-single-heatmap.html#plot-the-heatmap"><span class="header-section-number">2.11</span> Plot the heatmap</a></li>
+<li class="level-2"><a href="a-single-heatmap.html#get-orders-and-dendrograms-from-heatmap"><span class="header-section-number">2.12</span> Extract orders and
+dendrograms</a></li>
+<li class="level-2"><a href="a-single-heatmap.html#subset-a-heatmap"><span class="header-section-number">2.13</span> Subset a heatmap</a></li></ul></li>
+<li class="chapter"><a href="heatmap-annotations.html"><span class="header-section-number">3</span><span>Heatmap Annotations</span></a><ul><li class="level-2"><a href="heatmap-annotations.html#simple-annotation"><span class="header-section-number">3.1</span> Simple annotation</a></li>
+<li class="level-2"><a href="heatmap-annotations.html#simple-annotation-as-an-annotation-function"><span class="header-section-number">3.2</span> Simple annotation
+as an annotation function</a></li>
+<li class="level-2"><a href="heatmap-annotations.html#empty-annotation"><span class="header-section-number">3.3</span> Empty annotation</a></li>
+<li class="level-2"><a href="heatmap-annotations.html#block-annotation"><span class="header-section-number">3.4</span> Block annotation</a></li>
+<li class="level-3"><a href="heatmap-annotations.html#block-for-putting-labels"><span class="header-section-number">3.4.1</span> Block for putting labels</a></li>
+<li class="level-3"><a href="heatmap-annotations.html#blocks-as-plotting-regions"><span class="header-section-number">3.4.2</span> Blocks as plotting regions</a></li>
+<li class="level-2"><a href="heatmap-annotations.html#image-annotation"><span class="header-section-number">3.5</span> Image annotation</a></li>
+<li class="level-2"><a href="heatmap-annotations.html#points-annotation"><span class="header-section-number">3.6</span> Points annotation</a></li>
+<li class="level-2"><a href="heatmap-annotations.html#lines-annotation"><span class="header-section-number">3.7</span> Line annotation</a></li>
+<li class="level-2"><a href="heatmap-annotations.html#barplot_annotation"><span class="header-section-number">3.8</span> Barplot annotation</a></li>
+<li class="level-2"><a href="heatmap-annotations.html#box-annotation"><span class="header-section-number">3.9</span> Boxplot annotation</a></li>
+<li class="level-2"><a href="heatmap-annotations.html#histogram-annotation"><span class="header-section-number">3.10</span> Histogram annotation</a></li>
+<li class="level-2"><a href="heatmap-annotations.html#density-annotation"><span class="header-section-number">3.11</span> Density annotation</a></li>
+<li class="level-2"><a href="heatmap-annotations.html#joyplot-annotation"><span class="header-section-number">3.12</span> Joyplot annotation</a></li>
+<li class="level-2"><a href="heatmap-annotations.html#horizon-chart-annotation"><span class="header-section-number">3.13</span> Horizon chart annotation</a></li>
+<li class="level-2"><a href="heatmap-annotations.html#text-annotation"><span class="header-section-number">3.14</span> Text annotation</a></li>
+<li class="level-2"><a href="heatmap-annotations.html#anno-numeric"><span class="header-section-number">3.15</span> Numeric labels annotation</a></li>
+<li class="level-2"><a href="heatmap-annotations.html#completely-customized-annotation"><span class="header-section-number">3.16</span> Completely customized
+annotation</a></li>
+<li class="level-2"><a href="heatmap-annotations.html#mark-annotation"><span class="header-section-number">3.17</span> Mark annotation</a></li>
+<li class="level-2"><a href="heatmap-annotations.html#zoom-annotation"><span class="header-section-number">3.18</span> Zoom/link annotation</a></li>
+<li class="level-2"><a href="heatmap-annotations.html#anno-text-box"><span class="header-section-number">3.19</span> Text box annotation</a></li>
+<li class="level-3"><a href="heatmap-annotations.html#construct-the-text-box"><span class="header-section-number">3.19.1</span> Construct the text box</a></li>
+<li class="level-3"><a href="heatmap-annotations.html#draw-textbox-annotation"><span class="header-section-number">3.19.2</span> Draw textbox annotation</a></li>
+<li class="level-2"><a href="heatmap-annotations.html#summary-annotation"><span class="header-section-number">3.20</span> Summary annotation</a></li>
+<li class="level-2"><a href="heatmap-annotations.html#multiple-annotations"><span class="header-section-number">3.21</span> Multiple annotations</a></li>
+<li class="level-3"><a href="heatmap-annotations.html#heatmap-annotation-general-settings"><span class="header-section-number">3.21.1</span> General settings</a></li>
+<li class="level-3"><a href="heatmap-annotations.html#size-of-annotations"><span class="header-section-number">3.21.2</span> Size of annotations</a></li>
+<li class="level-3"><a href="heatmap-annotations.html#annotation-labels"><span class="header-section-number">3.21.3</span> Annotation labels</a></li>
+<li class="level-2"><a href="heatmap-annotations.html#heatmap-annotation-utility-function"><span class="header-section-number">3.22</span> Utility functions</a></li>
+<li class="level-2"><a href="heatmap-annotations.html#implement-new-annotation-functions"><span class="header-section-number">3.23</span> Implement new annotation
+functions</a></li>
+<li class="level-3"><a href="heatmap-annotations.html#construct-annotation-function-by-cell-fun"><span class="header-section-number">3.23.1</span> Construct annotation
+function by cell_fun</a></li></ul></li>
+<li class="chapter"><a href="a-list-of-heatmaps.html"><span class="header-section-number">4</span><span>A List of Heatmaps</span></a><ul><li class="level-2"><a href="a-list-of-heatmaps.html#heatmap-list-titles"><span class="header-section-number">4.1</span> Titles</a></li>
+<li class="level-2"><a href="a-list-of-heatmaps.html#size-of-heatmaps"><span class="header-section-number">4.2</span> Size of heatmaps</a></li>
+<li class="level-2"><a href="a-list-of-heatmaps.html#gap-between-heatmaps"><span class="header-section-number">4.3</span> Gap between heatmaps</a></li>
+<li class="level-2"><a href="a-list-of-heatmaps.html#automatic-adjustment-to-the-main-heatmap"><span class="header-section-number">4.4</span> Automatic adjustment
+to the main heatmap</a></li>
+<li class="level-2"><a href="a-list-of-heatmaps.html#control-main-heatmap-in-draw-function"><span class="header-section-number">4.5</span> Control main heatmap in
+draw() function</a></li>
+<li class="level-2"><a href="a-list-of-heatmaps.html#annotations-as-components-are-adjusted"><span class="header-section-number">4.6</span> Annotations as
+components are adjusted</a></li>
+<li class="level-2"><a href="a-list-of-heatmaps.html#concatenate-with-annotations"><span class="header-section-number">4.7</span> Concatenate with annotations</a></li>
+<li class="level-2"><a href="a-list-of-heatmaps.html#concatenate-only-the-annotations"><span class="header-section-number">4.8</span> Concatenate only the
+annotations</a></li>
+<li class="level-2"><a href="a-list-of-heatmaps.html#vertical-concatenation"><span class="header-section-number">4.9</span> Vertical concatenation</a></li>
+<li class="level-2"><a href="a-list-of-heatmaps.html#subset-heatmap-list"><span class="header-section-number">4.10</span> Subset the heatmap list</a></li>
+<li class="level-2"><a href="a-list-of-heatmaps.html#plot-the-heatmap-list"><span class="header-section-number">4.11</span> Plot the heatmap list</a></li>
+<li class="level-2"><a href="a-list-of-heatmaps.html#get-orders-and-dendrograms-from-a-list-of-heatmaps"><span class="header-section-number">4.12</span> Get orders
+and dendrograms</a></li>
+<li class="level-2"><a href="a-list-of-heatmaps.html#change-parameters-globally"><span class="header-section-number">4.13</span> Change parameters globally</a></li>
+<li class="level-2"><a href="a-list-of-heatmaps.html#adjust-blank-space-caused-by-annotations"><span class="header-section-number">4.14</span> Adjust blank space
+caused by annotations</a></li>
+<li class="level-2"><a href="a-list-of-heatmaps.html#manually-increase-space-around-the-plot"><span class="header-section-number">4.15</span> Manually increase space
+around the plot</a></li></ul></li>
+<li class="chapter"><a href="legends.html"><span class="header-section-number">5</span><span>Legends</span></a><ul><li class="level-2"><a href="legends.html#continuous-legends"><span class="header-section-number">5.1</span> Continuous legends</a></li>
+<li class="level-2"><a href="legends.html#discrete-legends"><span class="header-section-number">5.2</span> Discrete legends</a></li>
+<li class="level-2"><a href="legends.html#a-list-of-legends"><span class="header-section-number">5.3</span> A list of legends</a></li>
+<li class="level-2"><a href="legends.html#heatmap-and-annotation-legends"><span class="header-section-number">5.4</span> Heatmap and annotation
+legends</a></li>
+<li class="level-2"><a href="legends.html#add-customized-legends"><span class="header-section-number">5.5</span> Add customized legends</a></li>
+<li class="level-2"><a href="legends.html#the-side-of-legends"><span class="header-section-number">5.6</span> The side of legends</a></li></ul></li>
+<li class="chapter"><a href="heatmap-decoration.html"><span class="header-section-number">6</span><span>Heatmap Decoration</span></a><ul><li class="level-2"><a href="heatmap-decoration.html#decoration-functions"><span class="header-section-number">6.1</span> Decoration functions</a></li>
+<li class="level-2"><a href="heatmap-decoration.html#decoration-examples"><span class="header-section-number">6.2</span> Examples</a></li>
+<li class="level-3"><a href="heatmap-decoration.html#barplot-for-single-column-heatmap"><span class="header-section-number">6.2.1</span> Barplot for single-column
+heatmap</a></li>
+<li class="level-3"><a href="heatmap-decoration.html#add-titles-for-row-annotations"><span class="header-section-number">6.2.2</span> Add titles for row
+annotations</a></li>
+<li class="level-3"><a href="heatmap-decoration.html#other-possible-use-of-decorations"><span class="header-section-number">6.2.3</span> Other possible use of
+decorations</a></li></ul></li>
+<li class="chapter active"><a href="oncoprint.html"><span class="header-section-number">7</span><span>OncoPrint</span></a><ul><li class="level-2"><a href="oncoprint.html#oncoprint-general-settings"><span class="header-section-number">7.1</span> General settings</a></li>
+<li class="level-3"><a href="oncoprint.html#input-data-format"><span class="header-section-number">7.1.1</span> Input data format</a></li>
+<li class="level-3"><a href="oncoprint.html#define-the-alter-fun"><span class="header-section-number">7.1.2</span> Define the alter_fun()</a></li>
+<li class="level-3"><a href="oncoprint.html#oncoprint-background"><span class="header-section-number">7.1.3</span> Background</a></li>
+<li class="level-3"><a href="oncoprint.html#complex-alteration-types"><span class="header-section-number">7.1.4</span> Complex alteration types</a></li>
+<li class="level-3"><a href="oncoprint.html#simplify-alter-fun"><span class="header-section-number">7.1.5</span> Simplify alter_fun</a></li>
+<li class="level-3"><a href="oncoprint.html#other-heatmap-related-settings"><span class="header-section-number">7.1.6</span> Other heatmap-related
+settings</a></li>
+<li class="level-2"><a href="oncoprint.html#apply-to-cbioportal-dataset"><span class="header-section-number">7.2</span> Apply to cBioPortal dataset</a></li>
+<li class="level-3"><a href="oncoprint.html#remove-empty-rows-and-columns"><span class="header-section-number">7.2.1</span> Remove empty rows and
+columns</a></li>
+<li class="level-3"><a href="oncoprint.html#reorder-the-oncoprint"><span class="header-section-number">7.2.2</span> Reorder the oncoPrint</a></li>
+<li class="level-3"><a href="oncoprint.html#oncoprint-annotations"><span class="header-section-number">7.2.3</span> OncoPrint annotations</a></li>
+<li class="level-3"><a href="oncoprint.html#oncoprint-as-a-heatmap"><span class="header-section-number">7.2.4</span> oncoPrint as a Heatmap</a></li></ul></li>
+<li class="chapter"><a href="upset-plot.html"><span class="header-section-number">8</span><span>UpSet plot</span></a><ul><li class="level-2"><a href="upset-plot.html#input-data"><span class="header-section-number">8.1</span> Input data</a></li>
+<li class="level-2"><a href="upset-plot.html#upset-mode"><span class="header-section-number">8.2</span> Mode</a></li>
+<li class="level-2"><a href="upset-plot.html#make-the-combination-matrix"><span class="header-section-number">8.3</span> Make the combination matrix</a></li>
+<li class="level-2"><a href="upset-plot.html#upset-utility-functions"><span class="header-section-number">8.4</span> Utility functions</a></li>
+<li class="level-3"><a href="upset-plot.html#upset-subsetting"><span class="header-section-number">8.4.1</span> Subsetting a CombMat</a></li>
+<li class="level-2"><a href="upset-plot.html#upset-making-the-plot"><span class="header-section-number">8.5</span> Make the plot</a></li>
+<li class="level-2"><a href="upset-plot.html#upset-plots-as-heatmaps"><span class="header-section-number">8.6</span> UpSet plots as heatmaps</a></li>
+<li class="level-2"><a href="upset-plot.html#upset-movies"><span class="header-section-number">8.7</span> Example with the movies dataset</a></li>
+<li class="level-2"><a href="upset-plot.html#upset-genomic"><span class="header-section-number">8.8</span> Example with the genomic regions</a></li></ul></li>
+<li class="chapter"><a href="interactive-complexheatmap.html"><span class="header-section-number">9</span><span>Interactive ComplexHeatmap</span></a><ul><li class="level-2"><a href="interactive-complexheatmap.html#inline-jupyter"><span class="header-section-number">9.1</span> Inline rendering in Jupyter and IPython</a></li>
+<li class="level-2"><a href="interactive-complexheatmap.html#brush-and-zoom"><span class="header-section-number">9.2</span> Programmatic brush selection and sub-heatmap
+zoom</a></li>
+<li class="level-2"><a href="interactive-complexheatmap.html#split-slice-zoom"><span class="header-section-number">9.3</span> Extracting and zooming into split slices</a></li>
+<li class="level-2"><a href="interactive-complexheatmap.html#shiny-and-python"><span class="header-section-number">9.4</span> Interactive R Shiny ecosystem and Python
+notebooks</a></li></ul></li>
+<li class="chapter"><a href="integrate-with-other-packages.html"><span class="header-section-number">10</span><span>Integrate with other
+packages</span></a><ul><li class="level-2"><a href="integrate-with-other-packages.html#pheatmap"><span class="header-section-number">10.1</span> pheatmap, heatmap, and heatmap.2</a></li>
+<li class="level-3"><a href="integrate-with-other-packages.html#pheatmap-examples"><span class="header-section-number">10.1.1</span> Examples</a></li>
+<li class="level-3"><a href="integrate-with-other-packages.html#pheatmap-translation"><span class="header-section-number">10.1.2</span> Translation</a></li>
+<li class="level-3"><a href="integrate-with-other-packages.html#pheatmap-comparisons"><span class="header-section-number">10.1.3</span> Comparisons and legacy wrappers</a></li>
+<li class="level-2"><a href="integrate-with-other-packages.html#multipanel-composition"><span class="header-section-number">10.2</span> Multi-panel layout composition</a></li>
+<li class="level-3"><a href="integrate-with-other-packages.html#grid-grabexpr"><span class="header-section-number">10.2.1</span> Capturing heatmaps with
+grid_grabExpr</a></li>
+<li class="level-3"><a href="integrate-with-other-packages.html#matplotlib-integration"><span class="header-section-number">10.2.2</span> Combining ComplexHeatmap-py with
+Matplotlib Axes</a></li>
+<li class="level-2"><a href="integrate-with-other-packages.html#gt-render"><span class="header-section-number">10.3</span> Rich text with gt_render</a></li>
+<li class="level-3"><a href="integrate-with-other-packages.html#gt-render-title"><span class="header-section-number">10.3.1</span> Titles</a></li>
+<li class="level-3"><a href="integrate-with-other-packages.html#gt-render-dimnames"><span class="header-section-number">10.3.2</span> Row and column names</a></li>
+<li class="level-3"><a href="integrate-with-other-packages.html#gt-render-annotations"><span class="header-section-number">10.3.3</span> Styled titles with annotations</a></li>
+<li class="level-3"><a href="integrate-with-other-packages.html#gt-render-anno-text"><span class="header-section-number">10.3.4</span> Text and textbox annotations</a></li>
+<li class="level-3"><a href="integrate-with-other-packages.html#gt-render-legends"><span class="header-section-number">10.3.5</span> Legends</a></li></ul></li>
+<li class="chapter"><a href="other-high-level-plots.html"><span class="header-section-number">11</span><span>Other High-level Plots</span></a><ul><li class="level-2"><a href="other-high-level-plots.html#density-heatmap"><span class="header-section-number">11.1</span> Density heatmap</a></li>
+<li class="level-2"><a href="other-high-level-plots.html#stacked-summary-plot"><span class="header-section-number">11.2</span> Stacked summary plot</a></li></ul></li>
+<li class="chapter"><a href="three-dimensional-complexheatmap.html"><span class="header-section-number">12</span><span>Three-dimensional ComplexHeatmap</span></a><ul><li class="level-2"><a href="three-dimensional-complexheatmap.html#motivation"><span class="header-section-number">12.1</span> Motivation</a></li>
+<li class="level-2"><a href="three-dimensional-complexheatmap.html#implementation-of-3d-heatmap"><span class="header-section-number">12.2</span> Implementation of 3D heatmap</a></li></ul></li>
+<li class="chapter"><a href="genome-level-heatmap.html"><span class="header-section-number">13</span><span>Genome-level heatmap</span></a><ul><li class="level-2"><a href="genome-level-heatmap.html#genomic-bins"><span class="header-section-number">13.1</span> Genomic bins and signal normalization</a></li>
+<li class="level-2"><a href="genome-level-heatmap.html#horizontal-genome-heatmap"><span class="header-section-number">13.2</span> Horizontal genome-level heatmap</a></li>
+<li class="level-2"><a href="genome-level-heatmap.html#vertical-genome-heatmap"><span class="header-section-number">13.3</span> Vertical genome-level heatmap</a></li>
+<li class="level-2"><a href="genome-level-heatmap.html#genome-anno-block"><span class="header-section-number">13.4</span> Chromosome block headers and multi-track
+genomic features</a></li></ul></li>
+<li class="chapter"><a href="more-examples.html"><span class="header-section-number">14</span><span>More Examples</span></a><ul><li class="level-2"><a href="more-examples.html#gene-expression-matrix"><span class="header-section-number">14.1</span> Add more information for gene expression
+matrix</a></li>
+<li class="level-2"><a href="more-examples.html#the-measles-vaccine-heatmap"><span class="header-section-number">14.2</span> The measles vaccine heatmap</a></li>
+<li class="level-2"><a href="more-examples.html#scrna-seq-heterogeneity"><span class="header-section-number">14.3</span> Visualize cell heterogeneity from
+single-cell RNA-seq</a></li>
+<li class="level-2"><a href="more-examples.html#methylation-expression-correlations"><span class="header-section-number">14.4</span> Correlations between
+methylation, expression and other genomic features</a></li>
+<li class="level-2"><a href="more-examples.html#methylation-complex-annotations"><span class="header-section-number">14.5</span> Visualize methylation profile
+with complex annotations</a></li>
+<li class="level-2"><a href="more-examples.html#add-multiple-boxplots-for-single-row"><span class="header-section-number">14.6</span> Add multiple boxplots for
+single row</a></li></ul></li>
+<li class="chapter"><a href="other-tricks.html"><span class="header-section-number">15</span><span>Other Tricks</span></a><ul><li class="level-2"><a href="other-tricks.html#same-cell-size"><span class="header-section-number">15.1</span> Set the same cell size for different heatmaps
+with different dimensions</a></li>
+<li class="level-2"><a href="other-tricks.html#global-options-ht-opt"><span class="header-section-number">15.2</span> Global options with ht_opt</a></li>
+<li class="level-2"><a href="other-tricks.html#grid-grabexpr-composition"><span class="header-section-number">15.3</span> Capturing and composing heatmaps with
+grid_grabExpr</a></li></ul></li>
+        <li class="divider"></li>
+      </ul>
+      <div class="summary-footer">
+        <div>Published with <strong>ComplexHeatmap-py</strong></div>
+        <div><a href="https://github.com/zhanxw/ComplexHeatmap-reference-py" target="_blank" rel="noopener">GitHub Repository</a> &middot; <a href="https://jokergoo.github.io/ComplexHeatmap-reference/book/" target="_blank" rel="noopener">Original R Book</a></div>
+      </div>
+    </nav>
+
+    <div class="book-body">
+      <header class="book-header">
+        <div class="header-left">
+          <button id="sidebar-toggle" class="toolbar-btn" type="button" title="Toggle Table of Contents" aria-label="Toggle Table of Contents">&#9776;</button>
+          <button id="search-toggle-btn" class="toolbar-btn" type="button" title="Search" aria-label="Search">&#128269;</button>
+          <h1 class="header-title"><a href="index.html">ComplexHeatmap-py Complete Reference</a></h1>
+        </div>
+        <div class="header-right">
+          <div class="dropdown">
+            <button id="font-settings-btn" class="toolbar-btn" type="button" title="Font and Theme Settings" aria-label="Font Settings">A</button>
+            <div id="font-settings-menu" class="dropdown-menu">
+              <div class="dropdown-row">
+                <button id="font-size-dec" type="button">A-</button>
+                <button id="font-size-inc" type="button">A+</button>
+              </div>
+              <div class="dropdown-row">
+                <button type="button" data-font="sans">Sans</button>
+                <button type="button" data-font="serif">Serif</button>
+              </div>
+              <div class="dropdown-row">
+                <button type="button" data-theme="white">White</button>
+                <button type="button" data-theme="sepia">Sepia</button>
+                <button type="button" data-theme="night">Night</button>
+              </div>
+            </div>
+          </div>
+          <a class="toolbar-btn" href="https://github.com/zhanxw/ComplexHeatmap-reference-py" target="_blank" rel="noopener" title="View on GitHub">GitHub</a>
+        </div>
+      </header>
+
+      <div class="page-wrapper">
+        <main class="page-inner">
+          <div id="search-results" aria-live="polite"></div>
+          <section class="normal markdown-section">
+            <h1 id="oncoprint"><span class="header-section-number">7</span> OncoPrint<a class="anchor-section" aria-label="Anchor link to section" href="#oncoprint">#</a></h1>
+<p><a
+href="http://www.cbioportal.org/faq#what-are-oncoprints">OncoPrint</a>
+is a compact heatmap layout for visualizing multiple genomic alteration
+events across genes and samples. <code>ComplexHeatmap-py</code> provides
+<code>oncoPrint()</code> to generate cBioPortal-style oncoPrints with
+automatic gene-frequency sorting, mutual-exclusivity column sorting
+(<em>memoSort</em>), percentage summaries, and stacked alteration
+barplots on both margins. Because <code>oncoPrint()</code> returns a
+standard <code>Heatmap</code> object, it integrates seamlessly with
+additional heatmaps and annotations from <a
+href="a-single-heatmap.html">A Single Heatmap</a>, <a
+href="heatmap-annotations.html">Heatmap Annotations</a>, and <a
+href="a-list-of-heatmaps.html">A List of Heatmaps</a>.</p>
+<h2 id="oncoprint-general-settings"><span class="header-section-number">7.1</span> General settings<a class="anchor-section" aria-label="Anchor link to section" href="#oncoprint-general-settings">#</a></h2>
+<h3 id="input-data-format"><span class="header-section-number">7.1.1</span> Input data format<a class="anchor-section" aria-label="Anchor link to section" href="#input-data-format">#</a></h3>
+<p><code>oncoPrint()</code> accepts two input formats. The first format
+is a character matrix or <code>pandas.DataFrame</code> where each cell
+encodes one or more alteration types separated by a delimiter. In the
+example below, gene <code>g1</code> in sample <code>s1</code> carries
+both <code>snv</code> and <code>indel</code>:</p>
+<div class="code-wrapper"><pre class="codehilite"><code><span class="kn">import</span><span class="w"> </span><span class="nn">io</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">complexheatmap</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">ch</span>
+
+<span class="n">csv_txt</span> <span class="o">=</span> <span class="p">(</span>
+    <span class="s2">"gene,s1,s2,s3</span><span class="se">\n</span><span class="s2">"</span>
+    <span class="s2">"g1,snv;indel,snv,indel</span><span class="se">\n</span><span class="s2">"</span>
+    <span class="s2">"g2,,snv;indel,snv</span><span class="se">\n</span><span class="s2">"</span>
+    <span class="s2">"g3,snv,,indel;snv</span><span class="se">\n</span><span class="s2">"</span>
+<span class="p">)</span>
+<span class="n">mat</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="n">io</span><span class="o">.</span><span class="n">StringIO</span><span class="p">(</span><span class="n">csv_txt</span><span class="p">),</span> <span class="n">index_col</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">keep_default_na</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+<span class="n">mat</span></code></pre></div>
+<div class="code-wrapper"><pre class="codehilite"><code>             s1         s2         s3
+gene                                 
+g1    snv;indel        snv      indel
+g2               snv;indel        snv
+g3          snv             indel;snv</code></pre></div>
+<p>To parse cell strings into lists of alteration names,
+<code>oncoPrint()</code> accepts a <code>get_type</code> callable. By
+default, <code>default_get_type()</code> splits strings automatically on
+any of <code>;</code>, <code>:</code>, <code>,</code>, or <code>|</code>
+and discards empty/missing tokens:</p>
+<div class="code-wrapper"><pre class="codehilite"><code><span class="n">ch</span><span class="o">.</span><span class="n">default_get_type</span><span class="p">(</span><span class="n">mat</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">])</span>
+<span class="c1"># ['snv', 'indel']</span>
+<span class="n">ch</span><span class="o">.</span><span class="n">default_get_type</span><span class="p">(</span><span class="n">mat</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">])</span>
+<span class="c1"># ['snv']</span></code></pre></div>
+<p>If your dataset uses a custom separator (for example <code>"+"</code>
+or whitespace), pass a custom parser such as
+<code>get_type=lambda x: [s.strip() for s in str(x).split("+") if s.strip()]</code>.
+When your strings use <code>;</code>, <code>:</code>, <code>,</code>, or
+<code>|</code>, you do not need to pass <code>get_type</code>
+explicitly.</p>
+<p>Because multiple alterations can coexist in the same
+<code>(gene, sample)</code> cell, <code>alter_fun</code> specifies how
+each alteration type is rendered on top of the cell rectangle. When
+<code>alter_fun</code> is a dictionary, keys correspond to alteration
+names and <strong>insertion order determines drawing order</strong>.
+Below, <code>snv</code> is drawn first (<code>0.9 * h</code>) followed
+by <code>indel</code> (<code>0.4 * h</code>), so both remain visible
+when both occur in one cell. Each drawer function receives four
+<code>Unit</code> arguments <code>(x, y, w, h)</code> giving the cell
+center and dimensions in <code>npc</code> units.</p>
+<p><code>col</code> maps alteration names to colors used for the
+top/right barplot annotations and the legend:</p>
+<div class="code-wrapper"><pre class="codehilite"><code><span class="kn">from</span><span class="w"> </span><span class="nn">complexheatmap</span><span class="w"> </span><span class="kn">import</span> <span class="n">gpar</span><span class="p">,</span> <span class="n">grid</span><span class="p">,</span> <span class="n">oncoPrint</span>
+
+<span class="n">col</span> <span class="o">=</span> <span class="p">{</span><span class="s2">"snv"</span><span class="p">:</span> <span class="s2">"red"</span><span class="p">,</span> <span class="s2">"indel"</span><span class="p">:</span> <span class="s2">"blue"</span><span class="p">}</span>
+<span class="n">alter_fun</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s2">"snv"</span><span class="p">:</span> <span class="k">lambda</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">w</span><span class="p">,</span> <span class="n">h</span><span class="p">:</span> <span class="n">grid</span><span class="o">.</span><span class="n">rect</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">w</span> <span class="o">*</span> <span class="mf">0.9</span><span class="p">,</span> <span class="n">h</span> <span class="o">*</span> <span class="mf">0.9</span><span class="p">,</span> <span class="n">gp</span><span class="o">=</span><span class="n">gpar</span><span class="p">(</span><span class="n">fill</span><span class="o">=</span><span class="n">col</span><span class="p">[</span><span class="s2">"snv"</span><span class="p">],</span> <span class="n">col</span><span class="o">=</span><span class="kc">None</span><span class="p">)),</span>
+    <span class="s2">"indel"</span><span class="p">:</span> <span class="k">lambda</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">w</span><span class="p">,</span> <span class="n">h</span><span class="p">:</span> <span class="n">grid</span><span class="o">.</span><span class="n">rect</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">w</span> <span class="o">*</span> <span class="mf">0.9</span><span class="p">,</span> <span class="n">h</span> <span class="o">*</span> <span class="mf">0.4</span><span class="p">,</span> <span class="n">gp</span><span class="o">=</span><span class="n">gpar</span><span class="p">(</span><span class="n">fill</span><span class="o">=</span><span class="n">col</span><span class="p">[</span><span class="s2">"indel"</span><span class="p">],</span> <span class="n">col</span><span class="o">=</span><span class="kc">None</span><span class="p">)),</span>
+<span class="p">}</span>
+
+<span class="n">op</span> <span class="o">=</span> <span class="n">oncoPrint</span><span class="p">(</span><span class="n">mat</span><span class="p">,</span> <span class="n">alter_fun</span><span class="o">=</span><span class="n">alter_fun</span><span class="p">,</span> <span class="n">col</span><span class="o">=</span><span class="n">col</span><span class="p">)</span>
+<span class="n">ch</span><span class="o">.</span><span class="n">draw</span><span class="p">(</span><span class="n">op</span><span class="p">)</span></code></pre></div>
+<figure>
+<img src="images/ch07_01_basic_str_mat.png"
+alt="Basic OncoPrint from a delimited string alteration matrix" />
+<figcaption aria-hidden="true">Basic OncoPrint from a delimited string
+alteration matrix</figcaption>
+</figure>
+<p>Notice that the barplot stacks and legend order reflect the
+alteration types and colors configured in <code>col</code> and
+<code>alter_fun</code>.</p>
+<p>The second supported input format is a dictionary (or list) of binary
+indicator matrices/DataFrames—one per alteration type—where
+<code>1</code>/<code>True</code> indicates presence and
+<code>0</code>/<code>False</code> indicates absence. When matrices have
+partially overlapping row or column sets, <code>unify_mat_list()</code>
+aligns every matrix to the union of all rows and columns (filling
+missing entries with <code>default=0</code>):</p>
+<div class="code-wrapper"><pre class="codehilite"><code><span class="kn">from</span><span class="w"> </span><span class="nn">complexheatmap</span><span class="w"> </span><span class="kn">import</span> <span class="n">unify_mat_list</span>
+
+<span class="n">m_snv</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span>
+    <span class="p">[[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">],</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">]],</span>
+    <span class="n">index</span><span class="o">=</span><span class="p">[</span><span class="s2">"g1"</span><span class="p">,</span> <span class="s2">"g2"</span><span class="p">,</span> <span class="s2">"g3"</span><span class="p">],</span>
+    <span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="s2">"s1"</span><span class="p">,</span> <span class="s2">"s2"</span><span class="p">,</span> <span class="s2">"s3"</span><span class="p">],</span>
+<span class="p">)</span>
+<span class="n">m_indel</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span>
+    <span class="p">[[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">],</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">]],</span>
+    <span class="n">index</span><span class="o">=</span><span class="p">[</span><span class="s2">"g1"</span><span class="p">,</span> <span class="s2">"g2"</span><span class="p">,</span> <span class="s2">"g3"</span><span class="p">],</span>
+    <span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="s2">"s1"</span><span class="p">,</span> <span class="s2">"s2"</span><span class="p">,</span> <span class="s2">"s3"</span><span class="p">],</span>
+<span class="p">)</span>
+<span class="n">mat_list</span> <span class="o">=</span> <span class="n">unify_mat_list</span><span class="p">({</span><span class="s2">"snv"</span><span class="p">:</span> <span class="n">m_snv</span><span class="p">,</span> <span class="s2">"indel"</span><span class="p">:</span> <span class="n">m_indel</span><span class="p">},</span> <span class="n">default</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+
+<span class="n">op</span> <span class="o">=</span> <span class="n">oncoPrint</span><span class="p">(</span><span class="n">mat_list</span><span class="p">,</span> <span class="n">alter_fun</span><span class="o">=</span><span class="n">alter_fun</span><span class="p">,</span> <span class="n">col</span><span class="o">=</span><span class="n">col</span><span class="p">)</span>
+<span class="n">ch</span><span class="o">.</span><span class="n">draw</span><span class="p">(</span><span class="n">op</span><span class="p">)</span></code></pre></div>
+<figure>
+<img src="images/ch07_02_mat_list_unify.png"
+alt="OncoPrint constructed from a unified dictionary of binary matrices" />
+<figcaption aria-hidden="true">OncoPrint constructed from a unified
+dictionary of binary matrices</figcaption>
+</figure>
+<p>For the remainder of this chapter, we use the delimited string matrix
+representation.</p>
+<h3 id="define-the-alter-fun"><span class="header-section-number">7.1.2</span> Define the alter_fun()<a class="anchor-section" aria-label="Anchor link to section" href="#define-the-alter-fun">#</a></h3>
+<p>Instead of a dictionary of per-alteration callbacks,
+<code>alter_fun</code> can be supplied as a single function accepting
+five arguments: <code>(x, y, w, h, v)</code>.</p>
+<blockquote>
+<p><strong>Python vs. R difference:</strong> In R
+<code>ComplexHeatmap</code>, <code>v</code> is a named logical vector.
+In <code>ComplexHeatmap-py</code>, <code>v</code> is
+<code>"background"</code> when no alterations are present in the cell, a
+single <code>str</code> (e.g., <code>"snv"</code>) when one alteration
+is present, or a <code>list[str]</code> (e.g.,
+<code>["snv", "indel"]</code>) when multiple alterations co-occur.
+Normalizing <code>v</code> to a list makes cell rendering concise and
+safe:</p>
+</blockquote>
+<div class="code-wrapper"><pre class="codehilite"><code><span class="k">def</span><span class="w"> </span><span class="nf">single_alter_fun</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">w</span><span class="p">,</span> <span class="n">h</span><span class="p">,</span> <span class="n">v</span><span class="p">):</span>
+    <span class="n">types</span> <span class="o">=</span> <span class="p">[]</span> <span class="k">if</span> <span class="n">v</span> <span class="o">==</span> <span class="s2">"background"</span> <span class="k">else</span> <span class="p">([</span><span class="n">v</span><span class="p">]</span> <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">v</span><span class="p">,</span> <span class="nb">str</span><span class="p">)</span> <span class="k">else</span> <span class="nb">list</span><span class="p">(</span><span class="n">v</span><span class="p">))</span>
+    <span class="k">if</span> <span class="s2">"snv"</span> <span class="ow">in</span> <span class="n">types</span><span class="p">:</span>
+        <span class="n">grid</span><span class="o">.</span><span class="n">rect</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">w</span> <span class="o">*</span> <span class="mf">0.9</span><span class="p">,</span> <span class="n">h</span> <span class="o">*</span> <span class="mf">0.9</span><span class="p">,</span> <span class="n">gp</span><span class="o">=</span><span class="n">gpar</span><span class="p">(</span><span class="n">fill</span><span class="o">=</span><span class="n">col</span><span class="p">[</span><span class="s2">"snv"</span><span class="p">],</span> <span class="n">col</span><span class="o">=</span><span class="kc">None</span><span class="p">))</span>
+    <span class="k">if</span> <span class="s2">"indel"</span> <span class="ow">in</span> <span class="n">types</span><span class="p">:</span>
+        <span class="n">grid</span><span class="o">.</span><span class="n">rect</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">w</span> <span class="o">*</span> <span class="mf">0.9</span><span class="p">,</span> <span class="n">h</span> <span class="o">*</span> <span class="mf">0.4</span><span class="p">,</span> <span class="n">gp</span><span class="o">=</span><span class="n">gpar</span><span class="p">(</span><span class="n">fill</span><span class="o">=</span><span class="n">col</span><span class="p">[</span><span class="s2">"indel"</span><span class="p">],</span> <span class="n">col</span><span class="o">=</span><span class="kc">None</span><span class="p">))</span>
+
+<span class="n">ch</span><span class="o">.</span><span class="n">draw</span><span class="p">(</span><span class="n">oncoPrint</span><span class="p">(</span><span class="n">mat</span><span class="p">,</span> <span class="n">alter_fun</span><span class="o">=</span><span class="n">single_alter_fun</span><span class="p">,</span> <span class="n">col</span><span class="o">=</span><span class="n">col</span><span class="p">))</span></code></pre></div>
+<figure>
+<img src="images/ch07_03_single_alter_fun.png"
+alt="OncoPrint using a single 5-argument alter_fun callback" />
+<figcaption aria-hidden="true">OncoPrint using a single 5-argument
+alter_fun callback</figcaption>
+</figure>
+<p>Using a single function allows cell geometry to adapt dynamically to
+the number of co-occurring events. Here, a cell containing
+<code>n</code> alterations is split vertically into <code>n</code> equal
+bands:</p>
+<div class="code-wrapper"><pre class="codehilite"><code><span class="k">def</span><span class="w"> </span><span class="nf">stacked_alter_fun</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">w</span><span class="p">,</span> <span class="n">h</span><span class="p">,</span> <span class="n">v</span><span class="p">):</span>
+    <span class="n">types</span> <span class="o">=</span> <span class="p">[]</span> <span class="k">if</span> <span class="n">v</span> <span class="o">==</span> <span class="s2">"background"</span> <span class="k">else</span> <span class="p">([</span><span class="n">v</span><span class="p">]</span> <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">v</span><span class="p">,</span> <span class="nb">str</span><span class="p">)</span> <span class="k">else</span> <span class="nb">list</span><span class="p">(</span><span class="n">v</span><span class="p">))</span>
+    <span class="n">n</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">types</span><span class="p">)</span>
+    <span class="n">h_box</span> <span class="o">=</span> <span class="n">h</span> <span class="o">*</span> <span class="mf">0.9</span>
+    <span class="k">if</span> <span class="n">n</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
+        <span class="k">for</span> <span class="n">idx</span><span class="p">,</span> <span class="n">tp</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">types</span><span class="p">,</span> <span class="n">start</span><span class="o">=</span><span class="mi">1</span><span class="p">):</span>
+            <span class="n">grid</span><span class="o">.</span><span class="n">rect</span><span class="p">(</span>
+                <span class="n">x</span><span class="p">,</span>
+                <span class="n">y</span> <span class="o">-</span> <span class="n">h_box</span> <span class="o">*</span> <span class="mf">0.5</span> <span class="o">+</span> <span class="p">(</span><span class="n">idx</span> <span class="o">/</span> <span class="n">n</span><span class="p">)</span> <span class="o">*</span> <span class="n">h_box</span><span class="p">,</span>
+                <span class="n">w</span> <span class="o">*</span> <span class="mf">0.9</span><span class="p">,</span>
+                <span class="p">(</span><span class="mf">1.0</span> <span class="o">/</span> <span class="n">n</span><span class="p">)</span> <span class="o">*</span> <span class="n">h_box</span><span class="p">,</span>
+                <span class="n">gp</span><span class="o">=</span><span class="n">gpar</span><span class="p">(</span><span class="n">fill</span><span class="o">=</span><span class="n">col</span><span class="p">[</span><span class="n">tp</span><span class="p">],</span> <span class="n">col</span><span class="o">=</span><span class="kc">None</span><span class="p">),</span>
+                <span class="n">just</span><span class="o">=</span><span class="s2">"top"</span><span class="p">,</span>
+            <span class="p">)</span>
+
+<span class="n">ch</span><span class="o">.</span><span class="n">draw</span><span class="p">(</span><span class="n">oncoPrint</span><span class="p">(</span><span class="n">mat</span><span class="p">,</span> <span class="n">alter_fun</span><span class="o">=</span><span class="n">stacked_alter_fun</span><span class="p">,</span> <span class="n">col</span><span class="o">=</span><span class="n">col</span><span class="p">))</span></code></pre></div>
+<figure>
+<img src="images/ch07_04_dynamic_height_alter_fun.png"
+alt="Dynamic cell height partitioning with a single alter_fun" />
+<figcaption aria-hidden="true">Dynamic cell height partitioning with a
+single alter_fun</figcaption>
+</figure>
+<p>Arbitrary grid primitives such as polygons
+(<code>grid.polygon()</code> with <code>unit_c()</code>) work directly
+inside <code>alter_fun</code>—for example, splitting each cell into
+lower-left (<code>snv</code>) and upper-right (<code>indel</code>)
+triangles:</p>
+<div class="code-wrapper"><pre class="codehilite"><code><span class="kn">from</span><span class="w"> </span><span class="nn">complexheatmap</span><span class="w"> </span><span class="kn">import</span> <span class="n">unit_c</span>
+
+<span class="n">alter_fun_tri</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s2">"background"</span><span class="p">:</span> <span class="k">lambda</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">w</span><span class="p">,</span> <span class="n">h</span><span class="p">:</span> <span class="p">(</span>
+        <span class="n">grid</span><span class="o">.</span><span class="n">polygon</span><span class="p">(</span><span class="n">unit_c</span><span class="p">(</span><span class="n">x</span> <span class="o">-</span> <span class="mf">0.5</span> <span class="o">*</span> <span class="n">w</span><span class="p">,</span> <span class="n">x</span> <span class="o">-</span> <span class="mf">0.5</span> <span class="o">*</span> <span class="n">w</span><span class="p">,</span> <span class="n">x</span> <span class="o">+</span> <span class="mf">0.5</span> <span class="o">*</span> <span class="n">w</span><span class="p">),</span> <span class="n">unit_c</span><span class="p">(</span><span class="n">y</span> <span class="o">-</span> <span class="mf">0.5</span> <span class="o">*</span> <span class="n">h</span><span class="p">,</span> <span class="n">y</span> <span class="o">+</span> <span class="mf">0.5</span> <span class="o">*</span> <span class="n">h</span><span class="p">,</span> <span class="n">y</span> <span class="o">-</span> <span class="mf">0.5</span> <span class="o">*</span> <span class="n">h</span><span class="p">),</span> <span class="n">gp</span><span class="o">=</span><span class="n">gpar</span><span class="p">(</span><span class="n">fill</span><span class="o">=</span><span class="s2">"grey"</span><span class="p">,</span> <span class="n">col</span><span class="o">=</span><span class="s2">"white"</span><span class="p">)),</span>
+        <span class="n">grid</span><span class="o">.</span><span class="n">polygon</span><span class="p">(</span><span class="n">unit_c</span><span class="p">(</span><span class="n">x</span> <span class="o">+</span> <span class="mf">0.5</span> <span class="o">*</span> <span class="n">w</span><span class="p">,</span> <span class="n">x</span> <span class="o">+</span> <span class="mf">0.5</span> <span class="o">*</span> <span class="n">w</span><span class="p">,</span> <span class="n">x</span> <span class="o">-</span> <span class="mf">0.5</span> <span class="o">*</span> <span class="n">w</span><span class="p">),</span> <span class="n">unit_c</span><span class="p">(</span><span class="n">y</span> <span class="o">+</span> <span class="mf">0.5</span> <span class="o">*</span> <span class="n">h</span><span class="p">,</span> <span class="n">y</span> <span class="o">-</span> <span class="mf">0.5</span> <span class="o">*</span> <span class="n">h</span><span class="p">,</span> <span class="n">y</span> <span class="o">+</span> <span class="mf">0.5</span> <span class="o">*</span> <span class="n">h</span><span class="p">),</span> <span class="n">gp</span><span class="o">=</span><span class="n">gpar</span><span class="p">(</span><span class="n">fill</span><span class="o">=</span><span class="s2">"grey"</span><span class="p">,</span> <span class="n">col</span><span class="o">=</span><span class="s2">"white"</span><span class="p">)),</span>
+    <span class="p">),</span>
+    <span class="s2">"snv"</span><span class="p">:</span> <span class="k">lambda</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">w</span><span class="p">,</span> <span class="n">h</span><span class="p">:</span> <span class="n">grid</span><span class="o">.</span><span class="n">polygon</span><span class="p">(</span>
+        <span class="n">unit_c</span><span class="p">(</span><span class="n">x</span> <span class="o">-</span> <span class="mf">0.5</span> <span class="o">*</span> <span class="n">w</span><span class="p">,</span> <span class="n">x</span> <span class="o">-</span> <span class="mf">0.5</span> <span class="o">*</span> <span class="n">w</span><span class="p">,</span> <span class="n">x</span> <span class="o">+</span> <span class="mf">0.5</span> <span class="o">*</span> <span class="n">w</span><span class="p">),</span>
+        <span class="n">unit_c</span><span class="p">(</span><span class="n">y</span> <span class="o">-</span> <span class="mf">0.5</span> <span class="o">*</span> <span class="n">h</span><span class="p">,</span> <span class="n">y</span> <span class="o">+</span> <span class="mf">0.5</span> <span class="o">*</span> <span class="n">h</span><span class="p">,</span> <span class="n">y</span> <span class="o">-</span> <span class="mf">0.5</span> <span class="o">*</span> <span class="n">h</span><span class="p">),</span>
+        <span class="n">gp</span><span class="o">=</span><span class="n">gpar</span><span class="p">(</span><span class="n">fill</span><span class="o">=</span><span class="n">col</span><span class="p">[</span><span class="s2">"snv"</span><span class="p">],</span> <span class="n">col</span><span class="o">=</span><span class="s2">"white"</span><span class="p">),</span>
+    <span class="p">),</span>
+    <span class="s2">"indel"</span><span class="p">:</span> <span class="k">lambda</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">w</span><span class="p">,</span> <span class="n">h</span><span class="p">:</span> <span class="n">grid</span><span class="o">.</span><span class="n">polygon</span><span class="p">(</span>
+        <span class="n">unit_c</span><span class="p">(</span><span class="n">x</span> <span class="o">+</span> <span class="mf">0.5</span> <span class="o">*</span> <span class="n">w</span><span class="p">,</span> <span class="n">x</span> <span class="o">+</span> <span class="mf">0.5</span> <span class="o">*</span> <span class="n">w</span><span class="p">,</span> <span class="n">x</span> <span class="o">-</span> <span class="mf">0.5</span> <span class="o">*</span> <span class="n">w</span><span class="p">),</span>
+        <span class="n">unit_c</span><span class="p">(</span><span class="n">y</span> <span class="o">+</span> <span class="mf">0.5</span> <span class="o">*</span> <span class="n">h</span><span class="p">,</span> <span class="n">y</span> <span class="o">-</span> <span class="mf">0.5</span> <span class="o">*</span> <span class="n">h</span><span class="p">,</span> <span class="n">y</span> <span class="o">+</span> <span class="mf">0.5</span> <span class="o">*</span> <span class="n">h</span><span class="p">),</span>
+        <span class="n">gp</span><span class="o">=</span><span class="n">gpar</span><span class="p">(</span><span class="n">fill</span><span class="o">=</span><span class="n">col</span><span class="p">[</span><span class="s2">"indel"</span><span class="p">],</span> <span class="n">col</span><span class="o">=</span><span class="s2">"white"</span><span class="p">),</span>
+    <span class="p">),</span>
+<span class="p">}</span>
+<span class="n">ch</span><span class="o">.</span><span class="n">draw</span><span class="p">(</span><span class="n">oncoPrint</span><span class="p">(</span><span class="n">mat</span><span class="p">,</span> <span class="n">alter_fun</span><span class="o">=</span><span class="n">alter_fun_tri</span><span class="p">,</span> <span class="n">col</span><span class="o">=</span><span class="n">col</span><span class="p">))</span></code></pre></div>
+<figure>
+<img src="images/ch07_05_triangle_alter_fun.png"
+alt="Triangle alteration graphics rendered with grid.polygon()" />
+<figcaption aria-hidden="true">Triangle alteration graphics rendered
+with grid.polygon()</figcaption>
+</figure>
+<p>When defining many alteration graphics, you can preview every symbol
+alongside its label with <code>test_alter_fun()</code>:</p>
+<div class="code-wrapper"><pre class="codehilite"><code><span class="kn">from</span><span class="w"> </span><span class="nn">complexheatmap</span><span class="w"> </span><span class="kn">import</span> <span class="n">test_alter_fun</span>
+
+<span class="n">alter_fun_7</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s2">"mut1"</span><span class="p">:</span> <span class="k">lambda</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">w</span><span class="p">,</span> <span class="n">h</span><span class="p">:</span> <span class="n">grid</span><span class="o">.</span><span class="n">rect</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">w</span><span class="p">,</span> <span class="n">h</span><span class="p">,</span> <span class="n">gp</span><span class="o">=</span><span class="n">gpar</span><span class="p">(</span><span class="n">fill</span><span class="o">=</span><span class="s2">"red"</span><span class="p">,</span> <span class="n">col</span><span class="o">=</span><span class="kc">None</span><span class="p">)),</span>
+    <span class="s2">"mut2"</span><span class="p">:</span> <span class="k">lambda</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">w</span><span class="p">,</span> <span class="n">h</span><span class="p">:</span> <span class="n">grid</span><span class="o">.</span><span class="n">rect</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">w</span><span class="p">,</span> <span class="n">h</span><span class="p">,</span> <span class="n">gp</span><span class="o">=</span><span class="n">gpar</span><span class="p">(</span><span class="n">fill</span><span class="o">=</span><span class="s2">"blue"</span><span class="p">,</span> <span class="n">col</span><span class="o">=</span><span class="kc">None</span><span class="p">)),</span>
+    <span class="s2">"mut3"</span><span class="p">:</span> <span class="k">lambda</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">w</span><span class="p">,</span> <span class="n">h</span><span class="p">:</span> <span class="n">grid</span><span class="o">.</span><span class="n">rect</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">w</span><span class="p">,</span> <span class="n">h</span><span class="p">,</span> <span class="n">gp</span><span class="o">=</span><span class="n">gpar</span><span class="p">(</span><span class="n">fill</span><span class="o">=</span><span class="s2">"yellow"</span><span class="p">,</span> <span class="n">col</span><span class="o">=</span><span class="kc">None</span><span class="p">)),</span>
+    <span class="s2">"mut4"</span><span class="p">:</span> <span class="k">lambda</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">w</span><span class="p">,</span> <span class="n">h</span><span class="p">:</span> <span class="n">grid</span><span class="o">.</span><span class="n">rect</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">w</span><span class="p">,</span> <span class="n">h</span><span class="p">,</span> <span class="n">gp</span><span class="o">=</span><span class="n">gpar</span><span class="p">(</span><span class="n">fill</span><span class="o">=</span><span class="s2">"purple"</span><span class="p">,</span> <span class="n">col</span><span class="o">=</span><span class="kc">None</span><span class="p">)),</span>
+    <span class="s2">"mut5"</span><span class="p">:</span> <span class="k">lambda</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">w</span><span class="p">,</span> <span class="n">h</span><span class="p">:</span> <span class="n">grid</span><span class="o">.</span><span class="n">rect</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">w</span><span class="p">,</span> <span class="n">h</span><span class="p">,</span> <span class="n">gp</span><span class="o">=</span><span class="n">gpar</span><span class="p">(</span><span class="n">fill</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">lwd</span><span class="o">=</span><span class="mi">2</span><span class="p">)),</span>
+    <span class="s2">"mut6"</span><span class="p">:</span> <span class="k">lambda</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">w</span><span class="p">,</span> <span class="n">h</span><span class="p">:</span> <span class="n">grid</span><span class="o">.</span><span class="n">points</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">pch</span><span class="o">=</span><span class="mi">16</span><span class="p">),</span>
+    <span class="s2">"mut7"</span><span class="p">:</span> <span class="k">lambda</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">w</span><span class="p">,</span> <span class="n">h</span><span class="p">:</span> <span class="n">grid</span><span class="o">.</span><span class="n">segments</span><span class="p">(</span><span class="n">x</span> <span class="o">-</span> <span class="n">w</span> <span class="o">*</span> <span class="mf">0.5</span><span class="p">,</span> <span class="n">y</span> <span class="o">-</span> <span class="n">h</span> <span class="o">*</span> <span class="mf">0.5</span><span class="p">,</span> <span class="n">x</span> <span class="o">+</span> <span class="n">w</span> <span class="o">*</span> <span class="mf">0.5</span><span class="p">,</span> <span class="n">y</span> <span class="o">+</span> <span class="n">h</span> <span class="o">*</span> <span class="mf">0.5</span><span class="p">,</span> <span class="n">gp</span><span class="o">=</span><span class="n">gpar</span><span class="p">(</span><span class="n">lwd</span><span class="o">=</span><span class="mi">2</span><span class="p">)),</span>
+<span class="p">}</span>
+<span class="n">test_alter_fun</span><span class="p">(</span><span class="n">alter_fun_7</span><span class="p">)</span></code></pre></div>
+<figure>
+<img src="images/ch07_06_test_alter_fun.png"
+alt="Previewing alteration functions with test_alter_fun()" />
+<figcaption aria-hidden="true">Previewing alteration functions with
+test_alter_fun()</figcaption>
+</figure>
+<p>When passing a single-callable <code>alter_fun</code> to
+<code>test_alter_fun()</code>, supply <code>type=["snv", "indel"]</code>
+explicitly so <code>test_alter_fun()</code> knows which alteration
+labels to test.</p>
+<h3 id="oncoprint-background"><span class="header-section-number">7.1.3</span> Background<a class="anchor-section" aria-label="Anchor link to section" href="#oncoprint-background">#</a></h3>
+<p>In a dictionary <code>alter_fun</code>, the special
+<code>"background"</code> key controls the background layer drawn
+beneath alterations:</p>
+<div class="code-wrapper"><pre class="codehilite"><code><span class="n">af_green</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s2">"background"</span><span class="p">:</span> <span class="k">lambda</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">w</span><span class="p">,</span> <span class="n">h</span><span class="p">:</span> <span class="n">grid</span><span class="o">.</span><span class="n">rect</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">w</span><span class="p">,</span> <span class="n">h</span><span class="p">,</span> <span class="n">gp</span><span class="o">=</span><span class="n">gpar</span><span class="p">(</span><span class="n">fill</span><span class="o">=</span><span class="s2">"#00FF0020"</span><span class="p">)),</span>
+    <span class="o">**</span><span class="n">alter_fun</span><span class="p">,</span>
+<span class="p">}</span>
+<span class="n">ch</span><span class="o">.</span><span class="n">draw</span><span class="p">(</span><span class="n">oncoPrint</span><span class="p">(</span><span class="n">mat</span><span class="p">,</span> <span class="n">alter_fun</span><span class="o">=</span><span class="n">af_green</span><span class="p">,</span> <span class="n">col</span><span class="o">=</span><span class="n">col</span><span class="p">))</span></code></pre></div>
+<figure>
+<img src="images/ch07_07_bg_green.png"
+alt="Custom light-green cell background" />
+<figcaption aria-hidden="true">Custom light-green cell
+background</figcaption>
+</figure>
+<p>To remove the background completely, either omit
+<code>"background"</code> or supply a no-op callback
+<code>lambda *args: None</code> (note that setting
+<code>"background": None</code> directly is not callable; a no-op
+callable explicitly skips drawing):</p>
+<div class="code-wrapper"><pre class="codehilite"><code><span class="n">af_none</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s2">"background"</span><span class="p">:</span> <span class="k">lambda</span> <span class="o">*</span><span class="n">args</span><span class="p">:</span> <span class="kc">None</span><span class="p">,</span>
+    <span class="o">**</span><span class="n">alter_fun</span><span class="p">,</span>
+<span class="p">}</span>
+<span class="n">ch</span><span class="o">.</span><span class="n">draw</span><span class="p">(</span><span class="n">oncoPrint</span><span class="p">(</span><span class="n">mat</span><span class="p">,</span> <span class="n">alter_fun</span><span class="o">=</span><span class="n">af_none</span><span class="p">,</span> <span class="n">col</span><span class="o">=</span><span class="n">col</span><span class="p">))</span></code></pre></div>
+<figure>
+<img src="images/ch07_08_bg_none.png"
+alt="OncoPrint with background removed" />
+<figcaption aria-hidden="true">OncoPrint with background
+removed</figcaption>
+</figure>
+<h3 id="complex-alteration-types"><span class="header-section-number">7.1.4</span> Complex alteration types<a class="anchor-section" aria-label="Anchor link to section" href="#complex-alteration-types">#</a></h3>
+<p>When integrating multiple variant calling or genomic annotation
+sources, alteration types often split naturally into <strong>primary
+classes</strong> (e.g., <code>snv</code>, <code>indel</code>) and
+<strong>secondary classes</strong> (e.g., <code>intronic</code>,
+<code>exonic</code>). Instead of creating four separate colors, you can
+draw colored rectangles for primary classes and overlay simple geometric
+symbols (dots for <code>intronic</code>, diagonal crosses for
+<code>exonic</code>) for secondary classes, while keeping the marginal
+barplots and legend focused exclusively on <code>snv</code> and
+<code>indel</code>:</p>
+<div class="code-wrapper"><pre class="codehilite"><code><span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">complexheatmap</span><span class="w"> </span><span class="kn">import</span> <span class="n">HeatmapAnnotation</span><span class="p">,</span> <span class="n">anno_oncoprint_barplot</span><span class="p">,</span> <span class="n">rowAnnotation</span>
+
+<span class="n">rng</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">default_rng</span><span class="p">(</span><span class="mi">123</span><span class="p">)</span>
+<span class="n">x1</span> <span class="o">=</span> <span class="n">rng</span><span class="o">.</span><span class="n">choice</span><span class="p">([</span><span class="s2">""</span><span class="p">,</span> <span class="s2">"snv"</span><span class="p">],</span> <span class="mi">100</span><span class="p">,</span> <span class="n">replace</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">p</span><span class="o">=</span><span class="p">[</span><span class="mf">0.8</span><span class="p">,</span> <span class="mf">0.2</span><span class="p">])</span>
+<span class="n">x2</span> <span class="o">=</span> <span class="n">rng</span><span class="o">.</span><span class="n">choice</span><span class="p">([</span><span class="s2">""</span><span class="p">,</span> <span class="s2">"indel"</span><span class="p">],</span> <span class="mi">100</span><span class="p">,</span> <span class="n">replace</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">p</span><span class="o">=</span><span class="p">[</span><span class="mf">0.8</span><span class="p">,</span> <span class="mf">0.2</span><span class="p">])</span>
+<span class="n">x2</span><span class="p">[</span><span class="n">x1</span> <span class="o">==</span> <span class="s2">"snv"</span><span class="p">]</span> <span class="o">=</span> <span class="s2">""</span>
+<span class="n">x3</span> <span class="o">=</span> <span class="n">rng</span><span class="o">.</span><span class="n">choice</span><span class="p">([</span><span class="s2">""</span><span class="p">,</span> <span class="s2">"intronic"</span><span class="p">],</span> <span class="mi">100</span><span class="p">,</span> <span class="n">replace</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">p</span><span class="o">=</span><span class="p">[</span><span class="mf">0.5</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">])</span>
+<span class="n">x4</span> <span class="o">=</span> <span class="n">rng</span><span class="o">.</span><span class="n">choice</span><span class="p">([</span><span class="s2">""</span><span class="p">,</span> <span class="s2">"exonic"</span><span class="p">],</span> <span class="mi">100</span><span class="p">,</span> <span class="n">replace</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">p</span><span class="o">=</span><span class="p">[</span><span class="mf">0.5</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">])</span>
+<span class="n">x3</span><span class="p">[(</span><span class="n">x1</span> <span class="o">==</span> <span class="s2">""</span><span class="p">)</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">x2</span> <span class="o">==</span> <span class="s2">""</span><span class="p">)]</span> <span class="o">=</span> <span class="s2">""</span>
+<span class="n">x4</span><span class="p">[(</span><span class="n">x1</span> <span class="o">==</span> <span class="s2">""</span><span class="p">)</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">x2</span> <span class="o">==</span> <span class="s2">""</span><span class="p">)]</span> <span class="o">=</span> <span class="s2">""</span>
+<span class="n">x4</span><span class="p">[</span><span class="n">x3</span> <span class="o">==</span> <span class="s2">"intronic"</span><span class="p">]</span> <span class="o">=</span> <span class="s2">""</span>
+<span class="n">cells</span> <span class="o">=</span> <span class="p">[</span><span class="s2">";"</span><span class="o">.</span><span class="n">join</span><span class="p">([</span><span class="n">t</span> <span class="k">for</span> <span class="n">t</span> <span class="ow">in</span> <span class="n">row</span> <span class="k">if</span> <span class="n">t</span> <span class="o">!=</span> <span class="s2">""</span><span class="p">])</span> <span class="k">for</span> <span class="n">row</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">x1</span><span class="p">,</span> <span class="n">x2</span><span class="p">,</span> <span class="n">x3</span><span class="p">,</span> <span class="n">x4</span><span class="p">)]</span>
+<span class="n">m_complex</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span>
+    <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">cells</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="nb">object</span><span class="p">)</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">10</span><span class="p">),</span>
+    <span class="n">index</span><span class="o">=</span><span class="p">[</span><span class="sa">f</span><span class="s2">"g</span><span class="si">{</span><span class="n">i</span><span class="si">}</span><span class="s2">"</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">11</span><span class="p">)],</span>
+    <span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="sa">f</span><span class="s2">"s</span><span class="si">{</span><span class="n">i</span><span class="si">}</span><span class="s2">"</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">11</span><span class="p">)],</span>
+<span class="p">)</span>
+
+<span class="n">af_complex</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s2">"background"</span><span class="p">:</span> <span class="k">lambda</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">w</span><span class="p">,</span> <span class="n">h</span><span class="p">:</span> <span class="n">grid</span><span class="o">.</span><span class="n">rect</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">w</span> <span class="o">*</span> <span class="mf">0.9</span><span class="p">,</span> <span class="n">h</span> <span class="o">*</span> <span class="mf">0.9</span><span class="p">,</span> <span class="n">gp</span><span class="o">=</span><span class="n">gpar</span><span class="p">(</span><span class="n">fill</span><span class="o">=</span><span class="s2">"#CCCCCC"</span><span class="p">,</span> <span class="n">col</span><span class="o">=</span><span class="kc">None</span><span class="p">)),</span>
+    <span class="s2">"snv"</span><span class="p">:</span> <span class="k">lambda</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">w</span><span class="p">,</span> <span class="n">h</span><span class="p">:</span> <span class="n">grid</span><span class="o">.</span><span class="n">rect</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">w</span> <span class="o">*</span> <span class="mf">0.9</span><span class="p">,</span> <span class="n">h</span> <span class="o">*</span> <span class="mf">0.9</span><span class="p">,</span> <span class="n">gp</span><span class="o">=</span><span class="n">gpar</span><span class="p">(</span><span class="n">fill</span><span class="o">=</span><span class="s2">"red"</span><span class="p">,</span> <span class="n">col</span><span class="o">=</span><span class="kc">None</span><span class="p">)),</span>
+    <span class="s2">"indel"</span><span class="p">:</span> <span class="k">lambda</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">w</span><span class="p">,</span> <span class="n">h</span><span class="p">:</span> <span class="n">grid</span><span class="o">.</span><span class="n">rect</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">w</span> <span class="o">*</span> <span class="mf">0.9</span><span class="p">,</span> <span class="n">h</span> <span class="o">*</span> <span class="mf">0.9</span><span class="p">,</span> <span class="n">gp</span><span class="o">=</span><span class="n">gpar</span><span class="p">(</span><span class="n">fill</span><span class="o">=</span><span class="s2">"blue"</span><span class="p">,</span> <span class="n">col</span><span class="o">=</span><span class="kc">None</span><span class="p">)),</span>
+    <span class="s2">"intronic"</span><span class="p">:</span> <span class="k">lambda</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">w</span><span class="p">,</span> <span class="n">h</span><span class="p">:</span> <span class="n">grid</span><span class="o">.</span><span class="n">points</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">pch</span><span class="o">=</span><span class="mi">16</span><span class="p">),</span>
+    <span class="s2">"exonic"</span><span class="p">:</span> <span class="k">lambda</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">w</span><span class="p">,</span> <span class="n">h</span><span class="p">:</span> <span class="p">(</span>
+        <span class="n">grid</span><span class="o">.</span><span class="n">segments</span><span class="p">(</span><span class="n">x</span> <span class="o">-</span> <span class="n">w</span> <span class="o">*</span> <span class="mf">0.4</span><span class="p">,</span> <span class="n">y</span> <span class="o">-</span> <span class="n">h</span> <span class="o">*</span> <span class="mf">0.4</span><span class="p">,</span> <span class="n">x</span> <span class="o">+</span> <span class="n">w</span> <span class="o">*</span> <span class="mf">0.4</span><span class="p">,</span> <span class="n">y</span> <span class="o">+</span> <span class="n">h</span> <span class="o">*</span> <span class="mf">0.4</span><span class="p">,</span> <span class="n">gp</span><span class="o">=</span><span class="n">gpar</span><span class="p">(</span><span class="n">lwd</span><span class="o">=</span><span class="mi">2</span><span class="p">)),</span>
+        <span class="n">grid</span><span class="o">.</span><span class="n">segments</span><span class="p">(</span><span class="n">x</span> <span class="o">+</span> <span class="n">w</span> <span class="o">*</span> <span class="mf">0.4</span><span class="p">,</span> <span class="n">y</span> <span class="o">-</span> <span class="n">h</span> <span class="o">*</span> <span class="mf">0.4</span><span class="p">,</span> <span class="n">x</span> <span class="o">-</span> <span class="n">w</span> <span class="o">*</span> <span class="mf">0.4</span><span class="p">,</span> <span class="n">y</span> <span class="o">+</span> <span class="n">h</span> <span class="o">*</span> <span class="mf">0.4</span><span class="p">,</span> <span class="n">gp</span><span class="o">=</span><span class="n">gpar</span><span class="p">(</span><span class="n">lwd</span><span class="o">=</span><span class="mi">2</span><span class="p">)),</span>
+    <span class="p">),</span>
+<span class="p">}</span>
+
+<span class="n">op</span> <span class="o">=</span> <span class="n">oncoPrint</span><span class="p">(</span>
+    <span class="n">m_complex</span><span class="p">,</span>
+    <span class="n">alter_fun</span><span class="o">=</span><span class="n">af_complex</span><span class="p">,</span>
+    <span class="n">col</span><span class="o">=</span><span class="p">{</span><span class="s2">"snv"</span><span class="p">:</span> <span class="s2">"red"</span><span class="p">,</span> <span class="s2">"indel"</span><span class="p">:</span> <span class="s2">"blue"</span><span class="p">},</span>
+    <span class="n">top_annotation</span><span class="o">=</span><span class="n">HeatmapAnnotation</span><span class="p">(</span><span class="n">cbar</span><span class="o">=</span><span class="n">anno_oncoprint_barplot</span><span class="p">([</span><span class="s2">"snv"</span><span class="p">,</span> <span class="s2">"indel"</span><span class="p">])),</span>
+    <span class="n">right_annotation</span><span class="o">=</span><span class="n">rowAnnotation</span><span class="p">(</span><span class="n">rbar</span><span class="o">=</span><span class="n">anno_oncoprint_barplot</span><span class="p">([</span><span class="s2">"snv"</span><span class="p">,</span> <span class="s2">"indel"</span><span class="p">],</span> <span class="n">which</span><span class="o">=</span><span class="s2">"row"</span><span class="p">)),</span>
+    <span class="n">heatmap_legend_param</span><span class="o">=</span><span class="p">{</span><span class="s2">"title"</span><span class="p">:</span> <span class="s2">"Alterations"</span><span class="p">,</span> <span class="s2">"at"</span><span class="p">:</span> <span class="p">[</span><span class="s2">"snv"</span><span class="p">,</span> <span class="s2">"indel"</span><span class="p">],</span> <span class="s2">"labels"</span><span class="p">:</span> <span class="p">[</span><span class="s2">"snv"</span><span class="p">,</span> <span class="s2">"indel"</span><span class="p">]},</span>
+<span class="p">)</span>
+<span class="n">ch</span><span class="o">.</span><span class="n">draw</span><span class="p">(</span><span class="n">op</span><span class="p">)</span></code></pre></div>
+<figure>
+<img src="images/ch07_09_complex_alt_types.png"
+alt="Layered primary rectangles and secondary geometric symbols" />
+<figcaption aria-hidden="true">Layered primary rectangles and secondary
+geometric symbols</figcaption>
+</figure>
+<p>Passing <code>["snv", "indel"]</code> to
+<code>anno_oncoprint_barplot()</code> and
+<code>at=["snv", "indel"]</code> in <code>heatmap_legend_param</code>
+ensures that the barplot counts and legend entries aggregate across
+<code>intronic</code> and <code>exonic</code> subtypes cleanly.</p>
+<h3 id="simplify-alter-fun"><span class="header-section-number">7.1.5</span> Simplify alter_fun<a class="anchor-section" aria-label="Anchor link to section" href="#simplify-alter-fun">#</a></h3>
+<p>When alteration graphics are standard rectangles
+(<code>"rect"</code>) or points (<code>"point"</code>),
+<code>alter_graphic()</code> constructs the drawing function
+automatically with built-in margin handling:</p>
+<div class="code-wrapper"><pre class="codehilite"><code><span class="kn">from</span><span class="w"> </span><span class="nn">complexheatmap</span><span class="w"> </span><span class="kn">import</span> <span class="n">alter_graphic</span>
+
+<span class="n">op</span> <span class="o">=</span> <span class="n">oncoPrint</span><span class="p">(</span>
+    <span class="n">mat</span><span class="p">,</span>
+    <span class="n">alter_fun</span><span class="o">=</span><span class="p">{</span>
+        <span class="s2">"snv"</span><span class="p">:</span> <span class="n">alter_graphic</span><span class="p">(</span><span class="s2">"rect"</span><span class="p">,</span> <span class="n">width</span><span class="o">=</span><span class="mf">0.9</span><span class="p">,</span> <span class="n">height</span><span class="o">=</span><span class="mf">0.9</span><span class="p">,</span> <span class="n">fill</span><span class="o">=</span><span class="n">col</span><span class="p">[</span><span class="s2">"snv"</span><span class="p">]),</span>
+        <span class="s2">"indel"</span><span class="p">:</span> <span class="n">alter_graphic</span><span class="p">(</span><span class="s2">"rect"</span><span class="p">,</span> <span class="n">width</span><span class="o">=</span><span class="mf">0.9</span><span class="p">,</span> <span class="n">height</span><span class="o">=</span><span class="mf">0.4</span><span class="p">,</span> <span class="n">fill</span><span class="o">=</span><span class="n">col</span><span class="p">[</span><span class="s2">"indel"</span><span class="p">]),</span>
+    <span class="p">},</span>
+    <span class="n">col</span><span class="o">=</span><span class="n">col</span><span class="p">,</span>
+<span class="p">)</span>
+<span class="n">ch</span><span class="o">.</span><span class="n">draw</span><span class="p">(</span><span class="n">op</span><span class="p">)</span></code></pre></div>
+<figure>
+<img src="images/ch07_10_alter_graphic.png"
+alt="Simplifying rectangle alteration functions via alter_graphic()" />
+<figcaption aria-hidden="true">Simplifying rectangle alteration
+functions via alter_graphic()</figcaption>
+</figure>
+<h3 id="other-heatmap-related-settings"><span class="header-section-number">7.1.6</span> Other heatmap-related
+settings<a class="anchor-section" aria-label="Anchor link to section" href="#other-heatmap-related-settings">#</a></h3>
+<p>Column names are hidden by default in <code>oncoPrint()</code>. Turn
+them on with <code>show_column_names=True</code>:</p>
+<div class="code-wrapper"><pre class="codehilite"><code><span class="n">ch</span><span class="o">.</span><span class="n">draw</span><span class="p">(</span><span class="n">oncoPrint</span><span class="p">(</span><span class="n">mat</span><span class="p">,</span> <span class="n">alter_fun</span><span class="o">=</span><span class="n">alter_fun</span><span class="p">,</span> <span class="n">col</span><span class="o">=</span><span class="n">col</span><span class="p">,</span> <span class="n">show_column_names</span><span class="o">=</span><span class="kc">True</span><span class="p">))</span></code></pre></div>
+<figure>
+<img src="images/ch07_11_show_column_names.png"
+alt="Displaying sample column names on an OncoPrint" />
+<figcaption aria-hidden="true">Displaying sample column names on an
+OncoPrint</figcaption>
+</figure>
+<p>Row names and alteration percentage labels are controlled by
+<code>show_row_names</code>, <code>show_pct</code>,
+<code>row_names_side</code>, <code>pct_side</code>, <code>pct_gp</code>,
+and <code>pct_digits</code>:</p>
+<div class="code-wrapper"><pre class="codehilite"><code><span class="n">ch</span><span class="o">.</span><span class="n">draw</span><span class="p">(</span>
+    <span class="n">oncoPrint</span><span class="p">(</span>
+        <span class="n">mat</span><span class="p">,</span>
+        <span class="n">alter_fun</span><span class="o">=</span><span class="n">alter_fun</span><span class="p">,</span>
+        <span class="n">col</span><span class="o">=</span><span class="n">col</span><span class="p">,</span>
+        <span class="n">row_names_side</span><span class="o">=</span><span class="s2">"left"</span><span class="p">,</span>
+        <span class="n">pct_side</span><span class="o">=</span><span class="s2">"right"</span><span class="p">,</span>
+        <span class="n">pct_digits</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span>
+    <span class="p">)</span>
+<span class="p">)</span></code></pre></div>
+<figure>
+<img src="images/ch07_12_pct_and_row_names_side.png"
+alt="Swapping row_names_side and pct_side with two decimal digits" />
+<figcaption aria-hidden="true">Swapping row_names_side and pct_side with
+two decimal digits</figcaption>
+</figure>
+<p>The top and right barplots are implemented via
+<code>anno_oncoprint_barplot()</code>, so sizes and axis parameters can
+be configured directly. Note that when specifying
+<code>axis_param</code> for a row-side
+<code>anno_oncoprint_barplot()</code> inside
+<code>rowAnnotation()</code>, pass <code>which="row"</code> explicitly
+so axis validation checks <code>"top"</code>/<code>"bottom"</code> sides
+against the row orientation:</p>
+<div class="code-wrapper"><pre class="codehilite"><code><span class="kn">from</span><span class="w"> </span><span class="nn">complexheatmap</span><span class="w"> </span><span class="kn">import</span> <span class="n">unit</span>
+
+<span class="n">ch</span><span class="o">.</span><span class="n">draw</span><span class="p">(</span>
+    <span class="n">oncoPrint</span><span class="p">(</span>
+        <span class="n">mat</span><span class="p">,</span>
+        <span class="n">alter_fun</span><span class="o">=</span><span class="n">alter_fun</span><span class="p">,</span>
+        <span class="n">col</span><span class="o">=</span><span class="n">col</span><span class="p">,</span>
+        <span class="n">top_annotation</span><span class="o">=</span><span class="n">HeatmapAnnotation</span><span class="p">(</span><span class="n">cbar</span><span class="o">=</span><span class="n">anno_oncoprint_barplot</span><span class="p">(</span><span class="n">height</span><span class="o">=</span><span class="n">unit</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="s2">"cm"</span><span class="p">))),</span>
+        <span class="n">right_annotation</span><span class="o">=</span><span class="n">rowAnnotation</span><span class="p">(</span>
+            <span class="n">rbar</span><span class="o">=</span><span class="n">anno_oncoprint_barplot</span><span class="p">(</span>
+                <span class="n">which</span><span class="o">=</span><span class="s2">"row"</span><span class="p">,</span>
+                <span class="n">width</span><span class="o">=</span><span class="n">unit</span><span class="p">(</span><span class="mi">4</span><span class="p">,</span> <span class="s2">"cm"</span><span class="p">),</span>
+                <span class="n">axis_param</span><span class="o">=</span><span class="p">{</span><span class="s2">"at"</span><span class="p">:</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">4</span><span class="p">],</span> <span class="s2">"labels"</span><span class="p">:</span> <span class="p">[</span><span class="s2">"zero"</span><span class="p">,</span> <span class="s2">"two"</span><span class="p">,</span> <span class="s2">"four"</span><span class="p">],</span> <span class="s2">"side"</span><span class="p">:</span> <span class="s2">"top"</span><span class="p">,</span> <span class="s2">"labels_rot"</span><span class="p">:</span> <span class="mi">0</span><span class="p">},</span>
+            <span class="p">)</span>
+        <span class="p">),</span>
+    <span class="p">)</span>
+<span class="p">)</span></code></pre></div>
+<figure>
+<img src="images/ch07_13_custom_barplot_axis.png"
+alt="Customizing top and right anno_oncoprint_barplot() axes and sizes" />
+<figcaption aria-hidden="true">Customizing top and right
+anno_oncoprint_barplot() axes and sizes</figcaption>
+</figure>
+<p>You can also place the gene alteration barplot on the left with a
+reversed x-axis and omit the right barplot:</p>
+<div class="code-wrapper"><pre class="codehilite"><code><span class="n">ch</span><span class="o">.</span><span class="n">draw</span><span class="p">(</span>
+    <span class="n">oncoPrint</span><span class="p">(</span>
+        <span class="n">mat</span><span class="p">,</span>
+        <span class="n">alter_fun</span><span class="o">=</span><span class="n">alter_fun</span><span class="p">,</span>
+        <span class="n">col</span><span class="o">=</span><span class="n">col</span><span class="p">,</span>
+        <span class="n">left_annotation</span><span class="o">=</span><span class="n">rowAnnotation</span><span class="p">(</span>
+            <span class="n">rbar</span><span class="o">=</span><span class="n">anno_oncoprint_barplot</span><span class="p">(</span><span class="n">which</span><span class="o">=</span><span class="s2">"row"</span><span class="p">,</span> <span class="n">axis_param</span><span class="o">=</span><span class="p">{</span><span class="s2">"direction"</span><span class="p">:</span> <span class="s2">"reverse"</span><span class="p">})</span>
+        <span class="p">),</span>
+        <span class="n">right_annotation</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+    <span class="p">)</span>
+<span class="p">)</span></code></pre></div>
+<figure>
+<img src="images/ch07_14_left_barplot.png"
+alt="Moving the gene alteration barplot to the left with reversed axis" />
+<figcaption aria-hidden="true">Moving the gene alteration barplot to the
+left with reversed axis</figcaption>
+</figure>
+<p>Because <code>oncoPrint()</code> returns a <code>Heatmap</code>, most
+layout, splitting, typography, and annotation arguments from
+<code>Heatmap()</code> apply directly. Next, we demonstrate these
+features on a real cancer genomics dataset.</p>
+<h2 id="apply-to-cbioportal-dataset"><span class="header-section-number">7.2</span> Apply to cBioPortal dataset<a class="anchor-section" aria-label="Anchor link to section" href="#apply-to-cbioportal-dataset">#</a></h2>
+<p>The TCGA Lung Adenocarcinoma dataset from <a
+href="http://www.cbioportal.org/">cBioPortal</a>
+(<em>Ras-Raf-MEK-Erk/JNK signaling</em>, 26 genes across 172 samples)
+and its cBioPortal sample order are bundled directly in
+<code>ComplexHeatmap-py</code> via <code>ch.load_dataset()</code>:</p>
+<div class="code-wrapper"><pre class="codehilite"><code><span class="n">mat</span> <span class="o">=</span> <span class="n">ch</span><span class="o">.</span><span class="n">load_dataset</span><span class="p">(</span><span class="s2">"tcga_lung_adenocarcinoma"</span><span class="p">)</span>
+<span class="n">mat</span><span class="o">.</span><span class="n">iloc</span><span class="p">[:</span><span class="mi">3</span><span class="p">,</span> <span class="p">:</span><span class="mi">3</span><span class="p">]</span></code></pre></div>
+<div class="code-wrapper"><pre class="codehilite"><code>         TCGA-05-4384-01 TCGA-05-4390-01 TCGA-05-4425-01
+row_name                                                
+KRAS                                MUT;                
+HRAS                                                    
+BRAF                                                    </code></pre></div>
+<p>This matrix contains three alteration types: <code>HOMDEL</code>,
+<code>AMP</code>, and <code>MUT</code>. We define their colors and
+visual styles using <code>alter_graphic()</code>:</p>
+<div class="code-wrapper"><pre class="codehilite"><code><span class="n">col</span> <span class="o">=</span> <span class="p">{</span><span class="s2">"HOMDEL"</span><span class="p">:</span> <span class="s2">"blue"</span><span class="p">,</span> <span class="s2">"AMP"</span><span class="p">:</span> <span class="s2">"red"</span><span class="p">,</span> <span class="s2">"MUT"</span><span class="p">:</span> <span class="s2">"#008000"</span><span class="p">}</span>
+<span class="n">alter_fun</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s2">"background"</span><span class="p">:</span> <span class="n">alter_graphic</span><span class="p">(</span><span class="s2">"rect"</span><span class="p">,</span> <span class="n">fill</span><span class="o">=</span><span class="s2">"#CCCCCC"</span><span class="p">),</span>
+    <span class="s2">"HOMDEL"</span><span class="p">:</span> <span class="n">alter_graphic</span><span class="p">(</span><span class="s2">"rect"</span><span class="p">,</span> <span class="n">fill</span><span class="o">=</span><span class="n">col</span><span class="p">[</span><span class="s2">"HOMDEL"</span><span class="p">]),</span>
+    <span class="s2">"AMP"</span><span class="p">:</span> <span class="n">alter_graphic</span><span class="p">(</span><span class="s2">"rect"</span><span class="p">,</span> <span class="n">fill</span><span class="o">=</span><span class="n">col</span><span class="p">[</span><span class="s2">"AMP"</span><span class="p">]),</span>
+    <span class="s2">"MUT"</span><span class="p">:</span> <span class="n">alter_graphic</span><span class="p">(</span><span class="s2">"rect"</span><span class="p">,</span> <span class="n">height</span><span class="o">=</span><span class="mf">0.33</span><span class="p">,</span> <span class="n">fill</span><span class="o">=</span><span class="n">col</span><span class="p">[</span><span class="s2">"MUT"</span><span class="p">]),</span>
+<span class="p">}</span></code></pre></div>
+<p>Now construct and draw the OncoPrint, saving
+<code>column_title</code> and <code>heatmap_legend_param</code> for
+reuse below:</p>
+<div class="code-wrapper"><pre class="codehilite"><code><span class="n">column_title</span> <span class="o">=</span> <span class="s2">"OncoPrint for TCGA Lung Adenocarcinoma, genes in Ras Raf MEK JNK signalling"</span>
+<span class="n">heatmap_legend_param</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s2">"title"</span><span class="p">:</span> <span class="s2">"Alternations"</span><span class="p">,</span>
+    <span class="s2">"at"</span><span class="p">:</span> <span class="p">[</span><span class="s2">"HOMDEL"</span><span class="p">,</span> <span class="s2">"AMP"</span><span class="p">,</span> <span class="s2">"MUT"</span><span class="p">],</span>
+    <span class="s2">"labels"</span><span class="p">:</span> <span class="p">[</span><span class="s2">"Deep deletion"</span><span class="p">,</span> <span class="s2">"Amplification"</span><span class="p">,</span> <span class="s2">"Mutation"</span><span class="p">],</span>
+<span class="p">}</span>
+
+<span class="n">op</span> <span class="o">=</span> <span class="n">oncoPrint</span><span class="p">(</span>
+    <span class="n">mat</span><span class="p">,</span>
+    <span class="n">alter_fun</span><span class="o">=</span><span class="n">alter_fun</span><span class="p">,</span>
+    <span class="n">col</span><span class="o">=</span><span class="n">col</span><span class="p">,</span>
+    <span class="n">column_title</span><span class="o">=</span><span class="n">column_title</span><span class="p">,</span>
+    <span class="n">heatmap_legend_param</span><span class="o">=</span><span class="n">heatmap_legend_param</span><span class="p">,</span>
+    <span class="n">row_names_gp</span><span class="o">=</span><span class="n">gpar</span><span class="p">(</span><span class="n">fontsize</span><span class="o">=</span><span class="mi">8</span><span class="p">),</span>
+    <span class="n">pct_gp</span><span class="o">=</span><span class="n">gpar</span><span class="p">(</span><span class="n">fontsize</span><span class="o">=</span><span class="mi">8</span><span class="p">),</span>
+<span class="p">)</span>
+<span class="n">ch</span><span class="o">.</span><span class="n">draw</span><span class="p">(</span><span class="n">op</span><span class="p">)</span></code></pre></div>
+<figure>
+<img src="images/ch07_15_tcga_default.png"
+alt="TCGA Lung Adenocarcinoma OncoPrint with automatic frequency and memoSort ordering" />
+<figcaption aria-hidden="true">TCGA Lung Adenocarcinoma OncoPrint with
+automatic frequency and memoSort ordering</figcaption>
+</figure>
+<p>By default, genes are sorted in descending order of overall
+alteration frequency, and samples are ordered using the
+<em>memoSort</em> algorithm to highlight mutual exclusivity across
+top-altered genes.</p>
+<h3 id="remove-empty-rows-and-columns"><span class="header-section-number">7.2.1</span> Remove empty rows and
+columns<a class="anchor-section" aria-label="Anchor link to section" href="#remove-empty-rows-and-columns">#</a></h3>
+<p>Samples and genes without any alterations remain in the plot by
+default. Set <code>remove_empty_columns=True</code> and
+<code>remove_empty_rows=True</code> to drop them:</p>
+<div class="code-wrapper"><pre class="codehilite"><code><span class="n">op_ne</span> <span class="o">=</span> <span class="n">oncoPrint</span><span class="p">(</span>
+    <span class="n">mat</span><span class="p">,</span>
+    <span class="n">alter_fun</span><span class="o">=</span><span class="n">alter_fun</span><span class="p">,</span>
+    <span class="n">col</span><span class="o">=</span><span class="n">col</span><span class="p">,</span>
+    <span class="n">remove_empty_columns</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+    <span class="n">remove_empty_rows</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+    <span class="n">column_title</span><span class="o">=</span><span class="n">column_title</span><span class="p">,</span>
+    <span class="n">heatmap_legend_param</span><span class="o">=</span><span class="n">heatmap_legend_param</span><span class="p">,</span>
+    <span class="n">row_names_gp</span><span class="o">=</span><span class="n">gpar</span><span class="p">(</span><span class="n">fontsize</span><span class="o">=</span><span class="mi">8</span><span class="p">),</span>
+    <span class="n">pct_gp</span><span class="o">=</span><span class="n">gpar</span><span class="p">(</span><span class="n">fontsize</span><span class="o">=</span><span class="mi">8</span><span class="p">),</span>
+<span class="p">)</span>
+<span class="n">ch</span><span class="o">.</span><span class="n">draw</span><span class="p">(</span><span class="n">op_ne</span><span class="p">)</span></code></pre></div>
+<figure>
+<img src="images/ch07_16_tcga_remove_empty.png"
+alt="TCGA OncoPrint after removing empty rows and columns" />
+<figcaption aria-hidden="true">TCGA OncoPrint after removing empty rows
+and columns</figcaption>
+</figure>
+<p>Notice that removing empty rows and columns changes the matrix
+dimensions (<code>26 x 172</code> shrinks to <code>22 x 121</code>), and
+percentage values are recalculated over the retained samples. If you
+concatenate the OncoPrint with additional heatmaps or pass custom
+sample/gene annotations, filter the empty rows and columns from your
+matrix beforehand so all components stay aligned.</p>
+<h3 id="reorder-the-oncoprint"><span class="header-section-number">7.2.2</span> Reorder the oncoPrint<a class="anchor-section" aria-label="Anchor link to section" href="#reorder-the-oncoprint">#</a></h3>
+<p>Like <code>Heatmap()</code>, <code>oncoPrint()</code> accepts custom
+<code>row_order</code> and <code>column_order</code> lists (0-based
+integer indices or row/column names). Here we compare <em>memoSort</em>
+against cBioPortal’s downloaded <code>sample_order</code> (filtered to
+the 121 non-empty samples when
+<code>remove_empty_columns=True</code>):</p>
+<div class="code-wrapper"><pre class="codehilite"><code><span class="n">sample_order</span> <span class="o">=</span> <span class="n">ch</span><span class="o">.</span><span class="n">load_dataset</span><span class="p">(</span><span class="s2">"sample_order"</span><span class="p">)</span>
+<span class="n">non_empty_rows</span> <span class="o">=</span> <span class="n">op_ne</span><span class="o">.</span><span class="n">_rownames</span>
+<span class="n">non_empty_cols_set</span> <span class="o">=</span> <span class="nb">set</span><span class="p">(</span><span class="n">op_ne</span><span class="o">.</span><span class="n">_colnames</span><span class="p">)</span>
+<span class="n">filtered_sample_order</span> <span class="o">=</span> <span class="p">[</span><span class="n">s</span> <span class="k">for</span> <span class="n">s</span> <span class="ow">in</span> <span class="n">sample_order</span> <span class="k">if</span> <span class="n">s</span> <span class="ow">in</span> <span class="n">non_empty_cols_set</span><span class="p">]</span>
+
+<span class="n">op_cbio</span> <span class="o">=</span> <span class="n">oncoPrint</span><span class="p">(</span>
+    <span class="n">mat</span><span class="p">,</span>
+    <span class="n">alter_fun</span><span class="o">=</span><span class="n">alter_fun</span><span class="p">,</span>
+    <span class="n">col</span><span class="o">=</span><span class="n">col</span><span class="p">,</span>
+    <span class="n">row_order</span><span class="o">=</span><span class="n">non_empty_rows</span><span class="p">,</span>
+    <span class="n">column_order</span><span class="o">=</span><span class="n">filtered_sample_order</span><span class="p">,</span>
+    <span class="n">remove_empty_columns</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+    <span class="n">remove_empty_rows</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+    <span class="n">column_title</span><span class="o">=</span><span class="n">column_title</span><span class="p">,</span>
+    <span class="n">heatmap_legend_param</span><span class="o">=</span><span class="n">heatmap_legend_param</span><span class="p">,</span>
+    <span class="n">row_names_gp</span><span class="o">=</span><span class="n">gpar</span><span class="p">(</span><span class="n">fontsize</span><span class="o">=</span><span class="mi">8</span><span class="p">),</span>
+    <span class="n">pct_gp</span><span class="o">=</span><span class="n">gpar</span><span class="p">(</span><span class="n">fontsize</span><span class="o">=</span><span class="mi">8</span><span class="p">),</span>
+<span class="p">)</span>
+<span class="n">ch</span><span class="o">.</span><span class="n">draw</span><span class="p">(</span><span class="n">op_cbio</span><span class="p">)</span></code></pre></div>
+<figure>
+<img src="images/ch07_17_tcga_cbioportal_order.png"
+alt="TCGA OncoPrint ordered by cBioPortal sample order" />
+<figcaption aria-hidden="true">TCGA OncoPrint ordered by cBioPortal
+sample order</figcaption>
+</figure>
+<h3 id="oncoprint-annotations"><span class="header-section-number">7.2.3</span> OncoPrint annotations<a class="anchor-section" aria-label="Anchor link to section" href="#oncoprint-annotations">#</a></h3>
+<p><code>anno_oncoprint_barplot()</code> supports selecting a subset of
+alteration types as positional argument <code>type</code>:</p>
+<div class="code-wrapper"><pre class="codehilite"><code><span class="n">op_sub</span> <span class="o">=</span> <span class="n">oncoPrint</span><span class="p">(</span>
+    <span class="n">mat</span><span class="p">,</span>
+    <span class="n">alter_fun</span><span class="o">=</span><span class="n">alter_fun</span><span class="p">,</span>
+    <span class="n">col</span><span class="o">=</span><span class="n">col</span><span class="p">,</span>
+    <span class="n">top_annotation</span><span class="o">=</span><span class="n">HeatmapAnnotation</span><span class="p">(</span>
+        <span class="n">column_barplot</span><span class="o">=</span><span class="n">anno_oncoprint_barplot</span><span class="p">([</span><span class="s2">"MUT"</span><span class="p">],</span> <span class="n">border</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">height</span><span class="o">=</span><span class="n">unit</span><span class="p">(</span><span class="mi">4</span><span class="p">,</span> <span class="s2">"cm"</span><span class="p">)),</span>
+    <span class="p">),</span>
+    <span class="n">right_annotation</span><span class="o">=</span><span class="n">rowAnnotation</span><span class="p">(</span>
+        <span class="n">row_barplot</span><span class="o">=</span><span class="n">anno_oncoprint_barplot</span><span class="p">(</span>
+            <span class="p">[</span><span class="s2">"AMP"</span><span class="p">,</span> <span class="s2">"HOMDEL"</span><span class="p">],</span>
+            <span class="n">which</span><span class="o">=</span><span class="s2">"row"</span><span class="p">,</span>
+            <span class="n">border</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+            <span class="n">width</span><span class="o">=</span><span class="n">unit</span><span class="p">(</span><span class="mi">4</span><span class="p">,</span> <span class="s2">"cm"</span><span class="p">),</span>
+            <span class="n">axis_param</span><span class="o">=</span><span class="p">{</span><span class="s2">"side"</span><span class="p">:</span> <span class="s2">"bottom"</span><span class="p">,</span> <span class="s2">"labels_rot"</span><span class="p">:</span> <span class="mi">90</span><span class="p">},</span>
+        <span class="p">),</span>
+    <span class="p">),</span>
+    <span class="n">remove_empty_columns</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+    <span class="n">remove_empty_rows</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+    <span class="n">column_title</span><span class="o">=</span><span class="n">column_title</span><span class="p">,</span>
+    <span class="n">heatmap_legend_param</span><span class="o">=</span><span class="n">heatmap_legend_param</span><span class="p">,</span>
+    <span class="n">row_names_gp</span><span class="o">=</span><span class="n">gpar</span><span class="p">(</span><span class="n">fontsize</span><span class="o">=</span><span class="mi">8</span><span class="p">),</span>
+    <span class="n">pct_gp</span><span class="o">=</span><span class="n">gpar</span><span class="p">(</span><span class="n">fontsize</span><span class="o">=</span><span class="mi">8</span><span class="p">),</span>
+<span class="p">)</span>
+<span class="n">ch</span><span class="o">.</span><span class="n">draw</span><span class="p">(</span><span class="n">op_sub</span><span class="p">)</span></code></pre></div>
+<figure>
+<img src="images/ch07_18_tcga_subset_barplot.png"
+alt="Showing MUT-only top barplot and AMP/HOMDEL-only right barplot" />
+<figcaption aria-hidden="true">Showing MUT-only top barplot and
+AMP/HOMDEL-only right barplot</figcaption>
+</figure>
+<p>Set <code>show_fraction=True</code> to display alteration fractions
+instead of counts:</p>
+<div class="code-wrapper"><pre class="codehilite"><code><span class="n">op_frac</span> <span class="o">=</span> <span class="n">oncoPrint</span><span class="p">(</span>
+    <span class="n">mat</span><span class="p">,</span>
+    <span class="n">alter_fun</span><span class="o">=</span><span class="n">alter_fun</span><span class="p">,</span>
+    <span class="n">col</span><span class="o">=</span><span class="n">col</span><span class="p">,</span>
+    <span class="n">top_annotation</span><span class="o">=</span><span class="n">HeatmapAnnotation</span><span class="p">(</span><span class="n">column_barplot</span><span class="o">=</span><span class="n">anno_oncoprint_barplot</span><span class="p">(</span><span class="n">show_fraction</span><span class="o">=</span><span class="kc">True</span><span class="p">)),</span>
+    <span class="n">right_annotation</span><span class="o">=</span><span class="n">rowAnnotation</span><span class="p">(</span><span class="n">row_barplot</span><span class="o">=</span><span class="n">anno_oncoprint_barplot</span><span class="p">(</span><span class="n">which</span><span class="o">=</span><span class="s2">"row"</span><span class="p">,</span> <span class="n">show_fraction</span><span class="o">=</span><span class="kc">True</span><span class="p">)),</span>
+    <span class="n">remove_empty_columns</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+    <span class="n">remove_empty_rows</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+    <span class="n">column_title</span><span class="o">=</span><span class="n">column_title</span><span class="p">,</span>
+    <span class="n">heatmap_legend_param</span><span class="o">=</span><span class="n">heatmap_legend_param</span><span class="p">,</span>
+    <span class="n">row_names_gp</span><span class="o">=</span><span class="n">gpar</span><span class="p">(</span><span class="n">fontsize</span><span class="o">=</span><span class="mi">8</span><span class="p">),</span>
+    <span class="n">pct_gp</span><span class="o">=</span><span class="n">gpar</span><span class="p">(</span><span class="n">fontsize</span><span class="o">=</span><span class="mi">8</span><span class="p">),</span>
+<span class="p">)</span>
+<span class="n">ch</span><span class="o">.</span><span class="n">draw</span><span class="p">(</span><span class="n">op_frac</span><span class="p">)</span></code></pre></div>
+<figure>
+<img src="images/ch07_19_tcga_fraction_barplot.png"
+alt="OncoPrint barplots showing fractions instead of counts" />
+<figcaption aria-hidden="true">OncoPrint barplots showing fractions
+instead of counts</figcaption>
+</figure>
+<p>Flip gene names to the left and alteration percentages to the
+right:</p>
+<div class="code-wrapper"><pre class="codehilite"><code><span class="n">op_sides</span> <span class="o">=</span> <span class="n">oncoPrint</span><span class="p">(</span>
+    <span class="n">mat</span><span class="p">,</span>
+    <span class="n">alter_fun</span><span class="o">=</span><span class="n">alter_fun</span><span class="p">,</span>
+    <span class="n">col</span><span class="o">=</span><span class="n">col</span><span class="p">,</span>
+    <span class="n">remove_empty_columns</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+    <span class="n">remove_empty_rows</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+    <span class="n">pct_side</span><span class="o">=</span><span class="s2">"right"</span><span class="p">,</span>
+    <span class="n">row_names_side</span><span class="o">=</span><span class="s2">"left"</span><span class="p">,</span>
+    <span class="n">column_title</span><span class="o">=</span><span class="n">column_title</span><span class="p">,</span>
+    <span class="n">heatmap_legend_param</span><span class="o">=</span><span class="n">heatmap_legend_param</span><span class="p">,</span>
+    <span class="n">row_names_gp</span><span class="o">=</span><span class="n">gpar</span><span class="p">(</span><span class="n">fontsize</span><span class="o">=</span><span class="mi">8</span><span class="p">),</span>
+    <span class="n">pct_gp</span><span class="o">=</span><span class="n">gpar</span><span class="p">(</span><span class="n">fontsize</span><span class="o">=</span><span class="mi">8</span><span class="p">),</span>
+<span class="p">)</span>
+<span class="n">ch</span><span class="o">.</span><span class="n">draw</span><span class="p">(</span><span class="n">op_sides</span><span class="p">)</span></code></pre></div>
+<figure>
+<img src="images/ch07_20_tcga_pct_right_names_left.png"
+alt="TCGA OncoPrint with row_names_side=‘left’ and pct_side=‘right’" />
+<figcaption aria-hidden="true">TCGA OncoPrint with row_names_side=‘left’
+and pct_side=‘right’</figcaption>
+</figure>
+<p>Additional sample-level or gene-level annotation tracks can be
+combined directly inside <code>HeatmapAnnotation()</code> and
+<code>rowAnnotation()</code>. When restricting to non-empty genes and
+samples, pre-filter <code>mat</code> so custom annotations match its
+dimensions (<code>22 x 121</code>):</p>
+<div class="code-wrapper"><pre class="codehilite"><code><span class="kn">from</span><span class="w"> </span><span class="nn">complexheatmap</span><span class="w"> </span><span class="kn">import</span> <span class="n">anno_barplot</span><span class="p">,</span> <span class="n">anno_points</span>
+
+<span class="n">mat_ne</span> <span class="o">=</span> <span class="n">mat</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">non_empty_rows</span><span class="p">,</span> <span class="p">[</span><span class="n">c</span> <span class="k">for</span> <span class="n">c</span> <span class="ow">in</span> <span class="n">mat</span><span class="o">.</span><span class="n">columns</span> <span class="k">if</span> <span class="n">c</span> <span class="ow">in</span> <span class="n">non_empty_cols_set</span><span class="p">]]</span>
+<span class="n">ng_ne</span><span class="p">,</span> <span class="n">ns_ne</span> <span class="o">=</span> <span class="n">mat_ne</span><span class="o">.</span><span class="n">shape</span>
+
+<span class="n">op_extra</span> <span class="o">=</span> <span class="n">oncoPrint</span><span class="p">(</span>
+    <span class="n">mat_ne</span><span class="p">,</span>
+    <span class="n">alter_fun</span><span class="o">=</span><span class="n">alter_fun</span><span class="p">,</span>
+    <span class="n">col</span><span class="o">=</span><span class="n">col</span><span class="p">,</span>
+    <span class="n">top_annotation</span><span class="o">=</span><span class="n">HeatmapAnnotation</span><span class="p">(</span>
+        <span class="n">cbar</span><span class="o">=</span><span class="n">anno_oncoprint_barplot</span><span class="p">(),</span>
+        <span class="n">foo1</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">ns_ne</span> <span class="o">+</span> <span class="mi">1</span><span class="p">),</span>
+        <span class="n">bar1</span><span class="o">=</span><span class="n">anno_points</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">ns_ne</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)),</span>
+    <span class="p">),</span>
+    <span class="n">left_annotation</span><span class="o">=</span><span class="n">rowAnnotation</span><span class="p">(</span><span class="n">foo2</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">ng_ne</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)),</span>
+    <span class="n">right_annotation</span><span class="o">=</span><span class="n">rowAnnotation</span><span class="p">(</span><span class="n">bar2</span><span class="o">=</span><span class="n">anno_barplot</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">ng_ne</span> <span class="o">+</span> <span class="mi">1</span><span class="p">))),</span>
+    <span class="n">column_title</span><span class="o">=</span><span class="n">column_title</span><span class="p">,</span>
+    <span class="n">heatmap_legend_param</span><span class="o">=</span><span class="n">heatmap_legend_param</span><span class="p">,</span>
+    <span class="n">row_names_gp</span><span class="o">=</span><span class="n">gpar</span><span class="p">(</span><span class="n">fontsize</span><span class="o">=</span><span class="mi">8</span><span class="p">),</span>
+    <span class="n">pct_gp</span><span class="o">=</span><span class="n">gpar</span><span class="p">(</span><span class="n">fontsize</span><span class="o">=</span><span class="mi">8</span><span class="p">),</span>
+<span class="p">)</span>
+<span class="n">ch</span><span class="o">.</span><span class="n">draw</span><span class="p">(</span><span class="n">op_extra</span><span class="p">,</span> <span class="n">padding</span><span class="o">=</span><span class="n">unit</span><span class="p">([</span><span class="mi">8</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">4</span><span class="p">],</span> <span class="s2">"mm"</span><span class="p">))</span></code></pre></div>
+<figure>
+<img src="images/ch07_21_tcga_extra_annotations.png"
+alt="Combining anno_oncoprint_barplot() with custom sample and gene annotations" />
+<figcaption aria-hidden="true">Combining anno_oncoprint_barplot() with
+custom sample and gene annotations</figcaption>
+</figure>
+<h3 id="oncoprint-as-a-heatmap"><span class="header-section-number">7.2.4</span> oncoPrint as a Heatmap<a class="anchor-section" aria-label="Anchor link to section" href="#oncoprint-as-a-heatmap">#</a></h3>
+<p>Because <code>oncoPrint()</code> returns a <code>Heatmap</code>
+instance, it can be concatenated horizontally (<code>+</code>) or
+vertically (<code>% v %</code>) with expression heatmaps and
+annotations.</p>
+<p>Horizontal concatenation with a gene-expression heatmap:</p>
+<div class="code-wrapper"><pre class="codehilite"><code><span class="kn">from</span><span class="w"> </span><span class="nn">complexheatmap</span><span class="w"> </span><span class="kn">import</span> <span class="n">Heatmap</span><span class="p">,</span> <span class="n">v</span>
+
+<span class="n">rng_expr</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">default_rng</span><span class="p">(</span><span class="mi">123</span><span class="p">)</span>
+<span class="n">ht_horiz</span> <span class="o">=</span> <span class="p">(</span>
+    <span class="n">oncoPrint</span><span class="p">(</span>
+        <span class="n">mat</span><span class="p">,</span>
+        <span class="n">alter_fun</span><span class="o">=</span><span class="n">alter_fun</span><span class="p">,</span>
+        <span class="n">col</span><span class="o">=</span><span class="n">col</span><span class="p">,</span>
+        <span class="n">column_title</span><span class="o">=</span><span class="n">column_title</span><span class="p">,</span>
+        <span class="n">heatmap_legend_param</span><span class="o">=</span><span class="n">heatmap_legend_param</span><span class="p">,</span>
+        <span class="n">row_names_gp</span><span class="o">=</span><span class="n">gpar</span><span class="p">(</span><span class="n">fontsize</span><span class="o">=</span><span class="mi">8</span><span class="p">),</span>
+        <span class="n">pct_gp</span><span class="o">=</span><span class="n">gpar</span><span class="p">(</span><span class="n">fontsize</span><span class="o">=</span><span class="mi">8</span><span class="p">),</span>
+    <span class="p">)</span>
+    <span class="o">+</span> <span class="n">Heatmap</span><span class="p">(</span><span class="n">rng_expr</span><span class="o">.</span><span class="n">standard_normal</span><span class="p">((</span><span class="n">mat</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="mi">10</span><span class="p">)),</span> <span class="n">name</span><span class="o">=</span><span class="s2">"expr"</span><span class="p">,</span> <span class="n">width</span><span class="o">=</span><span class="n">unit</span><span class="p">(</span><span class="mi">4</span><span class="p">,</span> <span class="s2">"cm"</span><span class="p">))</span>
+<span class="p">)</span>
+<span class="n">ch</span><span class="o">.</span><span class="n">draw</span><span class="p">(</span><span class="n">ht_horiz</span><span class="p">)</span></code></pre></div>
+<figure>
+<img src="images/ch07_22_tcga_concat_horiz.png"
+alt="Horizontal concatenation of an OncoPrint and an expression Heatmap" />
+<figcaption aria-hidden="true">Horizontal concatenation of an OncoPrint
+and an expression Heatmap</figcaption>
+</figure>
+<p>Vertical concatenation with a sample-aligned expression heatmap:</p>
+<div class="code-wrapper"><pre class="codehilite"><code><span class="n">ht_vert</span> <span class="o">=</span> <span class="p">(</span>
+    <span class="n">oncoPrint</span><span class="p">(</span>
+        <span class="n">mat</span><span class="p">,</span>
+        <span class="n">alter_fun</span><span class="o">=</span><span class="n">alter_fun</span><span class="p">,</span>
+        <span class="n">col</span><span class="o">=</span><span class="n">col</span><span class="p">,</span>
+        <span class="n">column_title</span><span class="o">=</span><span class="n">column_title</span><span class="p">,</span>
+        <span class="n">heatmap_legend_param</span><span class="o">=</span><span class="n">heatmap_legend_param</span><span class="p">,</span>
+        <span class="n">row_names_gp</span><span class="o">=</span><span class="n">gpar</span><span class="p">(</span><span class="n">fontsize</span><span class="o">=</span><span class="mi">8</span><span class="p">),</span>
+        <span class="n">pct_gp</span><span class="o">=</span><span class="n">gpar</span><span class="p">(</span><span class="n">fontsize</span><span class="o">=</span><span class="mi">8</span><span class="p">),</span>
+    <span class="p">)</span>
+    <span class="o">%</span> <span class="n">v</span>
+    <span class="o">%</span> <span class="n">Heatmap</span><span class="p">(</span><span class="n">rng_expr</span><span class="o">.</span><span class="n">standard_normal</span><span class="p">((</span><span class="mi">10</span><span class="p">,</span> <span class="n">mat</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">])),</span> <span class="n">name</span><span class="o">=</span><span class="s2">"expr"</span><span class="p">,</span> <span class="n">height</span><span class="o">=</span><span class="n">unit</span><span class="p">(</span><span class="mi">4</span><span class="p">,</span> <span class="s2">"cm"</span><span class="p">))</span>
+<span class="p">)</span>
+<span class="n">ch</span><span class="o">.</span><span class="n">draw</span><span class="p">(</span><span class="n">ht_vert</span><span class="p">)</span></code></pre></div>
+<figure>
+<img src="images/ch07_23_tcga_concat_vert.png"
+alt="Vertical concatenation of an OncoPrint and an expression Heatmap" />
+<figcaption aria-hidden="true">Vertical concatenation of an OncoPrint
+and an expression Heatmap</figcaption>
+</figure>
+<p>Splitting a combined <code>HeatmapList</code> by rows via
+<code>row_split</code> in <code>draw()</code>:</p>
+<div class="code-wrapper"><pre class="codehilite"><code><span class="n">row_grp</span> <span class="o">=</span> <span class="n">rng_expr</span><span class="o">.</span><span class="n">choice</span><span class="p">([</span><span class="s2">"Pathway A"</span><span class="p">,</span> <span class="s2">"Pathway B"</span><span class="p">],</span> <span class="n">mat</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">replace</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">ch</span><span class="o">.</span><span class="n">draw</span><span class="p">(</span><span class="n">ht_horiz</span><span class="p">,</span> <span class="n">row_split</span><span class="o">=</span><span class="n">row_grp</span><span class="p">)</span></code></pre></div>
+<figure>
+<img src="images/ch07_24_tcga_split.png"
+alt="Splitting a combined OncoPrint and Heatmap by gene groups" />
+<figcaption aria-hidden="true">Splitting a combined OncoPrint and
+Heatmap by gene groups</figcaption>
+</figure>
+<p>You can also split both rows and columns directly in
+<code>oncoPrint()</code> with <code>row_split</code> and
+<code>column_split</code>—for instance, separating
+<code>RAS</code>/<code>RAF</code> genes from downstream MAPK genes and
+stratifying samples by <code>KRAS</code> alteration status:</p>
+<div class="code-wrapper"><pre class="codehilite"><code><span class="n">kras_status</span> <span class="o">=</span> <span class="p">[</span><span class="s2">"KRAS altered"</span> <span class="k">if</span> <span class="nb">str</span><span class="p">(</span><span class="n">x</span><span class="p">)</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span> <span class="o">!=</span> <span class="s2">""</span> <span class="k">else</span> <span class="s2">"KRAS WT"</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">mat_ne</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="s2">"KRAS"</span><span class="p">]]</span>
+<span class="n">gene_grp</span> <span class="o">=</span> <span class="p">[</span><span class="s2">"RAS/RAF"</span> <span class="k">if</span> <span class="n">g</span> <span class="ow">in</span> <span class="p">{</span><span class="s2">"KRAS"</span><span class="p">,</span> <span class="s2">"HRAS"</span><span class="p">,</span> <span class="s2">"BRAF"</span><span class="p">,</span> <span class="s2">"RAF1"</span><span class="p">}</span> <span class="k">else</span> <span class="s2">"MAPK cascade"</span> <span class="k">for</span> <span class="n">g</span> <span class="ow">in</span> <span class="n">mat_ne</span><span class="o">.</span><span class="n">index</span><span class="p">]</span>
+
+<span class="n">op_rc_split</span> <span class="o">=</span> <span class="n">oncoPrint</span><span class="p">(</span>
+    <span class="n">mat_ne</span><span class="p">,</span>
+    <span class="n">alter_fun</span><span class="o">=</span><span class="n">alter_fun</span><span class="p">,</span>
+    <span class="n">col</span><span class="o">=</span><span class="n">col</span><span class="p">,</span>
+    <span class="n">row_split</span><span class="o">=</span><span class="n">gene_grp</span><span class="p">,</span>
+    <span class="n">column_split</span><span class="o">=</span><span class="n">kras_status</span><span class="p">,</span>
+    <span class="n">column_title</span><span class="o">=</span><span class="n">column_title</span><span class="p">,</span>
+    <span class="n">heatmap_legend_param</span><span class="o">=</span><span class="n">heatmap_legend_param</span><span class="p">,</span>
+    <span class="n">row_names_gp</span><span class="o">=</span><span class="n">gpar</span><span class="p">(</span><span class="n">fontsize</span><span class="o">=</span><span class="mi">8</span><span class="p">),</span>
+    <span class="n">pct_gp</span><span class="o">=</span><span class="n">gpar</span><span class="p">(</span><span class="n">fontsize</span><span class="o">=</span><span class="mi">8</span><span class="p">),</span>
+<span class="p">)</span>
+<span class="n">ch</span><span class="o">.</span><span class="n">draw</span><span class="p">(</span><span class="n">op_rc_split</span><span class="p">)</span></code></pre></div>
+<figure>
+<img src="images/ch07_25_tcga_row_col_split.png"
+alt="TCGA OncoPrint split by both gene group (row_split) and KRAS status (column_split)" />
+<figcaption aria-hidden="true">TCGA OncoPrint split by both gene group
+(row_split) and KRAS status (column_split)</figcaption>
+</figure>
+<p>Finally, after filtering empty rows or columns with
+<code>remove_empty_columns=True</code> and
+<code>remove_empty_rows=True</code>, inspect the retained gene and
+sample names directly via <code>._rownames</code> and
+<code>._colnames</code>:</p>
+<div class="code-wrapper"><pre class="codehilite"><code><span class="n">op_ne</span><span class="o">.</span><span class="n">_rownames</span>
+<span class="c1"># ['KRAS', 'HRAS', 'BRAF', 'RAF1', 'MAP3K1', 'MAP3K2', 'MAP3K3', 'MAP3K4',</span>
+<span class="c1">#  'MAP3K5', 'MAP2K1', 'MAP2K2', 'MAP2K3', 'MAP2K4', 'MAPK3', 'MAPK4',</span>
+<span class="c1">#  'MAPK7', 'MAPK8', 'MAPK9', 'MAPK12', 'MAPK14', 'DAB2', 'RAB25']</span>
+<span class="nb">len</span><span class="p">(</span><span class="n">op_ne</span><span class="o">.</span><span class="n">_colnames</span><span class="p">)</span>
+<span class="c1"># 121</span></code></pre></div>
+
+          </section>
+          <nav class="chapter-footer-nav" aria-label="Chapter Navigation">
+            <a href="heatmap-decoration.html">&larr; 6 Heatmap Decoration</a>
+            <a href="upset-plot.html">8 UpSet plot &rarr;</a>
+          </nav>
+        </main>
+        <a href="heatmap-decoration.html" class="navigation navigation-prev" aria-label="Previous chapter: Heatmap Decoration" title="Previous: Heatmap Decoration">&#8249;</a>
+        <a href="upset-plot.html" class="navigation navigation-next" aria-label="Next chapter: UpSet plot" title="Next: UpSet plot">&#8250;</a>
+      </div>
+    </div>
+  </div>
+  <script src="assets/gitbook.js"></script>
+</body>
+</html>
