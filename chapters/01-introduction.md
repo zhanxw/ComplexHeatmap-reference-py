@@ -1,6 +1,6 @@
 # Introduction {#introduction}
 
-Complex heatmaps are efficient for visualizing associations across multiple sources of data sets and revealing potential patterns. **ComplexHeatmap-py** provides a highly flexible, object-oriented framework in Python to arrange multiple heatmaps and support rich built-in as well as self-defined annotation graphics.
+Complex heatmaps are efficient for visualizing associations across multiple sources of data sets and revealing potential patterns. [**ComplexHeatmap-py**](https://github.com/zhanxw/ComplexHeatmap-py) (`https://github.com/zhanxw/ComplexHeatmap-py`) provides a highly flexible, object-oriented framework in Python to arrange multiple heatmaps and support rich built-in as well as self-defined annotation graphics.
 
 ## General design {#general-design}
 

@@ -201,8 +201,8 @@ grid_grabExpr</a></li></ul></li>
         <li class="divider"></li>
       </ul>
       <div class="summary-footer">
-        <div>Published with <strong>ComplexHeatmap-py</strong></div>
-        <div><a href="https://github.com/zhanxw/ComplexHeatmap-reference-py" target="_blank" rel="noopener">GitHub Repository</a> &middot; <a href="https://jokergoo.github.io/ComplexHeatmap-reference/book/" target="_blank" rel="noopener">Original R Book</a></div>
+        <div>Powered by <a href="https://github.com/zhanxw/ComplexHeatmap-py" target="_blank" rel="noopener"><strong>ComplexHeatmap-py</strong></a></div>
+        <div><a href="https://github.com/zhanxw/ComplexHeatmap-py" target="_blank" rel="noopener">Library GitHub</a> &middot; <a href="https://github.com/zhanxw/ComplexHeatmap-reference-py" target="_blank" rel="noopener">Book Repo</a> &middot; <a href="https://jokergoo.github.io/ComplexHeatmap-reference/book/" target="_blank" rel="noopener">Original R Book</a></div>
       </div>
     </nav>
 
@@ -232,7 +232,8 @@ grid_grabExpr</a></li></ul></li>
               </div>
             </div>
           </div>
-          <a class="toolbar-btn" href="https://github.com/zhanxw/ComplexHeatmap-reference-py" target="_blank" rel="noopener" title="View on GitHub">GitHub</a>
+          <a class="toolbar-btn" href="https://github.com/zhanxw/ComplexHeatmap-py" target="_blank" rel="noopener" title="ComplexHeatmap-py Library on GitHub">ComplexHeatmap-py</a>
+          <a class="toolbar-btn" href="https://github.com/zhanxw/ComplexHeatmap-reference-py" target="_blank" rel="noopener" title="Book Source on GitHub">Book Repo</a>
         </div>
       </header>
 
@@ -248,11 +249,20 @@ href="https://github.com/jokergoo/ComplexHeatmap"><strong>ComplexHeatmap</strong
 package (upstream R version <code>2.25.3</code>). Examples throughout
 this book are generated under <strong>complexheatmap</strong>
 <code>0.2.0</code> backed by NumPy, SciPy, pandas, and Matplotlib.</p>
+<ul>
+<li><strong>ComplexHeatmap-py Library (GitHub)</strong>: <a
+href="https://github.com/zhanxw/ComplexHeatmap-py">https://github.com/zhanxw/ComplexHeatmap-py</a></li>
+<li><strong>Book Source &amp; Scripts (GitHub)</strong>: <a
+href="https://github.com/zhanxw/ComplexHeatmap-reference-py">https://github.com/zhanxw/ComplexHeatmap-reference-py</a></li>
+</ul>
 <h2 id="installation">Installation<a class="anchor-section" aria-label="Anchor link to section" href="#installation">#</a></h2>
-<p>Install the latest release from PyPI or directly from GitHub:</p>
+<p>Install the latest release from PyPI or directly from <a
+href="https://github.com/zhanxw/ComplexHeatmap-py">https://github.com/zhanxw/ComplexHeatmap-py</a>:</p>
 <div class="code-wrapper"><pre class="codehilite"><code>pip<span class="w"> </span>install<span class="w"> </span>ComplexHeatmap-py</code></pre></div>
-<p>Or install the development version from GitHub:</p>
-<div class="code-wrapper"><pre class="codehilite"><code>pip<span class="w"> </span>install<span class="w"> </span><span class="s2">"git+https://github.com/zhanxw/ComplexHeatmap-py.git"</span></code></pre></div>
+<p>Or install from source on GitHub:</p>
+<div class="code-wrapper"><pre class="codehilite"><code>git<span class="w"> </span>clone<span class="w"> </span>https://github.com/zhanxw/ComplexHeatmap-py.git
+<span class="nb">cd</span><span class="w"> </span>ComplexHeatmap-py
+pip<span class="w"> </span>install<span class="w"> </span>-e<span class="w"> </span>.</code></pre></div>
 <p>In Python scripts and notebooks, import the package using:</p>
 <div class="code-wrapper"><pre class="codehilite"><code><span class="kn">import</span><span class="w"> </span><span class="nn">complexheatmap</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">ch</span>
 <span class="kn">from</span><span class="w"> </span><span class="nn">complexheatmap</span><span class="w"> </span><span class="kn">import</span> <span class="n">Heatmap</span><span class="p">,</span> <span class="n">HeatmapAnnotation</span><span class="p">,</span> <span class="n">colorRamp2</span><span class="p">,</span> <span class="n">draw</span><span class="p">,</span> <span class="n">gpar</span><span class="p">,</span> <span class="n">unit</span></code></pre></div>

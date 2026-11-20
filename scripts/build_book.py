@@ -21,6 +21,7 @@ BOOK_DIR = REPO_ROOT / "docs" / "book"
 ASSETS_DIR = BOOK_DIR / "assets"
 
 REPO_URL = "https://github.com/zhanxw/ComplexHeatmap-reference-py"
+PKG_REPO_URL = "https://github.com/zhanxw/ComplexHeatmap-py"
 BOOK_TITLE = "ComplexHeatmap-py Complete Reference"
 BOOK_SUBTITLE = "Python Port via ComplexHeatmap-py"
 
@@ -317,8 +318,8 @@ def _render_page(
         <li class="divider"></li>
       </ul>
       <div class="summary-footer">
-        <div>Published with <strong>ComplexHeatmap-py</strong></div>
-        <div><a href="{html.escape(REPO_URL)}" target="_blank" rel="noopener">GitHub Repository</a> &middot; <a href="https://jokergoo.github.io/ComplexHeatmap-reference/book/" target="_blank" rel="noopener">Original R Book</a></div>
+        <div>Powered by <a href="{html.escape(PKG_REPO_URL)}" target="_blank" rel="noopener"><strong>ComplexHeatmap-py</strong></a></div>
+        <div><a href="{html.escape(PKG_REPO_URL)}" target="_blank" rel="noopener">Library GitHub</a> &middot; <a href="{html.escape(REPO_URL)}" target="_blank" rel="noopener">Book Repo</a> &middot; <a href="https://jokergoo.github.io/ComplexHeatmap-reference/book/" target="_blank" rel="noopener">Original R Book</a></div>
       </div>
     </nav>
 
@@ -348,7 +349,8 @@ def _render_page(
               </div>
             </div>
           </div>
-          <a class="toolbar-btn" href="{html.escape(REPO_URL)}" target="_blank" rel="noopener" title="View on GitHub">GitHub</a>
+          <a class="toolbar-btn" href="{html.escape(PKG_REPO_URL)}" target="_blank" rel="noopener" title="ComplexHeatmap-py Library on GitHub">ComplexHeatmap-py</a>
+          <a class="toolbar-btn" href="{html.escape(REPO_URL)}" target="_blank" rel="noopener" title="Book Source on GitHub">Book Repo</a>
         </div>
       </header>
 

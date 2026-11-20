@@ -2,12 +2,12 @@
   {
     "url": "index.html",
     "title": "About",
-    "text": "This is the complete reference documentation for ComplexHeatmap-py, a faithful Python port of the R/Bioconductor ComplexHeatmap package (upstream R version 2.25.3). Examples throughout this book are generated under complexheatmap 0.2.0 backed by NumPy, SciPy, pandas, and Matplotlib."
+    "text": "This is the complete reference documentation for ComplexHeatmap-py, a faithful Python port of the R/Bioconductor ComplexHeatmap package (upstream R version 2.25.3). Examples throughout this book are generated under complexheatmap 0.2.0 backed by NumPy, SciPy, pandas, and Matplotlib. ComplexHeatmap-py Library (GitHub): https://github.com/zhanxw/ComplexHeatmap-py Book Source & Scripts (GitHub): https://github.com/zhanxw/ComplexHeatmap-reference-py"
   },
   {
     "url": "index.html#installation",
     "title": "Installation",
-    "text": "Install the latest release from PyPI or directly from GitHub: pip install ComplexHeatmap-py Or install the development version from GitHub: pip install \"git+https://github.com/zhanxw/ComplexHeatmap-py.git\" In Python scripts and notebooks, import the package using: import complexheatmap as ch from complexheatmap import Heatmap, HeatmapAnnotation, colorRamp2, draw, gpar, unit ComplexHeatmap-py mirrors the R ComplexHeatmap API closely so existing workflows translate nearly line-for-line. Like its R predecessor\u2014which was originally inspired by pheatmap\u2014ComplexHeatmap-py provides familiar argument names and even includes a drop-in ch.pheatmap() translator (see Chapter 10) that maps pheatmap arguments directly onto a composable Heatmap object."
+    "text": "Install the latest release from PyPI or directly from https://github.com/zhanxw/ComplexHeatmap-py: pip install ComplexHeatmap-py Or install from source on GitHub: git clone https://github.com/zhanxw/ComplexHeatmap-py.git cd ComplexHeatmap-py pip install -e . In Python scripts and notebooks, import the package using: import complexheatmap as ch from complexheatmap import Heatmap, HeatmapAnnotation, colorRamp2, draw, gpar, unit ComplexHeatmap-py mirrors the R ComplexHeatmap API closely so existing workflows translate nearly line-for-line. Like its R predecessor\u2014which was originally inspired by pheatmap\u2014ComplexHeatmap-py provides familiar argument names and even includes a drop-in ch.pheatmap() translator (see Chapter 10) that maps pheatmap arguments directly onto a composable Heatmap object."
   },
   {
     "url": "index.html#r-to-python-migration-highlights",
@@ -27,7 +27,7 @@
   {
     "url": "introduction.html",
     "title": "1 Introduction",
-    "text": "Complex heatmaps are efficient for visualizing associations across multiple sources of data sets and revealing potential patterns. ComplexHeatmap-py provides a highly flexible, object-oriented framework in Python to arrange multiple heatmaps and support rich built-in as well as self-defined annotation graphics."
+    "text": "Complex heatmaps are efficient for visualizing associations across multiple sources of data sets and revealing potential patterns. ComplexHeatmap-py (https://github.com/zhanxw/ComplexHeatmap-py) provides a highly flexible, object-oriented framework in Python to arrange multiple heatmaps and support rich built-in as well as self-defined annotation graphics."
   },
   {
     "url": "introduction.html#general-design",
