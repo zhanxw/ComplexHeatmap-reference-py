@@ -42,6 +42,7 @@ CHAPTERS: list[tuple[str, str, str, str]] = [
     ("13", "13-genome-level-heatmap.md", "genome-level-heatmap.html", "Genome-level heatmap"),
     ("14", "14-more-examples.md", "more-examples.html", "More Examples"),
     ("15", "15-other-tricks.md", "other-tricks.html", "Other Tricks"),
+    ("16", "16-publication-examples.md", "publication-examples.html", "Publication Examples"),
 ]
 
 

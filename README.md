@@ -28,6 +28,7 @@ Complete Python port of Zuguang Gu's [*ComplexHeatmap Complete Reference*](https
 | **13. Genome-level heatmap** | [chapters/13-genome-level-heatmap.md](chapters/13-genome-level-heatmap.md) | [scripts/ch13_genome_heatmap.py](scripts/ch13_genome_heatmap.py) | [genome-level-heatmap.html](https://zhanxw.github.io/ComplexHeatmap-reference-py/book/genome-level-heatmap.html) |
 | **14. More Examples** | [chapters/14-more-examples.md](chapters/14-more-examples.md) | [scripts/ch14_more_examples.py](scripts/ch14_more_examples.py) | [more-examples.html](https://zhanxw.github.io/ComplexHeatmap-reference-py/book/more-examples.html) |
 | **15. Other Tricks** | [chapters/15-other-tricks.md](chapters/15-other-tricks.md) | [scripts/ch15_other_tricks.py](scripts/ch15_other_tricks.py) | [other-tricks.html](https://zhanxw.github.io/ComplexHeatmap-reference-py/book/other-tricks.html) |
+| **16. Publication Examples** | [chapters/16-publication-examples.md](chapters/16-publication-examples.md) | [scripts/ch16_publication_examples.py](scripts/ch16_publication_examples.py) | [publication-examples.html](https://zhanxw.github.io/ComplexHeatmap-reference-py/book/publication-examples.html) |
 
 ---
 
@@ -45,13 +46,13 @@ pip install ComplexHeatmap-py pygments
 ### Build Figures, Compile HTML, and Verify
 
 ```bash
-# 1. Regenerate all 402 PNG figures into docs/book/images/
+# 1. Regenerate all 416 PNG figures into docs/book/images/
 python scripts/build_all_figures.py
 
 # 2. Compile chapters/*.md into the GitBook static HTML site under docs/book/
 python scripts/build_book.py
 
-# 3. Verify all 16 HTML pages, PNG figures, anchors, links, and search index
+# 3. Verify all 17 HTML pages, PNG figures, anchors, links, and search index
 python scripts/verify_book.py
 ```
 
@@ -59,10 +60,12 @@ python scripts/verify_book.py
 
 ## Attribution & Citation
 
-This book is a Python port of the original R **ComplexHeatmap Complete Reference** by **Zuguang Gu** ([jokergoo/ComplexHeatmap-reference](https://github.com/jokergoo/ComplexHeatmap-reference)).
+This book is a Python port of the original R **ComplexHeatmap Complete Reference** by **Zuguang Gu** ([jokergoo/ComplexHeatmap-reference](https://github.com/jokergoo/ComplexHeatmap-reference)), with full reproductions of the example figures from both **ComplexHeatmap** papers in [Chapter 16](chapters/16-publication-examples.md).
 
 If you use **ComplexHeatmap** or **ComplexHeatmap-py** in your research, please cite:
 
-> Gu, Z. (2016). Complex heatmaps reveal patterns and correlations in multidimensional genomic data. *Bioinformatics*, 32(18), 2847–2849. DOI: [10.1093/bioinformatics/btw313](https://doi.org/10.1093/bioinformatics/btw313)
+> Gu, Z., Eils, R., & Schlesner, M. (2016). Complex heatmaps reveal patterns and correlations in multidimensional genomic data. *Bioinformatics*, 32(18), 2847–2849. DOI: [10.1093/bioinformatics/btw313](https://doi.org/10.1093/bioinformatics/btw313)
+>
+> Gu, Z. (2022). Complex heatmap visualization. *iMeta*, 1(3), e43. DOI: [10.1002/imt2.43](https://doi.org/10.1002/imt2.43)
 
 Released under the [MIT License](LICENSE).

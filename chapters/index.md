@@ -47,9 +47,10 @@ from complexheatmap import Heatmap, HeatmapAnnotation, colorRamp2, draw, gpar, u
 
 ## Citation
 
-If you use **ComplexHeatmap-py** or **ComplexHeatmap** in your publications, please cite:
+If you use **ComplexHeatmap-py** or **ComplexHeatmap** in your publications, please cite both foundational articles (whose example figures are reproduced in [Chapter 16: Publication Examples](publication-examples.html)):
 
-Gu, Z. (2016) Complex heatmaps reveal patterns and correlations in multidimensional genomic data. *Bioinformatics*, DOI: [10.1093/bioinformatics/btw313](https://doi.org/10.1093/bioinformatics/btw313).
+1. Gu, Z., Eils, R., & Schlesner, M. (2016) Complex heatmaps reveal patterns and correlations in multidimensional genomic data. *Bioinformatics*, 32(18), 2847–2849. DOI: [10.1093/bioinformatics/btw313](https://doi.org/10.1093/bioinformatics/btw313).
+2. Gu, Z. (2022) Complex heatmap visualization. *iMeta*, 1(3), e43. DOI: [10.1002/imt2.43](https://doi.org/10.1002/imt2.43).
 
 ![ComplexHeatmap-py Logo](images/ch00_logo.png)
 

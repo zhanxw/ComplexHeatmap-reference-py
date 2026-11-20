@@ -32,6 +32,7 @@ EXPECTED_HTML_FILES = [
     "genome-level-heatmap.html",
     "more-examples.html",
     "other-tricks.html",
+    "publication-examples.html",
 ]
 
 
@@ -66,7 +67,7 @@ def main() -> None:
         if not req.exists():
             errors.append(f"Missing required file: {req}")
 
-    # 2. Parse all 16 HTML pages
+    # 2. Parse all 17 HTML pages
     page_ids: dict[str, set[str]] = {}
     page_links: dict[str, list[str]] = {}
     referenced_images: set[Path] = set()
@@ -129,7 +130,7 @@ def main() -> None:
                 errors.append(f"{fname}: broken anchor #{frag} in {target_file} (href={href!r})")
                 broken_links += 1
 
-    # 5. Validate search_index.json covers all 16 chapters
+    # 5. Validate search_index.json covers all 17 chapters
     search_path = ASSETS_DIR / "search_index.json"
     if search_path.exists():
         data = json.loads(search_path.read_text(encoding="utf-8"))

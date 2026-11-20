@@ -91,3 +91,7 @@ Under the hood, **ComplexHeatmap-py** implements an R-compatible `grid` graphics
 - [**Other Tricks**](other-tricks.html)
 
   Provides practical layout recipes such as matching cell dimensions across heatmaps of differing sizes and calibrating exact figure dimensions.
+
+- [**Publication Examples**](publication-examples.html)
+
+  Reproduces the example figures from both foundational **ComplexHeatmap** publications — Gu, Eils & Schlesner (*Bioinformatics*, 2016) and Gu (*iMeta*, 2022) — end-to-end using **ComplexHeatmap-py**.

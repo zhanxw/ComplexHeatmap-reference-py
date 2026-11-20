@@ -1,4 +1,4 @@
-"""Run all chapter figure-generation scripts (`ch00_about.py` .. `ch15_other_tricks.py`)."""
+"""Run all chapter figure-generation scripts (`ch00_about.py` .. `ch16_publication_examples.py`)."""
 
 from __future__ import annotations
 

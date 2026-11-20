@@ -1,0 +1,984 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Chapter 16 Publication Examples | ComplexHeatmap-py Complete Reference</title>
+  <meta name="description" content="Python port of ComplexHeatmap Complete Reference using ComplexHeatmap-py.">
+  <link rel="stylesheet" href="assets/gitbook.css">
+</head>
+<body>
+  <div class="book">
+    <nav class="book-summary" aria-label="Table of Contents">
+      <div class="book-summary-header">
+        <a class="book-summary-title" href="index.html">ComplexHeatmap-py Complete Reference</a>
+        <span class="book-summary-subtitle">Python Port via ComplexHeatmap-py</span>
+      </div>
+      <div class="book-search-box">
+        <input id="book-search-input" type="search" placeholder="Search book..." aria-label="Search book">
+      </div>
+      <ul class="summary">
+        <li class="chapter"><a href="index.html"><span>About</span></a><ul><li class="level-2"><a href="index.html#installation">Installation</a></li>
+<li class="level-2"><a href="index.html#r-to-python-migration-highlights">R-to-Python Migration
+Highlights</a></li>
+<li class="level-2"><a href="index.html#citation">Citation</a></li>
+<li class="level-2"><a href="index.html#python-environment">Python Environment</a></li></ul></li>
+<li class="chapter"><a href="introduction.html"><span class="header-section-number">1</span><span>Introduction</span></a><ul><li class="level-2"><a href="introduction.html#general-design"><span class="header-section-number">1.1</span> General design</a></li>
+<li class="level-2"><a href="introduction.html#a-brief-description-of-following-chapters"><span class="header-section-number">1.2</span> A brief description
+of following chapters</a></li></ul></li>
+<li class="chapter"><a href="a-single-heatmap.html"><span class="header-section-number">2</span><span>A Single Heatmap</span></a><ul><li class="level-2"><a href="a-single-heatmap.html#colors"><span class="header-section-number">2.1</span> Colors</a></li>
+<li class="level-2"><a href="a-single-heatmap.html#heatmap-titles"><span class="header-section-number">2.2</span> Titles</a></li>
+<li class="level-2"><a href="a-single-heatmap.html#clustering"><span class="header-section-number">2.3</span> Clustering</a></li>
+<li class="level-3"><a href="a-single-heatmap.html#distance-methods"><span class="header-section-number">2.3.1</span> Distance methods</a></li>
+<li class="level-3"><a href="a-single-heatmap.html#clustering-methods"><span class="header-section-number">2.3.2</span> Clustering methods</a></li>
+<li class="level-3"><a href="a-single-heatmap.html#render-dendrograms"><span class="header-section-number">2.3.3</span> Render dendrograms</a></li>
+<li class="level-3"><a href="a-single-heatmap.html#reorder-dendrograms"><span class="header-section-number">2.3.4</span> Reorder dendrograms</a></li>
+<li class="level-2"><a href="a-single-heatmap.html#row-and-column-orders"><span class="header-section-number">2.4</span> Set row and column orders</a></li>
+<li class="level-2"><a href="a-single-heatmap.html#heatmap-seriation"><span class="header-section-number">2.5</span> Seriation</a></li>
+<li class="level-2"><a href="a-single-heatmap.html#dimension-names"><span class="header-section-number">2.6</span> Dimension labels</a></li>
+<li class="level-2"><a href="a-single-heatmap.html#heatmap-split"><span class="header-section-number">2.7</span> Heatmap split</a></li>
+<li class="level-3"><a href="a-single-heatmap.html#split-by-kmeans-clustering"><span class="header-section-number">2.7.1</span> Split by k-means clustering</a></li>
+<li class="level-3"><a href="a-single-heatmap.html#split-by-categorical-variables"><span class="header-section-number">2.7.2</span> Split by categorical
+variables</a></li>
+<li class="level-3"><a href="a-single-heatmap.html#split-by-dendrogram"><span class="header-section-number">2.7.3</span> Split by dendrogram</a></li>
+<li class="level-3"><a href="a-single-heatmap.html#order-of-slices"><span class="header-section-number">2.7.4</span> Order of slices</a></li>
+<li class="level-3"><a href="a-single-heatmap.html#titles-for-splitting"><span class="header-section-number">2.7.5</span> Titles for splitting</a></li>
+<li class="level-3"><a href="a-single-heatmap.html#graphic-parameters-for-splitting"><span class="header-section-number">2.7.6</span> Graphic parameters for
+splitting</a></li>
+<li class="level-3"><a href="a-single-heatmap.html#gaps-between-slices"><span class="header-section-number">2.7.7</span> Gaps between slices</a></li>
+<li class="level-3"><a href="a-single-heatmap.html#split-heatmap-annotations"><span class="header-section-number">2.7.8</span> Split heatmap annotations</a></li>
+<li class="level-2"><a href="a-single-heatmap.html#heatmap-as-raster-image"><span class="header-section-number">2.8</span> Heatmap as raster image</a></li>
+<li class="level-2"><a href="a-single-heatmap.html#customize-the-heatmap-body"><span class="header-section-number">2.9</span> Customize the heatmap body</a></li>
+<li class="level-3"><a href="a-single-heatmap.html#cell-fun"><span class="header-section-number">2.9.1</span> cell_fun</a></li>
+<li class="level-3"><a href="a-single-heatmap.html#layer-fun"><span class="header-section-number">2.9.2</span> layer_fun</a></li>
+<li class="level-2"><a href="a-single-heatmap.html#size-of-the-heatmap"><span class="header-section-number">2.10</span> Size of the heatmap</a></li>
+<li class="level-2"><a href="a-single-heatmap.html#plot-the-heatmap"><span class="header-section-number">2.11</span> Plot the heatmap</a></li>
+<li class="level-2"><a href="a-single-heatmap.html#get-orders-and-dendrograms-from-heatmap"><span class="header-section-number">2.12</span> Extract orders and
+dendrograms</a></li>
+<li class="level-2"><a href="a-single-heatmap.html#subset-a-heatmap"><span class="header-section-number">2.13</span> Subset a heatmap</a></li></ul></li>
+<li class="chapter"><a href="heatmap-annotations.html"><span class="header-section-number">3</span><span>Heatmap Annotations</span></a><ul><li class="level-2"><a href="heatmap-annotations.html#simple-annotation"><span class="header-section-number">3.1</span> Simple annotation</a></li>
+<li class="level-2"><a href="heatmap-annotations.html#simple-annotation-as-an-annotation-function"><span class="header-section-number">3.2</span> Simple annotation
+as an annotation function</a></li>
+<li class="level-2"><a href="heatmap-annotations.html#empty-annotation"><span class="header-section-number">3.3</span> Empty annotation</a></li>
+<li class="level-2"><a href="heatmap-annotations.html#block-annotation"><span class="header-section-number">3.4</span> Block annotation</a></li>
+<li class="level-3"><a href="heatmap-annotations.html#block-for-putting-labels"><span class="header-section-number">3.4.1</span> Block for putting labels</a></li>
+<li class="level-3"><a href="heatmap-annotations.html#blocks-as-plotting-regions"><span class="header-section-number">3.4.2</span> Blocks as plotting regions</a></li>
+<li class="level-2"><a href="heatmap-annotations.html#image-annotation"><span class="header-section-number">3.5</span> Image annotation</a></li>
+<li class="level-2"><a href="heatmap-annotations.html#points-annotation"><span class="header-section-number">3.6</span> Points annotation</a></li>
+<li class="level-2"><a href="heatmap-annotations.html#lines-annotation"><span class="header-section-number">3.7</span> Line annotation</a></li>
+<li class="level-2"><a href="heatmap-annotations.html#barplot_annotation"><span class="header-section-number">3.8</span> Barplot annotation</a></li>
+<li class="level-2"><a href="heatmap-annotations.html#box-annotation"><span class="header-section-number">3.9</span> Boxplot annotation</a></li>
+<li class="level-2"><a href="heatmap-annotations.html#histogram-annotation"><span class="header-section-number">3.10</span> Histogram annotation</a></li>
+<li class="level-2"><a href="heatmap-annotations.html#density-annotation"><span class="header-section-number">3.11</span> Density annotation</a></li>
+<li class="level-2"><a href="heatmap-annotations.html#joyplot-annotation"><span class="header-section-number">3.12</span> Joyplot annotation</a></li>
+<li class="level-2"><a href="heatmap-annotations.html#horizon-chart-annotation"><span class="header-section-number">3.13</span> Horizon chart annotation</a></li>
+<li class="level-2"><a href="heatmap-annotations.html#text-annotation"><span class="header-section-number">3.14</span> Text annotation</a></li>
+<li class="level-2"><a href="heatmap-annotations.html#anno-numeric"><span class="header-section-number">3.15</span> Numeric labels annotation</a></li>
+<li class="level-2"><a href="heatmap-annotations.html#completely-customized-annotation"><span class="header-section-number">3.16</span> Completely customized
+annotation</a></li>
+<li class="level-2"><a href="heatmap-annotations.html#mark-annotation"><span class="header-section-number">3.17</span> Mark annotation</a></li>
+<li class="level-2"><a href="heatmap-annotations.html#zoom-annotation"><span class="header-section-number">3.18</span> Zoom/link annotation</a></li>
+<li class="level-2"><a href="heatmap-annotations.html#anno-text-box"><span class="header-section-number">3.19</span> Text box annotation</a></li>
+<li class="level-3"><a href="heatmap-annotations.html#construct-the-text-box"><span class="header-section-number">3.19.1</span> Construct the text box</a></li>
+<li class="level-3"><a href="heatmap-annotations.html#draw-textbox-annotation"><span class="header-section-number">3.19.2</span> Draw textbox annotation</a></li>
+<li class="level-2"><a href="heatmap-annotations.html#summary-annotation"><span class="header-section-number">3.20</span> Summary annotation</a></li>
+<li class="level-2"><a href="heatmap-annotations.html#multiple-annotations"><span class="header-section-number">3.21</span> Multiple annotations</a></li>
+<li class="level-3"><a href="heatmap-annotations.html#heatmap-annotation-general-settings"><span class="header-section-number">3.21.1</span> General settings</a></li>
+<li class="level-3"><a href="heatmap-annotations.html#size-of-annotations"><span class="header-section-number">3.21.2</span> Size of annotations</a></li>
+<li class="level-3"><a href="heatmap-annotations.html#annotation-labels"><span class="header-section-number">3.21.3</span> Annotation labels</a></li>
+<li class="level-2"><a href="heatmap-annotations.html#heatmap-annotation-utility-function"><span class="header-section-number">3.22</span> Utility functions</a></li>
+<li class="level-2"><a href="heatmap-annotations.html#implement-new-annotation-functions"><span class="header-section-number">3.23</span> Implement new annotation
+functions</a></li>
+<li class="level-3"><a href="heatmap-annotations.html#construct-annotation-function-by-cell-fun"><span class="header-section-number">3.23.1</span> Construct annotation
+function by cell_fun</a></li></ul></li>
+<li class="chapter"><a href="a-list-of-heatmaps.html"><span class="header-section-number">4</span><span>A List of Heatmaps</span></a><ul><li class="level-2"><a href="a-list-of-heatmaps.html#heatmap-list-titles"><span class="header-section-number">4.1</span> Titles</a></li>
+<li class="level-2"><a href="a-list-of-heatmaps.html#size-of-heatmaps"><span class="header-section-number">4.2</span> Size of heatmaps</a></li>
+<li class="level-2"><a href="a-list-of-heatmaps.html#gap-between-heatmaps"><span class="header-section-number">4.3</span> Gap between heatmaps</a></li>
+<li class="level-2"><a href="a-list-of-heatmaps.html#automatic-adjustment-to-the-main-heatmap"><span class="header-section-number">4.4</span> Automatic adjustment
+to the main heatmap</a></li>
+<li class="level-2"><a href="a-list-of-heatmaps.html#control-main-heatmap-in-draw-function"><span class="header-section-number">4.5</span> Control main heatmap in
+draw() function</a></li>
+<li class="level-2"><a href="a-list-of-heatmaps.html#annotations-as-components-are-adjusted"><span class="header-section-number">4.6</span> Annotations as
+components are adjusted</a></li>
+<li class="level-2"><a href="a-list-of-heatmaps.html#concatenate-with-annotations"><span class="header-section-number">4.7</span> Concatenate with annotations</a></li>
+<li class="level-2"><a href="a-list-of-heatmaps.html#concatenate-only-the-annotations"><span class="header-section-number">4.8</span> Concatenate only the
+annotations</a></li>
+<li class="level-2"><a href="a-list-of-heatmaps.html#vertical-concatenation"><span class="header-section-number">4.9</span> Vertical concatenation</a></li>
+<li class="level-2"><a href="a-list-of-heatmaps.html#subset-heatmap-list"><span class="header-section-number">4.10</span> Subset the heatmap list</a></li>
+<li class="level-2"><a href="a-list-of-heatmaps.html#plot-the-heatmap-list"><span class="header-section-number">4.11</span> Plot the heatmap list</a></li>
+<li class="level-2"><a href="a-list-of-heatmaps.html#get-orders-and-dendrograms-from-a-list-of-heatmaps"><span class="header-section-number">4.12</span> Get orders
+and dendrograms</a></li>
+<li class="level-2"><a href="a-list-of-heatmaps.html#change-parameters-globally"><span class="header-section-number">4.13</span> Change parameters globally</a></li>
+<li class="level-2"><a href="a-list-of-heatmaps.html#adjust-blank-space-caused-by-annotations"><span class="header-section-number">4.14</span> Adjust blank space
+caused by annotations</a></li>
+<li class="level-2"><a href="a-list-of-heatmaps.html#manually-increase-space-around-the-plot"><span class="header-section-number">4.15</span> Manually increase space
+around the plot</a></li></ul></li>
+<li class="chapter"><a href="legends.html"><span class="header-section-number">5</span><span>Legends</span></a><ul><li class="level-2"><a href="legends.html#continuous-legends"><span class="header-section-number">5.1</span> Continuous legends</a></li>
+<li class="level-2"><a href="legends.html#discrete-legends"><span class="header-section-number">5.2</span> Discrete legends</a></li>
+<li class="level-2"><a href="legends.html#a-list-of-legends"><span class="header-section-number">5.3</span> A list of legends</a></li>
+<li class="level-2"><a href="legends.html#heatmap-and-annotation-legends"><span class="header-section-number">5.4</span> Heatmap and annotation
+legends</a></li>
+<li class="level-2"><a href="legends.html#add-customized-legends"><span class="header-section-number">5.5</span> Add customized legends</a></li>
+<li class="level-2"><a href="legends.html#the-side-of-legends"><span class="header-section-number">5.6</span> The side of legends</a></li></ul></li>
+<li class="chapter"><a href="heatmap-decoration.html"><span class="header-section-number">6</span><span>Heatmap Decoration</span></a><ul><li class="level-2"><a href="heatmap-decoration.html#decoration-functions"><span class="header-section-number">6.1</span> Decoration functions</a></li>
+<li class="level-2"><a href="heatmap-decoration.html#decoration-examples"><span class="header-section-number">6.2</span> Examples</a></li>
+<li class="level-3"><a href="heatmap-decoration.html#barplot-for-single-column-heatmap"><span class="header-section-number">6.2.1</span> Barplot for single-column
+heatmap</a></li>
+<li class="level-3"><a href="heatmap-decoration.html#add-titles-for-row-annotations"><span class="header-section-number">6.2.2</span> Add titles for row
+annotations</a></li>
+<li class="level-3"><a href="heatmap-decoration.html#other-possible-use-of-decorations"><span class="header-section-number">6.2.3</span> Other possible use of
+decorations</a></li></ul></li>
+<li class="chapter"><a href="oncoprint.html"><span class="header-section-number">7</span><span>OncoPrint</span></a><ul><li class="level-2"><a href="oncoprint.html#oncoprint-general-settings"><span class="header-section-number">7.1</span> General settings</a></li>
+<li class="level-3"><a href="oncoprint.html#input-data-format"><span class="header-section-number">7.1.1</span> Input data format</a></li>
+<li class="level-3"><a href="oncoprint.html#define-the-alter-fun"><span class="header-section-number">7.1.2</span> Define the alter_fun()</a></li>
+<li class="level-3"><a href="oncoprint.html#oncoprint-background"><span class="header-section-number">7.1.3</span> Background</a></li>
+<li class="level-3"><a href="oncoprint.html#complex-alteration-types"><span class="header-section-number">7.1.4</span> Complex alteration types</a></li>
+<li class="level-3"><a href="oncoprint.html#simplify-alter-fun"><span class="header-section-number">7.1.5</span> Simplify alter_fun</a></li>
+<li class="level-3"><a href="oncoprint.html#other-heatmap-related-settings"><span class="header-section-number">7.1.6</span> Other heatmap-related
+settings</a></li>
+<li class="level-2"><a href="oncoprint.html#apply-to-cbioportal-dataset"><span class="header-section-number">7.2</span> Apply to cBioPortal dataset</a></li>
+<li class="level-3"><a href="oncoprint.html#remove-empty-rows-and-columns"><span class="header-section-number">7.2.1</span> Remove empty rows and
+columns</a></li>
+<li class="level-3"><a href="oncoprint.html#reorder-the-oncoprint"><span class="header-section-number">7.2.2</span> Reorder the oncoPrint</a></li>
+<li class="level-3"><a href="oncoprint.html#oncoprint-annotations"><span class="header-section-number">7.2.3</span> OncoPrint annotations</a></li>
+<li class="level-3"><a href="oncoprint.html#oncoprint-as-a-heatmap"><span class="header-section-number">7.2.4</span> oncoPrint as a Heatmap</a></li></ul></li>
+<li class="chapter"><a href="upset-plot.html"><span class="header-section-number">8</span><span>UpSet plot</span></a><ul><li class="level-2"><a href="upset-plot.html#input-data"><span class="header-section-number">8.1</span> Input data</a></li>
+<li class="level-2"><a href="upset-plot.html#upset-mode"><span class="header-section-number">8.2</span> Mode</a></li>
+<li class="level-2"><a href="upset-plot.html#make-the-combination-matrix"><span class="header-section-number">8.3</span> Make the combination matrix</a></li>
+<li class="level-2"><a href="upset-plot.html#upset-utility-functions"><span class="header-section-number">8.4</span> Utility functions</a></li>
+<li class="level-3"><a href="upset-plot.html#upset-subsetting"><span class="header-section-number">8.4.1</span> Subsetting a CombMat</a></li>
+<li class="level-2"><a href="upset-plot.html#upset-making-the-plot"><span class="header-section-number">8.5</span> Make the plot</a></li>
+<li class="level-2"><a href="upset-plot.html#upset-plots-as-heatmaps"><span class="header-section-number">8.6</span> UpSet plots as heatmaps</a></li>
+<li class="level-2"><a href="upset-plot.html#upset-movies"><span class="header-section-number">8.7</span> Example with the movies dataset</a></li>
+<li class="level-2"><a href="upset-plot.html#upset-genomic"><span class="header-section-number">8.8</span> Example with the genomic regions</a></li></ul></li>
+<li class="chapter"><a href="interactive-complexheatmap.html"><span class="header-section-number">9</span><span>Interactive ComplexHeatmap</span></a><ul><li class="level-2"><a href="interactive-complexheatmap.html#inline-jupyter"><span class="header-section-number">9.1</span> Inline rendering in Jupyter and IPython</a></li>
+<li class="level-2"><a href="interactive-complexheatmap.html#brush-and-zoom"><span class="header-section-number">9.2</span> Programmatic brush selection and sub-heatmap
+zoom</a></li>
+<li class="level-2"><a href="interactive-complexheatmap.html#split-slice-zoom"><span class="header-section-number">9.3</span> Extracting and zooming into split slices</a></li>
+<li class="level-2"><a href="interactive-complexheatmap.html#shiny-and-python"><span class="header-section-number">9.4</span> Interactive R Shiny ecosystem and Python
+notebooks</a></li></ul></li>
+<li class="chapter"><a href="integrate-with-other-packages.html"><span class="header-section-number">10</span><span>Integrate with other
+packages</span></a><ul><li class="level-2"><a href="integrate-with-other-packages.html#pheatmap"><span class="header-section-number">10.1</span> pheatmap, heatmap, and heatmap.2</a></li>
+<li class="level-3"><a href="integrate-with-other-packages.html#pheatmap-examples"><span class="header-section-number">10.1.1</span> Examples</a></li>
+<li class="level-3"><a href="integrate-with-other-packages.html#pheatmap-translation"><span class="header-section-number">10.1.2</span> Translation</a></li>
+<li class="level-3"><a href="integrate-with-other-packages.html#pheatmap-comparisons"><span class="header-section-number">10.1.3</span> Comparisons and legacy wrappers</a></li>
+<li class="level-2"><a href="integrate-with-other-packages.html#multipanel-composition"><span class="header-section-number">10.2</span> Multi-panel layout composition</a></li>
+<li class="level-3"><a href="integrate-with-other-packages.html#grid-grabexpr"><span class="header-section-number">10.2.1</span> Capturing heatmaps with
+grid_grabExpr</a></li>
+<li class="level-3"><a href="integrate-with-other-packages.html#matplotlib-integration"><span class="header-section-number">10.2.2</span> Combining ComplexHeatmap-py with
+Matplotlib Axes</a></li>
+<li class="level-2"><a href="integrate-with-other-packages.html#gt-render"><span class="header-section-number">10.3</span> Rich text with gt_render</a></li>
+<li class="level-3"><a href="integrate-with-other-packages.html#gt-render-title"><span class="header-section-number">10.3.1</span> Titles</a></li>
+<li class="level-3"><a href="integrate-with-other-packages.html#gt-render-dimnames"><span class="header-section-number">10.3.2</span> Row and column names</a></li>
+<li class="level-3"><a href="integrate-with-other-packages.html#gt-render-annotations"><span class="header-section-number">10.3.3</span> Styled titles with annotations</a></li>
+<li class="level-3"><a href="integrate-with-other-packages.html#gt-render-anno-text"><span class="header-section-number">10.3.4</span> Text and textbox annotations</a></li>
+<li class="level-3"><a href="integrate-with-other-packages.html#gt-render-legends"><span class="header-section-number">10.3.5</span> Legends</a></li></ul></li>
+<li class="chapter"><a href="other-high-level-plots.html"><span class="header-section-number">11</span><span>Other High-level Plots</span></a><ul><li class="level-2"><a href="other-high-level-plots.html#density-heatmap"><span class="header-section-number">11.1</span> Density heatmap</a></li>
+<li class="level-2"><a href="other-high-level-plots.html#stacked-summary-plot"><span class="header-section-number">11.2</span> Stacked summary plot</a></li></ul></li>
+<li class="chapter"><a href="three-dimensional-complexheatmap.html"><span class="header-section-number">12</span><span>Three-dimensional ComplexHeatmap</span></a><ul><li class="level-2"><a href="three-dimensional-complexheatmap.html#motivation"><span class="header-section-number">12.1</span> Motivation</a></li>
+<li class="level-2"><a href="three-dimensional-complexheatmap.html#implementation-of-3d-heatmap"><span class="header-section-number">12.2</span> Implementation of 3D heatmap</a></li></ul></li>
+<li class="chapter"><a href="genome-level-heatmap.html"><span class="header-section-number">13</span><span>Genome-level heatmap</span></a><ul><li class="level-2"><a href="genome-level-heatmap.html#genomic-bins"><span class="header-section-number">13.1</span> Genomic bins and signal normalization</a></li>
+<li class="level-2"><a href="genome-level-heatmap.html#horizontal-genome-heatmap"><span class="header-section-number">13.2</span> Horizontal genome-level heatmap</a></li>
+<li class="level-2"><a href="genome-level-heatmap.html#vertical-genome-heatmap"><span class="header-section-number">13.3</span> Vertical genome-level heatmap</a></li>
+<li class="level-2"><a href="genome-level-heatmap.html#genome-anno-block"><span class="header-section-number">13.4</span> Chromosome block headers and multi-track
+genomic features</a></li></ul></li>
+<li class="chapter"><a href="more-examples.html"><span class="header-section-number">14</span><span>More Examples</span></a><ul><li class="level-2"><a href="more-examples.html#gene-expression-matrix"><span class="header-section-number">14.1</span> Add more information for gene expression
+matrix</a></li>
+<li class="level-2"><a href="more-examples.html#the-measles-vaccine-heatmap"><span class="header-section-number">14.2</span> The measles vaccine heatmap</a></li>
+<li class="level-2"><a href="more-examples.html#scrna-seq-heterogeneity"><span class="header-section-number">14.3</span> Visualize cell heterogeneity from
+single-cell RNA-seq</a></li>
+<li class="level-2"><a href="more-examples.html#methylation-expression-correlations"><span class="header-section-number">14.4</span> Correlations between
+methylation, expression and other genomic features</a></li>
+<li class="level-2"><a href="more-examples.html#methylation-complex-annotations"><span class="header-section-number">14.5</span> Visualize methylation profile
+with complex annotations</a></li>
+<li class="level-2"><a href="more-examples.html#add-multiple-boxplots-for-single-row"><span class="header-section-number">14.6</span> Add multiple boxplots for
+single row</a></li></ul></li>
+<li class="chapter"><a href="other-tricks.html"><span class="header-section-number">15</span><span>Other Tricks</span></a><ul><li class="level-2"><a href="other-tricks.html#same-cell-size"><span class="header-section-number">15.1</span> Set the same cell size for different heatmaps
+with different dimensions</a></li>
+<li class="level-2"><a href="other-tricks.html#global-options-ht-opt"><span class="header-section-number">15.2</span> Global options with ht_opt</a></li>
+<li class="level-2"><a href="other-tricks.html#grid-grabexpr-composition"><span class="header-section-number">15.3</span> Capturing and composing heatmaps with
+grid_grabExpr</a></li></ul></li>
+<li class="chapter active"><a href="publication-examples.html"><span class="header-section-number">16</span><span>Publication Examples</span></a><ul><li class="level-2"><a href="publication-examples.html#publication-overview"><span class="header-section-number">16.1</span> Summary of Reproduced Publication
+Figures</a></li>
+<li class="level-2"><a href="publication-examples.html#bioinformatics-2016"><span class="header-section-number">16.2</span> Bioinformatics (2016):
+Multidimensional Genomic Data</a></li>
+<li class="level-3"><a href="publication-examples.html#bioinformatics-fig1a"><span class="header-section-number">16.2.1</span> Figure 1A: Enhanced TCGA Lung
+Adenocarcinoma OncoPrint with GO Biological Processes</a></li>
+<li class="level-3"><a href="publication-examples.html#bioinformatics-fig1b"><span class="header-section-number">16.2.2</span> Figure 1B: Mouse T-Cell Single-Cell
+RNA-seq Heterogeneity Across 721 Signature Genes</a></li>
+<li class="level-3"><a href="publication-examples.html#bioinformatics-suppl"><span class="header-section-number">16.2.3</span> Supplementary Examples S3 and S4</a></li>
+<li class="level-2"><a href="publication-examples.html#imeta-2022"><span class="header-section-number">16.3</span> iMeta (2022): Complex Heatmap
+Visualization</a></li>
+<li class="level-3"><a href="publication-examples.html#imeta-fig1"><span class="header-section-number">16.3.1</span> Figure 1: Modular Object-Oriented Design</a></li>
+<li class="level-3"><a href="publication-examples.html#imeta-fig2"><span class="header-section-number">16.3.2</span> Figure 2: Single Heatmap Annotations, Body
+Customization, and Subgroup Splitting</a></li>
+<li class="level-3"><a href="publication-examples.html#imeta-fig3"><span class="header-section-number">16.3.3</span> Figure 3: Built-in and Complex Heatmap Annotation
+Gallery</a></li>
+<li class="level-3"><a href="publication-examples.html#imeta-fig4"><span class="header-section-number">16.3.4</span> Figure 4: Multi-Omics Heatmap Lists and Global
+Epigenomic Summary</a></li>
+<li class="level-3"><a href="publication-examples.html#imeta-fig5"><span class="header-section-number">16.3.5</span> Figure 5: High-Level Genomic and Statistical
+Plots</a></li>
+<li class="level-3"><a href="publication-examples.html#imeta-fig6"><span class="header-section-number">16.3.6</span> Figure 6: TSS Spatial Enrichment Profiles
+(EnrichedHeatmap Equivalent in ComplexHeatmap-py)</a></li></ul></li>
+        <li class="divider"></li>
+      </ul>
+      <div class="summary-footer">
+        <div>Powered by <a href="https://github.com/zhanxw/ComplexHeatmap-py" target="_blank" rel="noopener"><strong>ComplexHeatmap-py</strong></a></div>
+        <div><a href="https://github.com/zhanxw/ComplexHeatmap-py" target="_blank" rel="noopener">Library GitHub</a> &middot; <a href="https://github.com/zhanxw/ComplexHeatmap-reference-py" target="_blank" rel="noopener">Book Repo</a> &middot; <a href="https://jokergoo.github.io/ComplexHeatmap-reference/book/" target="_blank" rel="noopener">Original R Book</a></div>
+      </div>
+    </nav>
+
+    <div class="book-body">
+      <header class="book-header">
+        <div class="header-left">
+          <button id="sidebar-toggle" class="toolbar-btn" type="button" title="Toggle Table of Contents" aria-label="Toggle Table of Contents">&#9776;</button>
+          <button id="search-toggle-btn" class="toolbar-btn" type="button" title="Search" aria-label="Search">&#128269;</button>
+          <h1 class="header-title"><a href="index.html">ComplexHeatmap-py Complete Reference</a></h1>
+        </div>
+        <div class="header-right">
+          <div class="dropdown">
+            <button id="font-settings-btn" class="toolbar-btn" type="button" title="Font and Theme Settings" aria-label="Font Settings">A</button>
+            <div id="font-settings-menu" class="dropdown-menu">
+              <div class="dropdown-row">
+                <button id="font-size-dec" type="button">A-</button>
+                <button id="font-size-inc" type="button">A+</button>
+              </div>
+              <div class="dropdown-row">
+                <button type="button" data-font="sans">Sans</button>
+                <button type="button" data-font="serif">Serif</button>
+              </div>
+              <div class="dropdown-row">
+                <button type="button" data-theme="white">White</button>
+                <button type="button" data-theme="sepia">Sepia</button>
+                <button type="button" data-theme="night">Night</button>
+              </div>
+            </div>
+          </div>
+          <a class="toolbar-btn" href="https://github.com/zhanxw/ComplexHeatmap-py" target="_blank" rel="noopener" title="ComplexHeatmap-py Library on GitHub">ComplexHeatmap-py</a>
+          <a class="toolbar-btn" href="https://github.com/zhanxw/ComplexHeatmap-reference-py" target="_blank" rel="noopener" title="Book Source on GitHub">Book Repo</a>
+        </div>
+      </header>
+
+      <div class="page-wrapper">
+        <main class="page-inner">
+          <div id="search-results" aria-live="polite"></div>
+          <section class="normal markdown-section">
+            <h1 id="publication-examples"><span class="header-section-number">16</span> Publication Examples<a class="anchor-section" aria-label="Anchor link to section" href="#publication-examples">#</a></h1>
+<p>This chapter reproduces the example figures from both foundational
+<strong>ComplexHeatmap</strong> publications using <a
+href="https://github.com/zhanxw/ComplexHeatmap-py"><strong>ComplexHeatmap-py</strong></a>
+(<code>https://github.com/zhanxw/ComplexHeatmap-py</code>):</p>
+<ol type="1">
+<li><strong>Gu, Z., Eils, R., &amp; Schlesner, M. (2016)</strong> —
+<em>“Complex heatmaps reveal patterns and correlations in
+multidimensional genomic data.”</em> <em>Bioinformatics</em>, 32(18),
+2847–2849. DOI: <a
+href="https://doi.org/10.1093/bioinformatics/btw313">10.1093/bioinformatics/btw313</a>.</li>
+<li><strong>Gu, Z. (2022)</strong> — <em>“Complex heatmap
+visualization.”</em> <em>iMeta</em>, 1(3), e43. DOI: <a
+href="https://doi.org/10.1002/imt2.43">10.1002/imt2.43</a>.</li>
+</ol>
+<p>All datasets required to reproduce these figures offline are bundled
+inside <a
+href="https://github.com/zhanxw/ComplexHeatmap-py"><code>ComplexHeatmap-py</code></a>
+(<code>ch.load_dataset(...)</code>) or shipped in this book repository’s
+<a
+href="https://github.com/zhanxw/ComplexHeatmap-reference-py/tree/main/data"><code>data/</code></a>
+directory, and the full executable script is available in <a
+href="https://github.com/zhanxw/ComplexHeatmap-reference-py/blob/main/scripts/ch16_publication_examples.py"><code>scripts/ch16_publication_examples.py</code></a>.</p>
+<h2 id="publication-overview"><span class="header-section-number">16.1</span> Summary of Reproduced Publication
+Figures<a class="anchor-section" aria-label="Anchor link to section" href="#publication-overview">#</a></h2>
+<table>
+<colgroup>
+<col style="width: 25%" />
+<col style="width: 25%" />
+<col style="width: 25%" />
+<col style="width: 25%" />
+</colgroup>
+<thead>
+<tr>
+<th>Publication</th>
+<th>Paper Figure</th>
+<th>Topic &amp; Key Components</th>
+<th>Book Figure</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><em>Bioinformatics</em> (2016)</td>
+<td><strong>Figure 1A</strong></td>
+<td>TCGA Lung Adenocarcinoma enhanced <code>oncoPrint</code> (38 genes x
+134 patients, AMP-rate split, clinical tracks) + GO Biological Process
+<code>Heatmap</code></td>
+<td><a href="#bioinformatics-fig1a">Section 16.2.1</a></td>
+</tr>
+<tr>
+<td><em>Bioinformatics</em> (2016)</td>
+<td><strong>Figure 1B</strong></td>
+<td>Mouse T-cell scRNA-seq heterogeneity across all 721 signature genes
++ <code>base_expr</code> + <code>ribonucleoprotein</code> +
+<code>cell_cycle</code> + <code>anno_mark</code> + pairwise gene
+correlation (<code>cor</code>)</td>
+<td><a href="#bioinformatics-fig1b">Section 16.2.2</a></td>
+</tr>
+<tr>
+<td><em>Bioinformatics</em> (2016)</td>
+<td><strong>Suppl. S3 &amp; S4</strong></td>
+<td>DMR methylation/expression/enhancer correspondence
+(<code>meth</code>) and GBM 450K CGI-split methylation</td>
+<td><a href="#bioinformatics-suppl">Section 16.2.3</a> &amp; <a
+href="more-examples.html">Chapter 14</a></td>
+</tr>
+<tr>
+<td><em>iMeta</em> (2022)</td>
+<td><strong>Figure 1 (A–C)</strong></td>
+<td>Modular object-oriented design (<code>Heatmap</code>,
+<code>HeatmapAnnotation</code>, <code>HeatmapList</code>)</td>
+<td><a href="#imeta-fig1">Section 16.3.1</a></td>
+</tr>
+<tr>
+<td><em>iMeta</em> (2022)</td>
+<td><strong>Figure 2 (A–D)</strong></td>
+<td>Rendered dendrograms (<code>color_branches</code> + nodes),
+<code>layer_fun</code> overlays, and TCGA GBM unsplit vs pre-split
+<code>class</code> comparison</td>
+<td><a href="#imeta-fig2">Section 16.3.2</a></td>
+</tr>
+<tr>
+<td><em>iMeta</em> (2022)</td>
+<td><strong>Figure 3 (A–D)</strong></td>
+<td>13-track annotation gallery (<code>anno_simple</code> ..
+<code>anno_horizon</code>), <code>anno_mark</code>,
+<code>anno_link</code> boxplots, and <code>anno_textbox</code> word
+clouds</td>
+<td><a href="#imeta-fig3">Section 16.3.3</a></td>
+</tr>
+<tr>
+<td><em>iMeta</em> (2022)</td>
+<td><strong>Figure 4 (A–B)</strong></td>
+<td>Multi-omics DNA methylation/expression/enhancer
+<code>HeatmapList</code> + global epigenomic DMR summary dashboard</td>
+<td><a href="#imeta-fig4">Section 16.3.4</a></td>
+</tr>
+<tr>
+<td><em>iMeta</em> (2022)</td>
+<td><strong>Figure 5 (A–E)</strong></td>
+<td>High-level plots: <code>densityHeatmap</code>, 3D
+<code>frequencyHeatmap</code>, TCGA <code>oncoPrint</code>, Roadmap
+H3K4me3 genomic <code>UpSet</code>, and <code>chr1..chr22</code>
+vertical genome-level heatmap</td>
+<td><a href="#imeta-fig5">Section 16.3.5</a></td>
+</tr>
+<tr>
+<td><em>iMeta</em> (2022)</td>
+<td><strong>Figure 6</strong></td>
+<td>Chromatin states, DNA methylation (<code>-5kb..+5kb</code> TSS
+profiles), and Roadmap <code>E003</code> expression (analog of R
+<code>EnrichedHeatmap</code> in <code>ComplexHeatmap-py</code>)</td>
+<td><a href="#imeta-fig6">Section 16.3.6</a></td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="bioinformatics-2016"><span class="header-section-number">16.2</span> <em>Bioinformatics</em> (2016):
+Multidimensional Genomic Data<a class="anchor-section" aria-label="Anchor link to section" href="#bioinformatics-2016">#</a></h2>
+<blockquote>
+<p>Gu, Z., Eils, R., &amp; Schlesner, M. (2016). Complex heatmaps reveal
+patterns and correlations in multidimensional genomic data.
+<em>Bioinformatics</em>, 32(18), 2847–2849. DOI: <a
+href="https://doi.org/10.1093/bioinformatics/btw313">10.1093/bioinformatics/btw313</a>.</p>
+</blockquote>
+<h3 id="bioinformatics-fig1a"><span class="header-section-number">16.2.1</span> Figure 1A: Enhanced TCGA Lung
+Adenocarcinoma OncoPrint with GO Biological Processes<a class="anchor-section" aria-label="Anchor link to section" href="#bioinformatics-fig1a">#</a></h3>
+<p>Figure 1A integrates recurrent somatic mutations and copy-number
+alterations (<code>38</code> genes x <code>134</code> TCGA LUAD
+patients) with clinical metadata (<code>Gender</code>,
+<code>Stage</code>, <code>Age</code>) and a concatenated binary
+<code>Heatmap</code> mapping each gene onto MSigDB Gene Ontology
+Biological Process (<code>GO BP</code>) terms. Splitting genes at an
+amplification rate threshold of <code>10%</code> highlights that highly
+amplified genes enrich in cellular response processes whereas
+predominantly mutated genes cluster into developmental and metabolic
+pathways.</p>
+<div class="code-wrapper"><pre class="codehilite"><code><span class="kn">import</span><span class="w"> </span><span class="nn">re</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">complexheatmap</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">ch</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">complexheatmap</span><span class="w"> </span><span class="kn">import</span> <span class="p">(</span>
+    <span class="n">Heatmap</span><span class="p">,</span>
+    <span class="n">HeatmapAnnotation</span><span class="p">,</span>
+    <span class="n">anno_barplot</span><span class="p">,</span>
+    <span class="n">anno_points</span><span class="p">,</span>
+    <span class="n">anno_text</span><span class="p">,</span>
+    <span class="n">decorate_annotation</span><span class="p">,</span>
+    <span class="n">gpar</span><span class="p">,</span>
+    <span class="n">grid_rect</span><span class="p">,</span>
+    <span class="n">grid_text</span><span class="p">,</span>
+    <span class="n">oncoPrint</span><span class="p">,</span>
+    <span class="n">rowAnnotation</span><span class="p">,</span>
+    <span class="n">unit</span><span class="p">,</span>
+<span class="p">)</span>
+
+<span class="n">mut_df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s2">"data/pub2016_fig1a_mutsig.csv"</span><span class="p">,</span> <span class="n">index_col</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">keep_default_na</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+<span class="n">clin_df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s2">"data/pub2016_fig1a_clinical.csv"</span><span class="p">,</span> <span class="n">index_col</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+<span class="n">go_df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s2">"data/pub2016_fig1a_gobp.csv"</span><span class="p">,</span> <span class="n">index_col</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+
+
+<span class="k">def</span><span class="w"> </span><span class="nf">get_type</span><span class="p">(</span><span class="n">val</span><span class="p">):</span>
+    <span class="k">if</span> <span class="n">val</span> <span class="ow">is</span> <span class="kc">None</span> <span class="ow">or</span> <span class="p">(</span><span class="nb">isinstance</span><span class="p">(</span><span class="n">val</span><span class="p">,</span> <span class="nb">float</span><span class="p">)</span> <span class="ow">and</span> <span class="n">np</span><span class="o">.</span><span class="n">isnan</span><span class="p">(</span><span class="n">val</span><span class="p">)):</span>
+        <span class="k">return</span> <span class="p">[]</span>
+    <span class="n">s</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="n">val</span><span class="p">)</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span>
+    <span class="k">if</span> <span class="ow">not</span> <span class="n">s</span><span class="p">:</span>
+        <span class="k">return</span> <span class="p">[]</span>
+    <span class="n">out</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="k">for</span> <span class="n">part</span> <span class="ow">in</span> <span class="n">s</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">";"</span><span class="p">):</span>
+        <span class="n">tp</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">sub</span><span class="p">(</span><span class="sa">r</span><span class="s2">":.*$"</span><span class="p">,</span> <span class="s2">""</span><span class="p">,</span> <span class="n">part</span><span class="p">)</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span>
+        <span class="k">if</span> <span class="n">tp</span> <span class="ow">and</span> <span class="n">tp</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">out</span><span class="p">:</span>
+            <span class="n">out</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">tp</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">out</span>
+
+
+<span class="n">col_alt</span> <span class="o">=</span> <span class="p">{</span><span class="s2">"MUT"</span><span class="p">:</span> <span class="s2">"#008000"</span><span class="p">,</span> <span class="s2">"AMP"</span><span class="p">:</span> <span class="s2">"red"</span><span class="p">,</span> <span class="s2">"HOMDEL"</span><span class="p">:</span> <span class="s2">"blue"</span><span class="p">}</span>
+<span class="n">alter_fun</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s2">"background"</span><span class="p">:</span> <span class="k">lambda</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">w</span><span class="p">,</span> <span class="n">h</span><span class="p">:</span> <span class="n">grid_rect</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">w</span> <span class="o">-</span> <span class="n">unit</span><span class="p">(</span><span class="mf">0.4</span><span class="p">,</span> <span class="s2">"mm"</span><span class="p">),</span> <span class="n">h</span> <span class="o">-</span> <span class="n">unit</span><span class="p">(</span><span class="mf">0.4</span><span class="p">,</span> <span class="s2">"mm"</span><span class="p">),</span> <span class="n">gp</span><span class="o">=</span><span class="n">gpar</span><span class="p">(</span><span class="n">fill</span><span class="o">=</span><span class="s2">"#CCCCCC"</span><span class="p">,</span> <span class="n">col</span><span class="o">=</span><span class="kc">None</span><span class="p">)),</span>
+    <span class="s2">"HOMDEL"</span><span class="p">:</span> <span class="k">lambda</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">w</span><span class="p">,</span> <span class="n">h</span><span class="p">:</span> <span class="n">grid_rect</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">w</span> <span class="o">-</span> <span class="n">unit</span><span class="p">(</span><span class="mf">0.4</span><span class="p">,</span> <span class="s2">"mm"</span><span class="p">),</span> <span class="n">h</span> <span class="o">-</span> <span class="n">unit</span><span class="p">(</span><span class="mf">0.4</span><span class="p">,</span> <span class="s2">"mm"</span><span class="p">),</span> <span class="n">gp</span><span class="o">=</span><span class="n">gpar</span><span class="p">(</span><span class="n">fill</span><span class="o">=</span><span class="n">col_alt</span><span class="p">[</span><span class="s2">"HOMDEL"</span><span class="p">],</span> <span class="n">col</span><span class="o">=</span><span class="kc">None</span><span class="p">)),</span>
+    <span class="s2">"AMP"</span><span class="p">:</span> <span class="k">lambda</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">w</span><span class="p">,</span> <span class="n">h</span><span class="p">:</span> <span class="n">grid_rect</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">w</span> <span class="o">-</span> <span class="n">unit</span><span class="p">(</span><span class="mf">0.4</span><span class="p">,</span> <span class="s2">"mm"</span><span class="p">),</span> <span class="n">h</span> <span class="o">-</span> <span class="n">unit</span><span class="p">(</span><span class="mf">0.4</span><span class="p">,</span> <span class="s2">"mm"</span><span class="p">),</span> <span class="n">gp</span><span class="o">=</span><span class="n">gpar</span><span class="p">(</span><span class="n">fill</span><span class="o">=</span><span class="n">col_alt</span><span class="p">[</span><span class="s2">"AMP"</span><span class="p">],</span> <span class="n">col</span><span class="o">=</span><span class="kc">None</span><span class="p">)),</span>
+    <span class="s2">"MUT"</span><span class="p">:</span> <span class="k">lambda</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">w</span><span class="p">,</span> <span class="n">h</span><span class="p">:</span> <span class="n">grid_rect</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">w</span> <span class="o">-</span> <span class="n">unit</span><span class="p">(</span><span class="mf">0.4</span><span class="p">,</span> <span class="s2">"mm"</span><span class="p">),</span> <span class="n">h</span> <span class="o">*</span> <span class="mf">0.35</span><span class="p">,</span> <span class="n">gp</span><span class="o">=</span><span class="n">gpar</span><span class="p">(</span><span class="n">fill</span><span class="o">=</span><span class="n">col_alt</span><span class="p">[</span><span class="s2">"MUT"</span><span class="p">],</span> <span class="n">col</span><span class="o">=</span><span class="kc">None</span><span class="p">)),</span>
+<span class="p">}</span>
+
+<span class="n">amp_rates</span> <span class="o">=</span> <span class="n">mut_df</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="k">lambda</span> <span class="n">row</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">([</span><span class="s2">"AMP"</span> <span class="ow">in</span> <span class="nb">str</span><span class="p">(</span><span class="n">cell</span><span class="p">)</span> <span class="k">for</span> <span class="n">cell</span> <span class="ow">in</span> <span class="n">row</span><span class="p">]),</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">amp_labels</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="n">amp_rates</span> <span class="o">&gt;</span> <span class="mf">0.10</span><span class="p">,</span> <span class="s2">"high AMP events"</span><span class="p">,</span> <span class="s2">"low AMP events"</span><span class="p">)</span>
+<span class="n">amp_split</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">Categorical</span><span class="p">(</span><span class="n">amp_labels</span><span class="p">,</span> <span class="n">categories</span><span class="o">=</span><span class="p">[</span><span class="s2">"low AMP events"</span><span class="p">,</span> <span class="s2">"high AMP events"</span><span class="p">],</span> <span class="n">ordered</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
+<span class="n">gender</span> <span class="o">=</span> <span class="p">[</span><span class="kc">None</span> <span class="k">if</span> <span class="n">pd</span><span class="o">.</span><span class="n">isna</span><span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="k">else</span> <span class="nb">str</span><span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">clin_df</span><span class="p">[</span><span class="s2">"gender"</span><span class="p">]]</span>
+<span class="n">stage</span> <span class="o">=</span> <span class="p">[</span><span class="kc">None</span> <span class="k">if</span> <span class="n">pd</span><span class="o">.</span><span class="n">isna</span><span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="k">else</span> <span class="nb">str</span><span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">clin_df</span><span class="p">[</span><span class="s2">"pathologicstage"</span><span class="p">]]</span>
+<span class="n">age_vals</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">to_numeric</span><span class="p">(</span><span class="n">clin_df</span><span class="p">[</span><span class="s2">"yearstobirth"</span><span class="p">],</span> <span class="n">errors</span><span class="o">=</span><span class="s2">"coerce"</span><span class="p">)</span><span class="o">.</span><span class="n">to_numpy</span><span class="p">(</span><span class="n">dtype</span><span class="o">=</span><span class="nb">float</span><span class="p">)</span>
+
+<span class="n">stage_col</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s2">"stage i"</span><span class="p">:</span> <span class="s2">"#FF0000"</span><span class="p">,</span> <span class="s2">"stage ia"</span><span class="p">:</span> <span class="s2">"#FF6060"</span><span class="p">,</span> <span class="s2">"stage ib"</span><span class="p">:</span> <span class="s2">"#FFB0B0"</span><span class="p">,</span>
+    <span class="s2">"stage iia"</span><span class="p">:</span> <span class="s2">"#60FF60"</span><span class="p">,</span> <span class="s2">"stage iib"</span><span class="p">:</span> <span class="s2">"#B0FFB0"</span><span class="p">,</span>
+    <span class="s2">"stage iiia"</span><span class="p">:</span> <span class="s2">"#6060FF"</span><span class="p">,</span> <span class="s2">"stage iiib"</span><span class="p">:</span> <span class="s2">"#B0B0FF"</span><span class="p">,</span> <span class="s2">"stage iv"</span><span class="p">:</span> <span class="s2">"#FFFF00"</span><span class="p">,</span>
+<span class="p">}</span>
+<span class="n">ha_clin</span> <span class="o">=</span> <span class="n">HeatmapAnnotation</span><span class="p">(</span>
+    <span class="n">gender</span><span class="o">=</span><span class="n">gender</span><span class="p">,</span>
+    <span class="n">stage</span><span class="o">=</span><span class="n">stage</span><span class="p">,</span>
+    <span class="n">age</span><span class="o">=</span><span class="n">anno_points</span><span class="p">(</span><span class="n">age_vals</span><span class="p">,</span> <span class="n">ylim</span><span class="o">=</span><span class="p">(</span><span class="mf">0.0</span><span class="p">,</span> <span class="nb">float</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">nanmax</span><span class="p">(</span><span class="n">age_vals</span><span class="p">))),</span> <span class="n">axis</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="n">unit</span><span class="p">(</span><span class="mf">1.2</span><span class="p">,</span> <span class="s2">"mm"</span><span class="p">),</span> <span class="n">height</span><span class="o">=</span><span class="n">unit</span><span class="p">(</span><span class="mi">14</span><span class="p">,</span> <span class="s2">"mm"</span><span class="p">)),</span>
+    <span class="n">col</span><span class="o">=</span><span class="p">{</span><span class="s2">"gender"</span><span class="p">:</span> <span class="p">{</span><span class="s2">"male"</span><span class="p">:</span> <span class="s2">"red"</span><span class="p">,</span> <span class="s2">"female"</span><span class="p">:</span> <span class="s2">"blue"</span><span class="p">},</span> <span class="s2">"stage"</span><span class="p">:</span> <span class="n">stage_col</span><span class="p">},</span>
+    <span class="n">na_col</span><span class="o">=</span><span class="s2">"#E6E6E6"</span><span class="p">,</span>
+    <span class="n">annotation_height</span><span class="o">=</span><span class="n">unit</span><span class="p">([</span><span class="mf">4.5</span><span class="p">,</span> <span class="mf">4.5</span><span class="p">,</span> <span class="mf">14.0</span><span class="p">],</span> <span class="s2">"mm"</span><span class="p">),</span>
+    <span class="n">show_annotation_name</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+    <span class="n">annotation_legend_param</span><span class="o">=</span><span class="p">{</span><span class="s2">"gender"</span><span class="p">:</span> <span class="p">{</span><span class="s2">"title"</span><span class="p">:</span> <span class="s2">"Gender"</span><span class="p">},</span> <span class="s2">"stage"</span><span class="p">:</span> <span class="p">{</span><span class="s2">"title"</span><span class="p">:</span> <span class="s2">"Stage"</span><span class="p">}},</span>
+<span class="p">)</span>
+
+<span class="n">ht_onco</span> <span class="o">=</span> <span class="n">oncoPrint</span><span class="p">(</span>
+    <span class="n">mut_df</span><span class="p">,</span>
+    <span class="n">get_type</span><span class="o">=</span><span class="n">get_type</span><span class="p">,</span>
+    <span class="n">alter_fun</span><span class="o">=</span><span class="n">alter_fun</span><span class="p">,</span>
+    <span class="n">col</span><span class="o">=</span><span class="n">col_alt</span><span class="p">,</span>
+    <span class="n">row_split</span><span class="o">=</span><span class="n">amp_split</span><span class="p">,</span>
+    <span class="n">column_title</span><span class="o">=</span><span class="s2">"OncoPrint for recurrently mutated genes in Lung Adenocarcinoma"</span><span class="p">,</span>
+    <span class="n">heatmap_legend_param</span><span class="o">=</span><span class="p">{</span><span class="s2">"title"</span><span class="p">:</span> <span class="s2">"Alterations"</span><span class="p">,</span> <span class="s2">"at"</span><span class="p">:</span> <span class="p">[</span><span class="s2">"AMP"</span><span class="p">,</span> <span class="s2">"HOMDEL"</span><span class="p">,</span> <span class="s2">"MUT"</span><span class="p">],</span> <span class="s2">"labels"</span><span class="p">:</span> <span class="p">[</span><span class="s2">"Amplification"</span><span class="p">,</span> <span class="s2">"Deep deletion"</span><span class="p">,</span> <span class="s2">"Mutation"</span><span class="p">]},</span>
+    <span class="n">bottom_annotation</span><span class="o">=</span><span class="n">ha_clin</span><span class="p">,</span>
+<span class="p">)</span>
+
+<span class="n">ha_go_top</span> <span class="o">=</span> <span class="n">HeatmapAnnotation</span><span class="p">(</span>
+    <span class="n">go_count</span><span class="o">=</span><span class="n">anno_barplot</span><span class="p">(</span><span class="n">go_df</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span><span class="o">.</span><span class="n">to_numpy</span><span class="p">(</span><span class="n">dtype</span><span class="o">=</span><span class="nb">float</span><span class="p">),</span> <span class="n">border</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">gp</span><span class="o">=</span><span class="n">gpar</span><span class="p">(</span><span class="n">fill</span><span class="o">=</span><span class="s2">"#6A51A3"</span><span class="p">,</span> <span class="n">col</span><span class="o">=</span><span class="kc">None</span><span class="p">),</span> <span class="n">height</span><span class="o">=</span><span class="n">unit</span><span class="p">(</span><span class="mi">16</span><span class="p">,</span> <span class="s2">"mm"</span><span class="p">)),</span>
+    <span class="n">show_annotation_name</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+<span class="p">)</span>
+<span class="n">go_labels</span> <span class="o">=</span> <span class="p">[</span><span class="n">c</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s2">"_"</span><span class="p">,</span> <span class="s2">" "</span><span class="p">)</span> <span class="k">for</span> <span class="n">c</span> <span class="ow">in</span> <span class="n">go_df</span><span class="o">.</span><span class="n">columns</span><span class="p">]</span>
+<span class="n">ht_go</span> <span class="o">=</span> <span class="n">Heatmap</span><span class="p">(</span>
+    <span class="n">go_df</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">str</span><span class="p">),</span>
+    <span class="n">name</span><span class="o">=</span><span class="s2">"go_bp"</span><span class="p">,</span>
+    <span class="n">col</span><span class="o">=</span><span class="p">{</span><span class="s2">"0"</span><span class="p">:</span> <span class="s2">"white"</span><span class="p">,</span> <span class="s2">"1"</span><span class="p">:</span> <span class="s2">"purple"</span><span class="p">},</span>
+    <span class="n">rect_gp</span><span class="o">=</span><span class="n">gpar</span><span class="p">(</span><span class="n">col</span><span class="o">=</span><span class="s2">"#B0B0B0"</span><span class="p">,</span> <span class="n">lwd</span><span class="o">=</span><span class="mf">0.4</span><span class="p">),</span>
+    <span class="n">show_row_names</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+    <span class="n">cluster_columns</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+    <span class="n">show_column_dend</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+    <span class="n">top_annotation</span><span class="o">=</span><span class="n">ha_go_top</span><span class="p">,</span>
+    <span class="n">show_column_names</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+    <span class="n">column_labels</span><span class="o">=</span><span class="n">go_labels</span><span class="p">,</span>
+    <span class="n">column_names_side</span><span class="o">=</span><span class="s2">"bottom"</span><span class="p">,</span>
+    <span class="n">column_names_rot</span><span class="o">=</span><span class="mi">45</span><span class="p">,</span>
+    <span class="n">column_names_gp</span><span class="o">=</span><span class="n">gpar</span><span class="p">(</span><span class="n">fontsize</span><span class="o">=</span><span class="mf">7.5</span><span class="p">),</span>
+    <span class="n">show_heatmap_legend</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+    <span class="n">width</span><span class="o">=</span><span class="n">unit</span><span class="p">(</span><span class="mf">5.2</span><span class="p">,</span> <span class="s2">"cm"</span><span class="p">),</span>
+    <span class="n">column_title</span><span class="o">=</span><span class="s2">"Map to Gene Ontology (BP)"</span><span class="p">,</span>
+    <span class="n">use_raster</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+<span class="p">)</span>
+<span class="n">ha_gene_names</span> <span class="o">=</span> <span class="n">rowAnnotation</span><span class="p">(</span>
+    <span class="n">genes</span><span class="o">=</span><span class="n">anno_text</span><span class="p">(</span><span class="n">mut_df</span><span class="o">.</span><span class="n">index</span><span class="o">.</span><span class="n">tolist</span><span class="p">(),</span> <span class="n">location</span><span class="o">=</span><span class="n">unit</span><span class="p">(</span><span class="mf">0.0</span><span class="p">,</span> <span class="s2">"npc"</span><span class="p">),</span> <span class="n">just</span><span class="o">=</span><span class="s2">"left"</span><span class="p">,</span> <span class="n">gp</span><span class="o">=</span><span class="n">gpar</span><span class="p">(</span><span class="n">fontsize</span><span class="o">=</span><span class="mf">7.5</span><span class="p">)),</span>
+    <span class="n">show_annotation_name</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+<span class="p">)</span>
+
+<span class="n">ch</span><span class="o">.</span><span class="n">draw</span><span class="p">(</span><span class="n">ht_onco</span> <span class="o">+</span> <span class="n">ha_gene_names</span> <span class="o">+</span> <span class="n">ht_go</span><span class="p">,</span> <span class="n">row_sub_title_side</span><span class="o">=</span><span class="s2">"left"</span><span class="p">,</span> <span class="n">ht_gap</span><span class="o">=</span><span class="n">unit</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="s2">"mm"</span><span class="p">),</span> <span class="n">merge_legends</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="k">with</span> <span class="n">decorate_annotation</span><span class="p">(</span><span class="s2">"gender"</span><span class="p">):</span>
+    <span class="n">grid_text</span><span class="p">(</span><span class="s2">"Gender"</span><span class="p">,</span> <span class="n">x</span><span class="o">=</span><span class="n">unit</span><span class="p">(</span><span class="o">-</span><span class="mi">2</span><span class="p">,</span> <span class="s2">"mm"</span><span class="p">),</span> <span class="n">just</span><span class="o">=</span><span class="s2">"right"</span><span class="p">,</span> <span class="n">gp</span><span class="o">=</span><span class="n">gpar</span><span class="p">(</span><span class="n">fontsize</span><span class="o">=</span><span class="mf">8.5</span><span class="p">))</span>
+<span class="k">with</span> <span class="n">decorate_annotation</span><span class="p">(</span><span class="s2">"stage"</span><span class="p">):</span>
+    <span class="n">grid_text</span><span class="p">(</span><span class="s2">"Stage"</span><span class="p">,</span> <span class="n">x</span><span class="o">=</span><span class="n">unit</span><span class="p">(</span><span class="o">-</span><span class="mi">2</span><span class="p">,</span> <span class="s2">"mm"</span><span class="p">),</span> <span class="n">just</span><span class="o">=</span><span class="s2">"right"</span><span class="p">,</span> <span class="n">gp</span><span class="o">=</span><span class="n">gpar</span><span class="p">(</span><span class="n">fontsize</span><span class="o">=</span><span class="mf">8.5</span><span class="p">))</span>
+<span class="k">with</span> <span class="n">decorate_annotation</span><span class="p">(</span><span class="s2">"age"</span><span class="p">):</span>
+    <span class="n">grid_text</span><span class="p">(</span><span class="s2">"Age"</span><span class="p">,</span> <span class="n">x</span><span class="o">=</span><span class="n">unit</span><span class="p">(</span><span class="o">-</span><span class="mi">9</span><span class="p">,</span> <span class="s2">"mm"</span><span class="p">),</span> <span class="n">just</span><span class="o">=</span><span class="s2">"right"</span><span class="p">,</span> <span class="n">gp</span><span class="o">=</span><span class="n">gpar</span><span class="p">(</span><span class="n">fontsize</span><span class="o">=</span><span class="mf">8.5</span><span class="p">))</span></code></pre></div>
+<figure>
+<img src="images/ch16_2016_fig1a_oncoprint_go.png"
+alt="Bioinformatics 2016 Figure 1A reproduction: TCGA Lung Adenocarcinoma OncoPrint + Clinical + GO BP" />
+<figcaption aria-hidden="true">Bioinformatics 2016 Figure 1A
+reproduction: TCGA Lung Adenocarcinoma OncoPrint + Clinical + GO
+BP</figcaption>
+</figure>
+<h3 id="bioinformatics-fig1b"><span class="header-section-number">16.2.2</span> Figure 1B: Mouse T-Cell Single-Cell
+RNA-seq Heterogeneity Across 721 Signature Genes<a class="anchor-section" aria-label="Anchor link to section" href="#bioinformatics-fig1b">#</a></h3>
+<p>Figure 1B reproduces the full <code>721</code>-gene x
+<code>81</code>-cell mouse T-cell single-cell RNA-seq analysis from
+Buettner et al. (2015). Because <code>main_heatmap="cor"</code> is
+specified in <code>draw()</code>, hierarchical clustering of the
+<code>721 x 721</code> pairwise gene-correlation matrix controls the row
+ordering of every parallel heatmap and annotation
+(<code>scaled_expr</code>, <code>base_expr</code>,
+<code>ribonucleoprotein</code>, <code>cell_cycle</code>, and
+<code>anno_mark</code>). Post-draw <code>decorate_column_dend()</code>
+highlights the two cellular subpopulations (<code>G2/M</code>
+cell-cycle-active cells on the left vs ribonucleoprotein-enriched cells
+on the right).</p>
+<div class="code-wrapper"><pre class="codehilite"><code><span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">complexheatmap</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">ch</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">complexheatmap</span><span class="w"> </span><span class="kn">import</span> <span class="p">(</span>
+    <span class="n">Heatmap</span><span class="p">,</span>
+    <span class="n">anno_mark</span><span class="p">,</span>
+    <span class="n">colorRamp2</span><span class="p">,</span>
+    <span class="n">decorate_column_dend</span><span class="p">,</span>
+    <span class="n">gpar</span><span class="p">,</span>
+    <span class="n">grid_rect</span><span class="p">,</span>
+    <span class="n">rowAnnotation</span><span class="p">,</span>
+    <span class="n">unit</span><span class="p">,</span>
+<span class="p">)</span>
+
+<span class="n">mat_df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s2">"data/pub2016_fig1b_scrna721.csv"</span><span class="p">,</span> <span class="n">index_col</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+<span class="n">mat_arr</span> <span class="o">=</span> <span class="n">mat_df</span><span class="o">.</span><span class="n">to_numpy</span><span class="p">(</span><span class="n">dtype</span><span class="o">=</span><span class="nb">float</span><span class="p">)</span>
+
+<span class="c1"># Winsorize per gene to [10th, 90th] percentiles before z-scaling</span>
+<span class="n">mat2</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">empty_like</span><span class="p">(</span><span class="n">mat_arr</span><span class="p">)</span>
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">mat_arr</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]):</span>
+    <span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">clip</span><span class="p">(</span><span class="n">mat_arr</span><span class="p">[</span><span class="n">i</span><span class="p">],</span> <span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">quantile</span><span class="p">(</span><span class="n">mat_arr</span><span class="p">[</span><span class="n">i</span><span class="p">],</span> <span class="p">[</span><span class="mf">0.1</span><span class="p">,</span> <span class="mf">0.9</span><span class="p">]))</span>
+    <span class="n">sd</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">std</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">ddof</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+    <span class="n">mat2</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span><span class="n">x</span> <span class="o">-</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">x</span><span class="p">))</span> <span class="o">/</span> <span class="n">sd</span> <span class="k">if</span> <span class="n">sd</span> <span class="o">&gt;</span> <span class="mi">0</span> <span class="k">else</span> <span class="mf">0.0</span>
+<span class="n">mat2_df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">mat2</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="n">mat_df</span><span class="o">.</span><span class="n">index</span><span class="p">,</span> <span class="n">columns</span><span class="o">=</span><span class="n">mat_df</span><span class="o">.</span><span class="n">columns</span><span class="p">)</span>
+
+<span class="n">cc_set</span> <span class="o">=</span> <span class="nb">set</span><span class="p">(</span><span class="nb">open</span><span class="p">(</span><span class="s2">"data/mouse_cell_cycle_genes.txt"</span><span class="p">)</span><span class="o">.</span><span class="n">read</span><span class="p">()</span><span class="o">.</span><span class="n">splitlines</span><span class="p">())</span>
+<span class="n">rp_set</span> <span class="o">=</span> <span class="nb">set</span><span class="p">(</span><span class="nb">open</span><span class="p">(</span><span class="s2">"data/mouse_ribonucleoprotein_genes.txt"</span><span class="p">)</span><span class="o">.</span><span class="n">read</span><span class="p">()</span><span class="o">.</span><span class="n">splitlines</span><span class="p">())</span>
+<span class="n">ccl</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="n">g</span> <span class="ow">in</span> <span class="n">cc_set</span> <span class="k">for</span> <span class="n">g</span> <span class="ow">in</span> <span class="n">mat_df</span><span class="o">.</span><span class="n">index</span><span class="p">])</span>
+<span class="n">rpl</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="n">g</span> <span class="ow">in</span> <span class="n">rp_set</span> <span class="k">for</span> <span class="n">g</span> <span class="ow">in</span> <span class="n">mat_df</span><span class="o">.</span><span class="n">index</span><span class="p">])</span>
+<span class="n">base_mean</span> <span class="o">=</span> <span class="n">mat_arr</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+
+<span class="n">mark_idx</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="n">ccl</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">base_mean</span> <span class="o">&gt;</span> <span class="n">np</span><span class="o">.</span><span class="n">quantile</span><span class="p">(</span><span class="n">base_mean</span><span class="p">,</span> <span class="mf">0.25</span><span class="p">)))[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">tolist</span><span class="p">()</span>
+<span class="n">mark_labels</span> <span class="o">=</span> <span class="p">[</span><span class="nb">str</span><span class="p">(</span><span class="n">mat_df</span><span class="o">.</span><span class="n">index</span><span class="p">[</span><span class="n">i</span><span class="p">])</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">mark_idx</span><span class="p">]</span>
+<span class="n">cor_mat</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">corrcoef</span><span class="p">(</span><span class="n">mat2</span><span class="p">)</span>
+
+<span class="n">ht_list</span> <span class="o">=</span> <span class="p">(</span>
+    <span class="n">Heatmap</span><span class="p">(</span>
+        <span class="n">mat2_df</span><span class="p">,</span>
+        <span class="n">col</span><span class="o">=</span><span class="n">colorRamp2</span><span class="p">([</span><span class="o">-</span><span class="mf">1.5</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mf">1.5</span><span class="p">],</span> <span class="p">[</span><span class="s2">"blue"</span><span class="p">,</span> <span class="s2">"white"</span><span class="p">,</span> <span class="s2">"red"</span><span class="p">]),</span>
+        <span class="n">name</span><span class="o">=</span><span class="s2">"scaled_expr"</span><span class="p">,</span>
+        <span class="n">column_title</span><span class="o">=</span><span class="sa">f</span><span class="s2">"relative expression for </span><span class="si">{</span><span class="n">mat_df</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="si">}</span><span class="s2"> genes"</span><span class="p">,</span>
+        <span class="n">show_column_names</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+        <span class="n">show_row_names</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+        <span class="n">width</span><span class="o">=</span><span class="n">unit</span><span class="p">(</span><span class="mf">7.6</span><span class="p">,</span> <span class="s2">"cm"</span><span class="p">),</span>
+        <span class="n">heatmap_legend_param</span><span class="o">=</span><span class="p">{</span><span class="s2">"title"</span><span class="p">:</span> <span class="s2">"Scaled expr"</span><span class="p">},</span>
+        <span class="n">use_raster</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+    <span class="p">)</span>
+    <span class="o">+</span> <span class="n">Heatmap</span><span class="p">(</span><span class="n">base_mean</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s2">"base_expr"</span><span class="p">,</span> <span class="n">width</span><span class="o">=</span><span class="n">unit</span><span class="p">(</span><span class="mf">4.5</span><span class="p">,</span> <span class="s2">"mm"</span><span class="p">),</span> <span class="n">heatmap_legend_param</span><span class="o">=</span><span class="p">{</span><span class="s2">"title"</span><span class="p">:</span> <span class="s2">"Base expr"</span><span class="p">})</span>
+    <span class="o">+</span> <span class="n">Heatmap</span><span class="p">(</span><span class="n">rpl</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">int</span><span class="p">),</span> <span class="n">name</span><span class="o">=</span><span class="s2">"ribonucleoprotein"</span><span class="p">,</span> <span class="n">col</span><span class="o">=</span><span class="p">{</span><span class="s2">"0"</span><span class="p">:</span> <span class="s2">"white"</span><span class="p">,</span> <span class="s2">"1"</span><span class="p">:</span> <span class="s2">"purple"</span><span class="p">},</span> <span class="n">show_heatmap_legend</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">width</span><span class="o">=</span><span class="n">unit</span><span class="p">(</span><span class="mf">4.5</span><span class="p">,</span> <span class="s2">"mm"</span><span class="p">))</span>
+    <span class="o">+</span> <span class="n">Heatmap</span><span class="p">(</span><span class="n">ccl</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">int</span><span class="p">),</span> <span class="n">name</span><span class="o">=</span><span class="s2">"cell_cycle"</span><span class="p">,</span> <span class="n">col</span><span class="o">=</span><span class="p">{</span><span class="s2">"0"</span><span class="p">:</span> <span class="s2">"white"</span><span class="p">,</span> <span class="s2">"1"</span><span class="p">:</span> <span class="s2">"red"</span><span class="p">},</span> <span class="n">show_heatmap_legend</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">width</span><span class="o">=</span><span class="n">unit</span><span class="p">(</span><span class="mf">4.5</span><span class="p">,</span> <span class="s2">"mm"</span><span class="p">))</span>
+    <span class="o">+</span> <span class="n">rowAnnotation</span><span class="p">(</span><span class="n">link</span><span class="o">=</span><span class="n">anno_mark</span><span class="p">(</span><span class="n">at</span><span class="o">=</span><span class="n">mark_idx</span><span class="p">,</span> <span class="n">labels</span><span class="o">=</span><span class="n">mark_labels</span><span class="p">,</span> <span class="n">labels_gp</span><span class="o">=</span><span class="n">gpar</span><span class="p">(</span><span class="n">fontsize</span><span class="o">=</span><span class="mf">7.5</span><span class="p">),</span> <span class="n">link_width</span><span class="o">=</span><span class="n">unit</span><span class="p">(</span><span class="mi">6</span><span class="p">,</span> <span class="s2">"mm"</span><span class="p">)))</span>
+    <span class="o">+</span> <span class="n">Heatmap</span><span class="p">(</span>
+        <span class="n">cor_mat</span><span class="p">,</span>
+        <span class="n">name</span><span class="o">=</span><span class="s2">"cor"</span><span class="p">,</span>
+        <span class="n">col</span><span class="o">=</span><span class="n">colorRamp2</span><span class="p">([</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span> <span class="p">[</span><span class="s2">"green"</span><span class="p">,</span> <span class="s2">"white"</span><span class="p">,</span> <span class="s2">"red"</span><span class="p">]),</span>
+        <span class="n">show_row_names</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+        <span class="n">show_column_names</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+        <span class="n">row_dend_side</span><span class="o">=</span><span class="s2">"right"</span><span class="p">,</span>
+        <span class="n">show_column_dend</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+        <span class="n">column_title</span><span class="o">=</span><span class="s2">"pairwise correlation between genes"</span><span class="p">,</span>
+        <span class="n">heatmap_legend_param</span><span class="o">=</span><span class="p">{</span><span class="s2">"title"</span><span class="p">:</span> <span class="s2">"Correlation"</span><span class="p">},</span>
+        <span class="n">use_raster</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+    <span class="p">)</span>
+<span class="p">)</span>
+
+<span class="n">ht_drawn</span> <span class="o">=</span> <span class="n">ch</span><span class="o">.</span><span class="n">draw</span><span class="p">(</span><span class="n">ht_list</span><span class="p">,</span> <span class="n">main_heatmap</span><span class="o">=</span><span class="s2">"cor"</span><span class="p">)</span>
+<span class="n">tree</span> <span class="o">=</span> <span class="n">ch</span><span class="o">.</span><span class="n">column_dend</span><span class="p">(</span><span class="n">ht_drawn</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s2">"scaled_expr"</span><span class="p">)</span>
+<span class="n">ind</span> <span class="o">=</span> <span class="n">ch</span><span class="o">.</span><span class="n">cutree</span><span class="p">(</span><span class="n">tree</span><span class="p">,</span> <span class="n">k</span><span class="o">=</span><span class="mi">2</span><span class="p">)[</span><span class="n">ch</span><span class="o">.</span><span class="n">order_dendrogram</span><span class="p">(</span><span class="n">tree</span><span class="p">)]</span>
+<span class="k">with</span> <span class="n">decorate_column_dend</span><span class="p">(</span><span class="s2">"scaled_expr"</span><span class="p">):</span>
+    <span class="k">for</span> <span class="n">grp_id</span><span class="p">,</span> <span class="n">fill_col</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">((</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">),</span> <span class="p">(</span><span class="s2">"#FF000040"</span><span class="p">,</span> <span class="s2">"#00FF0040"</span><span class="p">)):</span>
+        <span class="n">pos</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="n">ind</span> <span class="o">==</span> <span class="n">grp_id</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span>
+        <span class="n">grid_rect</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="n">unit</span><span class="p">(</span><span class="n">pos</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">/</span> <span class="nb">len</span><span class="p">(</span><span class="n">ind</span><span class="p">),</span> <span class="s2">"npc"</span><span class="p">),</span> <span class="n">width</span><span class="o">=</span><span class="n">unit</span><span class="p">((</span><span class="n">pos</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">-</span> <span class="n">pos</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span> <span class="o">/</span> <span class="nb">len</span><span class="p">(</span><span class="n">ind</span><span class="p">),</span> <span class="s2">"npc"</span><span class="p">),</span> <span class="n">just</span><span class="o">=</span><span class="s2">"left"</span><span class="p">,</span> <span class="n">gp</span><span class="o">=</span><span class="n">gpar</span><span class="p">(</span><span class="n">fill</span><span class="o">=</span><span class="n">fill_col</span><span class="p">,</span> <span class="n">col</span><span class="o">=</span><span class="kc">None</span><span class="p">))</span></code></pre></div>
+<figure>
+<img src="images/ch16_2016_fig1b_scrnaseq_721.png"
+alt="Bioinformatics 2016 Figure 1B reproduction: 721-gene mouse T-cell scRNA-seq + correlation" />
+<figcaption aria-hidden="true">Bioinformatics 2016 Figure 1B
+reproduction: 721-gene mouse T-cell scRNA-seq + correlation</figcaption>
+</figure>
+<h3 id="bioinformatics-suppl"><span class="header-section-number">16.2.3</span> Supplementary Examples S3 and S4<a class="anchor-section" aria-label="Anchor link to section" href="#bioinformatics-suppl">#</a></h3>
+<ul>
+<li><strong>Supplementary File S3 (DMR methylation, expression &amp;
+enhancers)</strong>: Directly reproduced in <a
+href="#imeta-fig4"><em>iMeta</em> (2022) Figure 4A</a> below and in <a
+href="more-examples.html">Chapter 14, Section 14.4</a> using
+<code>ch.load_dataset("meth")</code>.</li>
+<li><strong>Supplementary File S4 (Sturm et al. 2012 GBM 450K
+methylation with CGI &amp; TSS annotations)</strong>: Reproduced in <a
+href="more-examples.html">Chapter 14, Section 14.5</a> aligning real
+DKFZ 450K patient metadata (<code>data/450K_annotation.txt</code>),
+<code>anno_points</code> age tracks, CGI splitting (<code>Island</code>,
+<code>Shore</code>, <code>Shelf</code>, <code>OpenSea</code>), and
+post-draw <code>decorate_annotation()</code> labels.</li>
+</ul>
+<hr />
+<h2 id="imeta-2022"><span class="header-section-number">16.3</span> <em>iMeta</em> (2022): Complex Heatmap
+Visualization<a class="anchor-section" aria-label="Anchor link to section" href="#imeta-2022">#</a></h2>
+<blockquote>
+<p>Gu, Z. (2022). Complex heatmap visualization. <em>iMeta</em>, 1(3),
+e43. DOI: <a
+href="https://doi.org/10.1002/imt2.43">10.1002/imt2.43</a>.</p>
+</blockquote>
+<h3 id="imeta-fig1"><span class="header-section-number">16.3.1</span> Figure 1: Modular Object-Oriented Design<a class="anchor-section" aria-label="Anchor link to section" href="#imeta-fig1">#</a></h3>
+<p>Figure 1 illustrates the three core classes shared by
+<strong>ComplexHeatmap</strong> and
+<strong>ComplexHeatmap-py</strong>:</p>
+<ul>
+<li><strong>(A) <code>Heatmap</code></strong>: Central sliced matrix
+body surrounded on all four sides by titles, dendrograms, dimension
+labels, and heatmap annotations.</li>
+<li><strong>(B) <code>HeatmapAnnotation</code></strong>: A stack of
+<code>SingleAnnotation</code> tracks.</li>
+<li><strong>(C) <code>HeatmapList</code></strong>: A horizontal
+(<code>+</code>) or vertical (<code>%v%</code>) container aligning
+multiple heatmaps and annotations inside shared global titles and
+legends.</li>
+</ul>
+<div class="code-wrapper"><pre class="codehilite"><code><span class="kn">from</span><span class="w"> </span><span class="nn">complexheatmap</span><span class="w"> </span><span class="kn">import</span> <span class="n">Viewport</span><span class="p">,</span> <span class="n">grid_rect</span><span class="p">,</span> <span class="n">grid_text</span><span class="p">,</span> <span class="n">popViewport</span><span class="p">,</span> <span class="n">pushViewport</span><span class="p">,</span> <span class="n">gpar</span><span class="p">,</span> <span class="n">unit</span>
+
+<span class="c1"># Uses Viewport + grid_rect + grid_text inside grid_newpage()</span>
+<span class="c1"># Full helper implementation in scripts/ch16_publication_examples.py::render_2022_fig1_design()</span></code></pre></div>
+<figure>
+<img src="images/ch16_2022_fig1_design.png"
+alt="iMeta 2022 Figure 1 reproduction: Modular design of ComplexHeatmap-py" />
+<figcaption aria-hidden="true">iMeta 2022 Figure 1 reproduction: Modular
+design of ComplexHeatmap-py</figcaption>
+</figure>
+<h3 id="imeta-fig2"><span class="header-section-number">16.3.2</span> Figure 2: Single Heatmap Annotations, Body
+Customization, and Subgroup Splitting<a class="anchor-section" aria-label="Anchor link to section" href="#imeta-fig2">#</a></h3>
+<ul>
+<li><strong>Panel A</strong>: Combines
+<code>color_branches(dend, k=3)</code> and custom <code>node_par</code>
+glyphs on column dendrograms, combined categorical + k-means row
+splitting (<code>row_split=["A", "B"] * 9</code>,
+<code>row_km=2</code>), <code>anno_points</code>
+(<code>decorate_annotation</code> baseline at <code>0.5</code>), and
+stacked <code>anno_barplot</code> with a custom
+<code>Legend</code>.</li>
+<li><strong>Panel B</strong>: Uses <code>layer_fun</code> with
+<code>restore_matrix(j, i, x, y)</code> to connect adjacent same-sign
+cells via <code>grid_segments()</code> + <code>grid_points()</code> and
+highlight off-diagonal slice blocks (<code>if kr != kc</code>).</li>
+</ul>
+<div class="code-wrapper"><pre class="codehilite"><code><span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">complexheatmap</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">ch</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">complexheatmap</span><span class="w"> </span><span class="kn">import</span> <span class="p">(</span>
+    <span class="n">Heatmap</span><span class="p">,</span>
+    <span class="n">HeatmapAnnotation</span><span class="p">,</span>
+    <span class="n">Legend</span><span class="p">,</span>
+    <span class="n">anno_barplot</span><span class="p">,</span>
+    <span class="n">anno_points</span><span class="p">,</span>
+    <span class="n">colorRamp2</span><span class="p">,</span>
+    <span class="n">color_branches</span><span class="p">,</span>
+    <span class="n">decorate_annotation</span><span class="p">,</span>
+    <span class="n">gpar</span><span class="p">,</span>
+    <span class="n">grid_lines</span><span class="p">,</span>
+    <span class="n">grid_points</span><span class="p">,</span>
+    <span class="n">grid_rect</span><span class="p">,</span>
+    <span class="n">grid_segments</span><span class="p">,</span>
+    <span class="n">restore_matrix</span><span class="p">,</span>
+    <span class="n">rowAnnotation</span><span class="p">,</span>
+    <span class="n">unit</span><span class="p">,</span>
+<span class="p">)</span>
+
+<span class="n">rng</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">default_rng</span><span class="p">(</span><span class="mi">123</span><span class="p">)</span>
+<span class="n">mat</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">hstack</span><span class="p">([</span>
+    <span class="n">np</span><span class="o">.</span><span class="n">vstack</span><span class="p">([</span><span class="n">rng</span><span class="o">.</span><span class="n">normal</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">,</span> <span class="p">(</span><span class="mi">4</span><span class="p">,</span> <span class="mi">6</span><span class="p">)),</span> <span class="n">rng</span><span class="o">.</span><span class="n">normal</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">,</span> <span class="p">(</span><span class="mi">8</span><span class="p">,</span> <span class="mi">6</span><span class="p">)),</span> <span class="n">rng</span><span class="o">.</span><span class="n">normal</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">,</span> <span class="p">(</span><span class="mi">6</span><span class="p">,</span> <span class="mi">6</span><span class="p">))]),</span>
+    <span class="n">np</span><span class="o">.</span><span class="n">vstack</span><span class="p">([</span><span class="n">rng</span><span class="o">.</span><span class="n">normal</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">,</span> <span class="p">(</span><span class="mi">4</span><span class="p">,</span> <span class="mi">8</span><span class="p">)),</span> <span class="n">rng</span><span class="o">.</span><span class="n">normal</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">,</span> <span class="p">(</span><span class="mi">8</span><span class="p">,</span> <span class="mi">8</span><span class="p">)),</span> <span class="n">rng</span><span class="o">.</span><span class="n">normal</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">,</span> <span class="p">(</span><span class="mi">6</span><span class="p">,</span> <span class="mi">8</span><span class="p">))]),</span>
+    <span class="n">np</span><span class="o">.</span><span class="n">vstack</span><span class="p">([</span><span class="n">rng</span><span class="o">.</span><span class="n">normal</span><span class="p">(</span><span class="mf">0.5</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">,</span> <span class="p">(</span><span class="mi">4</span><span class="p">,</span> <span class="mi">10</span><span class="p">)),</span> <span class="n">rng</span><span class="o">.</span><span class="n">normal</span><span class="p">(</span><span class="mf">0.5</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">,</span> <span class="p">(</span><span class="mi">8</span><span class="p">,</span> <span class="mi">10</span><span class="p">)),</span> <span class="n">rng</span><span class="o">.</span><span class="n">normal</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">,</span> <span class="p">(</span><span class="mi">6</span><span class="p">,</span> <span class="mi">10</span><span class="p">))]),</span>
+<span class="p">])[</span><span class="n">rng</span><span class="o">.</span><span class="n">permutation</span><span class="p">(</span><span class="mi">18</span><span class="p">),</span> <span class="p">:][:,</span> <span class="n">rng</span><span class="o">.</span><span class="n">permutation</span><span class="p">(</span><span class="mi">24</span><span class="p">)]</span>
+
+<span class="n">col_dend</span> <span class="o">=</span> <span class="n">color_branches</span><span class="p">(</span><span class="n">ch</span><span class="o">.</span><span class="n">as_dendrogram</span><span class="p">(</span><span class="n">ch</span><span class="o">.</span><span class="n">hclust</span><span class="p">(</span><span class="n">ch</span><span class="o">.</span><span class="n">dist</span><span class="p">(</span><span class="n">mat</span><span class="o">.</span><span class="n">T</span><span class="p">))),</span> <span class="n">k</span><span class="o">=</span><span class="mi">3</span><span class="p">)</span>
+<span class="n">ht_a</span> <span class="o">=</span> <span class="n">Heatmap</span><span class="p">(</span>
+    <span class="n">mat</span><span class="p">,</span>
+    <span class="n">name</span><span class="o">=</span><span class="s2">"mat"</span><span class="p">,</span>
+    <span class="n">row_dend_width</span><span class="o">=</span><span class="n">unit</span><span class="p">(</span><span class="mf">1.8</span><span class="p">,</span> <span class="s2">"cm"</span><span class="p">),</span>
+    <span class="n">cluster_columns</span><span class="o">=</span><span class="n">col_dend</span><span class="p">,</span>
+    <span class="n">show_column_names</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+    <span class="n">row_split</span><span class="o">=</span><span class="p">[</span><span class="s2">"A"</span><span class="p">,</span> <span class="s2">"B"</span><span class="p">]</span> <span class="o">*</span> <span class="mi">9</span><span class="p">,</span>
+    <span class="n">row_km</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span>
+    <span class="n">column_split</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span>
+    <span class="n">top_annotation</span><span class="o">=</span><span class="n">HeatmapAnnotation</span><span class="p">(</span><span class="n">foo1</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">25</span><span class="p">),</span> <span class="n">bar1</span><span class="o">=</span><span class="n">anno_points</span><span class="p">(</span><span class="n">rng</span><span class="o">.</span><span class="n">uniform</span><span class="p">(</span><span class="n">size</span><span class="o">=</span><span class="mi">24</span><span class="p">))),</span>
+    <span class="n">right_annotation</span><span class="o">=</span><span class="n">rowAnnotation</span><span class="p">(</span><span class="n">foo2</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">18</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">),</span> <span class="n">bar2</span><span class="o">=</span><span class="n">anno_barplot</span><span class="p">(</span><span class="n">rng</span><span class="o">.</span><span class="n">uniform</span><span class="p">(</span><span class="n">size</span><span class="o">=</span><span class="p">(</span><span class="mi">18</span><span class="p">,</span> <span class="mi">2</span><span class="p">)),</span> <span class="n">gp</span><span class="o">=</span><span class="n">gpar</span><span class="p">(</span><span class="n">fill</span><span class="o">=</span><span class="p">[</span><span class="s2">"#DF536B"</span><span class="p">,</span> <span class="s2">"#61D04F"</span><span class="p">]),</span> <span class="n">width</span><span class="o">=</span><span class="n">unit</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="s2">"cm"</span><span class="p">))),</span>
+<span class="p">)</span>
+
+<span class="n">small_mat</span> <span class="o">=</span> <span class="n">mat</span><span class="p">[:</span><span class="mi">9</span><span class="p">,</span> <span class="p">:</span><span class="mi">9</span><span class="p">]</span>
+
+
+<span class="k">def</span><span class="w"> </span><span class="nf">layer_b</span><span class="p">(</span><span class="n">j</span><span class="p">,</span> <span class="n">i</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">w</span><span class="p">,</span> <span class="n">h</span><span class="p">,</span> <span class="n">fill</span><span class="p">,</span> <span class="n">kr</span><span class="p">,</span> <span class="n">kc</span><span class="p">):</span>
+    <span class="n">ind_mat</span> <span class="o">=</span> <span class="n">restore_matrix</span><span class="p">(</span><span class="n">j</span><span class="p">,</span> <span class="n">i</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
+    <span class="k">for</span> <span class="n">ir</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">ind_mat</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]):</span>
+        <span class="k">for</span> <span class="n">ic</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">ind_mat</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">]):</span>
+            <span class="n">p1</span><span class="p">,</span> <span class="n">p2</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">ind_mat</span><span class="p">[</span><span class="n">ir</span><span class="p">,</span> <span class="n">ic</span> <span class="o">-</span> <span class="mi">1</span><span class="p">]),</span> <span class="nb">int</span><span class="p">(</span><span class="n">ind_mat</span><span class="p">[</span><span class="n">ir</span><span class="p">,</span> <span class="n">ic</span><span class="p">])</span>
+            <span class="n">v1</span><span class="p">,</span> <span class="n">v2</span> <span class="o">=</span> <span class="n">small_mat</span><span class="p">[</span><span class="nb">int</span><span class="p">(</span><span class="n">i</span><span class="p">[</span><span class="n">p1</span><span class="p">]),</span> <span class="nb">int</span><span class="p">(</span><span class="n">j</span><span class="p">[</span><span class="n">p1</span><span class="p">])],</span> <span class="n">small_mat</span><span class="p">[</span><span class="nb">int</span><span class="p">(</span><span class="n">i</span><span class="p">[</span><span class="n">p2</span><span class="p">]),</span> <span class="nb">int</span><span class="p">(</span><span class="n">j</span><span class="p">[</span><span class="n">p2</span><span class="p">])]</span>
+            <span class="k">if</span> <span class="n">v1</span> <span class="o">*</span> <span class="n">v2</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
+                <span class="n">c_line</span> <span class="o">=</span> <span class="s2">"violet"</span> <span class="k">if</span> <span class="n">v1</span> <span class="o">&gt;</span> <span class="mi">0</span> <span class="k">else</span> <span class="s2">"blue"</span>
+                <span class="n">grid_segments</span><span class="p">(</span><span class="n">x</span><span class="p">[</span><span class="n">p1</span><span class="p">],</span> <span class="n">y</span><span class="p">[</span><span class="n">p1</span><span class="p">],</span> <span class="n">x</span><span class="p">[</span><span class="n">p2</span><span class="p">],</span> <span class="n">y</span><span class="p">[</span><span class="n">p2</span><span class="p">],</span> <span class="n">gp</span><span class="o">=</span><span class="n">gpar</span><span class="p">(</span><span class="n">col</span><span class="o">=</span><span class="n">c_line</span><span class="p">,</span> <span class="n">lwd</span><span class="o">=</span><span class="mf">1.8</span><span class="p">))</span>
+                <span class="n">grid_points</span><span class="p">(</span><span class="n">x</span><span class="p">[[</span><span class="n">p1</span><span class="p">,</span> <span class="n">p2</span><span class="p">]],</span> <span class="n">y</span><span class="p">[[</span><span class="n">p1</span><span class="p">,</span> <span class="n">p2</span><span class="p">]],</span> <span class="n">pch</span><span class="o">=</span><span class="mi">16</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="n">unit</span><span class="p">(</span><span class="mf">2.6</span><span class="p">,</span> <span class="s2">"mm"</span><span class="p">),</span> <span class="n">gp</span><span class="o">=</span><span class="n">gpar</span><span class="p">(</span><span class="n">col</span><span class="o">=</span><span class="n">c_line</span><span class="p">))</span>
+    <span class="k">if</span> <span class="n">kr</span> <span class="o">!=</span> <span class="n">kc</span><span class="p">:</span>
+        <span class="n">grid_rect</span><span class="p">(</span><span class="n">gp</span><span class="o">=</span><span class="n">gpar</span><span class="p">(</span><span class="n">lwd</span><span class="o">=</span><span class="mf">2.2</span><span class="p">,</span> <span class="n">fill</span><span class="o">=</span><span class="s2">"transparent"</span><span class="p">,</span> <span class="n">col</span><span class="o">=</span><span class="s2">"black"</span><span class="p">))</span>
+
+
+<span class="n">ht_b</span> <span class="o">=</span> <span class="n">Heatmap</span><span class="p">(</span><span class="n">small_mat</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s2">"mat_b"</span><span class="p">,</span> <span class="n">col</span><span class="o">=</span><span class="n">colorRamp2</span><span class="p">([</span><span class="o">-</span><span class="mi">2</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">2</span><span class="p">],</span> <span class="p">[</span><span class="s2">"green"</span><span class="p">,</span> <span class="s2">"white"</span><span class="p">,</span> <span class="s2">"red"</span><span class="p">]),</span> <span class="n">row_km</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">column_km</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">layer_fun</span><span class="o">=</span><span class="n">layer_b</span><span class="p">)</span></code></pre></div>
+<figure>
+<img src="images/ch16_2022_fig2ab_single.png"
+alt="iMeta 2022 Figure 2A-B reproduction: Dendrogram styling, splitting, and layer_fun" />
+<figcaption aria-hidden="true">iMeta 2022 Figure 2A-B reproduction:
+Dendrogram styling, splitting, and layer_fun</figcaption>
+</figure>
+<ul>
+<li><strong>Panels C &amp; D</strong> contrast global column clustering
+vs pre-splitting columns by TCGA Glioblastoma consensus subgroup
+(<code>class</code> <code>1..4</code>, with TCGA <code>subtype</code>
+tracks along the bottom): pre-splitting prevents subgroups with moderate
+differences (<code>class 3</code> vs <code>4</code>) from mixing in a
+single global dendrogram.</li>
+</ul>
+<div class="code-wrapper"><pre class="codehilite"><code><span class="n">expr_df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s2">"data/pub2022_fig2cd_expr.csv"</span><span class="p">,</span> <span class="n">index_col</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+<span class="n">meta_df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s2">"data/pub2022_fig2cd_meta.csv"</span><span class="p">)</span>
+<span class="n">cls_vec</span> <span class="o">=</span> <span class="p">[</span><span class="nb">str</span><span class="p">(</span><span class="n">c</span><span class="p">)</span> <span class="k">for</span> <span class="n">c</span> <span class="ow">in</span> <span class="n">meta_df</span><span class="p">[</span><span class="s2">"class"</span><span class="p">]]</span>
+<span class="n">sub_vec</span> <span class="o">=</span> <span class="p">[</span><span class="nb">str</span><span class="p">(</span><span class="n">s</span><span class="p">)</span> <span class="k">for</span> <span class="n">s</span> <span class="ow">in</span> <span class="n">meta_df</span><span class="p">[</span><span class="s2">"subtype"</span><span class="p">]]</span>
+
+<span class="c1"># Panel D: pre-split columns by consensus class and cluster genes into 4 blocks</span>
+<span class="n">ht_d</span> <span class="o">=</span> <span class="n">Heatmap</span><span class="p">(</span>
+    <span class="n">expr_df</span><span class="p">,</span>
+    <span class="n">name</span><span class="o">=</span><span class="s2">"mat"</span><span class="p">,</span>
+    <span class="n">col</span><span class="o">=</span><span class="n">colorRamp2</span><span class="p">([</span><span class="o">-</span><span class="mi">2</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">2</span><span class="p">],</span> <span class="p">[</span><span class="s2">"green"</span><span class="p">,</span> <span class="s2">"white"</span><span class="p">,</span> <span class="s2">"red"</span><span class="p">]),</span>
+    <span class="n">row_km</span><span class="o">=</span><span class="mi">4</span><span class="p">,</span>
+    <span class="n">column_split</span><span class="o">=</span><span class="n">pd</span><span class="o">.</span><span class="n">Categorical</span><span class="p">(</span><span class="n">cls_vec</span><span class="p">,</span> <span class="n">categories</span><span class="o">=</span><span class="p">[</span><span class="s2">"1"</span><span class="p">,</span> <span class="s2">"2"</span><span class="p">,</span> <span class="s2">"3"</span><span class="p">,</span> <span class="s2">"4"</span><span class="p">],</span> <span class="n">ordered</span><span class="o">=</span><span class="kc">True</span><span class="p">),</span>
+    <span class="n">show_row_names</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+    <span class="n">show_row_dend</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+    <span class="n">show_column_names</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+    <span class="n">top_annotation</span><span class="o">=</span><span class="n">HeatmapAnnotation</span><span class="p">(</span><span class="o">**</span><span class="p">{</span><span class="s2">"class"</span><span class="p">:</span> <span class="n">cls_vec</span><span class="p">}),</span>
+    <span class="n">bottom_annotation</span><span class="o">=</span><span class="n">HeatmapAnnotation</span><span class="p">(</span><span class="n">subtype</span><span class="o">=</span><span class="n">sub_vec</span><span class="p">),</span>
+    <span class="n">use_raster</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+<span class="p">)</span></code></pre></div>
+<figure>
+<img src="images/ch16_2022_fig2cd_presplit.png"
+alt="iMeta 2022 Figure 2C-D reproduction: TCGA GBM global clustering vs pre-split by class" />
+<figcaption aria-hidden="true">iMeta 2022 Figure 2C-D reproduction: TCGA
+GBM global clustering vs pre-split by class</figcaption>
+</figure>
+<h3 id="imeta-fig3"><span class="header-section-number">16.3.3</span> Figure 3: Built-in and Complex Heatmap Annotation
+Gallery<a class="anchor-section" aria-label="Anchor link to section" href="#imeta-fig3">#</a></h3>
+<p>Figure 3A renders 13 distinct annotation types side by side in
+<strong>ComplexHeatmap-py</strong>: <code>anno_simple</code>,
+<code>anno_image</code>, <code>anno_points</code>,
+<code>anno_lines</code>, <code>anno_lines(..., smooth=True)</code>,
+<code>anno_barplot</code>, <code>anno_numeric</code> (percent bars),
+<code>anno_boxplot</code>, <code>anno_text(gt_render(...))</code>,
+<code>anno_histogram</code>,
+<code>anno_density(..., type="violin")</code>,
+<code>anno_joyplot</code>, and <code>anno_horizon</code>.</p>
+<figure>
+<img src="images/ch16_2022_fig3a_gallery.png"
+alt="iMeta 2022 Figure 3A reproduction: 13-track annotation graphics gallery" />
+<figcaption aria-hidden="true">iMeta 2022 Figure 3A reproduction:
+13-track annotation graphics gallery</figcaption>
+</figure>
+<p>Figures 3B–D showcase complex structural annotations linked to
+heatmap slices: <code>anno_mark</code> callout labels for sparse gene
+subsets (<strong>B</strong>), <code>anno_link</code> attaching custom
+vertical grouped-boxplot panels to k-means row slices
+(<strong>C</strong>), and <code>anno_textbox</code> drawing
+importance-sized word clouds alongside slice blocks
+(<strong>D</strong>).</p>
+<div class="code-wrapper"><pre class="codehilite"><code><span class="c1"># Pattern for Panel C (anno_link on split heatmap) and Panel D (anno_textbox):</span>
+<span class="n">ht_c</span> <span class="o">=</span> <span class="p">(</span>
+    <span class="n">Heatmap</span><span class="p">(</span><span class="n">mat</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s2">"mat_c"</span><span class="p">,</span> <span class="n">row_split</span><span class="o">=</span><span class="n">km_cat</span><span class="p">,</span> <span class="n">column_split</span><span class="o">=</span><span class="n">group_cat</span><span class="p">,</span> <span class="n">cluster_column_slices</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+    <span class="o">+</span> <span class="n">rowAnnotation</span><span class="p">(</span><span class="n">link</span><span class="o">=</span><span class="n">anno_link</span><span class="p">(</span><span class="n">align_to</span><span class="o">=</span><span class="n">ind_list</span><span class="p">,</span> <span class="n">which</span><span class="o">=</span><span class="s2">"row"</span><span class="p">,</span> <span class="n">panel_fun</span><span class="o">=</span><span class="n">panel_boxplot</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="n">unit</span><span class="p">(</span><span class="mf">2.1</span><span class="p">,</span> <span class="s2">"cm"</span><span class="p">),</span> <span class="n">width</span><span class="o">=</span><span class="n">unit</span><span class="p">(</span><span class="mf">4.6</span><span class="p">,</span> <span class="s2">"cm"</span><span class="p">)))</span>
+<span class="p">)</span>
+
+<span class="n">ht_d</span> <span class="o">=</span> <span class="p">(</span>
+    <span class="n">Heatmap</span><span class="p">(</span><span class="n">mat_d</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s2">"mat_d"</span><span class="p">,</span> <span class="n">cluster_rows</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">row_split</span><span class="o">=</span><span class="n">split_cat</span><span class="p">)</span>
+    <span class="o">+</span> <span class="n">rowAnnotation</span><span class="p">(</span><span class="n">wc</span><span class="o">=</span><span class="n">anno_textbox</span><span class="p">(</span><span class="n">split_d</span><span class="p">,</span> <span class="n">text_d</span><span class="p">,</span> <span class="n">max_width</span><span class="o">=</span><span class="n">unit</span><span class="p">(</span><span class="mf">6.6</span><span class="p">,</span> <span class="s2">"cm"</span><span class="p">)))</span>
+<span class="p">)</span></code></pre></div>
+<figure>
+<img src="images/ch16_2022_fig3bcd_complex_annos.png"
+alt="iMeta 2022 Figure 3B-D reproduction: anno_mark, anno_link boxplots, and anno_textbox word clouds" />
+<figcaption aria-hidden="true">iMeta 2022 Figure 3B-D reproduction:
+anno_mark, anno_link boxplots, and anno_textbox word clouds</figcaption>
+</figure>
+<h3 id="imeta-fig4"><span class="header-section-number">16.3.4</span> Figure 4: Multi-Omics Heatmap Lists and Global
+Epigenomic Summary<a class="anchor-section" aria-label="Anchor link to section" href="#imeta-fig4">#</a></h3>
+<p>Figure 4A integrates DNA methylation (<code>Methylation</code>), DMR
+direction (<code>hyper</code>/<code>hypo</code>), paired gene expression
+(<code>Expression</code>), <code>-log10</code> Pearson correlation
+<code>p-value</code>, gene biotype, genomic context, genomic distance to
+TSS (<code>anno_points</code>), and enhancer overlap across 1,000 DMRs
+using <code>ch.load_dataset("meth")</code>. Notice that hypomethylated
+promoter clusters (<code>2,hypo</code>, bottom-left) concentrate at low
+TSS distance (<code>0–5 kb</code>) and overlap enhancers strongly.</p>
+<div class="code-wrapper"><pre class="codehilite"><code><span class="n">ds</span> <span class="o">=</span> <span class="n">ch</span><span class="o">.</span><span class="n">load_dataset</span><span class="p">(</span><span class="s2">"meth"</span><span class="p">)</span>
+<span class="n">mat_meth</span> <span class="o">=</span> <span class="n">ds</span><span class="p">[</span><span class="s2">"meth"</span><span class="p">]</span><span class="o">.</span><span class="n">to_numpy</span><span class="p">(</span><span class="n">dtype</span><span class="o">=</span><span class="nb">float</span><span class="p">)</span>
+<span class="n">mat_expr</span> <span class="o">=</span> <span class="n">ds</span><span class="p">[</span><span class="s2">"expr"</span><span class="p">]</span><span class="o">.</span><span class="n">to_numpy</span><span class="p">(</span><span class="n">dtype</span><span class="o">=</span><span class="nb">float</span><span class="p">)</span>
+<span class="n">anno_enhancer</span> <span class="o">=</span> <span class="n">ds</span><span class="p">[</span><span class="s2">"enhancer"</span><span class="p">]</span><span class="o">.</span><span class="n">to_numpy</span><span class="p">(</span><span class="n">dtype</span><span class="o">=</span><span class="nb">float</span><span class="p">)</span>
+<span class="n">rm</span> <span class="o">=</span> <span class="n">ds</span><span class="p">[</span><span class="s2">"row_meta"</span><span class="p">]</span>
+<span class="n">direction</span> <span class="o">=</span> <span class="n">rm</span><span class="p">[</span><span class="s2">"direction"</span><span class="p">]</span><span class="o">.</span><span class="n">tolist</span><span class="p">()</span>
+<span class="c1"># See scripts/ch16_publication_examples.py::render_2022_fig4a_meth_list() for full setup</span></code></pre></div>
+<figure>
+<img src="images/ch16_2022_fig4a_meth_list.png"
+alt="iMeta 2022 Figure 4A reproduction: Multi-omics methylation, expression, TSS distance, and enhancer list" />
+<figcaption aria-hidden="true">iMeta 2022 Figure 4A reproduction:
+Multi-omics methylation, expression, TSS distance, and enhancer
+list</figcaption>
+</figure>
+<p>Figure 4B aggregates global summary statistics across four
+glioblastoma subgroup DMR sets (<code>hyper1..4</code> and
+<code>hypo1..4</code>) from <code>ch.load_dataset("dmr_summary")</code>,
+combining mean methylation heatmaps, DMR count barplots, stacked
+compositional tracks (correlation direction, TSS distance bins, gene/CGI
+overlap, ChromHMM chromatin state fractions), and enrichment Z-score
+heatmaps.</p>
+<figure>
+<img src="images/ch16_2022_fig4b_dmr_summary.png"
+alt="iMeta 2022 Figure 4B reproduction: Global epigenomic summary statistics across 9 tracks" />
+<figcaption aria-hidden="true">iMeta 2022 Figure 4B reproduction: Global
+epigenomic summary statistics across 9 tracks</figcaption>
+</figure>
+<h3 id="imeta-fig5"><span class="header-section-number">16.3.5</span> Figure 5: High-Level Genomic and Statistical
+Plots<a class="anchor-section" aria-label="Anchor link to section" href="#imeta-fig5">#</a></h3>
+<p>Figure 5 demonstrates the five built-in high-level
+<code>Heatmap</code> specializations in
+<strong>ComplexHeatmap-py</strong>:</p>
+<ul>
+<li><strong>Panels A &amp; B</strong>: <code>densityHeatmap()</code> and
+3D <code>frequencyHeatmap(..., use_3d=True)</code> comparing 10 normal
+(<code>rnorm</code>) and 10 uniform (<code>runif</code>) columns
+annotated by <code>Distribution</code>.</li>
+</ul>
+<div class="code-wrapper"><pre class="codehilite"><code><span class="n">dh</span> <span class="o">=</span> <span class="n">densityHeatmap</span><span class="p">(</span><span class="n">df</span><span class="p">,</span> <span class="n">ylab</span><span class="o">=</span><span class="s2">"Value"</span><span class="p">,</span> <span class="n">top_annotation</span><span class="o">=</span><span class="n">ha</span><span class="p">,</span> <span class="n">title</span><span class="o">=</span><span class="s2">"A) Density heatmap"</span><span class="p">)</span>
+<span class="n">fh3d</span> <span class="o">=</span> <span class="n">frequencyHeatmap</span><span class="p">(</span><span class="n">df</span><span class="p">,</span> <span class="n">ylab</span><span class="o">=</span><span class="s2">"Value"</span><span class="p">,</span> <span class="n">top_annotation</span><span class="o">=</span><span class="n">ha</span><span class="p">,</span> <span class="n">use_3d</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">title</span><span class="o">=</span><span class="s2">"B) 3D frequency heatmap"</span><span class="p">,</span> <span class="n">bar_max_length</span><span class="o">=</span><span class="n">unit</span><span class="p">(</span><span class="mi">7</span><span class="p">,</span> <span class="s2">"mm"</span><span class="p">))</span></code></pre></div>
+<figure>
+<img src="images/ch16_2022_fig5ab_density_freq3d.png"
+alt="iMeta 2022 Figure 5A-B reproduction: densityHeatmap and 3D frequencyHeatmap" />
+<figcaption aria-hidden="true">iMeta 2022 Figure 5A-B reproduction:
+densityHeatmap and 3D frequencyHeatmap</figcaption>
+</figure>
+<ul>
+<li><strong>Panel C</strong>: <code>oncoPrint()</code> for 22
+RAS–RAF–MEK–JNK signaling genes across 80 TCGA Lung Adenocarcinoma
+samples (<code>ch.load_dataset("tcga_lung_adenocarcinoma")</code>).</li>
+</ul>
+<figure>
+<img src="images/ch16_2022_fig5c_oncoprint.png"
+alt="iMeta 2022 Figure 5C reproduction: TCGA Lung Adenocarcinoma RAS-RAF-MEK-JNK OncoPrint" />
+<figcaption aria-hidden="true">iMeta 2022 Figure 5C reproduction: TCGA
+Lung Adenocarcinoma RAS-RAF-MEK-JNK OncoPrint</figcaption>
+</figure>
+<ul>
+<li><strong>Panel D</strong>: Genomic <code>UpSet()</code> plot
+quantifying base-pair overlaps (<code>CombMat</code> built from Roadmap
+Epigenomics H3K4me3 ChIP-seq peaks across 6 tissues: <code>Brain</code>,
+<code>ESC</code>, <code>Heart</code>, <code>Muscle</code>,
+<code>ES-deriv2</code>, <code>ES-deriv1</code>), formatted directly in
+megabases (<code>MB</code>).</li>
+</ul>
+<div class="code-wrapper"><pre class="codehilite"><code><span class="n">sets_df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s2">"data/pub2022_fig5d_h3k4me3_sets.csv"</span><span class="p">)</span>
+<span class="n">combs_df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s2">"data/pub2022_fig5d_h3k4me3_combs.csv"</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="p">{</span><span class="s2">"comb_code"</span><span class="p">:</span> <span class="nb">str</span><span class="p">})</span>
+<span class="n">cm</span> <span class="o">=</span> <span class="n">CombMat</span><span class="p">(</span>
+    <span class="n">mat</span><span class="o">=</span><span class="n">combs_df</span><span class="p">[</span><span class="n">sets_df</span><span class="p">[</span><span class="s2">"set_name"</span><span class="p">]</span><span class="o">.</span><span class="n">tolist</span><span class="p">()]</span><span class="o">.</span><span class="n">to_numpy</span><span class="p">(</span><span class="n">dtype</span><span class="o">=</span><span class="nb">int</span><span class="p">)</span><span class="o">.</span><span class="n">T</span><span class="p">,</span>
+    <span class="n">set_names</span><span class="o">=</span><span class="n">sets_df</span><span class="p">[</span><span class="s2">"set_name"</span><span class="p">]</span><span class="o">.</span><span class="n">tolist</span><span class="p">(),</span>
+    <span class="n">comb_codes</span><span class="o">=</span><span class="n">combs_df</span><span class="p">[</span><span class="s2">"comb_code"</span><span class="p">]</span><span class="o">.</span><span class="n">tolist</span><span class="p">(),</span>
+    <span class="n">set_sizes</span><span class="o">=</span><span class="n">sets_df</span><span class="p">[</span><span class="s2">"set_size"</span><span class="p">]</span><span class="o">.</span><span class="n">to_numpy</span><span class="p">(</span><span class="n">dtype</span><span class="o">=</span><span class="nb">float</span><span class="p">),</span>
+    <span class="n">comb_sizes</span><span class="o">=</span><span class="n">combs_df</span><span class="p">[</span><span class="s2">"comb_size"</span><span class="p">]</span><span class="o">.</span><span class="n">to_numpy</span><span class="p">(</span><span class="n">dtype</span><span class="o">=</span><span class="nb">float</span><span class="p">),</span>
+    <span class="n">mode</span><span class="o">=</span><span class="s2">"distinct"</span><span class="p">,</span>
+<span class="p">)</span>
+<span class="n">up</span> <span class="o">=</span> <span class="n">UpSet</span><span class="p">(</span>
+    <span class="n">cm</span><span class="p">,</span>
+    <span class="n">set_order</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">argsort</span><span class="p">(</span><span class="o">-</span><span class="n">cm</span><span class="o">.</span><span class="n">set_size</span><span class="p">())</span><span class="o">.</span><span class="n">tolist</span><span class="p">(),</span>
+    <span class="n">comb_order</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">argsort</span><span class="p">(</span><span class="o">-</span><span class="n">cm</span><span class="o">.</span><span class="n">comb_size</span><span class="p">())</span><span class="o">.</span><span class="n">tolist</span><span class="p">(),</span>
+    <span class="n">top_annotation</span><span class="o">=</span><span class="n">upset_top_annotation</span><span class="p">(</span><span class="n">cm</span><span class="p">,</span> <span class="n">height</span><span class="o">=</span><span class="n">unit</span><span class="p">(</span><span class="mf">3.6</span><span class="p">,</span> <span class="s2">"cm"</span><span class="p">),</span> <span class="n">axis_param</span><span class="o">=</span><span class="p">{</span><span class="s2">"at"</span><span class="p">:</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mf">1e7</span><span class="p">,</span> <span class="mf">2e7</span><span class="p">],</span> <span class="s2">"labels"</span><span class="p">:</span> <span class="p">[</span><span class="s2">"0 MB"</span><span class="p">,</span> <span class="s2">"10 MB"</span><span class="p">,</span> <span class="s2">"20 MB"</span><span class="p">]}),</span>
+    <span class="n">right_annotation</span><span class="o">=</span><span class="n">upset_right_annotation</span><span class="p">(</span><span class="n">cm</span><span class="p">,</span> <span class="n">width</span><span class="o">=</span><span class="n">unit</span><span class="p">(</span><span class="mf">2.8</span><span class="p">,</span> <span class="s2">"cm"</span><span class="p">),</span> <span class="n">annotation_name_offset</span><span class="o">=</span><span class="n">unit</span><span class="p">(</span><span class="mi">8</span><span class="p">,</span> <span class="s2">"mm"</span><span class="p">),</span> <span class="n">axis_param</span><span class="o">=</span><span class="p">{</span><span class="s2">"at"</span><span class="p">:</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mf">2e7</span><span class="p">,</span> <span class="mf">4e7</span><span class="p">,</span> <span class="mf">6e7</span><span class="p">],</span> <span class="s2">"labels"</span><span class="p">:</span> <span class="p">[</span><span class="s2">"0"</span><span class="p">,</span> <span class="s2">"20"</span><span class="p">,</span> <span class="s2">"40"</span><span class="p">,</span> <span class="s2">"60 MB"</span><span class="p">],</span> <span class="s2">"side"</span><span class="p">:</span> <span class="s2">"bottom"</span><span class="p">,</span> <span class="s2">"labels_rot"</span><span class="p">:</span> <span class="mi">0</span><span class="p">}),</span>
+<span class="p">)</span></code></pre></div>
+<figure>
+<img src="images/ch16_2022_fig5d_upset.png"
+alt="iMeta 2022 Figure 5D reproduction: Genomic UpSet plot of Roadmap H3K4me3 peaks" />
+<figcaption aria-hidden="true">iMeta 2022 Figure 5D reproduction:
+Genomic UpSet plot of Roadmap H3K4me3 peaks</figcaption>
+</figure>
+<ul>
+<li><strong>Panel E</strong>: Genome-scale vertical (<code>% v %</code>)
+multi-track heatmap across <code>chr1..chr22</code>
+(<code>bin_genome("hg19", bin_size=1_000_000)</code> +
+<code>normalize_genomic_signals_to_bins()</code>) stacking subgroup
+(<code>A</code>/<code>B</code>) signals, categorical <code>CNV</code>
+calls (<code>gain</code>/<code>loss</code>), <code>anno_mark</code> gene
+loci, <code>anno_points</code>, and <code>anno_barplot</code> in one
+aligned coordinate system.</li>
+</ul>
+<figure>
+<img src="images/ch16_2022_fig5e_genome.png"
+alt="iMeta 2022 Figure 5E reproduction: Genome-level multi-track vertical heatmap across chr1..chr22" />
+<figcaption aria-hidden="true">iMeta 2022 Figure 5E reproduction:
+Genome-level multi-track vertical heatmap across
+chr1..chr22</figcaption>
+</figure>
+<h3 id="imeta-fig6"><span class="header-section-number">16.3.6</span> Figure 6: TSS Spatial Enrichment Profiles
+(<code>EnrichedHeatmap</code> Equivalent in ComplexHeatmap-py)<a class="anchor-section" aria-label="Anchor link to section" href="#imeta-fig6">#</a></h3>
+<p>In the <em>iMeta</em> (2022) paper, Figure 6 demonstrates how
+<strong>ComplexHeatmap</strong> serves as an extensible foundation for
+companion packages — specifically R’s <a
+href="https://bioconductor.org/packages/EnrichedHeatmap/"><strong>EnrichedHeatmap</strong></a>
+(<code>anno_enriched()</code> + <code>EnrichedHeatmap()</code>). While
+<code>EnrichedHeatmap</code> itself is a separate R/Bioconductor
+package, its spatial TSS visualization maps naturally onto native
+<strong>ComplexHeatmap-py</strong> primitives: aligned
+<code>-5000..+5000 bp</code> matrix heatmaps (<code>States</code>,
+<code>Methylation</code>), a 1-column <code>Expression</code> heatmap
+with <code>anno_summary()</code>, and custom top metaplot profile
+annotations (<code>AnnotationFunction</code>) comparing
+<code>active</code>, <code>bivalent</code>, and <code>inactive</code>
+promoters across 600 Roadmap <code>E003</code> TSSs
+(<code>data/pub2022_fig6_tss_roadmap.npz</code>).</p>
+<div class="code-wrapper"><pre class="codehilite"><code><span class="n">npz</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="s2">"data/pub2022_fig6_tss_roadmap.npz"</span><span class="p">)</span>
+<span class="n">states_str</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">asarray</span><span class="p">([</span><span class="nb">str</span><span class="p">(</span><span class="n">s</span><span class="p">)</span> <span class="k">for</span> <span class="n">s</span> <span class="ow">in</span> <span class="n">npz</span><span class="p">[</span><span class="s2">"state_names"</span><span class="p">]],</span> <span class="n">dtype</span><span class="o">=</span><span class="nb">object</span><span class="p">)[</span><span class="n">npz</span><span class="p">[</span><span class="s2">"states_idx"</span><span class="p">]]</span>
+<span class="n">meth</span><span class="p">,</span> <span class="n">expr</span> <span class="o">=</span> <span class="n">npz</span><span class="p">[</span><span class="s2">"meth"</span><span class="p">],</span> <span class="n">npz</span><span class="p">[</span><span class="s2">"expr"</span><span class="p">]</span>
+<span class="n">split_ord</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">Categorical</span><span class="p">([</span><span class="nb">str</span><span class="p">(</span><span class="n">g</span><span class="p">)</span> <span class="k">for</span> <span class="n">g</span> <span class="ow">in</span> <span class="n">npz</span><span class="p">[</span><span class="s2">"group"</span><span class="p">]],</span> <span class="n">categories</span><span class="o">=</span><span class="p">[</span><span class="s2">"active"</span><span class="p">,</span> <span class="s2">"bivalent"</span><span class="p">,</span> <span class="s2">"inactive"</span><span class="p">],</span> <span class="n">ordered</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
+<span class="c1"># Top summary metaplot lines (solid=active, dashed=bivalent, dotted=inactive) + aligned heatmaps</span>
+<span class="n">ht_list</span> <span class="o">=</span> <span class="n">ht_states</span> <span class="o">+</span> <span class="n">ht_meth</span> <span class="o">+</span> <span class="n">ht_expr</span>
+<span class="n">ch</span><span class="o">.</span><span class="n">draw</span><span class="p">(</span><span class="n">ht_list</span><span class="p">,</span> <span class="n">ht_gap</span><span class="o">=</span><span class="n">unit</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="s2">"mm"</span><span class="p">),</span> <span class="n">column_title</span><span class="o">=</span><span class="s2">"Visualize chromatin states, methylation and expression"</span><span class="p">,</span> <span class="n">heatmap_legend_list</span><span class="o">=</span><span class="p">[</span><span class="n">lgd_cat</span><span class="p">])</span></code></pre></div>
+<figure>
+<img src="images/ch16_2022_fig6_tss_enriched.png"
+alt="iMeta 2022 Figure 6 reproduction: Chromatin states, DNA methylation (-5kb..+5kb TSS), and expression" />
+<figcaption aria-hidden="true">iMeta 2022 Figure 6 reproduction:
+Chromatin states, DNA methylation (-5kb..+5kb TSS), and
+expression</figcaption>
+</figure>
+
+          </section>
+          <nav class="chapter-footer-nav" aria-label="Chapter Navigation">
+            <a href="other-tricks.html">&larr; 15 Other Tricks</a>
+            <span></span>
+          </nav>
+        </main>
+        <a href="other-tricks.html" class="navigation navigation-prev" aria-label="Previous chapter: Other Tricks" title="Previous: Other Tricks">&#8249;</a>
+        
+      </div>
+    </div>
+  </div>
+  <script src="assets/gitbook.js"></script>
+</body>
+</html>
